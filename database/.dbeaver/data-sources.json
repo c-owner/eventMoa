@@ -1,0 +1,42 @@
+{
+	"folders": {},
+	"connections": {
+		"postgresql_generic-1784d86a236-5a7c63ebc6c54f54": {
+			"provider": "generic",
+			"driver": "postgresql_generic",
+			"name": "localhost",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "54322",
+				"url": "jdbc:postgresql://localhost:54322/",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"virtual-models": {
+		"postgresql_generic-1784d86a236-5a7c63ebc6c54f54": {
+			"eventmoa": {
+				"@properties": {
+					"erd.diagram.state": {
+						"serialized": "<diagram version=\"1\" name=\"eventmoa\" time=\"202103201305\"><entities><data-source id=\"postgresql_generic-1784d86a236-5a7c63ebc6c54f54\"><entity id=\"1\" name=\"table_board\" fq-name=\"eventmoa.table_board\" order=\"0\" x=\"334\" y=\"302\"><path name=\"eventmoa\"/></entity><entity id=\"2\" name=\"table_files\" fq-name=\"eventmoa.table_files\" order=\"1\" x=\"515\" y=\"343\"><path name=\"eventmoa\"/></entity><entity id=\"3\" name=\"table_reply\" fq-name=\"eventmoa.table_reply\" order=\"2\" x=\"19\" y=\"187\"><path name=\"eventmoa\"/></entity><entity id=\"4\" name=\"table_user\" fq-name=\"eventmoa.table_user\" order=\"3\" x=\"312\" y=\"20\"><path name=\"eventmoa\"/></entity></data-source></entities><relations><relation name=\"files_fk\" fq-name=\"eventmoa.table_files.files_fk\" type=\"fk\" pk-ref=\"1\" fk-ref=\"2\"/><relation name=\"reply_board_fk\" fq-name=\"eventmoa.table_reply.reply_board_fk\" type=\"fk\" pk-ref=\"1\" fk-ref=\"3\"/><relation name=\"board_fk\" fq-name=\"eventmoa.table_board.board_fk\" type=\"fk\" pk-ref=\"4\" fk-ref=\"1\"/><relation name=\"reply_member_fk\" fq-name=\"eventmoa.table_reply.reply_member_fk\" type=\"fk\" pk-ref=\"4\" fk-ref=\"3\"/></relations></diagram>"
+					}
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
