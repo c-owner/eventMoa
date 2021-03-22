@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="postgres-jdbc-17859ee8167-20887a80218092b8" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - eventmoa" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="54322" server="" database="eventmoa" url="jdbc:postgresql://localhost:54322/eventmoa" user="eventmoa" password="FhIDLlVOSxdl8w==" type="dev">
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+		</connection>
+	</data-source>
+	<filters/>
+</data-sources>

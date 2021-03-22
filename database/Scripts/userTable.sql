@@ -2,6 +2,7 @@ drop table table_reply;
 drop table table_files ;
 drop table table_board ;
 drop table table_user ;
+drop table TABLE_POINT;
 
 create table TABLE_USER (
   memberId varchar(100) not null,
@@ -80,7 +81,6 @@ SELECT * FROM TABLE_REPLY;
 
 create sequence POINT_SEQ;
 
-drop table TABLE_POINT;
 create table TABLE_POINT(
 	POINT_NUM INT,
 	POINT_AMOUNT INT,
@@ -101,7 +101,7 @@ insert into TABLE_POINT values (nextval('POINT_SEQ'), 5000, current_timestamp, '
 
 select point_date from table_point;
 
-
+select * from table_point;
 -- 현재 날짜 시간 조회 
 select to_char(point_date, 'yyyy-mm-dd hh:mi:ss') as 결제내역
 from table_point;
