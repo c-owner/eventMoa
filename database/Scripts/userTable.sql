@@ -1,9 +1,15 @@
+drop table table_reply;
+drop table table_files ;
+drop table table_board ;
+drop table table_user ;
+
 create table TABLE_USER (
+  memberPoint int default 300,
   memberId varchar(100) not null,
   memberPw varchar(100) not null,
+  memberName  varchar(100),
   memberEmail varchar(200) not null,
   memberEmailHash varchar(200),
-  memberName  varchar(100),
   memberZipcode    varchar(20) not null,
   memberAddress    varchar(300)not null,
   memberAddressDETAIL varchar(300),
