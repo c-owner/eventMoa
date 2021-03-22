@@ -1,6 +1,16 @@
+ 
+
+## 
 
 
-다크모드
 
-라이트모드
+- 포인트 DB 설계
+
+pk - 
+
+references fk - memberId
+
+
+
+DATE
 

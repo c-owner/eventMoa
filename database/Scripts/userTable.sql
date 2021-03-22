@@ -4,7 +4,6 @@ drop table table_board ;
 drop table table_user ;
 
 create table TABLE_USER (
-  memberPoint int default 300,
   memberId varchar(100) not null,
   memberPw varchar(100) not null,
   memberName  varchar(100),
@@ -76,6 +75,36 @@ ON DELETE CASCADE;
 SELECT * FROM TABLE_REPLY;
 
 
+---------------------------
+-- point  -- 
+
+create sequence POINT_SEQ;
+
+drop table TABLE_POINT;
+create table TABLE_POINT(
+	POINT_NUM INT,
+	POINT_AMOUNT INT,
+	POINT_DATE TIMESTAMP,
+	MEMBERID VARCHAR(100),
+	constraint POINT_MEMBER_FK foreign KEY(MEMBERID) references TABLE_USER(MEMBERID)
+);
+
+select * from table_point;
+
+
+INSERT INTO table_user
+(memberid, memberpw, membername, memberemail, memberemailhash, memberzipcode, memberaddress, memberaddressdetail, memberaddressetc)
+VALUES('hds1234', '1234', 'ddd', 'ddd', 'ddd', 'dd', 'd', 'dd', 'ddd');
+
+
+insert into TABLE_POINT values (nextval('POINT_SEQ'), 5000, current_timestamp, 'hds1234');
+
+select point_date from table_point;
+
+
+-- 현재 날짜 시간 조회 
+select to_char(point_date, 'yyyy-mm-dd hh:mi:ss') as 결제내역
+from table_point;
 
 
 
