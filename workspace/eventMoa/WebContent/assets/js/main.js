@@ -1,20 +1,24 @@
 /*
-	ZeroFour by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Elemental by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
 */
 
 (function($) {
 
 	var	$window = $(window),
-		$body = $('body');
+		$body = $('body'),
+		$header = $('#header'),
+		$main = $('#main');
 
 	// Breakpoints.
 		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ null,      '736px'  ]
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '981px',   '1280px' ],
+			medium:   [ '737px',   '980px'  ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ '361px',   '480px'  ],
+			xxsmall:  [ null,      '360px'  ]
 		});
 
 	// Play initial animations on page load.
@@ -26,20 +30,30 @@
 
 	// Dropdowns.
 		$('#nav > ul').dropotron({
-			offsetY: -22,
-			mode: 'fade',
-			noOpenerFade: true,
-			speed: 300,
-			detach: false
+			alignment: 'center',
+			openerActiveClass: 'dropotron-active'
 		});
 
-	// Nav.
+	// Header.
+		if ($header.hasClass('alt')) {
 
-		// Title Bar.
+			$window.on('resize', function() { $window.trigger('scroll'); });
+
+			$main.scrollex({
+				mode:		'top',
+				top:		'40vh',
+				enter:		function() { $header.removeClass('alt'); },
+				leave:		function() { $header.addClass('alt'); $header.addClass('reveal'); }
+			});
+
+		}
+
+	// Nav Panel.
+
+		// Button.
 			$(
-				'<div id="titleBar">' +
+				'<div id="navButton">' +
 					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title">' + $('#logo').html() + '</span>' +
 				'</div>'
 			)
 				.appendTo($body);
@@ -50,6 +64,7 @@
 					'<nav>' +
 						$('#nav').navList() +
 					'</nav>' +
+					'<a href="#navPanel" class="close"></a>' +
 				'</div>'
 			)
 				.appendTo($body)
@@ -59,9 +74,34 @@
 					hideOnSwipe: true,
 					resetScroll: true,
 					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
+					side: 'left'
+					//target: $body,
+					//visibleClass: 'navPanel-visible'
 				});
+
+	// Spotlights.
+		$('.spotlight')
+			.each(function() {
+
+				var	$this = $(this),
+					$image = $this.find('.image'),
+					$img = $image.find('img'),
+					x;
+
+				// No image? Skip.
+					if ($image.length == 0)
+						return;
+
+				// Assign image.
+					$image.css('background-image', 'url(' + $img.attr('src') + ')');
+
+				// Set background position.
+					if (x = $img.data('position'))
+						$image.css('background-position', x);
+
+				// Hide <img>.
+					$img.hide();
+
+			});
 
 })(jQuery);

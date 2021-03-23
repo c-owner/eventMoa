@@ -1,28 +1,41 @@
 {
 	"folders": {},
 	"connections": {
-		"postgresql_generic-1784d86a236-5a7c63ebc6c54f54": {
-			"provider": "generic",
-			"driver": "postgresql_generic",
-			"name": "localhost",
+		"oracle_thin-1785c9c20bc-6a232e7d00de2b34": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "XE",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
 				"host": "localhost",
-				"port": "54322",
-				"url": "jdbc:postgresql://localhost:54322/",
+				"port": "1515",
+				"database": "XE",
+				"url": "jdbc:oracle:thin:@//localhost:1515/XE",
 				"type": "dev",
-				"auth-model": "native"
+				"provider-properties": {
+					"@dbeaver-check-schema-content@": "false",
+					"@dbeaver-always-show-dba@": "false",
+					"@dbeaver-always-use-dba-views@": "false",
+					"@dbeaver-meta-use-sys-schema@": "false",
+					"@dbeaver-meta-use-simple-constraints@": "false",
+					"@dbeaver-use-rule-hint@": "false",
+					"@dbeaver-use-meta-optimizer@": "false",
+					"@dbeaver-meta-use-alternative-table-query@": "false",
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-sid-service@": "SERVICE"
+				},
+				"auth-model": "oracle_native"
 			}
 		}
 	},
 	"virtual-models": {
-		"postgresql_generic-1784d86a236-5a7c63ebc6c54f54": {
-			"eventmoa": {
+		"oracle_thin-1785c9c20bc-6a232e7d00de2b34": {
+			"EVENTMOA": {
 				"@properties": {
 					"erd.diagram.state": {
-						"serialized": "<diagram version=\"1\" name=\"eventmoa\" time=\"202103221543\"><entities><data-source id=\"postgresql_generic-1784d86a236-5a7c63ebc6c54f54\"><entity id=\"1\" name=\"table_board\" fq-name=\"eventmoa.table_board\" order=\"0\" x=\"334\" y=\"302\"><path name=\"eventmoa\"/></entity><entity id=\"2\" name=\"table_files\" fq-name=\"eventmoa.table_files\" order=\"1\" x=\"535\" y=\"338\"><path name=\"eventmoa\"/></entity><entity id=\"3\" name=\"table_point\" fq-name=\"eventmoa.table_point\" order=\"2\" x=\"22\" y=\"49\"><path name=\"eventmoa\"/></entity><entity id=\"4\" name=\"table_reply\" fq-name=\"eventmoa.table_reply\" order=\"3\" x=\"23\" y=\"213\"><path name=\"eventmoa\"/></entity><entity id=\"5\" name=\"table_user\" fq-name=\"eventmoa.table_user\" order=\"4\" x=\"312\" y=\"20\"><path name=\"eventmoa\"/></entity></data-source></entities><relations><relation name=\"files_fk\" fq-name=\"eventmoa.table_files.files_fk\" type=\"fk\" pk-ref=\"1\" fk-ref=\"2\"/><relation name=\"reply_board_fk\" fq-name=\"eventmoa.table_reply.reply_board_fk\" type=\"fk\" pk-ref=\"1\" fk-ref=\"4\"/><relation name=\"board_fk\" fq-name=\"eventmoa.table_board.board_fk\" type=\"fk\" pk-ref=\"5\" fk-ref=\"1\"/><relation name=\"point_member_fk\" fq-name=\"eventmoa.table_point.point_member_fk\" type=\"fk\" pk-ref=\"5\" fk-ref=\"3\"/><relation name=\"reply_member_fk\" fq-name=\"eventmoa.table_reply.reply_member_fk\" type=\"fk\" pk-ref=\"5\" fk-ref=\"4\"/></relations></diagram>"
+						"serialized": "<diagram version=\"1\" name=\"EVENTMOA\" time=\"202103231039\"><entities><data-source id=\"oracle_thin-1785c9c20bc-6a232e7d00de2b34\"><entity id=\"1\" name=\"TABLE_BOARD\" fq-name=\"EVENTMOA.TABLE_BOARD\" order=\"0\" x=\"387\" y=\"374\"><path name=\"EVENTMOA\"/></entity><entity id=\"2\" name=\"TABLE_FILES\" fq-name=\"EVENTMOA.TABLE_FILES\" order=\"1\" x=\"398\" y=\"576\"><path name=\"EVENTMOA\"/></entity><entity id=\"3\" name=\"TABLE_POINT\" fq-name=\"EVENTMOA.TABLE_POINT\" order=\"2\" x=\"114\" y=\"377\"><path name=\"EVENTMOA\"/></entity><entity id=\"4\" name=\"TABLE_REPLY\" fq-name=\"EVENTMOA.TABLE_REPLY\" order=\"3\" x=\"713\" y=\"215\"><path name=\"EVENTMOA\"/></entity><entity id=\"5\" name=\"TABLE_USER\" fq-name=\"EVENTMOA.TABLE_USER\" order=\"4\" x=\"377\" y=\"39\"><path name=\"EVENTMOA\"/></entity></data-source></entities><relations><relation name=\"FILES_FK\" fq-name=\"EVENTMOA.TABLE_FILES.FILES_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"2\"/><relation name=\"REPLY_BOARD_FK\" fq-name=\"EVENTMOA.TABLE_REPLY.REPLY_BOARD_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"4\"/><relation name=\"BOARD_FK\" fq-name=\"EVENTMOA.TABLE_BOARD.BOARD_FK\" type=\"fk\" pk-ref=\"5\" fk-ref=\"1\"/><relation name=\"POINT_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_POINT.POINT_MEMBER_FK\" type=\"fk\" pk-ref=\"5\" fk-ref=\"3\"/><relation name=\"REPLY_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_REPLY.REPLY_MEMBER_FK\" type=\"fk\" pk-ref=\"5\" fk-ref=\"4\"/></relations></diagram>"
 					}
 				}
 			}
