@@ -20,6 +20,8 @@ create table TABLE_USER (
   constraint event_user_pk primary key (memberId)
 );
 
+ALTER TABLE TABLE_USER ADD memberPoint NUMBER(10) DEFAULT 300;
+
 select * from table_user;
 
 -------------
