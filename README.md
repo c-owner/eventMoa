@@ -11,5 +11,5 @@
 
 
 
-![bg](./logo design/event-logo.png)
+![bg](https://github.com/Eight-Corner/eventMoa/blob/master/logo%20design/event-logo.png)
 
