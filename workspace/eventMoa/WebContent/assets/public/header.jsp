@@ -32,9 +32,9 @@
 								<li><a href="#">Link Two</a></li>
 								<li><a href="#">Link Three</a></li>
 								<li>
-									<a href="#">서브메뉴</a>
+									<a href="#">버전관리</a>
 									<ul>
-										<li><a href="#">Link One</a></li>
+										<li><a href="${pageContext.request.contextPath}/buildLog.jsp">빌드 로그</a></li>
 										<li><a href="#">Link Two</a></li>
 										<li><a href="#">Link Three</a></li>
 										<li><a href="#">Link Four</a></li>
@@ -42,8 +42,8 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="generic.jsp">제네릭</a></li>
-						<li><a href="elements.jsp">요소</a></li>
+						<li><a href="${pageContext.request.contextPath}/generic.jsp">제네릭</a></li>
+						<li><a href="${pageContext.request.contextPath}/elements.jsp">요소</a></li>
 					</ul>
 				</nav>
 			</div>

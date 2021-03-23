@@ -6,57 +6,44 @@
 	auth 	: 킹기훈 
 	작업		: 2021-03-23
 	작업내역	: 
-			> 메인 슬라이드 사진 (사진 사이즈는 맞춤형 통일) 
+			> 메인 슬라이드 사진 (사진 사이즈는 맞춤형 통일) 구현완료  
 			> section 정리 -> elements에 넣음
 			> footer 수정 
 			> search-bar style 생성 	
+			> 
 			
     *작업예정	: 
-    		> next , previous icon
-    		> 지역띄우기 (?) 이건 먼 미래 구현 예정
+    		> *Bug == 슬라이드 next , previous icon 
+    		> search-bar 카테고리 생성
+    		> 검색바 카테고리 
+    		> section 지역띄우기 (?) 이건 먼 미래 구현 예정
 -->
 <html>
 	<head>
 		<title>이벤트 모아 (Event Moa)</title>
-		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 		<meta name="author" content="corner3499">
-		
-		<!-- title-icon -->
-		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
-		<!-- style -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/slick.css">
-		
 	</head>
 	
 	<body class="is-preload">
 
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
-
+	<p></p>
 		<!-- Main -->
 			<div id="main">
 
-				<!-- Header -->
-					<header>
-						<span class="logo"></span>
-						<!-- <h1><strong>이벤트 모아</strong></h1> -->
-					</header>
+
+				<!-- Header -->		<!-- search-bar -->
+		<jsp:include page="${pageContext.request.contextPath}/searchBar.jsp"></jsp:include>
 					
-							<!-- search-bar -->
-					<section class="search-bar">
-					
-					</section>
 					
 			<!-- Slider -->
 			<section id="banner">
 				<h3 class="ir_su">  </h3>
 				<article class="column col4">
-					<h4 class="col_tit" style="text-align: center;"> 이벤트 모아 </h4>
+					<h4 class="col_tit" style="text-align: right;"> 이벤트 모아 </h4>
 					<p class="col_desc"> </p>
 					<!-- 이미지 슬라이드 -->
 					<div class="slider">
@@ -140,15 +127,6 @@
 		<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
-		<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/slick.min.js"></script>
 	 <script>
      //이미지 슬라이더
      $(".slider").slick({

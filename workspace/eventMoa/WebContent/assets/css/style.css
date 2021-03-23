@@ -297,7 +297,7 @@
     width: 30px; height: 30px;
     display: inline-block;
     /* text-indent: -9999px; */
-    font: normal normal normal 14px/1 FontAwesome;
+    /* font: normal normal normal 14px/1 FontAwesome; */
 }
 .slider .slick-prev::before {
     content:"\f053";
@@ -309,7 +309,7 @@
     width: 30px; height: 30px;
     display: inline-block;
     /* text-indent: -9999px; */
-    font: normal normal normal 14px/1 FontAwesome;
+    /* font: normal normal normal 14px/1 FontAwesome; */
 }
 .slider .slick-next::before { 
     content:"\f054";
