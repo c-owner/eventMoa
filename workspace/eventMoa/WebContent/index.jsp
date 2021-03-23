@@ -92,6 +92,7 @@
 			<div id="map" style="width:900px;height:900px;"></div>
 		</article>
 			 
+			 <br>
 
 			</div> <!-- div id="main" end -->
 

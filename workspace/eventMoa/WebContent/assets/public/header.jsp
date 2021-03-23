@@ -44,6 +44,8 @@
 						</li>
 						<li><a href="${pageContext.request.contextPath}/generic.jsp">제네릭</a></li>
 						<li><a href="${pageContext.request.contextPath}/elements.jsp">요소</a></li>
+						<li><a href="${pageContext.request.contextPath}/login.jsp">로그인</a><li>
+						<li><a href="${pageContext.request.contextPath}/signup.jsp">회원가입</a><li>
 					</ul>
 				</nav>
 			</div>
