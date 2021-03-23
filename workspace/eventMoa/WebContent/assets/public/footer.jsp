@@ -3,10 +3,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Untitled</title>
+		<title>이벤트 모아 (Event Moa)</title>
+		
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+		<meta name="author" content="corner3499">
+		
+		<!-- title-icon -->
+		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+		<!-- style -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/slick.css">
 	</head>
 	<body class="is-preload">
 
@@ -14,21 +23,24 @@
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 	<!-- Footer -->
 			<div id="footer">
-				<h2>Get in touch</h2>
-				<p>Praesent dapibus, neque id cursus faucibus, tortor neque ege tas augue, eu vulputate magna eros eu erat. Aliquam erat et volutpat. Nam dui mi, tincidunt quis, accumsan porttitor tempus lorem ipsum dolor sit amet consequat.</p>
+				<h2>서비스 정보</h2>
+					<p>
+						안녕하세요. 이벤트를 한 눈에, 편리하게 확인해보세요. 
+						직접 이벤트/행사도 등록할 수 있습니다.
+					</p>
 				<ul class="major-icons">
 					<li>
 						<h3 class="icon solid fa-phone major"><span class="label">Phone</span></h3>
-						<p>(000) 000-0000</p>
+						<p>(031) 52-5252</p>
 					</li>
 					<li>
 						<h3 class="icon solid fa-map major"><span class="label">Address</span></h3>
-						<p>1234 Fictional Road<br />
-						Nashville, TN 00000</p>
+						<p>146 테헤란로<br />
+						서울특별시, TN 06236</p>
 					</li>
 					<li>
 						<h3 class="icon solid fa-envelope major"><span class="label">Email</span></h3>
-						<p><a href="#">info@untitled.tld</a></p>
+						<p><a href="#">admin5252@gmail.com</a></p>
 					</li>
 				</ul>
 				<ul class="joined-icons">
@@ -38,17 +50,17 @@
 					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 					<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 				</ul>
-				<p class="copyright">&copy; Untitled. All rights reserved. Lorem ipsum dolor sit amet.</p>
+				<p class="copyright">&copy;Copyright 2021. EventMoa All rights reserved.</p>
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
 </body>
 </html>

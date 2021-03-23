@@ -78,7 +78,37 @@
 					//target: $body,
 					//visibleClass: 'navPanel-visible'
 				});
+			
+			
+			
+			
+			// Slider
+			var $slider = $('#slider');
+			if ($slider.length > 0) {
 
+				$slider.slidertron({
+					mode: 'fade',
+					viewerSelector: '.viewer',
+					reelSelector: '.viewer .reel',
+					slidesSelector: '.viewer .reel .slide',
+					advanceDelay: 3000,
+					speed: 'slow',
+					navPreviousSelector: '.previous-button',
+					navNextSelector: '.next-button',
+					slideLinkSelector: '.link',
+					autoFit: true,
+					seamlessWrap: false
+				});
+
+				$window
+					.on('resize load', function() {
+						$slider.trigger('slidertron_reFit');
+					})
+					.trigger('resize');
+
+			}
+			
+			
 	// Spotlights.
 		$('.spotlight')
 			.each(function() {

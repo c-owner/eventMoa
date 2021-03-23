@@ -1,7 +1,15 @@
-# README
+# EVENT MOA
+
+```
+	team 	: EVENT MOA
+	auth 	: hoon / hoon / ho
+```
 
 
 
+### [EVENT MOA CONNECT ](http://event-moa.kro.kr)
 
 
-#### EVENT MOA
+
+![bg](./logo design/event-logo.png)
+

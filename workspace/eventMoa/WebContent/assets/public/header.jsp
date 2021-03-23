@@ -3,16 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+<title>이벤트 모아 (Event Moa)</title>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+		<meta name="author" content="corner3499">
+		
+		<!-- title-icon -->
+		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+		<!-- style -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/slick.css">
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<div id="header" class="alt">
-				<a class="logo" href="index.html"></a>
+				<a class="logo" href="${pageContext.request.contextPath}/index.jsp"></a>
 				<nav id="nav">
 					<ul>
 						<li class="active"><a href="index.jsp">메인</a></li>
@@ -38,5 +47,7 @@
 					</ul>
 				</nav>
 			</div>
+
+			
 </body>
 </html>

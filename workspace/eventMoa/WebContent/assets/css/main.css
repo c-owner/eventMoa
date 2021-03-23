@@ -4558,3 +4558,99 @@ input, select, textarea {
 			}
 
 		}
+		
+		
+				/* Slider */
+
+	#slider {
+		position: relative;
+		height: 320px;
+		background: #80B763;
+		color: #FFF;
+		overflow: hidden;
+	}
+
+		#slider .pennant {
+			margin-bottom: 1em;
+			background: #FFF;
+			font-size: 1.4em;
+			color: #80B763;
+		}
+
+		#slider .links {
+			display: inline-block;
+			letter-spacing: 0.10em;
+			text-decoration: underline;
+			font-size: 1.4em;
+			font-weight: 700;
+			color: #FFF;
+		}
+
+		#slider p {
+			line-height: 1.4em;
+			letter-spacing: 0.05em;
+			font-size: 2em;
+		}
+
+		#slider .links:hover {
+			text-decoration: none;
+		}
+
+		#slider .viewer {
+			width: 800px;
+			height: 320px;
+			overflow: hidden;
+			margin: 0em auto;
+			text-align: center;
+		}
+
+			#slider .viewer .reel {
+				display: none;
+				height: 300px;
+			}
+
+				#slider .viewer .reel .slide {
+					width: 800px !important;
+					height: 320px;
+					padding-top: 4em;
+				}
+
+		#slider .previous-button:before, #slider .next-button:before {
+			line-height: 1.6em;
+		}
+
+		#slider .previous-button {
+			position: absolute;
+			top: 140px;
+			left: 80px;
+			width: 36px;
+			height: 36px;
+			background: white;
+			border-radius: 50%;
+			line-height: 36px;
+			text-align: center;
+			font-size: 1.4em;
+			z-index: 2;
+		}
+
+			#slider .previous-button:before {
+				margin-left: -0.1em;
+			}
+
+		#slider .next-button {
+			position: absolute;
+			top: 140px;
+			right: 80px;
+			width: 36px;
+			height: 36px;
+			text-align: center;
+			background: white;
+			border-radius: 50%;
+			line-height: 36px;
+			font-size: 1.4em;
+			z-index: 2;
+		}
+
+			#slider .next-button:before {
+				margin-right: -0.1em;
+			}
