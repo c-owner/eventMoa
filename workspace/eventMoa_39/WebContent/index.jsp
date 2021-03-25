@@ -23,7 +23,6 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 		<meta name="author" content="corner3499">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/map.css">
 	</head>
@@ -92,7 +91,7 @@
 			<!-- KAKAO MAP -->
 		<article class="column col4">
 			<h2 class="col_tit" style="text-align: center;"> MAP</h2>
-			<div id="map" style="width:810px;height:400px;"></div>
+			<div id="map"></div>
 		</article>
 			 
 			 <br>

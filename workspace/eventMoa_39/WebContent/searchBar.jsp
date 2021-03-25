@@ -19,7 +19,7 @@
 	
 	<form action="${pageContext.request.contextPath}/search/" name="searchForm" id="search" method="post">
 			<div class="search">
-			<select name="category" id="category" style="margin: 0 auto; width: 40%;">
+			<select name="category" class="button primary icon solid fa-search" id="category" style="margin: 0 auto; width: 40%;">
                     <option value="select">- 지역별 -</option>
                     <option value="alpha">서울</option>
                     <option value="beta">경기</option>
@@ -34,6 +34,7 @@
 				<a href="#" class="button primary icon solid fa-search">Search</a>
 			</div>
 	</form>
+	<br>
 	<div class="" style="text-align: center;">
         <a href="javascript:;" class="hashTag">#서울</a>
         <a href="javascript:;" class="hashTag">#경기</a>

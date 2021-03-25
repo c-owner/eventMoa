@@ -16,9 +16,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/slick.css">
-		
 	</head>
-	
 	<body class="is-preload">
 
 		<!-- Header -->
@@ -26,13 +24,13 @@
 				<a class="logo" href="${pageContext.request.contextPath}/index.jsp"></a>
 				<nav id="nav">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/generic.jsp">기업 정보</a></li>
 						<li class="active"><a href="${pageContext.request.contextPath}/index.jsp">메인</a></li>
-						<li><a href="#">카테고리</a>
+						<li>
+							<a href="${pageContext.request.contextPath}/Event/mainEvent.jsp">이벤트</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/Event/nowEvent.jsp">진행 이벤트</a></li>
 								<li><a href="${pageContext.request.contextPath }/Event/futureEvent.jsp">예정 이벤트</a></li>
-								<li><a href="${pageContext.request.contextPath }/Event/pastEvent.jsp">종료 이벤트</a></li>	
+								<li><a href="${pageContext.request.contextPath }/Event/pastEvent.jsp">종료 이벤트</a></li>
 							</ul>
 						</li>
 						<li><a href="#">계정</a>
@@ -41,12 +39,12 @@
 								<li><a href="${pageContext.request.contextPath}/user/signup_terms_short.jsp">회원가입</a><li>
 							</ul>
 						</li>
-						<li>
-							<a href="#">버전관리</a>
-							<ul>
-								<li><a href="${pageContext.request.contextPath}/buildLog.jsp">빌드 로그</a></li>
-							</ul>
-						</li>
+							<li>
+								<a href="#">버전관리</a>
+								<ul>
+									<li><a href="https://github.com/Eight-Corner/eventMoa/blob/master/CHANGELOG.md">빌드 로그</a></li>
+								</ul>
+							</li>
 						<li><a href="${pageContext.request.contextPath}/generic.jsp">제네릭</a></li>
 						<li><a href="${pageContext.request.contextPath}/elements.jsp">요소</a></li>
 					</ul>

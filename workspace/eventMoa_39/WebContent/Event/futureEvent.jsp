@@ -3,11 +3,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Untitled</title>
+		<title>이벤트 모아 Generic</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 	</head>
 	<body class="is-preload">
 
@@ -17,12 +14,10 @@
 		<!-- Main -->
 			<div id="main">
 
-				<!-- Header -->
-					<header>
-					<span class="logo"></span>
-						<h1>Generic</h1>
-					</header>
+		<!-- Header -->		<!-- search-bar -->
+		<jsp:include page="${pageContext.request.contextPath}/searchBar.jsp"></jsp:include>
 
+		<p></p>
 				<!-- Content -->
 					<section id="content" class="wrapper">
 						<span class="image main"><img src="images/pic08.jpg" alt="" /></span>
@@ -36,15 +31,6 @@
 
 	<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
-
-		<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
 	</body>
 </html>

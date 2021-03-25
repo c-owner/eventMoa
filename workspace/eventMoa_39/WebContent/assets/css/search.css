@@ -59,6 +59,12 @@
 
 .hashTag{
 	font-family: 'Jua', sans-serif;
+  font-size: 18px;
+}
+@media screen and (max-width: 400px){
+  .hashTag{
+    font-size: 13px;
+  }
 }
 
 /*Resize the wrap to see the search bar change!*/

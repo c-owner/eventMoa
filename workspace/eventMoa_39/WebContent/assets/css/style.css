@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(fontawesome-all.min.css);
 /* 레이아웃 */
 /* body {background: url(../img/header_bg.jpg) repeat-x center top;}
 #header {} */
@@ -256,6 +257,8 @@
 }
 
 /* 이미지 슬라이드 */
+
+
 .slider figure {position: relative;}
 .slider figcaption {
     position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
@@ -296,27 +299,55 @@
     position: absolute; left: 0; bottom: 0; z-index: 1000;
     width: 30px; height: 30px;
     display: inline-block;
-    /* text-indent: -9999px; */
-    /* font: normal normal normal 14px/1 FontAwesome; */
+    text-indent: -9999px;
+    font: normal normal normal 14px/1 FontAwesome;
 }
 .slider .slick-prev::before {
-    content:"\f053";
+    content:"\f0a9";
     color: #5dbfeb;
     text-indent: 0;
     position: absolute; left: 9px; top: 8px;
 }
-.slider .slick-next {position: absolute; right: 0; bottom: 0; z-index: 1000;
+.slider .slick-next {
+    position: absolute; right: 0; bottom: 0; z-index: 1000;
     width: 30px; height: 30px;
     display: inline-block;
-    /* text-indent: -9999px; */
-    /* font: normal normal normal 14px/1 FontAwesome; */
+    text-indent: -9999px;
+    font: normal normal normal 14px/1 FontAwesome;
 }
 .slider .slick-next::before { 
-    content:"\f054";
+    content:"\f0a9";
     color: #5dbfeb;
     text-indent: 0;
     position: absolute; left: 11px; top: 8px;
 } 
+.fas .fa-arrow-circle-left {
+    position: absolute; left: 0; bottom: 0; z-index: 1000;
+    width: 30px; height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+.fas .fa-arrow-circle-left::before {
+    content:"\f0a9";
+    color: #5dbfeb;
+    text-indent: 0;
+    position: absolute; left: 9px; top: 8px;
+}
+.fas .fa-arrow-circle-right{
+    position: absolute; right: 0; bottom: 0; z-index: 1000;
+    width: 30px; height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+.fas .fa-arrow-circle-right::before { 
+    content:"\f0a9";
+    color: #5dbfeb;
+    text-indent: 0;
+    position: absolute; left: 11px; top: 8px;
+} 
+
 
 /* media query*/
 /* 화면 너비 0 ~ 1220px */
@@ -330,7 +361,7 @@
 
 /* 화면 너비 0 ~ 1024px */
 @media (max-width: 1024px){
-    
+
 }
 
 /* 화면 너비 0 ~ 960px */

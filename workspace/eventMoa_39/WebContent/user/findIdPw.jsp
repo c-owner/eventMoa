@@ -30,15 +30,17 @@
 				<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
 							<input type="text" name="memberName" id="memberName" value="" placeholder="이름" />
+							<br>
 							<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="가입메일주소" />
 							
 					</div>
-				</div>
-
-								<ul class="actions stacked" id="findFrame">
-									<li><a href="#" class="button primary fit" style="margin-top: 16px">아이디 찾기</a></li>
-									<li><a href="#" class="button primary fit" style="background-color: gray;">로그인</a></li>
-								</ul>
+				</div>			
+					<br>
+					<ul class="actions" style="display: table; margin-left: auto; margin-right: auto;">
+										<li style="float: left;"><a href="#" class="button primary">　　아이디 찾기　　</a></li>
+										<li style="float: right;"><a href="#" class="button">　　　로그인　　　</a></li>
+					</ul>
+					
 				<hr style="width: 80%; margin-inline: auto;">
 								
 				<h3 style="font-size: 18px; color: #222222; text-align: center;">임시 비밀번호 발급</h3>
@@ -46,15 +48,16 @@
 				<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
 							<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" />
+							<br>
 							<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="가입메일주소" />
 							
 					</div>
 				</div>
-
-								<ul class="actions stacked" id="findFrame">
-									<li><a href="#" class="button primary fit" style="margin-top: 16px">임시 비밀번호 발급 </a></li>
-									<li><a href="#" class="button primary fit" style="background-color: gray;">로그인</a></li>
-								</ul>				
+					<br>
+								<ul class="actions" style="display: table; margin-left: auto; margin-right: auto;">
+										<li style="float: left;"><a href="#" class="button primary">임시 비밀번호 발급</a></li>
+										<li style="float: right;"><a href="#" class="button">　　　로그인　　　</a></li>
+								</ul>			
 				
 			</form>
 				
