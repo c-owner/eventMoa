@@ -9,13 +9,15 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 		<style>
-		.field-icon {
-  			float: right;
-  			margin-left: -25px;
-  			margin-top: -25px;
-  			position: relative;
-  			z-index: 2;
-		}
+		.pw-container i {
+            position: absolute;
+        }
+  
+        .toggle-password {
+            padding: 10px;
+            min-width: 50px;
+            text-align: center;
+        }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -41,8 +43,10 @@
 			<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
 							<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" />
-							<input type="password" name="memberPw" id="memberPw" value="" placeholder="패스워드" />
-							<i toggle="#memberPw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
+							<div class="pw-container">
+								<i toggle="#memberPw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
+								<input type="password" name="memberPw" id="memberPw" value="" placeholder="패스워드" />
+							</div>
 							<input type="text" name="memberName" id="memberName" value="" placeholder="이름" />
 							<input type="text" name="memberEmail" id="memberEmail" value="" placeholder="이메일" />
 							<input type="email" name="memberEmailHash" id="memberEmailHash" value="" placeholder="이메일 인증번호" />

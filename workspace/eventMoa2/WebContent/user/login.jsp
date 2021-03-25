@@ -8,15 +8,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
-		<style>
-		.field-icon {
-  			float: right;
-  			margin-left: -25px;
-  			margin-top: -25px;
-  			position: relative;
-  			z-index: 2;
-		}
-		</style>
 	</head>
 	<body class="is-preload">
 
@@ -30,34 +21,26 @@
 					<header>
 					<span class="logo"></span>
 					</header>
-						<div class="signup_message">
-							<h1>회원정보 입력</h1>
+						<div class="login_message">
+							<h1>로그인이 필요한 서비스 입니다.</h1>
 							<br>
+							<p>이벤트모아 회원이 아니면, 지금 "
+								<span>
+									<a href="${pageContext.request.contextPath}/user/signup_terms_short.jsp" style="color: blue;">회원가입</a>
+								</span>
+								"을 해주세요.
+							</p>
 						</div>
 
 				<!-- Content -->
 			<form name="loginForm" action="" method="post">
-			
-			<div class="row gtr-uniform" id="findFrame">
-					<div class="col-12">
-							<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" />
-							<input type="password" name="memberPw" id="memberPw" value="" placeholder="패스워드" />
-							<i toggle="#memberPw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
-							<input type="text" name="memberName" id="memberName" value="" placeholder="이름" />
-							<input type="text" name="memberEmail" id="memberEmail" value="" placeholder="이메일" />
-							<input type="email" name="memberEmailHash" id="memberEmailHash" value="" placeholder="이메일 인증번호" />
-							<input type="text" name="memberZipcode;" id="memberZipcode;" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
-							<input type="button" id="postcodify_search_button" value="검색"><br />
-							<input type="text" name="memberAddress;" id="memberAddress;" class="postcodify_address" value="" placeholder="주소" readonly/>
-							<input type="text" name="memberAddressDETAIL;" id="memberAddressDETAIL;" class="postcodify_details" value="" placeholder="상세주소" />
-							<input type="text" name="memberAddressEtc;" id="memberAddressEtc;" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
-							
-					</div>
-			</div>		
-					
 				<div class="row gtr-uniform" id="loginFrame">
 					<div class="col-12">
-							
+							<label for="memberId">아이디</label> <input type="text"
+								name="memberId" id="memberId" value="" />
+							<label for="memberPw">비밀번호</label> <input type="password"
+								name="memberPw" id="memberPw" value="" />
+								
 							<p class="signup-forgotten">
 								<a href="${pageContext.request.contextPath}/user/signup_terms_short.jsp" class="sign-up" style="font-weight: bold;">회원가입</a>
 								<span></span>
@@ -66,8 +49,14 @@
 							
 						<div class="col-6 col-12-medium">
 							<ul class="actions stacked">
-								<li><a href="#" class="button primary fit">가입완료</a></li>
+								<li><a href="#" class="button primary fit">로그인</a></li>
 							</ul>
+								<div>
+									<img src="${pageContext.request.contextPath}/images/banner/ADbanner2.jpg" alt="광고배너1" onclick="">
+								</div>
+								<div>
+									<img src="${pageContext.request.contextPath}/images/banner/ADbanner1.jpg" alt="광고배너2" onclick="">
+								</div>
 						</div>
 					</div>
 					
@@ -87,9 +76,6 @@
 			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/visiblePw.js"></script>
-			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+
 	</body>
 </html>

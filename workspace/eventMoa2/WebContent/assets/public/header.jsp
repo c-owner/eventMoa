@@ -24,28 +24,29 @@
 				<a class="logo" href="${pageContext.request.contextPath}/index.jsp"></a>
 				<nav id="nav">
 					<ul>
-						<li class="active"><a href="index.jsp">메인</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/index.jsp">메인</a></li>
 						<li>
-							<a href="#">미정</a>
+							<a href="${pageContext.request.contextPath}/Event/mainEvent.jsp">이벤트</a>
 							<ul>
-								<li><a href="#">Link One</a></li>
-								<li><a href="#">Link Two</a></li>
-								<li><a href="#">Link Three</a></li>
-								<li>
-									<a href="#">버전관리</a>
-									<ul>
-										<li><a href="${pageContext.request.contextPath}/buildLog.jsp">빌드 로그</a></li>
-										<li><a href="#">Link Two</a></li>
-										<li><a href="#">Link Three</a></li>
-										<li><a href="#">Link Four</a></li>
-									</ul>
-								</li>
+								<li><a href="${pageContext.request.contextPath}/Event/nowEvent.jsp">진행 이벤트</a></li>
+								<li><a href="${pageContext.request.contextPath }/Event/futureEvent.jsp">예정 이벤트</a></li>
+								<li><a href="${pageContext.request.contextPath }/Event/pastEvent.jsp">종료 이벤트</a></li>
 							</ul>
 						</li>
+						<li><a href="#">계정</a>
+							<ul>
+								<li><a href="${pageContext.request.contextPath}/user/login.jsp">로그인</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/signup_terms_short.jsp">회원가입</a><li>
+							</ul>
+						</li>
+							<li>
+								<a href="#">버전관리</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/buildLog.jsp">빌드 로그</a></li>
+								</ul>
+							</li>
 						<li><a href="${pageContext.request.contextPath}/generic.jsp">제네릭</a></li>
 						<li><a href="${pageContext.request.contextPath}/elements.jsp">요소</a></li>
-						<li><a href="${pageContext.request.contextPath}/login.jsp">로그인</a><li>
-						<li><a href="${pageContext.request.contextPath}/signup.jsp">회원가입</a><li>
 					</ul>
 				</nav>
 			</div>

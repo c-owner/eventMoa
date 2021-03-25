@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(fontawesome-all.min.css);
 /* 레이아웃 */
 /* body {background: url(../img/header_bg.jpg) repeat-x center top;}
 #header {} */
@@ -300,7 +301,7 @@
     /* font: normal normal normal 14px/1 FontAwesome; */
 }
 .slider .slick-prev::before {
-    content:"\f053";
+    /* content:"\f0a9"; */
     color: #5dbfeb;
     text-indent: 0;
     position: absolute; left: 9px; top: 8px;
@@ -312,11 +313,12 @@
     /* font: normal normal normal 14px/1 FontAwesome; */
 }
 .slider .slick-next::before { 
-    content:"\f054";
+    /* content:"\f0a9"; */
     color: #5dbfeb;
     text-indent: 0;
     position: absolute; left: 11px; top: 8px;
 } 
+
 
 /* media query*/
 /* 화면 너비 0 ~ 1220px */

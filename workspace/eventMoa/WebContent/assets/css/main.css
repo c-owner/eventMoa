@@ -4209,11 +4209,6 @@ input, select, textarea {
 		#header.alt {
 			height: 6em;
 		}
-		
-		#loginFrame, #findFrame {
-				margin: 0 auto; 
-				width: 100%;
-			}
 
 	}
 
@@ -4226,19 +4221,14 @@ input, select, textarea {
 		#header {
 			display: none;
 		}
-		
-		#loginFrame, #findFrame {
-				margin: 0 auto; 
-				width: 100%;
-			}
 
 	}
 	
-	/* 로그인 메세지*/	
-	.login_message {
+	/* 로그인 메세지, 회원가입 메세지*/	
+	.login_message, .signup_message {
     	text-align: center;
 	}
-	.login_message h1{
+	.login_message h1, .signup_message h1{
 		margin: 0;
     	padding: 0;
     	height: 28px;
@@ -4310,6 +4300,11 @@ input, select, textarea {
 
 			#main > header {
 				padding: 4em 0 2em 0 ;
+			}
+			
+			#loginFrame, #findFrame {
+				margin: 0 auto; 
+				width: 80%;
 			}
 
 		}
