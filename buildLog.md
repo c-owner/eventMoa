@@ -38,7 +38,9 @@ categories: project
 
 
 
-PUBLIC `-//mybatis.org//DTD Config 3.0//EN`
+PUBLIC 
+
+`-//mybatis.org//DTD Config 3.0//EN`
 
  `http://mybatis.org/dtd/mybatis-3-config.dtd`
 
