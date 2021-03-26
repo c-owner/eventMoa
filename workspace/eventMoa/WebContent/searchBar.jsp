@@ -8,6 +8,19 @@
 	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/search.css">
+	
+	<style>
+	@media screen and (max-width: 375px){
+		.searchTerm {
+			width: 100%;
+			inline-size: auto;
+		}
+		.fa-search {
+			width: 100%;	
+		}
+		
+	}
+	</style>
 </head>
 
 	<body>

@@ -30,7 +30,7 @@
 		<!-- FreeTalk -->
 		<section id="banner">
 			<article class="column col4">
-				<h2 class="col_tit" style="text-align: center;">인증 후기</h2>
+				<h2 class="col_tit" style="text-align: left;">인증 후기</h2>
 				<p class="col_desc"> </p>
 		
 							<form method="post" action="#" class="combined" style="margin-bottom: 0;">
@@ -40,6 +40,11 @@
 				         				<option value="view">조회순</option>
 				         				<option value="likes">추천순</option>
 				         			</select>
+         						<div style="float:right; font-size: 11px;">
+				         			<a href="javascript:;" class="button-dark tooltip">
+										<span class="fa fa-adjust">	반전모드</span>
+									</a>
+								</div>
 		         			</form>
 							<div class="table-wrapper">
 								<table class="alt">

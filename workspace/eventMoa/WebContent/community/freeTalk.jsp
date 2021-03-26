@@ -12,6 +12,10 @@
 		<meta name="author" content="corner3499">
 		<!-- title Icon -->
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+		
+		<style>
+ 
+		</style>
 	</head>
 	
 	<body class="is-preload">
@@ -29,7 +33,7 @@
 		<!-- FreeTalk -->
 		<section id="banner">
 			<article class="column col4">
-				<h2 class="col_tit" style="text-align: center;">자유게시판:욕설과 비속어는 자제해주세요 :D</h2>
+				<h2 class="col_tit" style="text-align: left;">자유게시판 : 욕설과 비속어는 자제해주세요 :D</h2>
 				<p class="col_desc"> </p>
 		
 						<form method="post" action="#" class="combined" style="margin-bottom: 0;">
@@ -39,6 +43,11 @@
 			         				<option value="view">조회순</option>
 			         				<option value="likes">추천순</option>
 			         			</select>
+			         			<div style="float:right; font-size: 11px;">
+				         			<a href="javascript:;" class="button-dark tooltip">
+										<span class="fa fa-adjust">	반전모드</span>
+									</a>
+								</div>
 	         			</form>
 							<div class="table-wrapper">
 								<table class="alt">
