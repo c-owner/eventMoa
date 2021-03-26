@@ -18,9 +18,8 @@
 			<div id="main">
 
 				<!-- Header -->
-					<header>
-					<span class="logo"></span>
-					</header>
+				<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
+				
 						<div class="login_message">
 							<h1>로그인이 필요한 서비스 입니다.</h1>
 							<br>

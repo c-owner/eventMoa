@@ -4209,11 +4209,6 @@ input, select, textarea {
 		#header.alt {
 			height: 6em;
 		}
-		
-		#loginFrame, #findFrame {
-				margin: 0 auto; 
-				width: 100%;
-			}
 
 	}
 
@@ -4226,11 +4221,6 @@ input, select, textarea {
 		#header {
 			display: none;
 		}
-		
-		#loginFrame, #findFrame {
-				margin: 0 auto; 
-				width: 100%;
-			}
 
 	}
 	
@@ -4310,6 +4300,11 @@ input, select, textarea {
 
 			#main > header {
 				padding: 4em 0 2em 0 ;
+			}
+			
+			#loginFrame, #findFrame {
+				margin: 0 auto; 
+				width: 80%;
 			}
 
 		}

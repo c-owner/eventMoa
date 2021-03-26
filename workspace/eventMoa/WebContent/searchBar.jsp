@@ -12,11 +12,11 @@
 
 	<body>
 
-		<!-- search-bar -->
-	<header>
-		<span class="logo"></span>
-	</header>
+		
+		<!--  logo -->
+<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
 	
+		<!-- search-bar -->
 	<form action="${pageContext.request.contextPath}/search/" name="searchForm" id="search" method="post">
 			<div class="search">
 			<select name="category" class="button primary icon solid fa-search" id="category" style="margin: 0 auto; width: 40%;">

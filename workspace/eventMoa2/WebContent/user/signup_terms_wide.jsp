@@ -40,9 +40,9 @@
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 
 				<!-- Header -->
-					<header>
-					<span class="logo"></span>
-					</header>
+					<!-- Header -->
+				<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
+				
 						<div class="login_message">
 							<h1>약관동의</h1>
 							<br>

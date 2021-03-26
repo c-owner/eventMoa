@@ -40,13 +40,13 @@
 							</ul>
 						</li>
 							<li>
-								<a href="#">버전관리</a>
+								<a href="#">관리</a>
 								<ul>
 									<li><a href="https://github.com/Eight-Corner/eventMoa/blob/master/CHANGELOG.md">빌드 로그</a></li>
+									<li><a href="${pageContext.request.contextPath}/generic.jsp">제네릭</a></li>
+									<li><a href="${pageContext.request.contextPath}/elements.jsp">요소</a></li>
 								</ul>
 							</li>
-						<li><a href="${pageContext.request.contextPath}/generic.jsp">제네릭</a></li>
-						<li><a href="${pageContext.request.contextPath}/elements.jsp">요소</a></li>
 					</ul>
 				</nav>
 			</div>

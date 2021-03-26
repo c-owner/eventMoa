@@ -2,20 +2,17 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
-	team 	: EVENT MOA
-	auth 	: 킹기훈 
-	작업		: 2021-03-23
 	작업내역	: 
-			> 메인 슬라이드 사진 (사진 사이즈는 맞춤형 통일) 구현완료  
-			> section 정리 -> elements에 넣음
-			> footer 수정 
-			> search-bar style 생성 	
-			> KAKAO MAP 지도 생성
-			
-    *작업예정	: 
-    		> *Bug == 슬라이드 next , previous icon 
-    		> search-bar 카테고리 생성
-    		> 검색바 카테고리 
+> map 사이즈 반응형 조절 
+> 검색창 반응형 조절 (검색 버튼을 검색 인풋태그 하단에 width 100%)
+> slider 왼쪽 오른쪽 버튼 아이콘 깨짐 현상 수정 , 반응형 사이즈 조절 수정
+> 광고 배너 사이즈 통일 (width: 600px; height:337px;)
+> header 경로 수정
+
+작업예정 :
+> mobile 메인 MAP 표현 못하는 현상
+> logo에 main으로 가는 Link 걸기 
+> navbar에 검색창 달기
 -->
 <html>
 	<head>
