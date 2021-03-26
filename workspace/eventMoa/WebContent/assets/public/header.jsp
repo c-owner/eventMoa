@@ -39,6 +39,12 @@
 								<li><a href="${pageContext.request.contextPath}/user/signup_terms_short.jsp">회원가입</a><li>
 							</ul>
 						</li>
+						<li><a href="${pageContext.request.contextPath}/community/freeTalk.jsp">커뮤니티</a>
+							<ul>
+								<li><a href="${pageContext.request.contextPath}/community/freeTalk.jsp">자유게시판</a><li>
+								<li><a href="${pageContext.request.contextPath}/community/reviews.jsp">인증후기</a><li>
+							</ul>
+						</li>
 							<li>
 								<a href="#">관리</a>
 								<ul>

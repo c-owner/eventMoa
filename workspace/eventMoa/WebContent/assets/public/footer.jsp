@@ -3,12 +3,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>이벤트 모아 (Event Moa)</title>
 		
 	</head>
 	<body class="is-preload">
 
-	<!-- Footer -->
 			<div id="footer">
 				<h2>서비스 정보</h2>
 					<p>
