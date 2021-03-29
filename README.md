@@ -2,7 +2,7 @@
 
 ```
 	team 	: EVENT MOA
-	auth 	: hoon / hoon / ho
+	auth 	: 기훈 / 승훈 / 태호
 ```
 
 
@@ -11,10 +11,11 @@
 
 ![bg](https://github.com/Eight-Corner/eventMoa/blob/master/logo%20design/event-logo.png)
 
+---
 
 
 
+## [CHANGE LOG📝](CHANGELOG.md)
 
 ## [BUILD LOG](buildLog.md)
 
-## [CHANGE LOG📝](CHANGELOG.md)
