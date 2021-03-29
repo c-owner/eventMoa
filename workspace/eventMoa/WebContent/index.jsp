@@ -100,83 +100,77 @@
 
 		
 			
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af"></script>
-	 <script>
-     //이미지 슬라이더
-     $(".slider").slick({
-         dots: true,
-         autoplay: true,
-         autoplaySpeed: 3000,
-         arrows: true,
-         responsive: [
-             {
-                 breakpoint: 768,
-                 settings: {
-                     autoplay: false,
-                     }
-             }
-         ]
-     });
-     
-     //sns 공유하기
-     $(".facebook").click(function(e){
-         e.preventDefault();
-         window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, height=300, width=600'); 
-     });
-     $(".twitter").click(function(e){
-         e.preventDefault();
-         window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, height=300, width=600');
-     });
-        </script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af"></script>
+<script>
+   //이미지 슬라이더
+   $(".slider").slick({
+       dots: true,
+       autoplay: true,
+       autoplaySpeed: 3000,
+       arrows: true,
+       responsive: [
+           {
+               breakpoint: 768,
+               settings: {
+                   autoplay: false,
+                   }
+           }
+       ]
+   });
+   
+ 
+</script>
 
-        <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(37.50006529736203, 127.03547036224), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
+<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(37.50006529736203, 127.03547036224), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	if(navigator.geolocation){
+		
+	    navigator.geolocation.getCurrentPosition(function(position) {
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+        
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+		});
+	} else {
+		var locPosition = new kakao.maps.LatLng(37.50006529736203, 127.03547036224),
+		message = 'geolocation을 사용할 수 없습니다..'
+		
+		displayMaker(locPosition, message);
+	}
+	
+	function displayMaker(locPosition, message) {
+		
+		var marker = new kakao.maps.Marker({
+			map: map,
+			position: locPosition
+		});
+		
+		var iwContent = message, 
+		iwRemoveable = true;
+		
+		var infowindow = new kakao.maps.InfoWindow({
+			content : iwContent,
+			removeable : iwRemoveable
+		});
+	
+		infowindow.open(map, marker);
+	
+		map.setCenter(locPosition);
+		
+	}
 
-// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-var mapTypeControl = new kakao.maps.MapTypeControl();
-
-// 지도 타입 컨트롤을 지도에 표시합니다
-map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-function getInfo() {
-    // 지도의 현재 중심좌표를 얻어옵니다 
-    var center = map.getCenter(); 
-    
-    // 지도의 현재 레벨을 얻어옵니다
-    var level = map.getLevel();
-    
-    // 지도타입을 얻어옵니다
-    var mapTypeId = map.getMapTypeId(); 
-    
-    // 지도의 현재 영역을 얻어옵니다 
-    var bounds = map.getBounds();
-    
-    // 영역의 남서쪽 좌표를 얻어옵니다 
-    var swLatLng = bounds.getSouthWest(); 
-    
-    // 영역의 북동쪽 좌표를 얻어옵니다 
-    var neLatLng = bounds.getNorthEast(); 
-    
-    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
-    var boundsStr = bounds.toString();
-    
-    
-    var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
-    message += '경도 ' + center.getLng() + ' 이고 <br>';
-    message += '지도 레벨은 ' + level + ' 입니다 <br> <br>';
-    message += '지도 타입은 ' + mapTypeId + ' 이고 <br> ';
-    message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + ' 이고 <br>';
-    message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng() + ' 입니다';
-    
-    // 개발자도구를 통해 직접 message 내용을 확인해 보세요.
-    // ex) console.log(message);
-}
 </script>
 	</body>
 </html>

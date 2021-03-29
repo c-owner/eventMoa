@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Untitled</title>
+		<title> 회원가입 약관동의 | 이벤트 모아(EventMoa)</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -43,20 +43,19 @@
 					<!-- Header -->
 				<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
 				
-						<div class="login_message">
-							<h1>약관동의</h1>
-							<br>
-							<div class="col-6 col-12-small">
-										<code>
-										<input type="checkbox" id="selectAll" name="selectAll" checked>
-										<label for="selectAll" id="selectAll">이벤트 모아 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</label>
-										<input type="checkbox" id="selectAllSmall" name="selectAll" checked>
-										<label for="selectAllSmall" id="selectAllSmall">전체 동의</label>
-										</code>
+				<!-- Content -->
+			<div class="contents">
+				<form name="loginForm" id="login_form" action="${pageContext.request.contextPath}/user/signup.jsp" method="post">
+					<div class="login_message">
+						<h1>약관동의</h1>
+						<br>
+						<div class="col-6 col-12-small">
+							<div class="terms__check__all">
+								<input type="checkbox" id="selectAll" name="selectAll"/>
+								<label for="selectAll" id="selectAll">이벤트 모아 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</label>
 							</div>
 						</div>
-				<!-- Content -->
-			<form name="loginForm" action="" method="post">
+					</div>
 				<div class="row gtr-uniform" id="termsDiv" style="margin: 0 auto; width: 50%;">
 					<div class="col-12">
 						<textarea name="termsServiceContent" id="termsServiceContent" rows="6">여러분을 환영합니다.
@@ -178,10 +177,12 @@
 적용 일자: 2018년 5월 1일
 이벤트모아 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터로 문의 주시기 바랍니다.</textarea>
 						<a href="#">이용약관 보기</a>
-						<input type="checkbox" id="termsService" name="term" checked>
-						<label for=termsService style="margin-top:10px;">이벤트 모아 이용약관 동의(필수)</label>
+						<div class="input__check">
+							<input type="checkbox" id="termsOfService" name="agreement" value="termsOfService" required/>
+							<label for=termsOfService style="margin-top:10px;">이벤트 모아 이용약관 동의(필수)</label>
+						</div>
 					</div>
-					<div class="col-12" style="margin">
+					<div class="col-12">
 						<textarea name="termsPrivacyContent" id="termsPrivacyContent" rows="6">개인정보보호법에 따라 이벤트모아에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 
 1. 수집하는 개인정보
@@ -241,24 +242,28 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 4. 개인정보 수집 및 이용 동의를 거부할 권리
 이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보, 즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다.</textarea>
 						<a href="#">이용약관 보기</a>
-						<input type="checkbox" id="termsPrivacy" name="term" checked>
-						<label for="termsPrivacy" style="margin-top:10px;">개인정보 수집 및 이용 동의(필수)</label>
+						<div class="input__check">
+							<input type="checkbox" id="privacyPolicy" name="agreement" value="privacyPolicy" required />
+							<label for="privacyPolicy" style="margin-top:10px;">개인정보 수집 및 이용 동의(필수)</label>
+						</div>
 					</div>
 					<div id="btnDiv" style="margin:0 auto;">
 						<ul class="actions">
-							<li><a href="javascript:member_join('')" class="button primary">확인</a></li>
+							<li>
+								<button type="submit" class="button primary" onclick="formSubmit()" disabled>확인</button></li>
 							<li><a href="${pageContext.request.contextPath}/index.jsp" class="button">취소</a></li>
 						</ul>
 					</div>
 				</div>
 			</form>
-
+		</div>
 
 	<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
 		<!-- Scripts -->
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+			<script>var contextPath = "${pageContext.request.contextPath}";</script>
 			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
@@ -266,53 +271,78 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-			<script>
+<!-- 			<script>
 				$("#selectAll").click(function(){
 					if($("#selectAll").prop("checked")){
 						$("input[name='term']").prop("checked", true);
 					}else{
 						$("input[name='term']").prop("checked", false);
 					}
-  function member_join(m_gp){
+				});
+			</script> -->
+		<script>
+			const form = document.querySelector('#login_form');
+			const checkAll = document.querySelector('.terms__check__all input');
+			const checkBoxes = document.querySelectorAll('.input__check input');
+			const submitButton = document.querySelector('.primary');
 
-        //if(m_gp=='1'){
+			const agreements = {
+				termsOfService: false,
+				privacyPolicy: false,
+			};
 
-                if(loginForm.chk.checked == false){
-                        alert('약관을 다 읽으셨나요? 그럼 체크해주세요.');
-                        form1.chk.focus();
-                        return ;
-                }
+			form.addEventListener('submit', (e) => e.preventDefault()); 
 
-                /* if(form1.chk2.checked == false){
-                        alert('개인정보보호를 위한 이용자 동의사항에 동의 하셔야만 회원에 가입할수 있습니다
-.');
-                        form1.chk2.focus();
-                        return ;
-                }*/
+			checkBoxes.forEach((item) => item.addEventListener('input', toggleCheckbox));
+				
+			function toggleCheckbox(e){
+				const {	checked, id	} = e.target; 
+				agreements[id] = checked;
+				this.parentNode.classList.toggle('active');
+				checkAllStatus();
+				toggleSubmitButton();
+			}
 
-                parent.location.replace('${pageContext.request.contextPath}/user/signup.jsp');
-        //}
+			function checkAllStatus() {
+				const { termsOfService, privacyPolicy } = agreements;
+				if (termsOfService && privacyPolicy ) {
+					checkAll.checked = true;
+				} else {
+					checkAll.checked = false;
+				}
+			}
 
-        //if(m_gp=='2'){
-
-                /* if(form1.chk.checked == false){
-                        alert('약관에 동의 하셔야만 회원에 가입할수 있습니다.');
-                        form1.chk.focus();
-                        return ;
-                }
-
-                if(form1.chk2.checked == false){
-                        alert('개인정보보호를 위한 이용자 동의사항에 동의 하셔야만 회원에 가입할수 있습니다.');
-                        form1.chk2.focus();
-                        return ;
-                }
-
-                parent.location.replace('member_com.html'); */
-        //}
-}				})
-			</script>
+			function toggleSubmitButton() {
+				const { termsOfService, privacyPolicy } = agreements;
+				if ( termsOfService && privacyPolicy ) {
+					submitButton.disabled = false;
+				} else {
+					submitButton.disabled = true;
+				}
+			}
 			
+			checkAll.addEventListener('click', (e) => {
+				const { checked } = e.target;
+				if(checked) {
+					checkBoxes.forEach((item) => {
+						item.checked = true;
+						agreements[item.id] = true;
+						item.parentNode.classList.add('active');
+					});
+				} else {
+					checkBoxes.forEach((item) => {
+						item.checked = false;
+						agreements[item.id] = false;
+						item.parentNode.classList.remove('active');
+					});
+				}
+				toggleSubmitButton();
+			});
+
+		function formSubmit() {
+			location.href='${pageContext.request.contextPath}/user/signup.jsp';
+		}
 			
-			
+		</script>
 	</body>
 </html>

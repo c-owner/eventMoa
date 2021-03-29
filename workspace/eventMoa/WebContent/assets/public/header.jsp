@@ -38,7 +38,12 @@
 						<li><a href="${pageContext.request.contextPath}/user/login.jsp">계정</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/user/login.jsp">로그인</a><li>
-								<li><a href="${pageContext.request.contextPath}/user/signup_terms_short.jsp">회원가입</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/signup_terms.jsp">회원가입</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/myPage.jsp">회원정보수정</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/myWrite.jsp">내가 쓴 글</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/myReply.jsp">내가 쓴 댓글</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/pointCharge.jsp">포인트 충전소</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.jsp">결제 내역</a><li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath}/community/freeTalk.jsp">커뮤니티</a>
@@ -57,10 +62,10 @@
 							</li>
 					</ul>
 				</nav>
-					<!-- 	<div class="navSearch" style="width: 50%;text-align: right;margin: 0 auto;padding-left: 0;margin-left: 0;padding-right: 20%;">
-							<input type="search" class="searchTerm" placeholder="검색어를 입력하세요">
-							<a href="#" class="fas fa-search"></a>
-						</div> -->
+				<div class="navSearch" style="width: 50%;text-align: right;margin: 0 auto;padding-left: 0;margin-left: 0;padding-right: 20%;">
+					<input type="search" class="searchTerm" placeholder="검색어를 입력하세요">
+					<a href="#" class="fas fa-search"></a>
+				</div>
 			</div>
 
 			
