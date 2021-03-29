@@ -43,7 +43,7 @@
 					<span class="logo"></span>
 					</header>
 						<div class="signup_message">
-							<h1>회원정보 입력</h1>
+							<h1>회원정보 변경</h1>
 							<br>
 						</div>
 
@@ -56,23 +56,23 @@
 			
 			<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
-						<P>
-							<input type="text" name="memberId" id="memberId"autocomplete="off" required/>
-							<label for="memberId" style="color: silver;"><span>아이디</span></label>
-						</P>
+						<label for="memberId" style="color: #5fa8d3; font-size:14px;">　아이디</label>
+						<input type="text" name="memberId" id="memberId" value="eventmoa" autocomplete="off" style="margin: 0 0 1em 0;" readonly/>
+						<br>
+						
 						<p>
 							<input type="password" name="memberPw" id="memberPw" autocomplete="off" required/>
-							<label for="memberPw" style="color: silver;"><span>비밀번호</span></label>
+							<label for="memberPw" style="color: silver;"><span>새 비밀번호</span></label>
 							<i toggle="#memberPw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
 						</p>
 						<p>
-							<input type="text" name="memberName" id="memberName" autocomplete="off" required/>
+							<input type="text" name="memberName" id="memberName" value="이벤트모아" autocomplete="off" required/>
 							<label for="memberName" style="color: silver;"><span>이름</span></label>
 						</p>
 					
 						<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto;">
 							<p>
-								<input type="email" name="memberEmail" id="memberEmail" autocomplete="off" required/>
+								<input type="email" name="memberEmail" id="memberEmail" value="eventmoa@gamil.com" autocomplete="off" required/>
 								<label for="memberEmail" style="color: silver;"><span>이메일</span></label>
 							</p>
 								<input type="button" id="memberEmailHash" style="height: 35px;" value="인증번호 요청"/>
@@ -82,23 +82,23 @@
 						</p>	
 						<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
 						<p>
-								<input type="text" name="memberZipcode;" id="memberZipcode;" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
+								<input type="text" name="memberZipcode;" id="memberZipcode;" class="postcodify_postcode5" value="06221" placeholder="우편번호" readonly/>
 						</p>
 								<input type="button" id="postcodify_search_button" style="height: 35px;" value="검색"/>
 						</ul>
 						
 						<p>
-							<input type="text" name="memberAddress;" id="memberAddress;" class="postcodify_address" value="" placeholder="주소" readonly/>
+							<input type="text" name="memberAddress;" id="memberAddress;" class="postcodify_address" value="서울특별시 강남구 언주로85길 32" placeholder="주소" readonly/>
 						</p>
 						
 						<p>
-							<input type="text" name="memberAddressDETAIL;" id="memberAddressDETAIL;" class="postcodify_details" autocomplete="off" required/>
+							<input type="text" name="memberAddressDETAIL;" id="memberAddressDETAIL;" class="postcodify_details" value="1103호" autocomplete="off" required/>
 							<label for="memberAddressDETAIL;" style="color: silver;"><span>상세주소</span></label>
 						</p>
 						
 
 						<p>
-							<input type="text" name="memberAddressEtc;" id="memberAddressEtc;" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
+							<input type="text" name="memberAddressEtc;" id="memberAddressEtc;" class="postcodify_extra_info" value="(역삼동)" placeholder="참고항목" readonly/>
 						</p>
 							
 					</div>
@@ -108,7 +108,7 @@
 
 						<div class="col-12">
 							<ul class="actions stacked">
-								<li><a href="#" class="button primary fit">가입완료</a></li>
+								<li><a href="#" class="button primary fit">정보수정</a></li>
 							</ul>
 						</div>
 					

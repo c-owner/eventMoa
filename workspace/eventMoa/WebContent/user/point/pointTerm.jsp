@@ -19,30 +19,14 @@
 
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
-		
+	<p></p>
 		<!-- Main -->
-		<div id="main">
+			<div id="main">
+			
 		<!-- Logo -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
-			<form name="myPage" action="" method="post">
-			<div style="text-align: center;">					
-				<div class="row gtr-uniform" id="loginFrame">
-					<div class="col-12">
-						<label for="memberPw">비밀번호</label> <input type="password"
-								name="memberPw" id="memberPw" value="" />
-					</div>
-				</div>
-        		<br>
-        		<div class="col-6 col-12-medium" style="text-align: center;">
-        			<ul class="actions" style="display: inline-flex;">
-						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage.jsp" class="button primary fit">회원 인증</a></li>
-					</ul>
-				</div>
-				
-				</div>
-			</form>
-			
-			
+
+
 
 			</div> <!-- div id="main" end -->
 
