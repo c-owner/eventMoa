@@ -35,7 +35,7 @@
 							</a>
 							</li>
 							<li>
-							<a href="pageEvent.jsp">
+							<a href="pastEvent.jsp">
 								<span class="image"><img src="${pageContext.request.contextPath}/images/pic05.jpg" alt="" /></span>
 								<h3>종료 이벤트</h3>
 								

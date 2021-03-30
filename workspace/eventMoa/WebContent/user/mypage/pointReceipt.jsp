@@ -7,7 +7,7 @@
 -->
 <html>
 	<head>
-		<title>이벤트 모아 (Event Moa)</title>
+		<title>포인트/적립 내역 | 이벤트 모아 (Event Moa)</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 		<meta name="author" content="corner3499">

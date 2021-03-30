@@ -46,7 +46,7 @@
                 </select>
 				<input type="search" class="searchTerm" placeholder="검색어를 입력하세요"
 				style="border-radius: initial; height: 39px;">
-				<a href="#" class="button primary icon solid fa-search"
+				<a href="${pageContext.request.contextPath}/searchViewPage.jsp" class="button primary icon solid fa-search"
 				style="border-radius: initial;"> Search</a>
 			</div>
 	</form>

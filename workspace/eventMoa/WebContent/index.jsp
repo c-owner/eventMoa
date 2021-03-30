@@ -85,6 +85,9 @@
 				 -->
 			</section>
 			
+			
+			
+			
 			<!-- KAKAO MAP -->
 		<article class="column col4">
 			<h2 class="col_tit" style="text-align: center;"> MAP</h2>
@@ -170,7 +173,53 @@
 		map.setCenter(locPosition);
 		
 	}
+	var positions = [
+    {
+        content: '<div>코리아IT학원 강남점</div>', 
+        latlng: new kakao.maps.LatLng(37.50006529736203, 127.03547036224)
+    },
+    {
+        content: '<div>코리아IT학원 신촌점</div>', 
+        latlng: new kakao.maps.LatLng(37.55410558539051, 126.93571109822075)
+    },
+    {
+        content: '<div>코리아IT학원 대구점</div>', 
+        latlng: new kakao.maps.LatLng(35.902817019272156, 128.5827827209257)
+    },
+    {
+        content: '<div>코리아IT학원 부산점</div>',
+        latlng: new kakao.maps.LatLng(35.35733616857707, 128.98044293168113)
+    }
+];
 
+for (var i = 0; i < positions.length; i ++) {
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
+    });
+
+    // 마커에 표시할 인포윈도우를 생성 
+    var infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].content // 인포윈도우에 표시할 내용
+    });
+
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+}
+
+// 인포윈도우를 표시하는 클로저를 만드는 함수
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
 </script>
 	</body>
 </html>
