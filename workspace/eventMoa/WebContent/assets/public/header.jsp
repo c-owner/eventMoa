@@ -38,7 +38,7 @@
 						<li><a href="${pageContext.request.contextPath}/user/login.jsp">계정</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/user/login.jsp">로그인</a><li>
-								<li><a href="${pageContext.request.contextPath}/user/signup_terms.jsp">회원가입</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/signup.jsp">회원가입</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_list.jsp">마이페이지</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_password.jsp">회원정보수정</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/myWrite.jsp">내가 쓴 글</a><li>

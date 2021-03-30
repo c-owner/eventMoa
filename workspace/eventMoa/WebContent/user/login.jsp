@@ -25,7 +25,7 @@
 							<br>
 							<p>이벤트모아 회원이 아니면, 지금 "
 								<span>
-									<a href="${pageContext.request.contextPath}/user/signup_terms.jsp" style="color: blue;">회원가입</a>
+									<a href="${pageContext.request.contextPath}/user/signup.jsp" style="color: blue;">회원가입</a>
 								</span>
 								"을 해주세요.
 							</p>
@@ -41,7 +41,7 @@
 								name="memberPw" id="memberPw" value="" />
 								
 							<p class="signup-forgotten">
-								<a href="${pageContext.request.contextPath}/user/signup_terms.jsp" class="sign-up" style="font-weight: bold;">회원가입</a>
+								<a href="${pageContext.request.contextPath}/user/signup.jsp" class="sign-up" style="font-weight: bold;">회원가입</a>
 								<span></span>
 								<a href="${pageContext.request.contextPath}/user/findIdPw.jsp" class="forgotten">아이디/비밀번호 찾기</a>
 							</p>

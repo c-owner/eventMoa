@@ -336,34 +336,6 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 		
 		<!-- 레이어 팝업 -->
 		<script>
-/* 		function layer1() {
-			var requestValue = document.getElementById("layer1").value;
-			var URL = "/user/join_layer1.jsp?requestValue="+requestValue;
-
-			window.open(URL, "layer1", "팝업 창 옵션");
-		}
-
-		toolbar = no
-		menubar = no
-		location = yes
-		directories = no
-		status = yes
-		scrollbals = yes 
-		resizable = no
-		
-		width = 300
-		height = 500
-		top = 30
-		left = 30
-
-		function selectValue() {
-			
-			var requestValue = documnet.getElementById("layer1").value;
-			var URL = "/user/signup_terms.jsp?requestValue="+requestValue;
-			opener.window.location = url;
-			close();
-		} */
-		
 		function winPop(url, opts) {
 			   
 			   var popupName = opts.name || 'popup';
@@ -376,8 +348,6 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 			       console.log(popupName);
 			   window.open(url, popupName, options);
 			}
-
-		
 		</script>
 	</body>
 </html>
