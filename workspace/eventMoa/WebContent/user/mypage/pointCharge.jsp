@@ -31,7 +31,8 @@
 	</head>
 	
 	<body class="is-preload">
-
+	<!-- sideBar -->
+<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 	<p></p>
@@ -68,7 +69,7 @@
 	
 
 			<section id="five" class="wrapper special">
-			<div class="col-12"><span class="image fit"><img src="${pageContext.request.contextPath}/images/banner/ADbanner1.jpg" height="200px;" alt="" /></span></div>
+			<%-- <div class="col-12"><span class="image fit"><img src="${pageContext.request.contextPath}/images/banner/ADbanner1.jpg" height="200px;" alt="" /></span></div> --%>
 				<h3 style="font-family: jua; font-size: 50px;"> 포인트 충전소 </h3>
 						<ul class="faces">
 							<li>

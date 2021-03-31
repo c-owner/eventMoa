@@ -27,7 +27,8 @@
 	</head>
 	
 	<body class="is-preload">
-
+	<!-- sideBar -->
+<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 	<p></p>
@@ -57,7 +58,7 @@
          			<button id="dayToBtn">오늘</button> 
          			<button id="dayToBtn">일주</button>
          			<button id="dayToBtn">한달</button>
-         			
+         			<p></p>
 					<table class="alt">
 						<thead>
 							<tr>

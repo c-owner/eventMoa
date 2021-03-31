@@ -24,7 +24,8 @@
 	</head>
 	
 	<body class="is-preload">
-
+	<!-- sideBar -->
+<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 		
@@ -60,7 +61,7 @@
         			<ul class="actions" style="display: inline-flex;">
 						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_password.jsp" class="button primary fit" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/edit2.png" style="width: auto;">　회원정보 수정</a></li>
-						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_password.jsp" class="button primary fit" style="display: flex; margin: 0 auto;">
+						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_unregister.jsp" class="button primary fit" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/remove2.png" style="width: auto;">　회원 탈퇴　　　</a></li>
 					</ul>
 				</div>							
