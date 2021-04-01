@@ -6,7 +6,7 @@ DROP TABLE TABLE_USER;
 CREATE TABLE TABLE_USER (
 	user_Id varchar2(100) not null,
 	user_Pw varchar2(100) not null,
-	user_Name  varchar2(100),
+	user_Name  varchar2(100), 
 	user_Email varchar2(200) not null,
 	user_Email_Hash varchar2(200),
 	user_Zipcode    varchar2(20) not null,

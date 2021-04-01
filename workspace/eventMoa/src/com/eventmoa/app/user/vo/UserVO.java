@@ -25,5 +25,86 @@ public class userVO {
 	private int userPoint;
 	
 	public userVO() {;}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserPw() {
+		return userPw;
+	}
+
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserEmailHash() {
+		return userEmailHash;
+	}
+
+	public void setUserEmailHash(String userEmailHash) {
+		this.userEmailHash = userEmailHash;
+	}
+
+	public String getUserZipcode() {
+		return userZipcode;
+	}
+
+	public void setUserZipcode(String userZipcode) {
+		this.userZipcode = userZipcode;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public String getUserAddressDetail() {
+		return userAddressDetail;
+	}
+
+	public void setUserAddressDetail(String userAddressDetail) {
+		this.userAddressDetail = userAddressDetail;
+	}
+
+	public String getUserAddressEtc() {
+		return userAddressEtc;
+	}
+
+	public void setUserAddressEtc(String userAddressEtc) {
+		this.userAddressEtc = userAddressEtc;
+	}
+
+	public int getUserPoint() {
+		return userPoint;
+	}
+
+	public void setUserPoint(int userPoint) {
+		this.userPoint = userPoint;
+	}
+	
 	
 }
