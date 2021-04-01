@@ -1,16 +1,26 @@
- 
-
-## 
 
 
-
-- 포인트 DB 설계
-
-pk - 
-
-references fk - memberId
+`memberPoint` 컬럼을 추가할 때 DEFAULT로 300포인트를 주면 안 될 듯?
 
 
 
-DATE
+일단 회원가입을 하면 
+
+↓
+
+계정이 생성 되면서 
+
+↓
+
+컨트롤러로 point insert sql문을 따로 실행시켜서 동작 
+
+↓
+
+point 결제내역 게시판에 
+
+결제 내역 뿌려주는게 좋을 듯. 
+
+
+
+이 코스 중간에 alert로 회원가입 축하 메시지와 무료 포인트 300 지급 안내 sql문 뿌려야함
 
