@@ -37,6 +37,16 @@
 		.content{
 			display:block;
 		}
+		.intro h4 {
+			font-size: 25px; color: black; padding-bottom: 5px; font-weight:600;
+		}
+		.intro span {
+			font-size: 20px; color: #2f7fa6; padding-bottom: 5px; font-weight:600;
+			color: deeppink;
+		}
+		.col_desc{
+			margin-top: 3%;
+		}
 		</style>
 	</head>
 	
@@ -89,24 +99,24 @@
 				<div style="border-bottom: 2px solid #dbdbdb; text-align:center; padding-bottom:5%">
 					<div class="intro">
 						<article class="column col6" style="display:inline">
-							<h4 class="col_tit" style="display:inline">
-								<span style="font-size:55px; display:block;">3.5</span>
+							<span style="font-size:55px; display:block;">3.5</span>
+							<h4 class="intro-h4" style="display:inline">
 								평균 평점
 							</h4>
 						</article>
 					</div>
 					<div class="intro">
 						<article class="column col6" style="display:inline">
-							<h4 class="col_tit" style="display:inline">
 							<span style="font-size:25px; display:block;">1588-8282</span>
+							<h4 class="intro-h4" style="display:inline">
 								연락처
 							</h4>
 						</article>
 					</div>
 					<div class="intro">
 						<article class="column col6" style="display:inline">
-							<h4 class="col_tit" style="display:inline">
 							<span style="font-size:15px; display:block;">서울시 강남구 역삼동</span>
+							<h4 class="intro-h4" style="display:inline">
 								주소
 							</h4>
 						</article>

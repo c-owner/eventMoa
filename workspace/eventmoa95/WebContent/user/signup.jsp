@@ -35,6 +35,11 @@
 			#selectAllSmall{
 				display:none;
 			}
+			@media (min-width:481px){
+				#terms1{
+					display: none;
+				}
+			}
 			@media (max-width:480px){
 				textarea#termsServiceContent{
 					display:none;
@@ -55,6 +60,8 @@
 				#selectAll{
 					display:none;
 				}
+				
+			
 			}
 		</style>
 
@@ -205,7 +212,7 @@
 공지 일자: 2018년 3월 30일
 적용 일자: 2018년 5월 1일
 이벤트모아 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터로 문의 주시기 바랍니다.</textarea>
-						 <a href="${pageContext.request.contextPath}/user/join_layer1.jsp" 
+						 <a id="terms1" href="${pageContext.request.contextPath}/user/join_layer1.jsp" 
 						 onclick="winPop(this.href, {name:'이용약관',width:800,height:800}); return false;">
 						 이용약관 보기 </a>
 						 
@@ -273,7 +280,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 
 4. 개인정보 수집 및 이용 동의를 거부할 권리
 이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보, 즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다.</textarea>
-						 <a href="${pageContext.request.contextPath}/user/join_layer2.jsp" 
+						 <a id="terms1" href="${pageContext.request.contextPath}/user/join_layer2.jsp" 
 						 onclick="winPop(this.href, {name:'이용약관',width:800,height:800}); return false;">
 						 이용약관 보기 </a>
 						<div class="input__check">
