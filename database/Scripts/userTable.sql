@@ -4,27 +4,28 @@
 DROP TABLE TABLE_USER;
 
 CREATE TABLE TABLE_USER (
-  member_Id varchar2(100) not null,
-  member_Pw varchar2(100) not null,
-  member_Name  varchar2(100),
-  member_Email varchar2(200) not null,
-  member_Email_Hash varchar2(200),
-  member_Zipcode    varchar2(20) not null,
-  member_Address    varchar2(300)not null,
-  member_Address_DETAIL varchar2(300),
-  member_Address_Etc  varchar2(100),
-  member_Point NUMBER(10) NULL, -- 일단 NULL
-  CONSTRAINT EVENT_USER_PK PRIMARY KEY(member_Id)
+	user_Id varchar2(100) not null,
+	user_Pw varchar2(100) not null,
+	user_Name  varchar2(100),
+	user_Email varchar2(200) not null,
+	user_Email_Hash varchar2(200),
+	user_Zipcode    varchar2(20) not null,
+	user_Address    varchar2(300)not null,
+	user_Address_DETAIL varchar2(300),
+	user_Address_Etc  varchar2(100),
+	user_Point NUMBER(10) NULL, -- 일단 NULL
+  	
+	CONSTRAINT EVENT_USER_PK PRIMARY KEY(user_Id)
 );
 
--- ALTER TABLE TABLE_USER ADD memberPoint NUMBER(10) DEFAULT 300;
+-- ALTER TABLE TABLE_USER ADD userPoint NUMBER(10) DEFAULT 300;
 
 SELECT * FROM TABLE_USER;
 
 -------------
 
 INSERT INTO TABLE_USER
-(member_Id, member_pw, member_name, member_email, member_email_hash, member_zipcode, member_address, member_address_detail, member_address_etc)
+(user_Id, user_pw, user_name, user_email, user_email_hash, user_zipcode, user_address, user_address_detail, user_address_etc)
 VALUES('hds1234', '1234', '이벤트', 'hds1234@gmail.com', 'ddd', '16577', '경기도 수원시', '팔달구', '우만로 137');
 
 

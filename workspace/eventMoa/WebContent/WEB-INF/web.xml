@@ -19,7 +19,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>BoardFrontController</servlet-name>
-    <servlet-class>com.koreait.app.board.BoardFrontController</servlet-class>
+    <servlet-class>com.eventmoa.app.board.BoardFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BoardFrontController</servlet-name>
