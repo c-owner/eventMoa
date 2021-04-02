@@ -4,4 +4,4 @@
 
 
 
-![ERD](Entity Diagram.png)
+![ERD](EntityDiagram.png)

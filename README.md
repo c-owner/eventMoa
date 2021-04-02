@@ -16,5 +16,7 @@
 
 ## [CHANGE LOG📝](CHANGELOG.md)
 
-## [BUILD LOG](buildLog.md)
+## [BUILD LOG💡](buildLog.md)
+
+## [Entity Diagram🔑](ERD.md)
 
