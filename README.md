@@ -2,7 +2,6 @@
 
 ```
 	team 	: EVENT MOA
-	auth 	: 기훈 / 승훈 / 태호
 ```
 
 

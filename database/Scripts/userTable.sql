@@ -11,7 +11,7 @@ CREATE TABLE TABLE_USER (
 	user_Email_Hash varchar2(200),
 	user_Zipcode    varchar2(20) not null,
 	user_Address    varchar2(300)not null,
-	user_Address_DETAIL varchar2(300),
+	user_Address_Detail varchar2(300),
 	user_Address_Etc  varchar2(100),
 	user_Point NUMBER(10) NULL, -- 일단 NULL
   	
