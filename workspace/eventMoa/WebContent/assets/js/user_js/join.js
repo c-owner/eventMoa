@@ -21,7 +21,6 @@
     if(email == "" ) {
        alert('이메일을 입력하세요.');
     } else {
-       console.log('들어옴');
        $.ajax({
           url: contextPath + "/user/verifyCheckEmail.us?email=" + email,
           type: "GET",
@@ -43,7 +42,7 @@
     /* 인증번호 7자리 */
     var code = "";
     var verify ="";
-    function EmailCheck(){
+    function EmailCheck2(){
        var email = $("input[name='user_Email").val();
        var inputVerify = $("#email_verify");
        var inputVerifyBox = $(".mail_verify_input_box");
@@ -82,7 +81,7 @@
             check = true;
             alert('인증에 성공 하였습니다.');
             document.getElementById('email_verify').readOnly = true;   
-            inputVerifyBox.attr("id", "mail_verify_input_box_false");   
+            /*inputVerifyBox.attr("id", "mail_verify_input_box_false");*/   
          }
     }
     

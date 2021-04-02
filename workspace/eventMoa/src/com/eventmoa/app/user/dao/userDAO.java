@@ -24,7 +24,7 @@ public class UserDAO {
 	public boolean join (UserVO user) {
 		user.setUser_Pw(encrypt(user.getUser_Pw()));
 		user.setUser_Email_Hash(SHA256.getSHA256(user.getUser_Email()));
-		return session.insert("User.join", user) == 1;
+		return session.insert("User.Join", user) == 1;
 	}
 	
 	// 이메일 아이디로 불러오기 
@@ -60,7 +60,6 @@ public class UserDAO {
 	
 	//아이디 검사 		true : 중복 아이디 	false : 사용가능 아이디 
 	public boolean checkId(String id) {
-		System.out.println("dao 검사 들어옴");
 		return (Integer)session.selectOne("User.checkId", id) == 1;
 	}
 	

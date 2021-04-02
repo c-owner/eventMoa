@@ -119,7 +119,7 @@
   <img src="${pageContext.request.contextPath}/images/sidebar/login.png" style="width: auto;
     display: block;
     margin-left: 25px;"> 
-  <a href="${pageContext.request.contextPath}/user/login.jsp">
+  <a href="${pageContext.request.contextPath}/user/UserLogin.us">
     　로그인
     </a>
     </div>
@@ -128,7 +128,7 @@
   <img src="${pageContext.request.contextPath}/images/sidebar/add-user.png" style="width: auto;
     display: block;
     margin-left: 25px;"> 
-   <a href="${pageContext.request.contextPath}/user/signup.jsp">
+   <a href="${pageContext.request.contextPath}/user/UserJoin.us">
  　회원가입
  	</a>
  </div>

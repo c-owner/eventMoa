@@ -10,7 +10,7 @@
 
 <!-- Logo -->
 <header>
-		<a href="${pageContext.request.contextPath}/index.jsp">
+		<a href="${pageContext.request.contextPath}/main.us">
 		<span class="logo"></span></a>
 	</header>
 	

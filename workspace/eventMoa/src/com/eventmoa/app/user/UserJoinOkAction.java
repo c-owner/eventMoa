@@ -14,34 +14,22 @@ public class UserJoinOkAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
 		
 		ActionForward forword = null;
 		
 		UserVO u_vo = new UserVO();
 		UserDAO u_dao = new UserDAO();
 		
-		
-		/*private String user_Id;
-		private String user_Pw;
-		private String user_Name;
-		private String user_Email;
-		private String user_Email_Hash;
-		private String user_Zipcode;
-		private String user_Address;
-		private String user_Address_DETAIL;
-		private String user_Address_Etc;
-		private int user_Point; -- 보류*/
-		
 		u_vo.setUser_Id(req.getParameter("user_Id"));
 		u_vo.setUser_Pw(req.getParameter("user_Pw"));
 		u_vo.setUser_Name(req.getParameter("user_Name"));
 		u_vo.setUser_Email(req.getParameter("user_Email"));
-		u_vo.setUser_Email_Hash(req.getParameter("user_Email_Hash"));
+		u_vo.setUser_Email_Hash(req.getParameter("user_Email"));
 		u_vo.setUser_Zipcode(req.getParameter("user_Zipcode"));
 		u_vo.setUser_Address(req.getParameter("user_Address"));
 		u_vo.setUser_Address_DETAIL(req.getParameter("user_Address_DETAIL"));
 		u_vo.setUser_Address_Etc(req.getParameter("user_Address_Etc"));
+		u_vo.setUser_Point(0);
 
 		//DB에서 INSERT 실패 시
 		if(!u_dao.join(u_vo)) {
