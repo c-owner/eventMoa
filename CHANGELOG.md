@@ -26,6 +26,7 @@ categories: project
 
 - 유저 메인 Controller 구현 
   - 회원가입 이메일 인증번호 발송 및 확인 구현 `js, jsp, Action Controller`
+- errorPage 구현
 - 
 
 
