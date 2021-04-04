@@ -17,20 +17,32 @@
 
 		<!-- Header -->
 <jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
-<section id="three">
-    <div class="wrapper style2 special">
-        <div class="inner" style="margin: 0 auto;">
-            <h2 class="alt">No PAGE! </h2>
-            <hr>
-            <h3>죄송합니다.</h3>
-            <p> 방문하시려는 페이지의 주소가 잘못 입력되었거나,
-                <br>페이지의 주소가 변경 혹은 삭제되어
-                <br>요청하신 페이지를 찾을 수 없습니다.</p>
-            <a href="${pageContext.request.contextPath}/main.us" class="btn-right">메인   <span class="arrow-right"></span>
-            </a>
-        </div>
-    </div>
-</section>
+
+<div id="main">
+			 <section id="two">
+				 <article class="column col4">
+					 
+	<section id="three">
+	    <div class="wrapper style2 special">
+	        <div class="inner" style="margin: 0 auto; text-align: center;">
+   				 <article class="column col4">
+					<h2 class="col_tit" style="text-align: center;"> 
+									   NO PAGE!
+					 </h2>
+				 </article>
+				 <p></p>
+			 	<h3 class="col_tit">
+	            	죄송합니다.</h3>
+	            <p> 방문하시려는 페이지의 주소가 잘못 입력되었거나,
+	                <br>페이지의 주소가 변경 혹은 삭제되어
+	                <br>요청하신 페이지를 찾을 수 없습니다.</p>
+	            <a href="${pageContext.request.contextPath}/main.us" class="button">메인 
+	            </a>
+	        </div>
+	    </div>
+	</section>
+	
+</div>
 
 <jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 

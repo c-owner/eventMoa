@@ -22,6 +22,38 @@ categories: project
 
 ---
 
+## 2021-04-04
+
+**회원가입 부분**
+
+- 회원가입 폼에  user_Zipcode 부터 Etc까지 id,name,class에 세미콜론; 붙어있어서 다 뺐음
+- 회원갑 컨트롤러 포인트 컬럼 넣음 
+- user xml에도 user_Point 추가했음
+
+**=> 회원가입 테스트 이상 없음** 
+
+
+
+**로그인 부분**  
+로그인 폼 id,pw 전부 memberId,memberPw -> user_Id , user_Pw 로 수정함
+
+
+
+**dao 로그인**
+
+- .put(id, id) (pw,pw) 되있는거
+- ("id", id ) ("pw", pw) 수정함
+- alias가 User인데 user로 되어있어서 수정함
+
+**userXML 부분**
+테이블 컬럼명 USER_ID, USER_PW 인데 USERID, USERPW로 돼있어서 수정함
+
+로그인 컨트롤러 부분 작업중임 
+
+
+
+
+
 ## 2021-04-02
 
 - 유저 메인 Controller 구현 

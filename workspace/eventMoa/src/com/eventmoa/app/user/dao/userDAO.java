@@ -86,16 +86,15 @@ public class UserDAO {
 		return session.update("User.findPw", user) == 1;
 	}
 	//로그인 
-		public boolean login(String id, String pw) {
-			
-			HashMap<String,String> user=new HashMap<>();
-
-	     user.put(id, id);
-	     user.put(pw, encrypt(pw));
-	     
-	     return (Integer)session.selectOne("uesr.login", user) == 1;
+	public boolean login(String id, String pw) {
+		HashMap<String,String> user=new HashMap<>();
 		
-		}
+		user.put("id", id);
+		user.put("pw", encrypt(pw));
+     
+		return (Integer)session.selectOne("Uesr.login", user) == 1;
+	
+	}
 
 		
 }

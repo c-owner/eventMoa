@@ -33,13 +33,14 @@
 						</div>
 
 				<!-- Content -->
-			<form name="loginForm" action="" method="post">
+			<form name="loginForm" action="${pageContext.request.contextPath}/user/UserLoginOk.us" method="post">
 				<div class="row gtr-uniform" id="loginFrame">
 					<div class="col-12">
-							<label for="memberId">아이디</label> <input type="text"
-								name="memberId" id="memberId" value="" />
-							<label for="memberPw">비밀번호</label> <input type="password"
-								name="memberPw" id="memberPw" value="" />
+							<label for="user_Id">아이디</label> 
+							<input type="text" name="user_Id" id="user_Id" value="" />
+							
+							<label for="user_Pw">비밀번호</label> 
+							<input type="password" name="user_Pw" id="user_Pw" value="" />
 								
 							<p class="signup-forgotten">
 								<a href="${pageContext.request.contextPath}/user/UserJoin.us" class="sign-up" style="font-weight: bold;">회원가입</a>
@@ -49,7 +50,9 @@
 							
 						<div class="col-6 col-12-medium">
 							<ul class="actions stacked">
-								<li><a href="#" class="button primary fit">로그인</a></li>
+								<li>
+								  <input type="submit" value="로그인" class="button primary fit"/>
+								</li>
 							</ul>
 								<div>
 									<img src="${pageContext.request.contextPath}/images/banner/ADbanner2.jpg" alt="광고배너1" onclick="">
@@ -68,15 +71,6 @@
 
 	<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
-
-		<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
 	</body>
 </html>
