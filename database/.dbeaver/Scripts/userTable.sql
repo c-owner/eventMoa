@@ -23,7 +23,7 @@ CREATE TABLE TABLE_USER (
 SELECT * FROM TABLE_USER;
 
 -------------
-
+DELETE FROM TABLE_USER WHERE user_Id = 'eventmoa';
 INSERT INTO TABLE_USER
 (user_Id, user_pw, user_name, user_email, user_email_hash, user_zipcode, user_address, user_address_detail, user_address_etc)
 VALUES('hds1234', '1234', '이벤트', 'hds1234@gmail.com', 'ddd', '16577', '경기도 수원시', '팔달구', '우만로 137');

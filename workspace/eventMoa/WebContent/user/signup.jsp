@@ -6,7 +6,7 @@
 	<html>
 	<head>
 		<title>회원가입 | 이벤트 모아(Event Moa)</title>
-		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
@@ -355,23 +355,23 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 						</div>
 						<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
 						<p>
-								<input type="text" name="user_Zipcode;" id="user_Zipcode;" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
+								<input type="text" name="user_Zipcode" id="user_Zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
 						</p>
 								<input type="button" id="postcodify_search_button" style="height: 35px;" value="검색"/>
 						</ul>
 						
 						<p>
-							<input type="text" name="user_Address;" id="user_Address;" class="postcodify_address" value="" placeholder="주소" readonly/>
+							<input type="text" name="user_Address" id="user_Address" class="postcodify_address" value="" placeholder="주소" readonly/>
 						</p>
 						
 						<p>
-							<input type="text" name="user_Address_Detail;" id="user_Address_Detail;" class="postcodify_details" autocomplete="off" required/>
-							<label for="user_Address_Detail;" style="color: silver;"><span>상세주소</span></label>
+							<input type="text" name="user_Address_DETAIL" id="user_Address_DETAIL" class="postcodify_details" autocomplete="off" required/>
+							<label for="user_Address_DETAIL" style="color: silver;"><span>상세주소</span></label>
 						</p>
 						
 
 						<p>
-							<input type="text" name="user_Address_Etc;" id="user_Address_Etc;" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
+							<input type="text" name="user_Address_Etc" id="user_Address_Etc" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
 						</p>
 							
 					</div>

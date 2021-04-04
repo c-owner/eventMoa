@@ -6,7 +6,7 @@
 		INSERT INTO TABLE_USER 
 		VALUES( 
 			#{user_Id}, #{user_Pw}, #{user_Name}, #{user_Email}, #{user_Email_Hash}, 
-			#{user_Zipcode}, #{user_Address}, #{user_Address_DETAIL}, #{user_Address_Etc} )
+			#{user_Zipcode}, #{user_Address}, #{user_Address_DETAIL}, #{user_Address_Etc}, #{user_Point} )
    </insert>
    <select id="checkId" parameterType="string" resultType="_int">
       SELECT COUNT(*) FROM TABLE_USER WHERE USER_ID = #{user_Id}
