@@ -134,7 +134,9 @@ public class UserFrontController extends HttpServlet {
 		}
 		
 		else if (command.equals("/user/UserFindPwOk.us")) {
+			System.out.println("프론트컨트롤러 진입");
 			try {
+				System.out.println("프론트컨트롤러 진입 try");
 				 forward = new UserFindPwOkAction().execute(req, resp);  
 			} catch (Exception e) {
 				System.out.println(e);

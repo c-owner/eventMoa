@@ -321,15 +321,16 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 				</div>
 				<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
-						<p>
-							<input type="text" name="user_Id" id="user_Id" autocomplete="off" required/>
-							<label for="user_Id" style="color: silver;"><span>아이디</span></label>
-
-							<span id="idCheck_text"><br></span>
-							<br>
-							<span id="idCheck_text2"><br></span>
-							<br>
-						</p>
+						<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto;">
+							<p>
+								<input type="text" name="user_Id" id="user_Id" autocomplete="off" required/>
+								<label for="user_Id" style="color: silver;"><span>아이디</span></label>
+								<span id="idCheck_text"><br></span>
+								<br>
+							</p>
+							<a href="javascript:checkId();" type="submit" id="idCheckBtn" class="button" style="height: 35px;">중복확인</a>
+							<a href="javascript:modifyId();" type="submit" id="idModifyBtn" class="button" style="height: 35px;">수정하기</a>
+						</ul>
 						<p>
 							<input type="password" name="user_Pw" id="user_Pw" autocomplete="off" required/>
 							<label for="user_Pw" style="color: silver;"><span>비밀번호</span></label>

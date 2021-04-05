@@ -1,6 +1,8 @@
 package com.eventmoa.app.user.dao;
 
 import java.util.HashMap;
+import java.util.Random;
+import java.util.UUID;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -76,14 +78,21 @@ public class UserDAO {
 		
 		return session.selectOne("User.findId", user);
 	}
-	
-	//임시 비밀번호 발급
-	public boolean findPw(String id, String email) {
-		HashMap<String, String> user = new HashMap<>();
-		user.put("id", id);
-		user.put("email", email);
+
 			
-		return session.update("User.findPw", user) == 1;
+	//임시 비밀번호 발급
+	public String findPw(String id, String email2) {
+		HashMap<String, String> user = new HashMap<>();
+		String randomPw = getTempPw(); 
+		
+		user.put("id", id);
+		user.put("email2", email2);
+		user.put("pw", randomPw);
+		if(session.update("User.findPw", user) == 1) {
+			return randomPw;	
+			
+		}
+		return null;
 	}
 	//로그인 
 	public boolean login(String id, String pw) {
@@ -96,5 +105,14 @@ public class UserDAO {
 	
 	}
 
+	//임시 비밀번호
+	protected String getTempPw() {
+		String random = UUID.randomUUID().toString().replaceAll("-", "");
+		String randomPw = random.substring(0,8);
+		
+		return randomPw;
+		
+	}
+	
 		
 }

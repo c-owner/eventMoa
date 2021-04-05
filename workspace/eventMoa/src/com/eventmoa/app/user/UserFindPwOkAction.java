@@ -31,27 +31,24 @@ public class UserFindPwOkAction implements Action{
 		UserVO u_vo = new UserVO();
 		
 		String id = req.getParameter("user_Id");
-		String email = req.getParameter("user_Email");
+		String email = req.getParameter("user_Email2");
+		String pw = u_dao.findPw(id, email);
 		
 		PrintWriter out = resp.getWriter();
 		
-		String randomPw = UUID.randomUUID().toString().replaceAll("-", "");
-		randomPw = randomPw.substring(0,8);
 		
-		u_vo.setUser_Pw(randomPw);
+		
 		
 		resp.setContentType("text/html;charset=utf-8");
 		
-		if(u_dao.findPw(id, email)) {
+		if(pw != null) {
 			out.println("ok");
-			
 			String host = "http://event-moa.kro.kr";
 			String from = "eventmoa1515@gmail.com";
 			String to = email;
 			String subject = "이벤트모아 사이트에서 요청하신 임시 비밀번호 메일입니다.";
 			String content = "안녕하세요 회원님. 저희 홈페이지를 찾아주셔서 감사합니다."
-					+ "<br> 임시 비밀번호  : "+ randomPw
-					+ "<br> 감사합니다.";
+					+ "<br> 임시 비밀번호  : " + pw + "<br> 감사합니다.";;
 			
 			Properties p = new Properties();
 			p.put("mail.smtp.user", from);
