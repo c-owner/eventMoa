@@ -13,7 +13,7 @@ CREATE TABLE TABLE_USER (
 	user_Address    varchar2(300)not null,
 	user_Address_Detail varchar2(300),
 	user_Address_Etc  varchar2(100),
-	user_Point NUMBER(10) NULL, -- 일단 NULL
+	user_Point NUMBER(10) DEFAULT 0,
   	
 	CONSTRAINT EVENT_USER_PK PRIMARY KEY(user_Id)
 );
@@ -23,6 +23,8 @@ CREATE TABLE TABLE_USER (
 SELECT * FROM TABLE_USER;
 
 -------------
+DELETE FROM TABLE_USER WHERE USER_ID = 'hds1234';
+DELETE FROM TABLE_BOARD_POINT WHERE USER_ID ='hds1234';
 
 INSERT INTO TABLE_USER
 (user_Id, user_pw, user_name, user_email, user_email_hash, user_zipcode, user_address, user_address_detail, user_address_etc)

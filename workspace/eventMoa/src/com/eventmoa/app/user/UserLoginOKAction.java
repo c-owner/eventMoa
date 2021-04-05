@@ -23,19 +23,16 @@ public class UserLoginOKAction implements Action{
 		
 		String id =req.getParameter("user_Id");
 		String pw =req.getParameter("user_pw");
-		
-		   resp.setContentType("text/html;charset=utf-8");
-		   System.out.println("c 들어옴1");
+		//로그인 성공실패
 		if(u_dao.login(id, pw)) {
-			System.out.println("c 들어옴2");
-			session.setAttribute("user_Id", id);
+			session.setAttribute("session_id", id);
 			forward.setRedirect(true);
-			forward.setPath(req.getContextPath()+"/main.us?type=login");
+			forward.setPath(req.getContextPath()+"/user/UserLogin.us");
 			
 		}else {
 			System.out.println("로그인 실패");
 			forward.setRedirect(false);
-			forward.setPath("/user/userLogin.us?type=false");
+			forward.setPath("/user/userLogin.us?login=false");
 		}
 		return forward;
 	}

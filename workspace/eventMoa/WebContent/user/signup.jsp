@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<% request.setCharacterEncoding("utf-8"); %>	
+ <% request.setCharacterEncoding("UTF-8"); %>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 	<html>
 	<head>
 		<title>회원가입 | 이벤트 모아(Event Moa)</title>
-		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
@@ -323,17 +322,22 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 				<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
 						<p>
-							<input type="text" name="user_Id" id="userId"autocomplete="off" required/>
-							<label for="userId" style="color: silver;"><span>아이디</span></label>
-						 <p id="idCheck_text" style="margin-bottom: -63px; margin-top: -25px; margin-left: 12px; color: red;"></p>
+							<input type="text" name="user_Id" id="user_Id" autocomplete="off" required/>
+							<label for="user_Id" style="color: silver;"><span>아이디</span></label>
+
+							<span id="idCheck_text"><br></span>
+							<br>
+							<span id="idCheck_text2"><br></span>
+							<br>
 						</p>
 						<p>
-							<input type="password" name="user_Pw" id="userPw" autocomplete="off" required/>
-							<label for="userPw" style="color: silver;"><span>비밀번호</span></label>
-							<i toggle="#userPw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
+							<input type="password" name="user_Pw" id="user_Pw" autocomplete="off" required/>
+							<label for="user_Pw" style="color: silver;"><span>비밀번호</span></label>
+							<i toggle="#user_Pw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
+							<span id="pwCheck_text"><br></span>
 						</p>
 						<p>
-							<input type="text" name="user_Name" id="membeuser_NamerName" autocomplete="off" required/>
+							<input type="text" name="user_Name" id="user_Name" autocomplete="off" required/>
 							<label for="user_Name" style="color: silver;"><span>이름</span></label>
 						</p>
 					
@@ -345,14 +349,14 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 								<!-- <input type="button" name="verifyRequest" id="verifyRequest" style="height: 35px;" value="인증번호 요청"/> -->
 								<a href="javascript:EmailCheck();" type="submit" id="verifyRequest" class="button" style="height: 35px;">인증번호 요청</a>
 						</ul>
-						<div class="mail_verify_input_box" id="mail_verify_input_box_false">
+						
 						<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto;">
 						<p>
 							<input type="text" name="email_verify" id="email_verify" value="" placeholder="인증번호 7자리">
 						</p>	
 							<a href="javascript:verifyCheck();" type="submit" id="verifyBox" class="button" style="height: 35px;">인증번호 확인</a>
 						</ul>
-						</div>
+
 						<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
 						<p>
 								<input type="text" name="user_Zipcode" id="user_Zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>

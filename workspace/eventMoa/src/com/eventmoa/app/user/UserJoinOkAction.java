@@ -1,6 +1,7 @@
 package com.eventmoa.app.user;
 
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +20,6 @@ public class UserJoinOkAction implements Action{
 		
 		UserVO u_vo = new UserVO();
 		UserDAO u_dao = new UserDAO();
-		
 		u_vo.setUser_Id(req.getParameter("user_Id"));
 		u_vo.setUser_Pw(req.getParameter("user_Pw"));
 		u_vo.setUser_Name(req.getParameter("user_Name"));
@@ -31,10 +31,10 @@ public class UserJoinOkAction implements Action{
 		u_vo.setUser_Address_Etc(req.getParameter("user_Address_Etc"));
 		u_vo.setUser_Point(0);
 
-		//DB에서 INSERT 실패 시
+		//DB에서 INSERT 실패 시 
 		if(!u_dao.join(u_vo)) {
-			PrintWriter out = resp.getWriter();
 			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out = resp.getWriter();
 			out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.');</script>");
 			out.close();
 		}else {

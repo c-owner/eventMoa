@@ -1,5 +1,3 @@
-<%--
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isErrorPage="true" %>
 <% response.setStatus(200); %>
@@ -19,9 +17,7 @@
 <jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 
 <div id="main">
-			 <section id="two">
-				 <article class="column col4">
-					 
+
 	<section id="three">
 	    <div class="wrapper style2 special">
 	        <div class="inner" style="margin: 0 auto; text-align: center;">
