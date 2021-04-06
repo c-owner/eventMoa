@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
-<!--
- 
--->
 <html>
 	<head>
 		<title>이벤트 모아 (Event Moa)</title>
@@ -17,10 +14,13 @@
 	
 	<body class="is-preload">
 	
+	<c:set var="session_id" value="${session_id}"/>
+	      
 <c:set var = 'userStatus' value = "false"></c:set>
-<c:if test="${param.type eq 'login' }">
+	<c:if test="${session_id ne null }">
 	<c:set var = 'userStatus' value = 'true'/>
 </c:if>
+
 
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
@@ -28,6 +28,8 @@
 		<!-- Main -->
 			<div id="main">
 
+	<!-- sideBar -->
+<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 
 				<!-- Header -->		<!-- search-bar -->
 		<jsp:include page="${pageContext.request.contextPath}/searchBar.jsp"></jsp:include>

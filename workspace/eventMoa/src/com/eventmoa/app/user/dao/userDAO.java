@@ -94,18 +94,21 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
 	//로그인 
 	public boolean login(String id, String pw) {
-		HashMap<String,String> member=new HashMap<>();
-		
-		member.put("id", id);
-		member.put("pw", encrypt(pw));
+		HashMap<String,String> user = new HashMap<>();
+		System.out.println("체크1");
+		user.put("id", id);
+		System.out.println("체크2");
+		user.put("pw", encrypt(pw));
+		System.out.println("체크3");
      
-		return (Integer)session.selectOne("Uesr.login", member) == 1;
+		return (Integer)session.selectOne("Login", user) == 1;
 	
 	}
 
-	//임시 비밀번호
+	//임시 비밀번호 생성 메소드
 	protected String getTempPw() {
 		String random = UUID.randomUUID().toString().replaceAll("-", "");
 		String randomPw = random.substring(0,8);

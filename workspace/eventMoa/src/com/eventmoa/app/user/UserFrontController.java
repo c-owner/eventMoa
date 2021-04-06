@@ -31,18 +31,19 @@ public class UserFrontController extends HttpServlet {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-
+		
+		String login = req.getParameter("login");
 		ActionForward forward = null;
-			String type = req.getParameter("login");
 		/* main 컨트롤러 */
 		if(command.equals("/main.us")) {
 			try {
-				 
-				type = req.getParameter("login");
+//				String login = req.getParameter("login");
 				forward = new ActionForward();
 				forward.setRedirect(false);
+				System.out.println("session id "+req.getAttribute("session_id"));
+//				forward.setPath("/index.jsp" + (login != null ? "?login=1" : ""));
+				forward.setPath("/index.jsp");
 			} catch (Exception e) {;}
-			forward.setPath("/index.jsp" + (type != null ? "?type=login" : ""));
 		}
 		
 		/* 회원가입 컨트롤러 */
@@ -66,11 +67,25 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		else if (command.equals("/user/UserLogin.us")) {
-			String login = req.getParameter("login");
+//			String login = (String)req.getAttribute("login");
 			forward = new ActionForward();
 			forward.setRedirect(false);
-																	
-			forward.setPath("/user/login.jsp" + (login != null ? "?login=false" : ""));
+			if(login == null) {
+				forward.setPath("/user/login.jsp");
+			} else {
+				forward.setPath("/user/login.jsp?login=1");
+			}
+//			forward.setPath("/user/login.jsp" + (login != null ? "?login=1" : ""));
+//			forward.setPath("/user/login.jsp");
+		}
+		
+		/* 로그아웃 부분 */
+		else if (command.equals("/user/UserLogout.us")) {
+			try {
+				 forward = new UserLogoutAction().execute(req, resp);  
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 		
 		/* 이메일 인증 부분 */
@@ -114,14 +129,6 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		
-		/* 로그아웃 부분 */
-		else if (command.equals("/user/UserLogout.us")) {
-			try {
-				 forward = new UserLogoutAction().execute(req, resp);  
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		}
 		
 		/* 아이디 비밀번호 찾기 부분 */
 		else if (command.equals("/user/UserFindIdOk.us")) {
@@ -140,6 +147,16 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 
+		/* 마이페이지 부분 컨트롤러 */
+		else if (command.equals("/mypage/myPage.us")) {
+			try {
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath("/user/mypage/myPage_list.jsp");  
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 		/* 정보수정 컨트롤러 */
 		else if (command.equals("/user/UserModifyName.us")) {
 			try {
