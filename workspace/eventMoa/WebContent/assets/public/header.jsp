@@ -10,7 +10,6 @@
 		<meta name="author" content="corner3499">
 		
 		<!-- title-icon -->
-		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 		<!-- style -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">

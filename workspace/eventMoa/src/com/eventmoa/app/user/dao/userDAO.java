@@ -114,5 +114,21 @@ public class UserDAO {
 		
 	}
 	
-		
+
+	/**
+	 * 
+	 * @param id
+	 * @return boolean true = ok / false = none
+	 * @author corner
+	 * @note 유저 이름 변경전 아이디로 이름 조회하는 메소드
+	 */
+	public boolean getUserName(String id) {
+		return (Integer) session.selectOne("User.findName", id) == 1;
+	}
+	public String modifyUserName(String name) {
+		if(session.update("User.modifyName", name) == 1) {
+			return name;
+		}
+		return null;
+	}
 }

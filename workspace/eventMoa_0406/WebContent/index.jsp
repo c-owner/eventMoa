@@ -25,8 +25,6 @@
 				<!-- Header -->		<!-- search-bar -->
 		<jsp:include page="${pageContext.request.contextPath}/searchBar.jsp"></jsp:include>
 		
-<!-- sideBar -->
-<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 			<!-- Slider -->
 			<section id="banner">
 				<h3 class="ir_su">  </h3>

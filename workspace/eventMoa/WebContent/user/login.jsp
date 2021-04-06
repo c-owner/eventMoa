@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>로그인 | 이벤트 모아(Event Moa)</title>
@@ -10,6 +11,12 @@
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 	</head>
 	<body class="is-preload">
+	
+		<c:set var = 'userStatus' value = "false"></c:set>
+		<c:if test="${param.type eq 'login' }">
+			<c:set var = 'userStatus' value = 'true'/>
+		</c:if>
+		
 		<!-- sideBar -->
 <jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 		<!-- Header -->
@@ -33,6 +40,17 @@
 						</div>
 
 				<!-- Content -->
+		<c:if test="${sessionId != null}">
+			<script>
+				alert('이미 로그인 중입니다.');
+				location.href = "/main.us";
+			</script>
+		</c:if>
+		<c:if test="${not empty param.login }">
+			<c:if test="${not param.login}">
+				<script>alert("아이디 또는 비밀번호를 다시 확인해주세요.");</script>
+			</c:if>
+		</c:if>
 			<form name="loginForm" action="${pageContext.request.contextPath}/user/UserLoginOk.us" method="post">
 				<div class="row gtr-uniform" id="loginFrame">
 					<div class="col-12">

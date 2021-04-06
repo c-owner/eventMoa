@@ -15,24 +15,23 @@ public class UserLoginOKAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
+		HttpSession  session = req.getSession();
 		
-		HttpSession  session =req.getSession();
 		ActionForward forward =new ActionForward();
-		
 		UserDAO  u_dao = new UserDAO();
 		
 		String id =req.getParameter("user_Id");
 		String pw =req.getParameter("user_pw");
-		//로그인 성공실패
+		resp.setCharacterEncoding("text/html;charset=utf-8");
+		
 		if(u_dao.login(id, pw)) {
-			session.setAttribute("session_id", id);
+			session.setAttribute("user_Id", id);
 			forward.setRedirect(true);
-			forward.setPath(req.getContextPath()+"/user/UserLogin.us");
+			forward.setPath(req.getContextPath()+"/main.us?type=login");
 			
 		}else {
-			System.out.println("로그인 실패");
 			forward.setRedirect(false);
-			forward.setPath("/user/userLogin.us?login=false");
+			forward.setPath("/user/userLogin.us?type=not");
 		}
 		return forward;
 	}

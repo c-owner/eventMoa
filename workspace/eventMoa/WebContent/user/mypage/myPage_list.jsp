@@ -59,7 +59,7 @@
 				<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px;">회원 정보</h1>
 				<div class="col-6 col-12-medium" style="margin: 0 0 -2em 0;">
         			<ul class="actions" style="display: inline-flex;">
-						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_password.jsp" class="button primary fit" style="display: flex; margin: 0 auto;">
+						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_info.jsp" class="button primary fit" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/edit2.png" style="width: auto;">　회원정보 수정</a></li>
 						<li><a href="${pageContext.request.contextPath}/user/mypage/myPage_unregister.jsp" class="button primary fit" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/remove2.png" style="width: auto;">　회원 탈퇴　　　</a></li>
