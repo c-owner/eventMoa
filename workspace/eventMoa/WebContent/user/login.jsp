@@ -28,6 +28,7 @@
 		<c:if test="${session_id ne null }">
 			<c:set var = 'userStatus' value = 'true'></c:set>
 		</c:if>
+	
 		<c:if test="${param.login eq 0 }">
 			<script>
 				alert('아이디 또는 비밀번호가 틀립니다. 다시 확인 하시길 바랍니다.');
@@ -68,7 +69,7 @@
 						<div class="col-6 col-12-medium">
 							<ul class="actions stacked">
 								<li>
-								  <input type="submit" value="로그인" onclick="loginCheck();" class="button primary fit"/>
+								  <a href="javascript:loginCheck()" class="button primary fit">로그인</a>
 								</li>
 							</ul>
 							<div>
@@ -84,10 +85,15 @@
 			</form>
 			</c:if>
 				<c:if test="${userStatus eq true}">
-				<div class="row gtr-uniform" id="loginFrame">
+				<div class="row gtr-uniform" id="loginFrame" style="padding-bottom: 30%;">
 					<div class="col-12">
-						<p>${param.session_id}님 환영합니다!</p>
-						<p><a href="UserLogout.us" class="button primary fit">로그아웃</a></p>
+						<p style="text-align: center;"><span style="color: navy; font-size: 30px;">${session_id} 님</span>
+						<br><span style="font-weight: 500; font-family: 'jua'; font-size: 20px;">
+							정말 로그인을 원하신다면 
+						<br>아래의 로그아웃 버튼을 눌러주세요.</span></p>
+						<p style="text-align: center;">
+						<a href="javascript:logout();" class="button primary fit">
+						로그아웃</a></p>
 					</div>
 				</div>
 				</c:if>
@@ -100,23 +106,27 @@
 			
 	<script>
 	var form = document.loginForm;
-	var id = $("input[name='user_Id']");
-	var pw = $("input[name='user_Pw']");
-
+	
 	function loginCheck(){
-	    if(id == ""){
+		
+	    if(!form.user_Id.value){
 	        alert("아이디를 입력해 주세요.");
-	        id.focus();
-	        return false;    
+	        form.user_Id.focus();
+	        return;
 	    } 
-		if(pw == ""){
-	        alert("암호를 입력해 주세요.");
-	        pw.focus();
-	        return false;    
-	    }
-		return true;
+	    else if(!form.user_Pw.value){
+	        alert("비밀번호를 입력해 주세요.");
+	        form.user_Pw.focus();
+	        return;
+	    } 
+	    
 		form.submit();
 	    
+	}
+	
+	function logout() {
+		location.href = "${pageContext.request.contextPath}/user/UserLogout.us";
+		alert('로그아웃 되셨습니다. 감사합니다.');
 	}
 	</script>
 

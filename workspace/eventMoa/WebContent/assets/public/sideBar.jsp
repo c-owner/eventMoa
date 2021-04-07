@@ -172,7 +172,7 @@
 		    　로그인  </a>
 		 </c:if>
 		 <c:if test="${userStatus eq true}">
-			<a href="${pageContext.request.contextPath}/user/UserLogout.us">
+			<a href="${pageContext.request.contextPath}/user/UserLogin.us">
 			 로그아웃</a>
 		</c:if>
 	</div>

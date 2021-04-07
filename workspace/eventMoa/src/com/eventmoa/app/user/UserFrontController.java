@@ -66,16 +66,9 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		else if (command.equals("/user/UserLogin.us")) {
-//			String login = (String)req.getAttribute("login");
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			if(login == null) {
-				forward.setPath("/user/login.jsp");
-			} else {
-				forward.setPath("/user/login.jsp?login=1");
-			}
-//			forward.setPath("/user/login.jsp" + (login != null ? "?login=1" : ""));
-//			forward.setPath("/user/login.jsp");
+			forward.setPath("/user/login.jsp");
 		}
 		
 		/* 로그아웃 부분 */

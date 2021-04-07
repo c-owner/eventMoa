@@ -43,7 +43,7 @@ public class UserLoginOKAction implements Action{
 		}else {
 			session.setAttribute("login", "0");
 			forward.setRedirect(false);
-			forward.setPath(req.getContextPath()+"/user/userLogin.us");
+			forward.setPath(req.getContextPath()+"/user/UserLogin.us?login=0");
 		}
 		
 		return forward;
