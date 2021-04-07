@@ -23,6 +23,7 @@
 	
 	<c:set var="login" value="${login}"/>
 	<c:set var="session_id" value="${session_id}"/>
+	<c:set var="user_AddressAll" value="${user_AddressAll}"/>
 	      
 	<c:set var = 'userStatus' value = "false"></c:set>
 	<c:if test="${session_id ne null }">

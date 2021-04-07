@@ -15,7 +15,7 @@
 	<body class="is-preload">
 	
 	<c:set var="session_id" value="${session_id}"/>
-	      
+		
 <c:set var = 'userStatus' value = "false"></c:set>
 	<c:if test="${session_id ne null }">
 	<c:set var = 'userStatus' value = 'true'/>

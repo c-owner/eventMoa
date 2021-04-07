@@ -130,6 +130,16 @@ public class UserFrontController extends HttpServlet {
 		
 		
 		/* 아이디 비밀번호 찾기 부분 */
+		else if (command.equals("/user/UserFindIdPw.us")) {
+			try {
+				
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath("/user/findIdPw.jsp");  
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 		else if (command.equals("/user/UserFindIdOk.us")) {
 			try {
 				 forward = new UserFindIdOkAction().execute(req, resp);  
@@ -183,9 +193,26 @@ public class UserFrontController extends HttpServlet {
 				System.out.println(e);
 			}
 		}
+		/* 이메일 작업 컨트롤러 */
+		else if (command.equals("/user/mypage/UserModifyEmail.us")) {
+			try {
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath("/user/mypage/myPage_email.jsp");
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		else if (command.equals("/user/mypage/UserModifyEmailOk.us")) {
+			try {
+//				forward = new UserNameModifyAction().execute(req, resp);  
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 		
 		/* 주소수정 */
-		else if (command.equals("/user/UserModifyAddress.us")) {
+		else if (command.equals("/user/mypage/UserModifyAddress.us")) {
 			try {
 				 forward = new ActionForward();
 				 forward.setRedirect(false);

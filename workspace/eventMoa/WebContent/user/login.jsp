@@ -25,7 +25,7 @@
 	<c:set var="session_id" value="${session_id}"/>
 
 	<c:set var = 'userStatus' value = "false"></c:set>
-		<c:if test="${param.login eq 1 }">
+		<c:if test="${session_id ne null }">
 			<c:set var = 'userStatus' value = 'true'></c:set>
 		</c:if>
 		<c:if test="${param.login eq 0 }">
@@ -62,13 +62,13 @@
 							<p class="signup-forgotten">
 								<a href="${pageContext.request.contextPath}/user/UserJoin.us" class="sign-up" style="font-weight: bold;">회원가입</a>
 								<span></span>
-								<a href="${pageContext.request.contextPath}/user/findIdPw.jsp" class="forgotten">아이디/비밀번호 찾기</a>
+								<a href="${pageContext.request.contextPath}/user/UserFindIdPw.us" class="forgotten">아이디/비밀번호 찾기</a>
 							</p>
 							
 						<div class="col-6 col-12-medium">
 							<ul class="actions stacked">
 								<li>
-								  <input type="submit" value="로그인" class="button primary fit"/>
+								  <input type="submit" value="로그인" onclick="loginCheck();" class="button primary fit"/>
 								</li>
 							</ul>
 							<div>
@@ -97,6 +97,28 @@
 
 	<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
+			
+	<script>
+	var form = document.loginForm;
+	var id = $("input[name='user_Id']");
+	var pw = $("input[name='user_Pw']");
+
+	function loginCheck(){
+	    if(id == ""){
+	        alert("아이디를 입력해 주세요.");
+	        id.focus();
+	        return false;    
+	    } 
+		if(pw == ""){
+	        alert("암호를 입력해 주세요.");
+	        pw.focus();
+	        return false;    
+	    }
+		return true;
+		form.submit();
+	    
+	}
+	</script>
 
 	</body>
 </html>

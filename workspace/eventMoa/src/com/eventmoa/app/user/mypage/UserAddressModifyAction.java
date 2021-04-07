@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
@@ -24,7 +25,8 @@ public class UserAddressModifyAction implements Action{
 		UserDAO u_dao = new UserDAO();
 		ActionForward forward = new ActionForward();
 		
-		String user_Id = (String) req.getAttribute("user_Id");
+		HttpSession session = req.getSession();
+		String user_Id = req.getParameter("session_id");
 		String user_Zipcode = req.getParameter("user_Zipcode");
 		String user_Address = req.getParameter("user_Address");
 		String user_Address_DETAIL = req.getParameter("user_Address_DETAIL");
@@ -34,14 +36,23 @@ public class UserAddressModifyAction implements Action{
 		u_vo.setUser_Address(user_Address);
 		u_vo.setUser_Address_DETAIL(user_Address_DETAIL);
 		u_vo.setUser_Address_Etc(user_Address_Etc);
+		u_vo.setUser_Id(user_Id);
 		
-		
-		if(u_dao.getUserAddress(user_Id)) {
+		System.out.println("컨트롤러 진입전");
+		if(user_Id != null) {
 			System.out.println("아이디 일치");
 			if(u_dao.modifyUserAddress(u_vo)) {
-				out.println("이메일 수정 성공");
+				out.println("주소 수정 성공");
+				forward = new ActionForward();
+				session.invalidate();
+				forward.setRedirect(true);
+				forward.setPath(req.getContextPath() + "/main.us");
+				return forward;
 			}else {
-				out.println("이메일 수정 실패");
+				out.println("주소 수정 실패");
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath(req.getContextPath()+"/mypage/MyPageInfo.us");
 			}
 		}else {
 			System.out.println("아이디 불일치");

@@ -38,7 +38,7 @@ public class UserDAO {
 	 * 이메일로 아이디 불러오기 
 	 */
 	public String getUserEmail(String id) {
-		return session.selectOne("User.getEmail", id);
+		return session.selectOne("User.findEmail", id);
 	}
 	
 	
@@ -135,9 +135,32 @@ public class UserDAO {
 		return (Integer) session.update("User.modifyName", user) == 1;
 	}
 	
+//	유저 MYPAGE INFO
+	
+	/**
+	 * 
+	 * @param String id
+	 * @return String
+	 * @apiNote 유저의 주소 참고항목을 가져올 메소드
+	 */
+	public String getUserZipcode(String id) {
+		return session.selectOne("User.findZipcode", id);
+	}
+	public String getUserAddress(String id) {
+		return session.selectOne("User.findAddress", id);
+	}
+	public String getUserAddressEtc(String id) {
+		return session.selectOne("User.findAddressEtc", id);
+	}
+	public String getUserAddressDETAIL(String id) {
+		return session.selectOne("User.findAddressDETAIL", id);
+	}
+	
 	//주소 수정
-	public boolean getUserAddress(String id) {
-		return (Integer) session.selectOne("User.findAddress", id) == 1;
+	public String getUserAddressAll(String id) {
+		String addr = "";
+		addr = session.selectOne("User.findAddressAll", id);
+		return addr;
 	}
 	public boolean modifyUserAddress(UserVO u_vo) {
 		return session.update("User.modifyAddress", u_vo) == 1;
