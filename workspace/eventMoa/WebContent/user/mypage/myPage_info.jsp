@@ -118,7 +118,7 @@
 				<div class="signup_message" id="signup_message">
 					<br>
 				</div>
-						<a href="${pageContext.request.contextPath}/user/UserModifyName.us" style="display: flex;">
+						<a href="${pageContext.request.contextPath}/user/mypage/UserModifyName.us" style="display: flex;">
 							<div class="col-12" style="width: 35%; color: #202124;">이름</div><div class="cate">이벤트모아</div><span class="arrow" aria-hidden="true">></span>
 						</a>
 						<hr style="margin-inline: auto;">

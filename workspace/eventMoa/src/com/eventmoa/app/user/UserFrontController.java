@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eventmoa.action.ActionForward;
+import com.eventmoa.app.user.mypage.UserAddressModifyAction;
 import com.eventmoa.app.user.mypage.UserNameModifyAction;
 
 public class UserFrontController extends HttpServlet {
@@ -37,10 +38,8 @@ public class UserFrontController extends HttpServlet {
 		/* main 컨트롤러 */
 		if(command.equals("/main.us")) {
 			try {
-//				String login = req.getParameter("login");
 				forward = new ActionForward();
 				forward.setRedirect(false);
-				System.out.println("session id "+req.getAttribute("session_id"));
 //				forward.setPath("/index.jsp" + (login != null ? "?login=1" : ""));
 				forward.setPath("/index.jsp");
 			} catch (Exception e) {;}
@@ -150,6 +149,7 @@ public class UserFrontController extends HttpServlet {
 		/* 마이페이지 부분 컨트롤러 */
 		else if (command.equals("/mypage/myPage.us")) {
 			try {
+				
 				forward = new ActionForward();
 				forward.setRedirect(false);
 				forward.setPath("/user/mypage/myPage_list.jsp");  
@@ -157,8 +157,17 @@ public class UserFrontController extends HttpServlet {
 				System.out.println(e);
 			}
 		}
+		else if (command.equals("/user/mypage/MyPageInfo.us")) {
+			try {
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				forward.setPath("/user/mypage/myPage_info.jsp");
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 		/* 정보수정 컨트롤러 */
-		else if (command.equals("/user/UserModifyName.us")) {
+		else if (command.equals("/user/mypage/UserModifyName.us")) {
 			try {
 				forward = new ActionForward();
 				forward.setRedirect(false);
@@ -170,6 +179,24 @@ public class UserFrontController extends HttpServlet {
 		else if (command.equals("/user/UserModifyNameOk.us")) {
 			try {
 				 forward = new UserNameModifyAction().execute(req, resp);  
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		
+		/* 주소수정 */
+		else if (command.equals("/user/UserModifyAddress.us")) {
+			try {
+				 forward = new ActionForward();
+				 forward.setRedirect(false);
+				 forward.setPath("/user/mypage/myPage_address.jsp");
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		else if (command.equals("/user/UserModifyAddressOk.us")) {
+			try {
+				 forward = new UserAddressModifyAction().execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}

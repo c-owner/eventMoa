@@ -98,15 +98,13 @@ public class UserDAO {
 	//로그인 
 	public boolean login(String id, String pw) {
 		HashMap<String,String> user = new HashMap<>();
-		System.out.println("체크1");
 		user.put("id", id);
-		System.out.println("체크2");
 		user.put("pw", encrypt(pw));
-		System.out.println("체크3");
      
 		return (Integer)session.selectOne("Login", user) == 1;
 	
 	}
+	
 
 	//임시 비밀번호 생성 메소드
 	protected String getTempPw() {
@@ -125,13 +123,23 @@ public class UserDAO {
 	 * @author corner
 	 * @note 유저 이름 변경전 아이디로 이름 조회하는 메소드
 	 */
-	public boolean getUserName(String id) {
-		return (Integer) session.selectOne("User.findName", id) == 1;
+	public String getUserName(String id) {
+		String name = "";
+		name = session.selectOne("User.findName", id);
+		return name;
 	}
-	public String modifyUserName(String name) {
-		if(session.update("User.modifyName", name) == 1) {
-			return name;
-		}
-		return null;
+	public boolean modifyUserName(String id, String name) {
+		HashMap<String, String> user = new HashMap<>();
+		user.put("user_Id", id);
+		user.put("user_Name", name);
+		return (Integer) session.update("User.modifyName", user) == 1;
+	}
+	
+	//주소 수정
+	public boolean getUserAddress(String id) {
+		return (Integer) session.selectOne("User.findAddress", id) == 1;
+	}
+	public boolean modifyUserAddress(UserVO u_vo) {
+		return session.update("User.modifyAddress", u_vo) == 1;
 	}
 }

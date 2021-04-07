@@ -23,10 +23,13 @@ public class UserLoginOKAction implements Action{
 		
 		String id = req.getParameter("user_Id");
 		String pw = req.getParameter("user_Pw");
+		String name = null;
+		name = u_dao.getUserName(id);
 		
 		if(u_dao.login(id, pw)) {
 			session.setAttribute("login", "1");
 			session.setAttribute("session_id", id);
+			session.setAttribute("user_Name", name);
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath()+"/main.us");
 		}else {

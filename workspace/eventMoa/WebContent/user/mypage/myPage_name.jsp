@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -31,13 +32,21 @@
 	</head>
 	
 	<body class="is-preload">
+		<c:set var="login" value="${login}"/>
+		<c:set var="session_id" value="${session_id}"/>
+		<c:set var="user_Name" value="${user_Name}"/>
+		
+		<c:set var = 'userStatus' value = "false"></c:set>
+		<c:if test="${session_id ne null }">
+			<c:set var = 'userStatus' value = 'true'/>
+		</c:if>
 
 		<c:if test="${session_id eq null}">
          <script>
             alert("로그인 후 이용해주세요");
             location.replace("${pageContext.request.contextPath}/main.us");
          </script>
-      </c:if>
+     	 </c:if>
 		
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
@@ -47,26 +56,27 @@
 		<!-- Logo -->
 		<header>
 		<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;">
-			${session_id} 님의 이름 변경</h1>
+			${session_id} 님의 '${user_Name}' 이름 변경</h1>
 		</header>
 
 			<!-- Content -->
 		<div class="contents2" id="myPage">
-			<c:if test="${not empty param.update }">
-				<c:if test="${not param.update}">
-			<script>alert("누락된 항목은 없는지, 입력 사항을 다시 확인해주세요.");</script>
-				</c:if>
-			</c:if>
 			<form name="modifyNameForm" action="${pageContext.request.contextPath}/user/UserModifyNameOk.us" method="post">
 				<div class="row gtr-uniform" id="findFrame">
 					<div class="col-12">
+						<br>
+						<p>
+							<input type="hidden" name="session_id" value="${session_id}">
+							<label for="now_Name" style="color: silver;"><span>현재 이름</span></label>
+							<input type="text" name="now_Name" id="now_Name" value="${user_Name}" readonly/>
+						</p>						
 						<br>
 						<p>
 							<input type="text" name="user_Name" id="user_Name" autocomplete="off" required/>
 							<label for="user_Name" style="color: silver;"><span>이름</span></label>
 						</p>						
 					</div>
-			</div>		
+				</div>		
 					
 				<div class="row gtr-uniform" id="loginFrame">
 
