@@ -1,4 +1,4 @@
-package com.eventmoa.app.freeboard;
+package com.eventmoa.app.freeboard.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
