@@ -59,7 +59,6 @@
    </update>
    
    <!-- 주소 변경 -->
-
    <update id="modifyAddress" parameterType="userVO">
    	UPDATE TABLE_USER SET USER_ZIPCODE = #{user_Zipcode}, 
    	USER_ADDRESS = #{user_Address}, 
@@ -67,4 +66,11 @@
    	USER_ADDRESS_ETC = #{user_Address_Etc} WHERE USER_ID = #{user_Id}
    </update>
 
+	<!-- 비밀번호 변경 -->
+   <select id="currentPw" parameterType="string" resultType="string">
+   	SELECT USER_PW FROM TABLE_USER WHERE USER_ID = #{user_Id}
+   </select>
+   <update id="modifyPw" parameterType="map">
+   	UPDATE TABLE_USER SET USER_PW = #{user_Pw} WHERE USER_ID = #{user_Id}
+   </update>
 </mapper>

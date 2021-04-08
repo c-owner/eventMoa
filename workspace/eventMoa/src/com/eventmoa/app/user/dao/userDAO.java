@@ -87,7 +87,7 @@ public class UserDAO {
 		
 		user.put("id", id);
 		user.put("email2", email2);
-		user.put("pw", randomPw);
+		user.put("pw", encrypt(randomPw));
 		if(session.update("User.findPw", user) == 1) {
 			return randomPw;	
 			
@@ -164,5 +164,20 @@ public class UserDAO {
 	}
 	public boolean modifyUserAddress(UserVO u_vo) {
 		return session.update("User.modifyAddress", u_vo) == 1;
+	}
+	
+	
+	//비밀번호 수정
+	public String getUserPw(String id) {
+		String pw = "";
+		pw = decrypt(session.selectOne("User.currentPw", id));
+		return pw;
+	}
+	public boolean modifyPw(String id, String pw) {
+		HashMap<String, String> user = new HashMap<>();
+		user.put("user_Id", id);
+		user.put("user_Pw", encrypt(pw));
+		
+		return session.update("User.modifyPw", user) == 1;
 	}
 }
