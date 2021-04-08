@@ -34,6 +34,8 @@ header.jsp
 => 작업파일 : User_DAO.java / user.xml / Action Controller 추가 / user메인 컨트롤러 /
 
 ———————————————
+> 주소 변경시 로그아웃 안되게 수정 & 안내메시지 추가
+———————————————
 
 
 
