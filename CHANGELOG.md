@@ -65,6 +65,7 @@ categories: project
 - 사용자 이메일 변경 구현 (o)
   => 작업파일 : User_DAO.java / user.xml / Action Controller 추가 / user메인 컨트롤러 수정 /
 - **주소 변경시 로그아웃 안되게 수정 & 안내메시지 추가** - 커밋ver 201
+- 개인정보 폼 수정  - commit ver 202
 
 
 
