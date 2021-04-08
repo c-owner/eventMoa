@@ -70,7 +70,9 @@ header.jsp
 > **myPage_name.jsp**
 > **login.jsp**
 
-----
+- 비밀번호 유효성 검사  
+
+
 
 
 
