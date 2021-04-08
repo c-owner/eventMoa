@@ -117,7 +117,7 @@
          <div id="main">
 
                <!-- Content -->
-               <h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center; padding-top: 10%;">개인 정보</h1>
+               <h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;">개인 정보</h1>
          <div class="contents" id="signupContents" style="padding: 12px 20px; width: 80%; margin: 0 auto;">
             <form name="joinForm" action="${pageContext.request.contextPath}/user/UserJoinOk.us" method="post" style="padding-bottom: 0;">
             <div class="signup_message" id="signup_message">
