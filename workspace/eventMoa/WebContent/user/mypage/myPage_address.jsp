@@ -79,7 +79,7 @@
 						</p>
 						
 						<p>
-							<input type="text" name="user_Address_DETAIL" id="user_Address_DETAIL" class="postcodify_details" autocomplete="off" required/>
+							<input type="text" name="user_Address_DETAIL" id="user_Address_DETAIL" class="postcodify_details" autocomplete="off" onkeyup="enterkey();" required/>
 							<label for="user_Address_DETAIL" style="color: silver;"><span>상세주소</span></label>
 						</p>
 						
@@ -130,6 +130,12 @@
 					return false;
 				}
 			}
+			
+			function enterkey() {
+		        if (window.event.keyCode == 13) {
+		        	modifySubmit();
+		        }
+		    }
 			</script>
 				
 	</body>

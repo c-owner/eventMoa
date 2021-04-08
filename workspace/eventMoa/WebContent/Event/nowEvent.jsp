@@ -71,29 +71,45 @@
 	</body>
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script>
+		var page=1;
 		var cnt = 0;
 		var ul = $("#eventList");
-		var content = "<li><a href=''>"+
-		 "<img src=''onerror='noimage(this)'>"+
-	 	"<dl><dt id='title'>간 판</dt><dd class='#'>아마</dd></dl><dl><dt id='title' class='glist_dt_T2'>지 역</dt><dd class='#'>마이</dd></dl></a></li>"
 		
-	 	$.ajax({
-	 		url:"",
-	 		contentType:"json",
-	 		data:{page:cnt},
-	 		dataType:"application/json",
-	 		success: function(list){
-	 			//for(){}
-	 			ul.append(content);
-	 		}	
+		function getList(){
+	 		var check=false;
+	 		var content = ""
+		 	$.ajax({
+		 		url:"${pageContext.request.contextPath}/eventboard/EventBoardListOK.ev",
+		 		dataType:"text",
+		 		data:{"page":page},
+		 		contentType: "application/json",
+		 		success: function(list){
+		 			//for(){}
+		 			var eventArray=JSON.parse(list);
+		 			if(JSON.parse(list).length==0){
+		 				alert("없습니다.");
+		 				check=true;
+		 			}
+		 			for(let i=0; i<eventArray.length;i++){
+		 				content+="<li><a href=''><img src='"+eventArray[i].file_name+"'onerror='noimage(this)'>";
+		 				content+="<dl><dt id='title'>간 판</dt><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dt id='title' class='glist_dt_T2'>지 역</dt><dd class='#'>"+eventArray[i].board_Location+"</dd></dl></a></li>";
+		 			}
+		 			
+		 			ul.append(content);
+		 		}	
+		 	});
+		 	if(check){
+		 		return;
+		 	}
+		 	page+=1;
+	 	}
+	 	getList();
+	 	$(".btn_open").on("click",function(e){
+	 		//a테크 이동 막기
+	 		e.preventDefault();
+	 		console.log("sad")
+	 		getList();
 	 	});
-	
-	 	
-	 	
-	 	
-	 	
-	 	
-	 	
 	 	
 	</script>
 	

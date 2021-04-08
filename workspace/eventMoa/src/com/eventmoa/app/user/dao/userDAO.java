@@ -65,6 +65,10 @@ public class UserDAO {
 		return (Integer)session.selectOne("User.checkId", id) == 1;
 	}
 	
+	// 이메일 검사 
+	public boolean checkEmail(String new_email) {
+		return (Integer)session.selectOne("User.checkEmail", new_email) == 1;
+	}
 	//이메일 인증번호
 	public boolean checkEmailHash(String email) {
 		return (Integer)session.selectOne("User.checkEmailHash", email) == 1;
@@ -179,5 +183,15 @@ public class UserDAO {
 		user.put("user_Pw", encrypt(pw));
 		
 		return session.update("User.modifyPw", user) == 1;
+	}
+	
+	// 이메일 수정 
+	public boolean modifyEmail(String id, String user_email, String new_email) {
+		HashMap<String, String> user = new HashMap<>();
+		user.put("user_Id", id);
+		user.put("user_Email", user_email);
+		user.put("new_Email", new_email);
+		
+		return session.update("User.modifyEmail", user) == 1;
 	}
 }

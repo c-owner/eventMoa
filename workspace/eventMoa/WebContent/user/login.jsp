@@ -55,10 +55,10 @@
 				<div class="row gtr-uniform" id="loginFrame">
 					<div class="col-12">
 							<label for="user_Id">아이디</label> 
-							<input type="text" name="user_Id" id="user_Id"/>
+							<input type="text" name="user_Id" id="user_Id" onkeyup="enterkey();"/>
 							
 							<label for="user_Pw">비밀번호</label> 
-							<input type="password" name="user_Pw" id="user_Pw"/>
+							<input type="password" name="user_Pw" id="user_Pw" onkeyup="enterkey();"/>
 								
 							<p class="signup-forgotten">
 								<a href="${pageContext.request.contextPath}/user/UserJoin.us" class="sign-up" style="font-weight: bold;">회원가입</a>
@@ -123,6 +123,12 @@
 		form.submit();
 	    
 	}
+	
+	function enterkey() {
+        if (window.event.keyCode == 13) {
+             loginCheck();
+        }
+    }
 	
 	function logout() {
 		location.href = "${pageContext.request.contextPath}/user/UserLogout.us";

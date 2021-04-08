@@ -72,7 +72,7 @@
 						</p>						
 						<br>
 						<p>
-							<input type="text" name="user_Name" id="user_Name" autocomplete="off" maxlength="14" required/>
+							<input type="text" name="user_Name" id="user_Name" autocomplete="off" maxlength="14" onkeyup="enterkey();" required/>
 							<label for="user_Name" style="color: silver;"><span>이름(1~14자 이내)</span></label>
 						</p>						
 					</div>
@@ -114,6 +114,11 @@
 					form.submit();
 				}
 
+				function enterkey() {
+			        if (window.event.keyCode == 13) {
+			        	modifySubmit();
+			        }
+			    }
 			</script>
 			
 				

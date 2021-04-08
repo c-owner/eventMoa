@@ -69,7 +69,7 @@
 				<div class="row gtr-uniform" id="loginFrame">
 					<div class="col-12">
 						<label for="currentPw2" style="text-align: initial;">비밀번호</label> <input type="password"
-								name="currentPw2" id="currentPw2" value="" />
+								name="currentPw2" id="currentPw2" value=""/>
 					</div>
 				</div>
         		<br>
@@ -100,13 +100,13 @@
 						<br>
 						
 						<p>
-							<input type="password" name="user_Pw" id="user_Pw" autocomplete="off" required/>
+							<input type="password" name="user_Pw" id="user_Pw" autocomplete="off" onkeyup="enterkey();" required/>
 							<label for="user_Pw" style="color: silver;"><span>새 비밀번호</span></label>
 							<i toggle="#user_Pw" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
 						</p>
 						
 						<p>
-							<input type="password" name="user_Pw2" id="user_Pw2" autocomplete="off" required/>
+							<input type="password" name="user_Pw2" id="user_Pw2" autocomplete="off" onkeyup="enterkey();" required/>
 							<label for="user_Pw2" style="color: silver;"><span>새 비밀번호 확인</span></label>
 							<i toggle="#user_Pw2" id="eyeIcon" class="fa fa-fw fa-eye field-icon toggle-password"></i>
 							<span id="pwCheck_text"><br></span>
@@ -156,12 +156,13 @@
 					return false;
 				}
 			}
+			
+			
 			</script>
 			<!-- 비밀번호 수정 -->
 			<script>
 			var form = document.modifyPwForm;
 			
-			console.log("대기");
 			function modifySubmit(){
 				var password = $("#user_Pw").val();
 				console.log(password);
@@ -261,6 +262,12 @@
 		         }
 		      }	
 
+		    function enterkey() {
+		        if (window.event.keyCode == 13) {
+		        	modifySubmit();
+		        }
+		    }
+			   
 		   $("input[name='user_Pw']").keyup(function(event){
 		      var pw = $("input[name='user_Pw']").val();
 		      ValidationPw(pw);

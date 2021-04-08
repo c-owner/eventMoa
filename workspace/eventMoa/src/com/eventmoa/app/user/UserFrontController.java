@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.user.mypage.UserAddressModifyAction;
+import com.eventmoa.app.user.mypage.UserEmailModifyAction;
 import com.eventmoa.app.user.mypage.UserNameModifyAction;
 import com.eventmoa.app.user.mypage.UserPwModifyAction;
 
@@ -116,7 +117,7 @@ public class UserFrontController extends HttpServlet {
 		}
 		else if (command.equals("/user/UserCheckEmailOk.us")) {
 			try {
-				// forward = new // Email 중복검사 
+				 forward = new UserCheckEmailOkAction().execute(req, resp); 
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -199,7 +200,7 @@ public class UserFrontController extends HttpServlet {
 		}
 		else if (command.equals("/user/mypage/UserModifyEmailOk.us")) {
 			try {
-//				forward = new UserNameModifyAction().execute(req, resp);  
+				forward = new UserEmailModifyAction().execute(req, resp);  
 			} catch (Exception e) {
 				System.out.println(e);
 			}
