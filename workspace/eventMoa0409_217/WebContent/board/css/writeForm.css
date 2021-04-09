@@ -243,11 +243,6 @@ a {
 	font-size: small; color: red; font-family:sans-serif;
 }
 
-#image_container img {
-	margin-right: 1%;
-}
-
-
 .titleDiv {
 	font-size: 18px;
 }
@@ -271,19 +266,15 @@ div > span {
 	width: 600px;
 }
 
-/* #datepicker1, #datepicker2{
+#datepicker1, #datepicker2{
 	width: 30% ;
-	
-	cursor: pointer;
-} */
+	float: left;
+}
 
 @media screen and (max-width: 660px){
 	.titleDiv2-b input {
 		width: 100%;
-	}
-	/* #datepicker1, #datepicker2{
-		width: 100%;
-	}	 */
+	}	
 }
 .titleDiv2-c {
 	margin-left: 1.5rem;
@@ -300,14 +291,3 @@ div > span {
 	font-size: 18px;
 	padding-top: 14px;
 }
-
-/* #dayText, #dayText2 {
-	margin-left: 10%;
-}
-#mola {
-	margin-left: 11%;
-} */
-/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
-.ui-datepicker-trigger{cursor: pointer;}
-/*datepicer input 롤오버 시 손가락 모양 표시*/
-.hasDatepicker{cursor: pointer;}
