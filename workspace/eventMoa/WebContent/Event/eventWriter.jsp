@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<!--
-페이지 프레임 입니다.
-편하게 복사해서 작업하세요.
--->
 <html>
 	<head>
 		<title>이벤트 모아 (Event Moa)</title>

@@ -31,20 +31,20 @@
 						<p></p>
 						<ul class="faces">
 							<li>
-							<a href="nowEvent.jsp" >
+							<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev" >
 								<span class="image"><img src="${pageContext.request.contextPath}/images/pic06.jpg" alt="" /></span>
 								<h3>진행 이벤트</h3> 
 							</a>
 							</li>
 							<li>
-							<a href="futureEvent.jsp">
+							<a href="${pageContext.request.contextPath}/Event/futureEvent.jsp">
 								<span class="image"><img src="${pageContext.request.contextPath}/images/pic07.jpg" alt=""/></span>
 								<h3>예정 이벤트</h3>
 								
 							</a>
 							</li>
 							<li>
-							<a href="pastEvent.jsp">
+							<a href="${pageContext.request.contextPath}/Event/pastEvent.jsp">
 								<span class="image"><img src="${pageContext.request.contextPath}/images/pic05.jpg" alt="" /></span>
 								<h3>종료 이벤트</h3>
 								
