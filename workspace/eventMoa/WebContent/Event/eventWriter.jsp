@@ -12,22 +12,12 @@
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/board/css/writeForm.css">
 
-		<style>
-			.showstep1{
-				max-height: 300px;
-				overflow: hidden;
-			}
-			.showstep2{
-				max-height: 600px;
-				overflow: hidden;
-			}
-			.content{
-				height: 1000px;
-			}
-			.hide{
-				display: none;
-			}
-		</style>
+		<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> -->
+		<link href="${pageContext.request.contextPath}/dist/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
+		<!-- <link href="${pageContext.request.contextPath}/dist/css/datepicker.css" rel="stylesheet" type="text/css" media="all"> -->
+
+		 <!-- script -->
+		
 	</head>
 	
 	<body class="is-preload">
@@ -61,43 +51,28 @@
 								<div class="imgDiv">
 										 이미지
 										<span>*</span>
-										<small>(0/3)</small>
+										<small>({i}/10)</small>
 								</div>
 								 <div class="sc-div">
 									<ul class="imgDiv2-ul">
 										<li class="imgDiv2-li">
-											<table>
-											<tr height="30px">
-												<td align="center" width="150px">
-													<div align="center">이미지 등록</div>
-												</td>
-												<td style="padding-left:10px;">
-													<input type="file" name="boardFile1" accept="image/jpg, image/jpeg, image/png" multiple>
-													<input type="button" onclick="cancleFile('boardFile1')" value="첨부 삭제">
-												</td>
-											</tr>
-											<tr height="30px">
-												<td align="center" width="150px">
-													<div align="center">이미지 등록</div>
-												</td>
-												<td style="padding-left:10px;">
-													<input type="file" name="boardFile2" accept="image/jpg, image/jpeg, image/png" multiple>
-													<input type="button" onclick="cancleFile('boardFile2')" value="첨부 삭제">
-												</td>
-											</tr>
-											<tr height="30px">
-												<td align="center" width="150px">
-													<div align="center">이미지 등록</div>
-												</td>
-												<td style="padding-left:10px;">
-													<input type="file" name="boardFile3" accept="image/jpg, image/jpeg, image/png" multiple>
-													<input type="button" onclick="cancleFile('boardFile3')" value="첨부 삭제">
-												</td>
-											</tr>
-											</table>
+												<input type="file" class="image_inputType_file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> 
+												<button class="browse-btn">이미지 등록</botton>
+
+										</li>
+										<li class="imgDiv2-li">
+												이미지 대표
 										</li>
 									</ul>
-								 </div>
+										<div id="image_container">
+											<div class="leaderImg">대표이미지</div>
+											<button type="button" class="deleteImg"></button>
+										</div>
+										<div class="imgDiv2 guideText">
+											<b>* 게시글에 올릴 사진을 올려주세요.</b>
+											<br>큰 이미지일 경우 업로드가 안될 수도 있습니다.
+										</div>
+									</div>
 							</li>
 							<li class="liSection">
 									<div class="titleDiv">
@@ -122,27 +97,9 @@
 								</div>
 								<div class="sc-div">
 									<div class="contentDiv2">
+										<!-- <textarea name="textarea" id="textarea" onkeyup="xSize(this)" rows="10" -->
 										<textarea name="textarea" id="textarea" onkeyup="xSize(this)" rows="10"
 													style="resize:inherit;width:100%;height:200px;overflow-y:hidden" ></textarea>
-										<script>
-										    function xSize(e){
-												var t;
-												e.onfocus = function()
-												{
-													t = setInterval(
-														function()
-														{
-															e.style.height = '1px';
-															e.style.height = (e.scrollHeight + 12) + 'px';
-														}, 100);
-												}
-												e.onblur = function()
-												{
-													clearInterval(t);
-												}
-											}
-											xSize(document.getElementById('ta'));
-										</script>
 									</div>
 								</div>
 							</li>
@@ -154,12 +111,43 @@
 								</div>
 								<div class="sc-div">
 									<div class="locationBtn">
-										<button type="button" class="button">내 위치</button>
-										<button type="button" class="button">최근 지역</button>
-										<button type="button" class="button">주소 검색</button>
+										<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
+											<p>
+												<input type="text" name="user_Zipcode" id="user_Zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
+											</p>
+												<input type="button" id="postcodify_search_button" style="height: 35px;" value="검색"/>
+											</ul>
+											<p>
+												<input type="text" name="user_Address" id="user_Address" class="postcodify_address" value="" placeholder="주소" readonly/>
+											</p>
+											<p>
+												<input type="text" name="user_Address_DETAIL" id="user_Address_DETAIL" class="postcodify_details" autocomplete="off" required/>
+												<label for="user_Address_DETAIL" style="color: silver;"><span>상세주소</span></label>
+											</p>
+											<p>
+												<input type="text" name="user_Address_Etc" id="user_Address_Etc" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
+											</p>
 									</div>
 									<br>
-									<input type="text" readonly placeholder="선호 거래 지역을 검색해주세요." class="location" value="">
+								</div>
+							</li>
+							<li class="liSection">
+								<div class="locationDiv">
+									기간 설정
+									<span>*</span>
+								</div>
+								<div class="sc-div">
+									<div class="dayDiv">
+										시작 날짜 
+										~ 
+										종료 날짜
+										<div class="dayDiv2">
+										<input type='text' id="datepicker1" data-position="right top" /> 
+											<span style="float: left;">&nbsp; ~ &nbsp;</span>
+										<input type="text" name="datepicker2" id="datepicker2"/>
+										</div>
+									</div>
+									<br>
 								</div>
 							</li>
 									
@@ -171,7 +159,7 @@
 										</li>
 										
 									</ul>
-								</div>
+								</div> 
 								
 						 
 						</ul>
@@ -179,16 +167,6 @@
 					</section>
 				</main>
 			</div>
-			
-<!-- 			
-				<div class="detailinfo showstep1">
-					<div class="content">
-						<!-- "실제 컨텐츠 표시 영역" -->
-<!--
-					</div>
-				</div>
-				<a href="#" class="btn_open"><i class="fas fa-arrow-down"></i></a>
-				<a href="#" class="btn_close hide"><i class="fas fa-arrow-up"></i></a> -->
 
 
 		</div> <!-- div id="main" end -->
@@ -199,64 +177,63 @@
 	<!-- script -->
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
-	<script>
-		function addBoard(){
-			boardform.submit();
-		}
-		
-		function cancleFile(fileTagName){
-			if($.browser.msie){//ie일 때
-				$("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
-			}else{//그 외 브라우저
-				$("input[name='" + fileTagName + "']").val("");
-			}
-		}
-	</script>			
+	<sciprt src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></sciprt>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+
+	
+	<script src="{pageContext.request.contextPath}/dist/js/datepicker.js"></script>
+	<script src="{pageContext.request.contextPath}/dist/js/datepicker.ko.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function(){ //DOM 생성 후 이벤트 리스너 등록
-    //더보기 버튼 이벤트 리스너
-    document.querySelector('.btn_open').addEventListener('click', function(e){
-        
-        let classList = document.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
-        let contentHeight = document.querySelector('.detailinfo > .content').offsetHeight; //컨텐츠 높이 얻기
+	
+	const browseBtn = document.querySelector('.browse-btn');
+	
+	const fileInput = document.querySelector('.image_inputType_file');
+	fileInput.style.display = "none";
 
-        // // 2단계이면 전체보기로
-        // if(classList.contains('showstep2')){
-        //     classList.remove('showstep2');
-        // }
-        // 1단계이면 2단계로
-        if(classList.contains('showstep1')){
-            classList.remove('showstep1');
-            if(contentHeight > 600){
-                classList.add('showstep2');
-            }else{
-                document.querySelector('.btn_open').classList.add('hide');
-            }
-        }
-        //전체보기시 더보기 버튼 감추기 & 감추기 버튼 표시
-        if(!classList.contains('showstep1') && !classList.contains('showstep2')){
-            e.target.classList.add('hide');
-            document.querySelector('.btn_close').classList.remove('hide');
-            
-        }
-        
-    });
+	$('.browse-btn').click(function (e) {
+		e.preventDefault();
+		$('#image').click();
+	});
+
+function setThumbnail(event) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        var img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        document.querySelector("div#image_container").appendChild(img);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+
+$(function(){
+    $('.datepicker').datepicker({
+        format: 'mm-dd-yyyy',
+        autoclose: true
+        }).on('changeDate', function (selected) {
+            var startDate = new Date(selected.date.valueOf());
+            $('.datepicker2').datepicker('setStartDate', startDate);
+            $('.datepicker2').datepicker('endDate', '+5d')
+        });
 });
-	// 감추기 버튼 이벤트 리스너
-	document.querySelector('.btn_close').addEventListener('click', function(e){
-		e.target.classList.add('hide');
-		document.querySelector('.btn_open').classList.remove('hide'); // 더보기 버튼 감춤
-		document.querySelector('.detailinfo').classList.add('showstep1'); // 초기 감춤 상태로 복귀
+$(function(){
+		$('#datepicker2').datepicker({
+			language: 'ko',
+			timepicker: true,
+			timeFormat: "hh:ii AA"
+		});
+});
+$(function(){
+	$("#datepicker1").datepicker({
+		language: 'ko',
+		timepicker: true,
+		timeFormat: "hh:ii AA"
 	});
+});
 
-	//컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
-	window.addEventListener('load', function(){
-		let contentHeight = document.querySelector('.detailinfo > .content').offsetHeight; //컨텐츠 높이 얻기
-		if(contentHeight <= 300){
-			document.querySelector('.detailinfo').classList.remove('showstep1'); // 초기값보다 작으면 전체 컨텐츠 표시
-			document.querySelector('.btn_open').classList.add('hide'); // 버튼 감춤
-		}
-	});
 </script>
  
  
