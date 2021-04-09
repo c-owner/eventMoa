@@ -60,6 +60,7 @@
 										<li class="imgDiv2-li">
 												<input type="file" class="image_inputType_file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> 
 												<button class="browse-btn">이미지 등록</button>
+												<input type="button" onclick="cancleFile('boardFile3')" value="첨부 삭제">
 
 										</li>
 										<li class="imgDiv2-li">
@@ -198,7 +199,21 @@
 	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 <script>
+
+
+function addBoard(){
+			boardform.submit();
+		}
+		
+		function cancleFile(fileTagName){
+			if($.browser.msie){//ie일 때
+				$("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
+			}else{//그 외 브라우저
+				$("input[name='" + fileTagName + "']").val("");
+			}
+		}
 	
+// --------------------------------------------------------------------
 	const browseBtn = document.querySelector('.browse-btn');
 	
 	const fileInput = document.querySelector('.image_inputType_file');
@@ -213,41 +228,17 @@ function setThumbnail(event) {
     var reader = new FileReader();
     reader.onload = function(event) {
         var img = document.createElement("img");
-        img.setAttribute("src", event.target.result);
+        img.setAttribute("src", event.target.result); //
         document.querySelector("div#image_container").appendChild(img);
     };
     reader.readAsDataURL(event.target.files[0]);
 }
 //--------------------------------------------------------------------------
-
-// $(function(){
-//     $('.datepicker').datepicker({
-//         format: 'mm-dd-yyyy',
-//         autoclose: true
-//         }).on('changeDate', function (selected) {
-//             var startDate = new Date(selected.date.valueOf());
-//             $('.datepicker2').datepicker('setStartDate', startDate);
-//             $('.datepicker2').datepicker('endDate', '+5d')
-//         });
-// });
-// $(function(){
-// 		$('#datepicker2').datepicker({
-// 			language: 'ko',
-// 			timepicker: true,
-// 			timeFormat: "hh:ii AA"
-// 		});
-// });
-// $(function(){
-// 	$("#datepicker1").datepicker({
-// 		language: 'ko',
-// 		timepicker: true,
-// 		timeFormat: "hh:ii AA"
-// 	});
-// });
+ 
 // ----------------------------------------------------------------------------
 </script>
  
-<!-- 두번쨰 -->
+<!-- 두번째 날짜 들어가기 -->
  <script>
   
 

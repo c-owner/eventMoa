@@ -74,6 +74,11 @@ public class BoardFrontController extends HttpServlet{
 					forward.setPath("/Event/eventWriter.jsp");
 				} catch (Exception e) {System.out.println(e);}
 				break;
+				
+				// 테스트 
+			case "/eventboard/eventWrite2.ev":
+//					forward = 
+				break;
 			default:
 				forward = new ActionForward();
 				forward.setRedirect(false);
