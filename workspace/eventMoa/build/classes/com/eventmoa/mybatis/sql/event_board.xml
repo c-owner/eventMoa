@@ -3,7 +3,7 @@
 <!-- alias  freeTalk_boardVO -->
 <mapper namespace="EventBoard">
 <!-- 메인 페이지 -->
-  <select id="listAll" parameterType="map" resultType="eventboardVO">
+  <select id="listAll" parameterType="map" resultType="eventBoardVO">
  	SELECT * FROM 
 			(SELECT ROWNUM R, D.* FROM 
 				(SELECT * FROM TABLE_BOARD_EVENT ORDER BY BOARD_NUM DESC) D) B

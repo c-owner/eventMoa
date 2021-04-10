@@ -4,7 +4,7 @@
 <!-- alias freeTalk_filesVO-->
 
 <mapper namespace="FreeTalkFiles">
-	<insert id="insertFile" parameterType="freeTalk_filesVO">
+	<insert id="insertFile" parameterType="freeFilesVO">
 		INSERT INTO TABLE_FILES VALUES(#{fileName}, #{boardNum})
 	</insert>
  

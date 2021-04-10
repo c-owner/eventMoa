@@ -69,9 +69,9 @@
 								<li><a href="${pageContext.request.contextPath}/user/mypage/pointCharge.jsp">포인트 충전소</a><li>
 							</ul>
 						</li>
-						<li><a href="${pageContext.request.contextPath}/community/freeTalk.jsp">커뮤니티</a>
+						<li><a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo">커뮤니티</a>
 							<ul>
-								<li><a href="${pageContext.request.contextPath}/community/freeTalk.jsp">자유게시판</a><li>
+								<li><a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo">자유게시판</a><li>
 								<li><a href="${pageContext.request.contextPath}/community/reviews.jsp">인증후기</a><li>
 							</ul>
 						</li>

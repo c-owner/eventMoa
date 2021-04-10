@@ -11,25 +11,43 @@
 		<!-- title Icon -->
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/board/css/writeForm.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/writeForm.css">
 
-		<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> -->
-		<link href="${pageContext.request.contextPath}/dist/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<!-- <link href="${pageContext.request.contextPath}/dist/css/datepicker.css" rel="stylesheet" type="text/css" media="all"> -->
+		<!-- 썸네일 이미지 -->
+		<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 
-		 <!-- script -->
+		<!-- timePicker -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/css/datepicker.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/jquery-ui-timepicker-addon.css">
+		<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> -->
 		
+		<style>
+		input[type=file] {
+			display: none;
+		}
+
+	 
+		</style>
 	</head>
 	
 	<body class="is-preload">
-
+		<c:if test="${session_id eq null}">
+			<script>
+			   alert("로그인 후 이용해주세요");
+			   location.replace("${pageContext.request.contextPath}/main.us");
+			</script>
+		 </c:if>
+		 
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 		<p></p>
 
 		
 		
+		<div class='bigPictureWrapper'>
+			<div class='bigPicture'>
+			</div>
+		</div>
 		<!-- Main -->
 		<div id="main">
 			<div class="tagManager">
@@ -55,27 +73,26 @@
 										<span>*</span>
 										<small>({i}/10)</small>
 								</div>
-								 <div class="sc-div">
-									<ul class="imgDiv2-ul">
-										<li class="imgDiv2-li">
-												<input type="file" class="image_inputType_file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> 
-												<button class="browse-btn">이미지 등록</button>
-												<input type="button" onclick="cancleFile('boardFile3')" value="첨부 삭제">
+								<div class="sc-div">
+									<ul class="imgDiv2-ul" id="imgDiv2-ul">
+										<li class="imgDiv2-li asd" id="addImg-li">
+											<a href="javascript:" onclick="fileUploadAction();">파일 업로드</a>
+          									<input type="file" id="input_imgs" multiple/>
+												<!-- <input type="button" onclick="cancleFile('boardFile1')" value="첨부 삭제"> -->
+										</li>
+										<ul class="imgs_wrap">
+											<!-- <img id="img" /> -->
+										</ul>
 
-										</li>
-										<li class="imgDiv2-li">
-												이미지 대표
-										</li>
 									</ul>
-										<div id="image_container">
-											<div class="leaderImg">대표이미지</div>
-											<button type="button" class="deleteImg"></button>
-										</div>
-										<div class="imgDiv2 guideText">
-											<b>* 게시글에 올릴 사진을 올려주세요.</b>
-											<br>큰 이미지일 경우 업로드가 안될 수도 있습니다.
-											<br>같은 이미지를 여러번 올릴 수 없습니다.
-										</div>
+									<div class="imgDiv2 guideText">
+										<br>
+										<a href="javascript:" class="button" onclick="submitAction();">사진 등록</a>
+										<br>
+										<b>* 게시글에 올릴 사진을 올려주세요.</b>
+										<br>용량이 큰 이미지일 경우 업로드가 안될 수도 있습니다.
+										<br>같은 이미지를 여러번 올릴 수 없습니다.
+									</div>
 									</div>
 							</li>
 							<li class="liSection">
@@ -100,20 +117,35 @@
 									<span>*</span>
 								</div>
 								<div class="sc-div">
+									<span>
+										
+									</span>
 									<div class="contentDiv2">
 										<!-- <textarea name="textarea" id="textarea" onkeyup="xSize(this)" rows="10" -->
 										<textarea name="textarea" id="textarea" onkeyup="xSize(this)" rows="10"
 													style="resize:inherit;width:100%;height:200px;overflow-y:hidden" ></textarea>
+													<script>
+														function xSize(e)
+														{
+															e.style.height = '1px';
+															e.style.height = (e.scrollHeight + 12) + 'px';
+														}
+													</script>
+													​
 									</div>
 								</div>
 							</li>
 
 							<li class="liSection">
 								<div class="locationDiv">
-									이벤트 지역
-									<span>*</span>
+									이벤트 <br> 지역
 								</div>
 								<div class="sc-div">
+									<span>
+										이벤트 장소의 위치를 입력 해주세요.
+									<br>
+										이벤트 위치는 필수 사항은 아니지만, 사용자 위치 안내에 불리할 수 있습니다.
+									</span>
 									<div class="locationBtn">
 										<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
 											<p>
@@ -137,24 +169,20 @@
 							</li>
 							<li class="liSection">
 								<div class="locationDiv">
-									기간 설정
+									기간 <br> 설정
 									<span>*</span>
 								</div>
 								<div class="sc-div">
 									<div class="dayDiv">
-										<!-- <span id="dayText">시작 날짜  </span>
-										<font id="mola"> 	~ 		</font> 
-										<span id="dayText2">종료 날짜 </span> -->
-										<!-- <font id="mola"> 	~ 		</font>  -->
-										<div class="dayDiv2">
-											<!-- <label for="datepicker1">시작 날짜 </label>
-											<input type='text' id="datepicker1" data-position="right top" /> 
-											<span style="float: left; color: black;">&nbsp; ~ &nbsp;</span>
-											<label for="datepicker2">종료 날짜 </label>
-										<input type="text" name="datepicker2" id="datepicker2"/> -->
-										
-											시작 날짜: <input type="text" id="datepicker">
-											종료 날짜: <input type="text" id="datepicker2">
+										<span>	시작과 종료 날짜를 지정하세요.
+										<br>	기간에 따라 포인트 사용 금액이 달라집니다. 
+										<br>	시작기간이 종료기간 이후일 수 없습니다.
+										<br>	종료기간이 시작기간 이전일 수 없습니다.
+										</span>
+										<br>
+										<div class="double">
+											<input id="datepicker1" type="text" placeholder="시작날짜"> -
+											<input id="datepicker2" type="text" placeholder="종료날짜">
 										</div>
 									</div>
 									<br>
@@ -165,7 +193,7 @@
 									<br>
 									<ul class="actions">
 										<li style="margin: 0 auto;">
-										<a href="javascript:formSubmit()" class="button primary" type="submit">등록하기</a>
+										<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
 										</li>
 										
 									</ul>
@@ -182,99 +210,209 @@
 		</div> <!-- div id="main" end -->
 
 		<!-- Footer -->
-			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
-
-	<!-- script -->
-	<!-- <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
-
-	<!-- <sciprt src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></sciprt>
-	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
-
-	
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<!-- <script src="{pageContext.request.contextPath}/dist/js/datepicker.js"></script>-->
-	<!-- <script src="{pageContext.request.contextPath}/dist/js/datepicker.ko.js"></script>  -->
-	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
-<script>
-
-
-function addBoard(){
-			boardform.submit();
-		}
+		<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 		
-		function cancleFile(fileTagName){
-			if($.browser.msie){//ie일 때
-				$("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
-			}else{//그 외 브라우저
-				$("input[name='" + fileTagName + "']").val("");
+		<!-- script -->
+		<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
+		
+		<!-- 썸네일 + Calander  UI  -->
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" ></script>
+		<!--  -->
+		
+		<!-- 우편번호 -->
+		<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+		<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+		<script>var contextPath = "${pageContext.request.contextPath}"; </script>
+		<script>
+			
+			//--------------------------------------------------------------------------
+			function addBoard(){
+				writeEventForm.submit();
 			}
-		}
-	
-// --------------------------------------------------------------------
-	const browseBtn = document.querySelector('.browse-btn');
-	
-	const fileInput = document.querySelector('.image_inputType_file');
-	fileInput.style.display = "none";
+			// ----------------------------------썸네일----------------------------------
+			// 이미지 정보 담는 배열
+			var sel_files = [];
 
-	$('.browse-btn').click(function (e) {
-		e.preventDefault();
-		$('#image').click();
-	});
+			$(document).ready(function(){
+				$("#input_imgs").on("change", handleImgFileSelect);
+				
+			});
+			// function clickLeaderImg() {
+					
+			// }
+			function handleImgFileSelect(e){ 
+				// 이미지 정보들을 초기화
+				sel_files = [];
+				$(".imgs_wrap").empty();
 
-function setThumbnail(event) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-        var img = document.createElement("img");
-        img.setAttribute("src", event.target.result); //
-        document.querySelector("div#image_container").appendChild(img);
-    };
-    reader.readAsDataURL(event.target.files[0]);
-}
-//--------------------------------------------------------------------------
+				var files = e.target.files;
+				var filesArr = Array.prototype.slice.call(files);
+
+				var index = 0;
+				
+				filesArr.forEach(function(f){
+					if(!f.type.match("image.*")) {
+						alert("확장자는 이미지 확장자만 가능합니다.");
+						return;
+					}
+					sel_files.push(f);
+
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						var html = "<a href=\"javascript:void(0);\" id=\"img_id_"+index+"\"><li id='imageList_"+index+"' class='imgDiv2-li'><div id='leaderImg_"+index+"' class='leaderImg'></div><button type='button' class=\"deleteImg\" onclick=\"deleteImageAction("+index+")\"></button><img src=\"" + e.target.result +"\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></li></a>";
+						$(".imgs_wrap").append(html);
+						index++;
+					document.getElementById("leaderImg_0").style.display = "block";
+					document.getElementById("leaderImg_0").innerHTML = "대표 이미지";
+					}
+					reader.readAsDataURL(f);
+				});
+
+			}
+
+			function deleteImageAction(index) {
+				console.log("index : "+index);
+				console.log("sel length : "+sel_files.length);
+
+				sel_files.splice(index, 1);
+
+				var img_id = "#img_id_"+index;
+				$(img_id).remove();
+			}
+
+			function fileUploadAction() {
+				console.log("fileUploadAction");
+				$("#input_imgs").trigger('click');
+			}
+
+			function submitAction() {
+				console.log("업로드 파일 갯수 : "+sel_files.length);
+				var data = new FormData();
+
+				for ( var i = 0, len=sel_files.length; i<len; i++){
+					var name = "image_"+i;
+					data.append(name, sel_files[i]);
+				}
+				data.append("image_count", sel_files.length);
+
+				if(sel_files.length < 1 ) {
+					alert("이미지를 한 개 이상 선택해야 합니다.");
+					return;
+				}
+				// 파일 첨부 10개 제한
+				if(sel_files.length > 10) {
+					alert("사진은 10장 이내로 업로드 하실 수 있습니다.");
+					return;
+				}
+
+				// 컨트롤러 송신
+				var req = new XMLHttpRequest();
+				req.open("POST", contextPath + "/AddImgOkAction.ev");
+				
+				
+				req.onload = function(e) {
+					if(this.status == 200 ) {
+						console.log("Result : "+e.currentTarget.responseText);
+					}
+				}
+
+				req.send(data);
+				
+			}
+			//-------------------------------이미지 드래그------------------------------------
+			$(function() {
+				$(".imgs_wrap").sortable();
+				$(".imgs_wrap").disableSelection();
+			});
+			//--------------------------------------------------------------------------
+			</script>
+<!-- // ----------------------------------------------------------------------------  -->
  
-// ----------------------------------------------------------------------------
-</script>
- 
-<!-- 두번째 날짜 들어가기 -->
+<!-- 날짜 넣기 -->
+<script src="${pageContext.request.contextPath}/dist/js/datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/dist/js/i18n/datepicker.ko.js"></script>
+<!-- timePicker -->
+<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+<script src="${pageContext.request.contextPath}/dist/jquery-ui-timepicker-addon.js"></script>
  <script>
   
-
- $(function() {
-            //모든 datepicker에 대한 공통 옵션 설정
-            $.datepicker.setDefaults({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능                
-                // ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                // ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
-				,nextText: '다음 달'
-				,prevText: '이전 달'
-            });
  
-            //input을 datepicker로 선언
-            $("#datepicker").datepicker();                    
-            $("#datepicker2").datepicker();
-            
-            //From의 초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            //To의 초기값을 내일로 설정
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        });
-   
+
+        //두개짜리 제어 연결된거 만들어주는 함수
+        datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
+
+        /*
+            * 달력 생성
+            * @param sDate 파라미터만 넣으면 1개짜리 달력 생성
+            * @example   datePickerSet($("#datepicker"));
+            * 
+            * 
+            * @param sDate, 
+            * @param eDate 2개 넣으면 연결달력 생성되어 서로의 날짜를 넘어가지 않음
+            * @example   datePickerSet($("#datepicker1"), $("#datepicker2"));
+            */
+        function datePickerSet(sDate, eDate, flag) {
+			
+            //시작 ~ 종료 2개 짜리 달력 datepicker	
+            if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
+                var sDay = sDate.val();
+                var eDay = eDate.val();
+
+                if (flag && !isValidStr(sDay) && !isValidStr(eDay)) { //처음 입력 날짜 설정, update...			
+                    var sdp = sDate.datepicker().data("datepicker");
+                    sdp.selectDate(new Date(sDay.replace(/-/g, "/")));  //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+
+                    var edp = eDate.datepicker().data("datepicker");
+                    edp.selectDate(new Date(eDay.replace(/-/g, "/")));  //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+                }
+
+                //시작일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+                if (!isValidStr(eDay)) {
+                    sDate.datepicker({
+ 
+                        maxDate: new Date(eDay.replace(/-/g, "/"))
+                    });
+                }
+                sDate.datepicker({
+                    language: 'ko',
+					timepicker: true,
+					timeFormat: "hh:ii AA",
+					controlType:'select',
+					oneLine:true,
+                    autoClose: true,
+                    onSelect: function () {
+                        datePickerSet(sDate, eDate);
+                    }
+                });
+
+                //종료일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+                if (!isValidStr(sDay)) {
+                    eDate.datepicker({
+                        minDate: new Date(sDay.replace(/-/g, "/"))
+                    });
+                }
+                eDate.datepicker({
+                    language: 'ko',
+                    autoClose: true,
+					timepicker: true,
+					timeFormat: "hh:ii AA",
+					controlType:'select',
+					oneLine:true,
+                    onSelect: function () {
+                        datePickerSet(sDate, eDate);
+                    }
+                });
+            }
+
+
+            function isValidStr(str) {
+                if (str == null || str == undefined || str == "")
+                    return true;
+                else
+                    return false;
+            }
+        }
  </script>
 	</body>
 </html>

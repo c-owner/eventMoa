@@ -20,7 +20,7 @@ drop sequence REPLY_SEQ_freeTalk;
 ------------------------- 자유게시판 sql -------------------------
 -- freeTalk --------------------------
 -- board --------
-
+DROP SEQUENCE BOARD_SEQ_freeTalk;
 CREATE SEQUENCE BOARD_SEQ_freeTalk;
 
 CREATE TABLE TABLE_BOARD_freeTalk(
@@ -37,6 +37,12 @@ CREATE TABLE TABLE_BOARD_freeTalk(
 
 -- ALTER TABLE TABLE_BOARD_freeTalk ADD READCOUNT NUMBER(10) DEFAULT 0;
 -- ALTER TABLE TABLE_BOARD_freeTalk ADD LOCATION VARCHAR2(); 
+
+ 
+INSERT INTO TABLE_BOARD_freeTalk
+VALUES(BOARD_SEQ_freeTalk.NEXTVAL, 21, '테스트 제목', '테스트 내용', 'admin1', 1, SYSDATE);
+SELECT * FROM TABLE_BOARD_freeTalk ORDER BY 1 DESC; 
+
 
 
 SELECT * FROM TABLE_BOARD_freeTalk ORDER BY 1 DESC;

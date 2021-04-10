@@ -75,9 +75,14 @@ public class BoardFrontController extends HttpServlet{
 				} catch (Exception e) {System.out.println(e);}
 				break;
 				
-				// 테스트 
-			case "/eventboard/eventWrite2.ev":
-//					forward = 
+				// IMG 임시 첨부 컨트롤러 // 재사용 용도가 될 것 같아서 eventboard/ 뺐음.
+			case "/AddImgOkAction.ev":
+				try {
+					forward = new AddImgOkAction().execute(req, resp);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					
 				break;
 			default:
 				forward = new ActionForward();

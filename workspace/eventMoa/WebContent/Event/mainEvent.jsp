@@ -28,6 +28,7 @@
 	
 <section id="" class="wrapper special">
 						<h1 style="font-family: 'Jua'; font-size: 22px;">메인 이벤트</h1>
+						<a href="${pageContext.request.contextPath}/eventboard/EventWriter.ev" class="button">이벤트 등록하러 가기!!</a>
 						<p></p>
 						<ul class="faces">
 							<li>
