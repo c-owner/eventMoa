@@ -356,7 +356,8 @@ div > span {
 		width: 100%;
 	}
 	a.button{
-		width: 100%;
+		width: 50%;
+		margin-right: 10%;
 	}
 
 	.titleDiv2-b {
@@ -391,7 +392,8 @@ div > span {
 		width: 100%;
 	}
 	a.button{
-		width: 100%;
+		width: 50%;
+		margin-right: 10%;
 	}
 
 	.titleDiv2-b {

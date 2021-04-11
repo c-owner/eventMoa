@@ -47,7 +47,10 @@ public class EventBoardListOKAction implements Action {
 //			jsonObj.put("board_Id", board.getBoard_Id());
 //			jsonObj.put("board_View", board.getBoard_View());
 //			jsonObj.put("board_Date", board.getBoard_Date());
-			jsonObj.put("board_Location", board.getBoard_Location());
+			jsonObj.put("board_Zipcode", board.getBoard_Zipcode());
+			jsonObj.put("board_Address", board.getBoard_Address());
+			jsonObj.put("board_Address_Detail", board.getBoard_Address_Detail());
+			jsonObj.put("board_Address_Etc", board.getBoard_Address_etc());
 			jsonObj.put("file_name", board.getFile_name());
 			
 			jsonArray.add(jsonObj);

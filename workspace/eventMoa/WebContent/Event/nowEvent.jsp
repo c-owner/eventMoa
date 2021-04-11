@@ -92,7 +92,7 @@
 		 			}
 		 			for(let i=0; i<eventArray.length;i++){
 		 				content+="<li><a href=''><img src='"+eventArray[i].file_name+"'onerror='noimage(this)'>";
-		 				content+="<dl><dt id='title'>간 판</dt><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dt id='title' class='glist_dt_T2'>지 역</dt><dd class='#'>"+eventArray[i].board_Location+"</dd></dl></a></li>";
+		 				content+="<dl><dt id='title'>간 판</dt><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dt id='title' class='glist_dt_T2'>지 역</dt><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>";
 		 			}
 		 			
 		 			ul.append(content);

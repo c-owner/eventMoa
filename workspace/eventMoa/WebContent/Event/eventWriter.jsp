@@ -67,24 +67,23 @@
 			<div class="mainManager">
 				<main class="mainClass">
 					<section class="mainSection">
-						<form name="writeEventForm" action="${pageContext.request.contextPath}/eventboard/EventWriterOk.ev" method="post" >
+						<form name="writeEventForm" action="${pageContext.request.contextPath}/eventboard/EventWriterOk.ev" method="post" enctype="multipart/form-data">
 						<h2>기본정보<span>*필수항목</span></h2>
 						<ul class="ulSection">
 							<li class="liSection"> 
 								<div class="imgDiv">
 										 이미지
 										<span>*</span>
-										<small>({i}/10)</small>
+										<small>(${i}/10)</small>
 								</div>
 								<div class="sc-div">
 									<ul class="imgDiv2-ul" id="imgDiv2-ul">
 										<li class="imgDiv2-li asd" id="addImg-li">
-											<a href="javascript:" onclick="fileUploadAction();"><i class="fas fa-camera" style="margin-left: 40%;"></i><br />파일 업로드</a>
-          									<input type="file" id="input_imgs" multiple/>
-												<!-- <input type="button" onclick="cancleFile('boardFile1')" value="첨부 삭제"> -->
+											<a href="javascript:" onclick="fileUploadAction();" id="fileText"><i class="fas fa-camera" style="margin-left: 40%;"></i><br />이미지 등록</a>
+          									<input type="file" name="input_imgs" id="input_imgs" multiple/>
 										</li>
 										<ul class="imgs_wrap">
-											<!-- <img id="img" /> -->
+
 										</ul>
 
 									</ul>
@@ -93,9 +92,9 @@
 									</div>
 									<div class="imgDiv2 guideText">
 										<br>
-										<b>* 게시글에 올릴 사진을 올려주세요.</b>
-										<br>용량이 큰 이미지일 경우 업로드가 안될 수도 있습니다.
-										<br>같은 이미지를 여러번 올릴 수 없습니다.
+										<b> * 게시글에 올릴 사진을 올려주세요.</b>
+										<br>❗️ 용량이 큰 이미지일 경우 업로드가 안될 수도 있습니다. (제한: 10M)
+										<br>❗️ 같은 이미지를 여러번 올릴 수 없습니다.
 									</div>
 									</div>
 							</li>
@@ -159,19 +158,19 @@
 									<div class="locationBtn">
 										<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
 											<p>
-												<input type="text" name="user_Zipcode" id="user_Zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
+												<input type="text" name="zipcode" id="zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" readonly/>
 											</p>
 												<input type="button" id="postcodify_search_button" style="height: 35px;" value="검색"/>
 											</ul>
 											<p>
-												<input type="text" name="user_Address" id="user_Address" class="postcodify_address" value="" placeholder="주소" readonly/>
+												<input type="text" name="address" id="address" class="postcodify_address" value="" placeholder="주소" readonly/>
 											</p>
 											<p>
-												<input type="text" name="user_Address_DETAIL" id="user_Address_DETAIL" class="postcodify_details" autocomplete="off" required/>
-												<label for="user_Address_DETAIL" style="color: silver;"><span>상세주소</span></label>
+												<input type="text" name="address_detail" id="address_detail" class="postcodify_details" autocomplete="off" required/>
+												<label for="address_detail" style="color: silver;"><span>상세주소</span></label>
 											</p>
 											<p>
-												<input type="text" name="user_Address_Etc" id="user_Address_Etc" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
+												<input type="text" name="address_etc" id="address_etc" class="postcodify_extra_info" value="" placeholder="참고항목" readonly/>
 											</p>
 									</div>
 									<br>
@@ -210,6 +209,7 @@
 											<a href="javascript:backPage();" class="button" type="submit">돌아가기</a>
 										</li>
 										<li style="margin: 0 auto;">
+											<input name="board_Id" type="hidden" size="10" maxlength="10" value="${session_id}" readonly />
 											<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
 										</li>
 										
@@ -298,11 +298,32 @@
 					form.datepicker1.focus();
 					return;
 				}
-			var x = confirm("정말 글을 등록하시겠습니까?");
+				else if(sel_files.length < 1 ) {
+						alert("이미지를 한 개 이상 등록해야 합니다.");
+						form.input_imgs.focus();
+						return;
+				}
+				// 파일 첨부 10개 제한
+				else if(sel_files.length > 10) {
+					alert("사진은 10장 이내로 업로드 하실 수 있습니다.");
+					form.input_imgs.focus();
+					return;
+				}
+				else if(form.zipcode.value.length < 1 || form.address.value.length < 1 || form.address_etc.value.length <1 ) {
+					alert("주소를 입력해주세요.");
+					return;
+				}
+				else if(form.address_detail < 1 ) {
+					alert("상세주소를 정확히 입력하지 않으면 정확한 위치 확인이 불가능합니다.");
+					return;
+				}
+
+			var x = confirm("정말 이대로 글을 등록하시겠습니까?");
 				if(x) {
+					// 사진 업로드 submit 
 					writeEventForm.submit();
 				} else {
-					alert("취소 하셨습니다.");	
+					alert("이어서 글을 작성하실 수 있습니다.");	
 					return;
 				}
 			}
@@ -333,10 +354,11 @@
 			$(document).ready(function(){
 				$("#input_imgs").on("change", handleImgFileSelect);
 				
-			});
-			// function clickLeaderImg() {
-					
-			// }
+			});	
+			function fileUploadAction() {
+				$("#input_imgs").trigger('click');
+			}
+			 
 			function handleImgFileSelect(e){ 
 				// 이미지 정보들을 초기화
 				sel_files = [];
@@ -344,9 +366,9 @@
 
 				var files = e.target.files;
 				var filesArr = Array.prototype.slice.call(files);
-
-				var index = 0;
 				
+				var index = 0;
+		
 				filesArr.forEach(function(f){
 					if(!f.type.match("image.*")) {
 						alert("확장자는 이미지 확장자만 가능합니다.");
@@ -356,7 +378,11 @@
 
 					var reader = new FileReader();
 					reader.onload = function(e) {
-						var html = "<a href=\"javascript:void(0);\" id=\"img_id_"+index+"\"><li id='imageList_"+index+"' class='imgDiv2-li'><div id='leaderImg_"+index+"' class='leaderImg'></div><button type='button' class=\"deleteImg\" onclick=\"deleteImageAction("+index+")\"></button><img src=\"" + e.target.result +"\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></li></a>";
+						var html = "<a href=\"javascript:void(0);\" id=\"img_id_"+index+"\">"
+							+" <li id='imageList_"+index+"' class='imgDiv2-li'><div id='leaderImg_"+index+"' class='leaderImg'></div>"
+							+" <button type='button' class=\"deleteImg\" onclick=\"deleteImageAction("+index+")\"></button>"
+							+" <img src=\"" + e.target.result +"\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'>"
+							+" </li></a>";
 						$(".imgs_wrap").append(html);
 						index++;
 					document.getElementById("leaderImg_0").style.display = "block";
@@ -377,10 +403,6 @@
 				$(img_id).remove();
 			}
 
-			function fileUploadAction() {
-				console.log("fileUploadAction");
-				$("#input_imgs").trigger('click');
-			}
 
 			function submitAction() {
 				console.log("업로드 파일 갯수 : "+sel_files.length);
@@ -392,28 +414,35 @@
 				}
 				data.append("image_count", sel_files.length);
 
-				if(sel_files.length < 1 ) {
-					alert("이미지를 한 개 이상 선택해야 합니다.");
-					return;
-				}
-				// 파일 첨부 10개 제한
-				if(sel_files.length > 10) {
-					alert("사진은 10장 이내로 업로드 하실 수 있습니다.");
-					return;
-				}
-
+ 
 				// 컨트롤러 송신
-				var req = new XMLHttpRequest();
-				req.open("POST", contextPath + "/AddImgOkAction.ev");
-				
-				
-				req.onload = function(e) {
-					if(this.status == 200 ) {
-						console.log("Result : "+e.currentTarget.responseText);
-					}
-				}
+				// var req = new XMLHttpRequest();
+				// req.open("POST", contextPath + "/AddImgOkAction.ev");
 
-				req.send(data);
+				// req.onload = function(e) {
+				// 	if(this.status == 200 ) {
+				// 		console.log("Result : "+e.currentTarget.responseText);
+				// 	}
+				// }
+				// req.send(data);
+				$.ajax({
+					url: contextPath + "/eventboard/EventWriterOk.ev",
+					enctype: "multipart/form-data",
+					type: "post",
+					data: data,
+					processData: false,
+					contentType: false,
+					timeout: 500000,
+					success: function() {
+						$("#fileText").text("업로드 중...");
+						setTimeout(function(){
+							$("#fileText").text("이미지 등록");
+						}, 5000);
+					},
+					error:function(){	//통신 오류
+	 					alert("네트워크 서버가 불안정합니다. 다시 시도해주세요. (연결 유실) ");
+	 				}
+				});
 				
 			}
 			//-------------------------------이미지 드래그------------------------------------

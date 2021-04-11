@@ -8,6 +8,8 @@ import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.eventboard.dao.EventDAO;
 import com.eventmoa.app.eventboard.dao.EventFIlesDAO;
 import com.eventmoa.app.eventboard.vo.EventBoardVO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class EventBoardWriterOkAction implements Action {
 
@@ -16,11 +18,54 @@ public class EventBoardWriterOkAction implements Action {
 		
 		EventBoardVO ev_vo = new EventBoardVO();
 		EventDAO ev_dao = new EventDAO();
-		EventFIlesDAO evFile_dao = new EventFIlesDAO();
+		EventFIlesDAO evf_dao = new EventFIlesDAO();
 		ActionForward forward = null;
 		
-		// 임시폴더
-		String tempFolder = ""
+		/* 
+		  
+		--- MAC OS ----
+		
+		 */
+		// 업로드
+		String uploadFolder = "/Users/corner/eventMoa-Project/workspace/eventMoa/WebContent/app/eventFilesUpload";
+		
+		/* 
+		  
+		--- Windows OS ----
+		String tempFolder = "";
+		 
+		 */
+		
+		int fileSize = 1024 * 1024 * 10; // 10M
+		
+		MultipartRequest multi = null;
+		
+		multi = new MultipartRequest(req, uploadFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		ev_vo.setBoard_Title(multi.getParameter("titleName"));
+		ev_vo.setBoard_Content(multi.getParameter("content"));
+		ev_vo.setBoard_Id(multi.getParameter("board_Id"));
+		ev_vo.setBoard_Zipcode(multi.getParameter("zipcode"));
+		ev_vo.setBoard_Address(multi.getParameter("address"));
+		ev_vo.setBoard_Address_Detail(multi.getParameter("address_detail"));
+		ev_vo.setBoard_Address_etc(multi.getParameter("address_etc"));
+		ev_vo.setEVT_START_DT(multi.getParameter("datepicker1"));
+		ev_vo.setEVT_END_DT(multi.getParameter("datepicker2"));
+		ev_vo.setFile_name(multi.getParameter("input_imgs"));
+		
+		System.out.println(ev_vo.toString());
+		
+		if(ev_dao.insertBoard(ev_vo)) {
+			if(evf_dao.insertFiles(ev_dao.getBoardNum(), multi)) {
+				
+			forward = new ActionForward();
+			forward.setRedirect(true);
+			forward.setPath(req.getContextPath() + "/eventboard/EventBoardList.ev");
+			}
+			
+		}
+		
+		
 		
 		
 		return forward;

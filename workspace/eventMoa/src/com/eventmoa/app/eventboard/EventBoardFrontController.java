@@ -12,7 +12,7 @@ import com.eventmoa.action.ActionForward;
 
 
 
-public class BoardFrontController extends HttpServlet{
+public class EventBoardFrontController extends HttpServlet{
 
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

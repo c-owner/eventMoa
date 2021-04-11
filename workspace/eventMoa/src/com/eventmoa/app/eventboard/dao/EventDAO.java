@@ -14,18 +14,27 @@ public class EventDAO {
 	SqlSessionFactory sessionf = SqlMapConfig.getSqlMapInstance();
 	SqlSession session;
 
-public EventDAO() {
-	session = sessionf.openSession(true);
-}
-//페이지 별 게시글 목록
-public List<EventBoardVO> getBoardList(int startRow,int endRow){
-	HashMap<String, Integer> pageMap = new HashMap<>();
+	public EventDAO() {
+		session = sessionf.openSession(true);
+	}
+	//페이지 별 게시글 목록
+	public List<EventBoardVO> getBoardList(int startRow,int endRow){
+		HashMap<String, Integer> pageMap = new HashMap<>();
+		
+		pageMap.put("startRow", startRow);
+		pageMap.put("endRow", endRow);
+		System.out.println(pageMap);
+		return session.selectList("EventBoard.listAll", pageMap);
+	}
+
+	// 페이지 작성
+	public boolean insertBoard(EventBoardVO ev) {
+		return session.insert("EventBoard.insertEventBoard", ev) == 1;
+	}
 	
-	pageMap.put("startRow", startRow);
-	pageMap.put("endRow", endRow);
-	System.out.println(pageMap);
-	return session.selectList("EventBoard.listAll", pageMap);
-}
+	public int getBoardNum() {
+		return session.selectOne("EventBoard.getBoardNum");
+	}
 
 }
 

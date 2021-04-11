@@ -27,7 +27,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>EventBoardFrontController</servlet-name>
-    <servlet-class>com.eventmoa.app.eventboard.BoardFrontController</servlet-class>
+    <servlet-class>com.eventmoa.app.eventboard.EventBoardFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EventBoardFrontController</servlet-name>
