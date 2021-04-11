@@ -53,10 +53,13 @@
 			<div class="tagManager">
 				<nav class="tagNav">
 					<div class="tagNav-div1">
-						<a class="tagNav-div-a" href="${pageContext.request.contextPath}/board/eventWrite.jsp">이벤트등록</a>
+						<a class="tagNav-div-a" href="${pageContext.request.contextPath}/eventboard/EventWriter.ev">이벤트등록</a>
 					</div>
 					<div class="tagNav-div2">
-						<a class="tagNav-div-a" href="${pageContext.request.contextPath}/board/eventWrite.jsp">이벤트관리</a>
+						<a class="tagNav-div-a" href="${pageContext.request.contextPath}/eventboard/EventWriter.ev">이벤트관리</a>
+					</div>
+					<div class="tagNav-div3">
+						<a class="tagNav-div-a" href="javascript:listPage();">목록</a>
 					</div>
 				</nav>
 			</div>
@@ -64,7 +67,7 @@
 			<div class="mainManager">
 				<main class="mainClass">
 					<section class="mainSection">
-						<form name="writeEventForm" action="${pageContext.request.contextPath}/board/eventWrite.bo" method="post" >
+						<form name="writeEventForm" action="${pageContext.request.contextPath}/eventboard/EventWriterOk.ev" method="post" >
 						<h2>기본정보<span>*필수항목</span></h2>
 						<ul class="ulSection">
 							<li class="liSection"> 
@@ -76,7 +79,7 @@
 								<div class="sc-div">
 									<ul class="imgDiv2-ul" id="imgDiv2-ul">
 										<li class="imgDiv2-li asd" id="addImg-li">
-											<a href="javascript:" onclick="fileUploadAction();">파일 업로드</a>
+											<a href="javascript:" onclick="fileUploadAction();"><i class="fas fa-camera" style="margin-left: 40%;"></i><br />파일 업로드</a>
           									<input type="file" id="input_imgs" multiple/>
 												<!-- <input type="button" onclick="cancleFile('boardFile1')" value="첨부 삭제"> -->
 										</li>
@@ -85,9 +88,10 @@
 										</ul>
 
 									</ul>
-									<div class="imgDiv2 guideText">
-										<br>
+									<div class="imgDiv2-Btn">
 										<a href="javascript:" class="button" onclick="submitAction();">사진 등록</a>
+									</div>
+									<div class="imgDiv2 guideText">
 										<br>
 										<b>* 게시글에 올릴 사진을 올려주세요.</b>
 										<br>용량이 큰 이미지일 경우 업로드가 안될 수도 있습니다.
@@ -146,9 +150,11 @@
 								</div>
 								<div class="sc-div">
 									<span>
+										<p>
 										이벤트 장소의 위치를 입력 해주세요.
-									<br>
+										<br>
 										이벤트 위치는 필수 사항은 아니지만, 사용자 위치 안내에 불리할 수 있습니다.
+										</p>
 									</span>
 									<div class="locationBtn">
 										<ul class="actions" style="display: flex; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-bottom: auto;">
@@ -178,14 +184,18 @@
 								</div>
 								<div class="sc-div">
 									<div class="dayDiv">
-										<span>	시작과 종료 날짜를 지정하세요.
-										<br>	기간에 따라 포인트 사용 금액이 달라집니다. 
-										<br>	시작기간이 종료기간 이후일 수 없습니다.
-										<br>	종료기간이 시작기간 이전일 수 없습니다.
+										<span>
+											<p>
+													시작과 종료 날짜를 지정하세요.
+											<br>	기간에 따라 포인트 사용 금액이 달라집니다. 
+											<br>	시작기간이 종료기간 이후일 수 없습니다.
+											<br>	종료기간이 시작기간 이전일 수 없습니다.
+
+											</p>
 										</span>
 										<br>
 										<div class="double">
-											<input id="datepicker1" name="datepicker1" type="text" placeholder="시작날짜"> -
+											<input id="datepicker1" name="datepicker1" type="text" placeholder="시작날짜"> ~ 
 											<input id="datepicker2" name="datepicker2" type="text" placeholder="종료날짜">
 										</div>
 									</div>
@@ -197,7 +207,10 @@
 									<br>
 									<ul class="actions">
 										<li style="margin: 0 auto;">
-										<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
+											<a href="javascript:backPage();" class="button" type="submit">돌아가기</a>
+										</li>
+										<li style="margin: 0 auto;">
+											<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
 										</li>
 										
 									</ul>
@@ -258,39 +271,61 @@
 			var form = document.writeEventForm;
 			function addBoard(){
 
-			//    유효성 검사  
-			
-		
+				//    유효성 검사  
+				if(form.titleName.value.length > 40 ) {
+					alert("제목은 40자 이상 넘길 수 없습니다.");
+					form.titleName.focus();
+					return;
+				}
+				else if(form.titleName.value.length == 0 ) {
+					alert("제목을 입력 해주세요.");
+					form.titleName.focus();
+					return;
+				}
+				else if(form.content.value.length == 0 ) {
+					alert("내용을 입력 해주세요.");
+					form.content.focus();
+					return;
+				} 
+				else if (form.content.value.length > 3000) {
+					alert("3000자 이상 입력하실 수 없습니다.");
+					form.content.focus();
+					return;
+				}
 
-			if(form.titleName.value.length > 40 ) {
-				alert("제목은 40자 이상 넘길 수 없습니다.");
-				form.titleName.focus();
-				return;
-			}
-			else if(form.titleName.value.length == 0 ) {
-				alert("제목을 입력 해주세요.");
-				form.titleName.focus();
-				return;
-			}
-			else if(form.content.value.length == 0 ) {
-				alert("내용을 입력 해주세요.");
-				form.content.focus();
-				return;
-			} 
-			else if (form.content.value.length > 3000) {
-				alert("3000자 이상 입력하실 수 없습니다.");
-				form.content.focus();
-				return;
+				else if (form.datepicker1.value.length == 0 && form.datepicker2.value.length == 0 ) {
+					alert("시작과 종료 기간을 입력 해주세요.");
+					form.datepicker1.focus();
+					return;
+				}
+			var x = confirm("정말 글을 등록하시겠습니까?");
+				if(x) {
+					writeEventForm.submit();
+				} else {
+					alert("취소 하셨습니다.");	
+					return;
+				}
 			}
 
-			else if (form.datepicker1.value.length == 0 && form.datepicker2.value.length == 0 ) {
-				alert("시작과 종료 기간을 입력 해주세요.");
-				form.datepicker1.focus();
-				return;
+			//----------------------------------------------------------------
+			function listPage(){
+				var x = confirm("작성 중인 페이지는 삭제됩니다. 목록으로 돌아가시겠습니까?");
+				if (x) {
+					location.href = contextPath + "/eventboard/EventBoardList.ev";
+				}
+			}
+			function backPage(){
+
+				// 사진 첨부된 임시폴더 삭제
+
+				var x = confirm("작성 중인 페이지는 삭제됩니다. 그래도 괜찮으시겠습니까?");
+				if (x) {
+					history.back(); // 돌아가기 
+				}
+				
+				
 			}
 
-				writeEventForm.submit();
-			}
 			// ----------------------------------썸네일----------------------------------
 			// 이미지 정보 담는 배열
 			var sel_files = [];

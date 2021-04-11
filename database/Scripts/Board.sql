@@ -105,7 +105,7 @@ create table TABLE_BOARD_POINT(
 select * from TABLE_BOARD_POINT;
 
 
-insert into TABLE_BOARD_POINT values (BOARD_SEQ_POINT.NEXTVAL, current_timestamp, 5000, '5000포인트 결제' , 'hds1234');
+insert into TABLE_BOARD_POINT values (BOARD_SEQ_POINT.NEXTVAL, current_timestamp, 5000, '5000포인트 결제' , 'admin1');
 
 select point_date from TABLE_BOARD_POINT;
 

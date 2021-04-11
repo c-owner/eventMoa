@@ -78,6 +78,14 @@ a {
 	box-sizing: border-box;
 	}
 
+.tagNav-div3 {
+	height: 100%;
+	display: flex;
+	text-align: right;
+	-webkit-box-align: center;
+	align-items: center;
+}
+
 /* mainManager */
 .mainManager {
 	background-image: initial;
@@ -186,6 +194,10 @@ a {
 }
 .imgs_wrap {
 	display: contents;
+}
+
+.imgDiv2-Btn {
+	text-align: center;
 }
 
 .guideText {
@@ -334,10 +346,52 @@ div > span {
 	width: 30rem;
 }
 
-@media screen and (max-width: 660px){
+/* ------------------- 아이폰 미니 사이즈 --------------------- */
+@media screen and (max-width: 667px){ 
 
 	.imgDiv {
 		width: 10%;
+	}
+	.imgDiv2-Btn {
+		width: 100%;
+	}
+	a.button{
+		width: 100%;
+	}
+
+	.titleDiv2-b {
+		width: 100%;
+	}
+	.contentDiv2 {
+		width: 100%;
+	}
+
+	.locationDiv {
+		width: 15%;
+	}
+	.locationBtn {
+		width: 100%;
+	}
+	
+	.double {
+		width: 100%;
+		display: block;
+	}
+	/* #datepicker1, #datepicker2{
+		width: 100%;
+	}	 */
+}
+/* ------------------- 아이폰 se 사이즈 --------------------- */
+@media screen and (max-width: 568px){ 
+
+	.imgDiv {
+		width: 10%;
+	}
+	.imgDiv2-Btn {
+		width: 100%;
+	}
+	a.button{
+		width: 100%;
 	}
 
 	.titleDiv2-b {

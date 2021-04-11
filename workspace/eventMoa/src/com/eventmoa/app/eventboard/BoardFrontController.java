@@ -59,7 +59,6 @@ public class BoardFrontController extends HttpServlet{
 				} catch (Exception e) {System.out.println(e);}
 				break;
 			case "/eventboard/EventBoardListOK.ev": 
-				System.out.println("1");
 				try {
 					new EventBoardListOKAction().execute(req, resp);
 				} catch (Exception e) {
@@ -74,7 +73,13 @@ public class BoardFrontController extends HttpServlet{
 					forward.setPath("/Event/eventWriter.jsp");
 				} catch (Exception e) {System.out.println(e);}
 				break;
-				
+			case "/eventboard/EventWriterOk.ev":
+				try {
+					forward = new EventBoardWriterOkAction().execute(req, resp);
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+				break;
 				// IMG 임시 첨부 컨트롤러 // 재사용 용도가 될 것 같아서 eventboard/ 뺐음.
 			case "/AddImgOkAction.ev":
 				try {
