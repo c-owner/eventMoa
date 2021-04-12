@@ -20,6 +20,11 @@
 		VALUES (BOARD_SEQ_freeTalk.NEXTVAL, 0, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date)
 	</insert>
 	
+	<select id="getDetail" parameterType="_int" resultType="freeBoardVO">
+		SELECT * FROM TABLE_BOARD_freeTalk 
+		WHERE BOARD_NUM = #{board_Num}
+	</select>
+	
 	<update id="updateBoardView" parameterType="_int">
 		UPDATE TABLE_BOARD_freeTalk 
 		SET BOARD_VIEW = BOARD_VIEW + 1 

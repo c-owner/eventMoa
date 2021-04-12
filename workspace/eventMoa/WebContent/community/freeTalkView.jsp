@@ -22,14 +22,10 @@
 	</head>
 	
 	<body class="is-preload">
-	  <c:set var="list" value="${boardList}"/>
-      <c:set var="totalCnt" value="${totalCnt}"/>
-      <c:set var="startPage" value="${startPage}"/>
-      <c:set var="endPage" value="${endPage}"/>
-      <c:set var="nowPage" value="${nowPage}"/>
-      <c:set var="realEndPage" value="${realEndPage}"/>
-	<!-- sideBar -->
-<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
+	 	<c:set var="f_vo" value="${f_vo}"/>
+		<c:set var="replies" value="${replies}"/>
+		<c:set var="files" value="${files}"/>
+		<c:set var="board_Num" value="${board_Num}"/>
 
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
@@ -38,115 +34,60 @@
 			<div id="main">
 			
 		<!-- Logo -->
-		<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
+		<jsp:include page="${pageCofntext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
 		
 		
 		<!-- FreeTalk -->
 		<section id="banner">
 			<article class="column col4">
-				<h2 class="col_tit" style="text-align: left;">자유게시판 : 욕설과 비속어는 자제해주세요 :D</h2>
+				<h2 class="col_tit" style="text-align: left;">글상세 테스트중</h2>
 				<p class="col_desc"> </p>
-		
-						<form method="post" action="#" class="combined" style="margin-bottom: 0;">
-		         			<select name="category" class="button primary icon solid fa-search" id="category" 
-		         			style="font-size: 10px; width: 13%; padding: 0; text-align-last: center;
-   text-align: center;
-   -ms-text-align-last: center;
-   -moz-text-align-last: center;">
-			         				<option value="recent">등록일순　</option>
-			         				<option value="view">조회순　</option>
-			         				<option value="likes">추천순　</option>
-			         			</select>
-			         			<div style="float:right; font-size: 11px;">
-				         			<p>등록된 글 개수 : <c:out value="${totalCnt}"/>개</p>
-								</div>
-								<br>
-								 
-	         			</form>
-	         			<p></p>
-	         			
-	         			<table border="1" cellpadding="0" cellspacing="0" width="900px" >
-	         			<thead>
-										<tr>
-											<th style="text-align: center;">게시글 번호</th>
-											<th style="text-align: center;">제목</th>
-											<th style="text-align: center;">닉네임</th>
-											<th style="text-align: center;">날짜</th>
-											<th style="text-align: center;">조회수</th>
-											<th style="text-align: center;">추천</th>
-										</tr>
-									</thead>
-               <c:choose>
-               <c:when test="${list != null and fn:length(list) > 0}">
-	               <c:forEach var="b_bean" items="${list}">
-	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
-	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
-	               			${b_bean.getBoard_Num()}
-	               		</td>
-	               		<td style="font-family:Tahoma; font-size:10pt;">
-	               			<div align="left">
-	               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?boardNum=${b_bean.getBoard_Num()}&page=${nowPage}">
-	               					${b_bean.getBoard_Title()}
-	               				</a>
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Id()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Date()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_View()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Likes()}
-	               			</div>
-	               		</td>
-	               	</tr>
-	               </c:forEach>
-	           </c:when>
-	           <c:otherwise>
-	           	<tr>
-	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
-	           	</tr>
-	           </c:otherwise>
-               </c:choose>
-         </table>
-         <br/>
-         		<div id="two" style="text-align: center; vertical-align: middle; ">
-         			<c:if test="${nowPage >1}">
-         				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${nowPage - 1}">&lt;이전</a>
-         			</c:if>
-	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-	         			<c:choose>
-	         				<c:when test="${i eq nowPage}">
-	         				<a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
-	         				</c:when>
-	         				<c:otherwise>
-	         					<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
-	         				</c:otherwise>
-	         			</c:choose>
-	         		</c:forEach>
-         			<c:if test="${realEndPage != nowPage}">
-         				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${nowPage + 1}">다음&gt;</a>
-         			</c:if>
-         			<br>
-               <a href="${pageContext.request.contextPath}/community/freeTalkWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>								         
-				</div>
-							
-							</article>
-						</section>
-
-			</div> <!-- div id="main" end -->
-
+				
+			<table width="900px" border="1" cellpadding="0" cellspacing="0">
+				<tr height="30px">
+					<td align="center" width="150px">제 목</td>
+					<td style="padding-left:10px;">${f_vo.getBoard_Title()}</td>
+				</tr>
+				
+				<tr height="30px">
+					<td  align="center" width="150px">아이디</td>
+					<td style="padding-left:10px;">${f_vo.getBoard_Id()}</td>
+				</tr>
+				
+				<tr height="200px">
+					<td align="center" width="150px">내 용</td>
+					<td valign="top" style="padding-top:10px; padding-left:10px;">${f_vo.getBoard_Content()}</td>
+				</tr>
+				
+				<c:if test="${files != null}">
+					<tr height="30px">
+						<td align="center">첨부파일</td>
+						<td>
+							<c:forEach var="file" items="${files}">
+								<a href="${pageContext.request.contextPath}/board/FileDownload.bo?fileName=${file.getFile_Name()}">${file.getFile_Name()}</a>
+							</c:forEach>
+						</td>
+					</tr>
+				</c:if>
+			</table>
+			<table width="900px" border="0" cellpadding="0" cellspacing="0">
+				<tr align="right" valign="middle">
+					<td>
+						<c:if test="${f_vo.getBoard_Id() eq session_id}">
+							<a href="${pageContext.request.contextPath}/board/BoardModify.bo?boardNum=${f_vo.getBoard_Num()}&page=${page}">[수정]</a>
+							<a href="javascript:deleteBoard()">[삭제]</a>
+						</c:if>
+						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?page=${page}">[목록]</a>
+					</td>
+				</tr>
+			</table>
+			<form name="deleteBoard" method="post" action="${pageContext.request.contextPath}/board/BoardDeleteOk.bo">
+				<input type="hidden" name="boardNum" value="${f_vo.getBoard_Num()}">
+				<input type="hidden" name="page" value="${page}">
+			</form>
+</article>
+</section>
+</div>
 		<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 			

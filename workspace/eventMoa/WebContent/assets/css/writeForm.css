@@ -194,6 +194,10 @@ a {
 }
 .imgs_wrap {
 	display: contents;
+	/* display: flex; */
+	align-items: center;
+	padding: 50px;
+	height: 100px;
 }
 
 .imgDiv2-Btn {

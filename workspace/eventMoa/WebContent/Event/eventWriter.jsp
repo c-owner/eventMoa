@@ -320,7 +320,10 @@
 
 			var x = confirm("정말 이대로 글을 등록하시겠습니까?");
 				if(x) {
-					
+					$("#fileText").text("업로드 중...");
+					setTimeout(function(){
+						$("#fileText").text("이미지 등록");
+					}, 5000);
 					writeEventForm.submit();
 				} else {
 					alert("이어서 글을 작성하실 수 있습니다.");	

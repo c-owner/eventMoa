@@ -42,6 +42,11 @@ public class FreeBoardDAO {
 		return session.insert("FreeBoard.insertBoard", f_vo) == 1;
 	}
 	
+	//게시글 가져오기
+	public FreeBoardVO getDetail(int board_Num) {
+		return session.selectOne("FreeBoard.getDetail", board_Num);
+	}
+	
 	//번호 가져오기 (시퀀스)
 	public int getBoardNum() {
 		return session.selectOne("FreeBoard.getBoardNum");
