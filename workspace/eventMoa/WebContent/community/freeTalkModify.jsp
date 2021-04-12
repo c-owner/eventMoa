@@ -65,15 +65,16 @@
 				<h2 class="col_tit" style="text-align: left; color: black;">자유게시판 글쓰기</h2>
 				<p class="col_desc"> </p>
 		
-						<form method="post" action="${pageContext.request.contextPath}/freeboard/FreeBoardWriteOk.bo" class="combined" name="freeBoardform" enctype="multipart/form-data" style="margin-bottom: 0;">
-	         			
+						<form method="post" action="${pageContext.request.contextPath}/freeboard/FreeBoardModifyOk.bo" class="combined" name="modifyForm" enctype="multipart/form-data" style="margin-bottom: 0;">
+	         			<input type="hidden" name="board_Num" value="${f_vo.getBoard_Num()}">
+						<input type="hidden" name="page" value="${page}">
 					<table  border="1" cellpadding="0" cellspacing="0" width="900px" >
 					<tr height="30px">
 						<td align="center" style="width: 11%;">
 							<div align="center">제 목</div>
 						</td>
 						<td style="padding-left:10px;">
-							<input name="board_Title" type="text" size="50" maxlength="100" value=""/>
+							<input name="board_Title" type="text" size="50" maxlength="100" value="${f_vo.getBoard_Title()}"/>
 						</td>
 					</tr>
 					<tr height="30px">
@@ -89,7 +90,7 @@
 							<div align="center">내 용</div>
 						</td>
 						<td style="padding-left:10px;">
-							<textarea name="board_Content" style="height:185px; resize: none;"></textarea>
+							<textarea name="board_Content" style="height:185px; resize: none;">${f_vo.getBoard_Content()}</textarea>
 						</td>
 					</tr>
 					<tr height="30px">
@@ -125,8 +126,8 @@
 									<br>
 									<ul class="actions">
 										<li style="margin: 0 auto;">
-										<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
-										<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}" class="button" type="submit">목록</a>
+										<a href="javascript:modifyBoard()">[수정]</a>&nbsp;&nbsp;
+										<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}">[목록]</a>&nbsp;&nbsp;
 										</li>
 										
 									</ul>
@@ -145,10 +146,9 @@
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<script>
-		function addBoard(){
-			freeBoardform.submit();
+		function modifyBoard(){
+			modifyForm.submit();
 		}
-		
 		function cancleFile(fileTagName){
 			if($.browser.msie){//ie일 때
 				//첨부파일 업로드 전의 태그를 복사해 놓고, 초기화 시 복사된 태그를 덮어 씌워준다.

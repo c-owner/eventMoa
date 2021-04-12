@@ -93,8 +93,10 @@
 		 				check=true;
 		 			}
 		 			for(let i=0; i<eventArray.length;i++){
-		 				content+="<li><a href=''><img src='${pageContext.request.contextPath}/app/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
-		 				content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>";
+		 				content+="<li><a href='${pageContext.request.contextPath}/eventboard/EventBoardView.ev?board_Num='"+eventArray[i].board_Num+"'>"
+							+"<img src='${pageContext.request.contextPath}/app/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
+		 				/* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */
+		 				content+="</a></li>";
 		 			}
 		 			
 		 			ul.append(content);

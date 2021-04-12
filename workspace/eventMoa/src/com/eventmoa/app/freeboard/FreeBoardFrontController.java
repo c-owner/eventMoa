@@ -38,6 +38,13 @@ public class FreeBoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "/freeboard/FreeBoardWriteOk.bo":
+			try {
+				forward = new FreeBoardWriteOkAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		case "/freeboard/FreeBoardView.bo":
 			try {
 				forward = new FreeBoardViewAction().execute(req, resp);
@@ -45,9 +52,30 @@ public class FreeBoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
-		case "/freeboard/FreeBoardWriteOk.bo":
+		case "/freeboard/FreeBoardModify.bo":
 			try {
-				forward = new FreeBoardWriteOkAction().execute(req, resp);
+				forward = new FreeBoardModifyAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/freeboard/FreeBoardModifyOk.bo":
+			try {
+				forward = new FreeBoardModifyOkAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/freeboard/FreeBoardDeleteOk.bo":
+			try {
+				forward = new FreeBoardDeleteOkAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/board/FileDownload.bo":
+			try {
+				forward = new FileDownloadAction().execute(req, resp);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

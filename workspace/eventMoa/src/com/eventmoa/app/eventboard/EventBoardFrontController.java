@@ -45,9 +45,7 @@ public class EventBoardFrontController extends HttpServlet{
 			/* 상세 보기 페이지 */
 			case "/eventboard/EventView.ev":
 				try {
-					forward = new ActionForward();
-					forward.setRedirect(false);
-					forward.setPath("/Event/eventView.jsp");
+					 forward = new EventBoardViewOKAction().execute(req, resp);
 				} catch (Exception e) {System.out.println(e);}
 				break;
 			/* 이벤트 리스트 페이지 */

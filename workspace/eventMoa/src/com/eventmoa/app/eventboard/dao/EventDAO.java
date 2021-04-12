@@ -32,8 +32,17 @@ public class EventDAO {
 	}
 	
 	public int getBoardNum() {
-		return session.selectOne("EventBoard.getBoardNum");
+		return session.selectOne("EventBoard.getboard_Num");
 	}
 
+	
+	public EventBoardVO getDetail(int board_Num) {
+		return session.selectOne("EventBoard.getDetail", board_Num);
+	}
+	
+	public void updateReadCount(int board_Num) {
+		session.update("EventBoard.updateReadCount", board_Num);
+	}
+	
 }
 

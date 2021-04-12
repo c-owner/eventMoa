@@ -40,7 +40,7 @@
 		<!-- FreeTalk -->
 		<section id="banner">
 			<article class="column col4">
-				<h2 class="col_tit" style="text-align: left;">글상세 테스트중</h2>
+				<h2 class="col_tit" style="text-align: left; color: black; margin: auto;">${f_vo.getBoard_Title()}</h2>
 				<p class="col_desc"> </p>
 				
 			<table width="900px" border="1" cellpadding="0" cellspacing="0">
@@ -74,15 +74,15 @@
 				<tr align="right" valign="middle">
 					<td>
 						<c:if test="${f_vo.getBoard_Id() eq session_id}">
-							<a href="${pageContext.request.contextPath}/board/BoardModify.bo?boardNum=${f_vo.getBoard_Num()}&page=${page}">[수정]</a>
+							<a href="${pageContext.request.contextPath}/freeboard/FreeBoardModify.bo?board_Num=${f_vo.getBoard_Num()}&page=${page}">[수정]</a>
 							<a href="javascript:deleteBoard()">[삭제]</a>
 						</c:if>
-						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?page=${page}">[목록]</a>
+						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}">[목록]</a>
 					</td>
 				</tr>
 			</table>
-			<form name="deleteBoard" method="post" action="${pageContext.request.contextPath}/board/BoardDeleteOk.bo">
-				<input type="hidden" name="boardNum" value="${f_vo.getBoard_Num()}">
+			<form name="boardForm" method="post" action="${pageContext.request.contextPath}/freeboard/FreeBoardDeleteOk.bo">
+				<input type="hidden" name="board_Num" value="${f_vo.getBoard_Num()}">
 				<input type="hidden" name="page" value="${page}">
 			</form>
 </article>
@@ -92,4 +92,11 @@
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 			
 	</body>
+	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+	<script>
+	function deleteBoard(){
+		boardForm.submit();
+	}
+	</script>
 </html>
