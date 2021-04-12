@@ -59,7 +59,7 @@ CREATE TABLE TABLE_FILES_freeTalk (
 );
 
 
-SELECT * FROM table_freeTalk_files;
+SELECT * FROM TABLE_FILES_freeTalk;
 
 --------------------------------------------
 --------------------------------------------------------------------------------
@@ -147,6 +147,7 @@ SELECT EVT_START_DT 시작시간, EVT_END_DT 종료시간 FROM TABLE_BOARD_EVENT
 SELECT EVT_START_DT FROM TABLE_BOARD_EVENT;
 
 SELECT * FROM TABLE_BOARD_EVENT ORDER BY 1 DESC;
+
 
 INSERT INTO TABLE_BOARD_EVENT
 (BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, 
