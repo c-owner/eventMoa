@@ -27,15 +27,19 @@ public class FreeBoardDAO {
 		return session.selectList("FreeBoard.listAll", pageMap);
 	}
 	
-	//게시물 갯수
+	//게시글 갯수
 	public int getBoardCnt() {
 		return session.selectOne("FreeBoard.getBoardCnt");
 	}
 	
+	//게시글 조회수
+	public void updateBoardView(int board_Num){
+		session.update("FreeBoard.updateBoardView", board_Num);
+	}
 	
 	//게시글 작성
-	public boolean insertFreeBoard(FreeBoardVO f_vo) {
-		return session.insert("FreeBoard.insertFreeBoard", f_vo) == 1;
+	public boolean insertBoard(FreeBoardVO f_vo) {
+		return session.insert("FreeBoard.insertBoard", f_vo) == 1;
 	}
 	
 	//번호 가져오기 (시퀀스)

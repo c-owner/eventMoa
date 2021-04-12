@@ -20,7 +20,6 @@ public class EventBoardListOKAction implements Action {
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
-		System.out.println("2");
 		PrintWriter out= resp.getWriter();
 		EventDAO e_dao = new EventDAO();
 		ActionForward forward = new ActionForward();
@@ -37,7 +36,6 @@ public class EventBoardListOKAction implements Action {
 
 		JSONArray jsonArray=new JSONArray();
 		List<EventBoardVO> events= e_dao.getBoardList(startRow, endRow);
-		System.out.println("3");
 		for(EventBoardVO board:events) {
 			JSONObject jsonObj=new JSONObject();
 			
@@ -55,7 +53,6 @@ public class EventBoardListOKAction implements Action {
 			
 			jsonArray.add(jsonObj);
 		}
-		System.out.println(jsonArray.toJSONString());
 		out.println(jsonArray.toJSONString());
 
 		return null;

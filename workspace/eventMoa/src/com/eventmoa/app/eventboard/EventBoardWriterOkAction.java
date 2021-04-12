@@ -1,5 +1,8 @@
 package com.eventmoa.app.eventboard;
 
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,26 +24,21 @@ public class EventBoardWriterOkAction implements Action {
 		EventFIlesDAO evf_dao = new EventFIlesDAO();
 		ActionForward forward = null;
 		
-		/* 
-		  
-		--- MAC OS ----
-		
-		 */
 		// 업로드
-		String uploadFolder = "/Users/corner/eventMoa-Project/workspace/eventMoa/WebContent/app/eventFilesUpload";
+		String uploadFolder = "/app/eventFilesUpload";
+		ServletContext context= req.getSession().getServletContext();
+		String realPath= context.getRealPath(uploadFolder);
 		
-		/* 
-		  
-		--- Windows OS ----
-		String tempFolder = "";
-		 
-		 */
-		
-		int fileSize = 1024 * 1024 * 10; // 10M
+		int fileSize = 1024 * 1024 * 50; // 10M
 		
 		MultipartRequest multi = null;
 		
-		multi = new MultipartRequest(req, uploadFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		try {
+			multi = new MultipartRequest(req, realPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		ev_vo.setBoard_Title(multi.getParameter("titleName"));
 		ev_vo.setBoard_Content(multi.getParameter("content"));
@@ -51,9 +49,7 @@ public class EventBoardWriterOkAction implements Action {
 		ev_vo.setBoard_Address_etc(multi.getParameter("address_etc"));
 		ev_vo.setEVT_START_DT(multi.getParameter("datepicker1"));
 		ev_vo.setEVT_END_DT(multi.getParameter("datepicker2"));
-		ev_vo.setFile_name(multi.getParameter("input_imgs"));
-		
-		System.out.println(ev_vo.toString());
+		ev_vo.setFile_name(multi.getFilesystemName("input_imgs"));
 		
 		if(ev_dao.insertBoard(ev_vo)) {
 			if(evf_dao.insertFiles(ev_dao.getBoardNum(), multi)) {
@@ -64,10 +60,6 @@ public class EventBoardWriterOkAction implements Action {
 			}
 			
 		}
-		
-		
-		
-		
 		return forward;
 
 	}

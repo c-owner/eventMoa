@@ -19,7 +19,7 @@ public class EventFIlesDAO {
 		session = sessionf.openSession(true);
 	}
 	
-	public boolean insertFiles(int boardNum, MultipartRequest multi) {
+	public boolean insertFiles(int board_Num, MultipartRequest multi) {
 		boolean check = true;
 		
 		EventFilesVO ef_vo = new EventFilesVO();
@@ -28,15 +28,14 @@ public class EventFIlesDAO {
 		
 		while(files.hasMoreElements()) {
 			String data = files.nextElement();
-			String systemName = multi.getFilesystemName(data);
+			String file_Name = multi.getFilesystemName(data);
 			
-			if(systemName == null ) {
+			if(file_Name == null ) {
 				continue;
 			}
 			
-			ef_vo.setFile_Name(systemName);
-			ef_vo.setBoard_Num(boardNum);
-			
+			ef_vo.setFile_Name(file_Name);
+			ef_vo.setBoard_Num(board_Num);
 			if(session.insert("EventFiles.insertFile", ef_vo) != 1 ) {
 				check = false;
 				break;

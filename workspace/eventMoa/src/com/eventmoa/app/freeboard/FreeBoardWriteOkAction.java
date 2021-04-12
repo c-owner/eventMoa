@@ -30,7 +30,7 @@ public class FreeBoardWriteOkAction implements Action{
 		f_vo.setBoard_Id(multi.getParameter("board_Id"));
 		f_vo.setBoard_Content(multi.getParameter("board_Content"));
 		
-		if(f_dao.insertFreeBoard(f_vo)) {
+		if(f_dao.insertBoard(f_vo)) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath() + "/freeboard/FreeBoardList.bo");

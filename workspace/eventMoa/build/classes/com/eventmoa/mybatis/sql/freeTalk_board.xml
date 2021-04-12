@@ -17,8 +17,14 @@
 	<!-- 게시글 등록 -->
 	<insert id="insertBoard" parameterType="freeBoardVO">
 		INSERT INTO TABLE_BOARD_freeTalk 
-		VALUES (BOARD_SEQ_freeTalk.NEXTVAL, 0, #{board_Title}, #{board_Content}, #{board_Id}, 0, SYSDATE)
+		VALUES (BOARD_SEQ_freeTalk.NEXTVAL, 0, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date)
 	</insert>
+	
+	<update id="updateBoardView" parameterType="_int">
+		UPDATE TABLE_BOARD_freeTalk 
+		SET BOARD_VIEW = BOARD_VIEW + 1 
+		WHERE BOARD_NUM = #{board_Num}
+	</update>
 	
 	<!-- 보류 -->
 	<select id="getBoardNum" resultType="_int">

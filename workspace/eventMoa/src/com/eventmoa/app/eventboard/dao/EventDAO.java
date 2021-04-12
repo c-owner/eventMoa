@@ -23,7 +23,6 @@ public class EventDAO {
 		
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
-		System.out.println(pageMap);
 		return session.selectList("EventBoard.listAll", pageMap);
 	}
 

@@ -1,16 +1,16 @@
-package com.eventmoa.app.freeboard;
+package com.eventmoa.app.map;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eventmoa.action.ActionForward;
+import com.eventmoa.app.freeboard.FreeBoardListOkAction;
 
-public class FreeBoardFrontController extends HttpServlet {
+public class EventMapFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -28,36 +28,15 @@ public class FreeBoardFrontController extends HttpServlet {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-		ActionForward forward = null;
 	
 		switch(command) {
-		case "/freeboard/FreeBoardList.bo":
+		case "/map/getAddress.map":
 			try {
-				forward = new FreeBoardListOkAction().execute(req, resp);
+				new UserPositionAction().execute(req, resp);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			break;
-		case "/freeboard/FreeBoardWriteOk.bo":
-			try {
-				forward = new FreeBoardWriteOkAction().execute(req, resp);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		default:
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/app/error/404.jsp");
-		}
-		
-		if(forward != null) {
-			if(forward.isRedirect()) {
-				resp.sendRedirect(forward.getPath());
-			}else {
-				RequestDispatcher dispatcher = req.getRequestDispatcher(forward.getPath());
-				dispatcher.forward(req, resp);
-			}
 		}
 	}
 }

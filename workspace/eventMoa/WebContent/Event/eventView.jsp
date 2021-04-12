@@ -70,7 +70,8 @@
 					<div class="slider" style="width:70%; margin:0 auto;">
 						<div>
 							<figure>
-								<img src="${pageContext.request.contextPath}/images/ad/ad1.jpg" alt="이미지1">
+								<!-- 파일 네임  -->
+								<img src="${pageContext.request.contextPath}/app/eventFilesUpload/파일네임받아오기" alt="이미지1">
 								<figcaption><em> SNS • 배너 광고 디자인 </em><span> #페이스북 #인스타그램 </span></figcaption>
 							</figure>
 						</div>

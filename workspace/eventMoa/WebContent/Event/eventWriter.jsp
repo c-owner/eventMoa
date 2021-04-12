@@ -34,7 +34,7 @@
 		<c:if test="${session_id eq null}">
 			<script>
 			   alert("로그인 후 이용해주세요");
-			   location.replace("${pageContext.request.contextPath}/main.us");
+			   location.replace("${pageContext.request.contextPath}/user/UserLogin.us");
 			</script>
 		 </c:if>
 		 
@@ -88,12 +88,12 @@
 
 									</ul>
 									<div class="imgDiv2-Btn">
-										<a href="javascript:" class="button" onclick="submitAction();">사진 등록</a>
+										<!-- <a href="javascript:" class="button" onclick="submitAction();">사진 등록</a> -->
 									</div>
 									<div class="imgDiv2 guideText">
 										<br>
 										<b> * 게시글에 올릴 사진을 올려주세요.</b>
-										<br>❗️ 용량이 큰 이미지일 경우 업로드가 안될 수도 있습니다. (제한: 10M)
+										<br>❗️ 용량이 큰 이미지를 여러 개 올리실 경우 업로드가 안될 수도 있습니다. (총 용량 제한: 50M)
 										<br>❗️ 같은 이미지를 여러번 올릴 수 없습니다.
 									</div>
 									</div>
@@ -320,7 +320,7 @@
 
 			var x = confirm("정말 이대로 글을 등록하시겠습니까?");
 				if(x) {
-					// 사진 업로드 submit 
+					
 					writeEventForm.submit();
 				} else {
 					alert("이어서 글을 작성하실 수 있습니다.");	
@@ -502,7 +502,7 @@
                 sDate.datepicker({
                     language: 'ko',
 					timepicker: true,
-					timeFormat: "hh:ii AA",
+					timeFormat: "hh:mm",
 					controlType:'select',
 					oneLine:true,
                     autoClose: true,
@@ -521,7 +521,7 @@
                     language: 'ko',
                     autoClose: true,
 					timepicker: true,
-					timeFormat: "hh:ii AA",
+					timeFormat: "hh:mm",
 					controlType:'select',
 					oneLine:true,
                     onSelect: function () {

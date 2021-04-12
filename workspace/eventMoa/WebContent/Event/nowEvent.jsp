@@ -41,23 +41,25 @@
 	</head>
 	
 	<body class="is-preload">
-<!-- sideBar -->
-<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
-	<p></p>
+		<p></p>
 		<!-- Main -->
-			<div id="main">
+		<div id="main">
 			
-		<!-- Logo -->
-		<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
+			<!-- sideBar -->
+			<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
+				<!-- Header -->		<!-- search-bar -->
+		<jsp:include page="${pageContext.request.contextPath}/searchBar.jsp"></jsp:include>
 	
+
 	<section id="" class="wrapper special">
 		<div class="pmobi_glist">
 			<div class="detailnfo,showstep1">
 				<div class= ""> 
 		 			<div class="content">
-		<ul id="eventList"></ul>
+						<ul id="eventList">
+						</ul>	
 					</div>
 				</div>
 			</div>
@@ -87,12 +89,12 @@
 		 			//for(){}
 		 			var eventArray=JSON.parse(list);
 		 			if(JSON.parse(list).length==0){
-		 				alert("없습니다.");
+		 				alert("등록된 게시물이 없습니다.");
 		 				check=true;
 		 			}
 		 			for(let i=0; i<eventArray.length;i++){
-		 				content+="<li><a href=''><img src='"+eventArray[i].file_name+"'onerror='noimage(this)'>";
-		 				content+="<dl><dt id='title'>간 판</dt><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dt id='title' class='glist_dt_T2'>지 역</dt><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>";
+		 				content+="<li><a href=''><img src='${pageContext.request.contextPath}/app/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
+		 				content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>";
 		 			}
 		 			
 		 			ul.append(content);
