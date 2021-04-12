@@ -22,6 +22,14 @@ categories: project
 ———작업예정————---
  이벤트 상세보기 
 
+포인트 차감 (이벤트 등록시 -> 포인트 차감 메소드 쿼리문실행 -> if 포인트가 없다면 : return; else 포인트 차감 후 submit)
+
+
+---index.jsp
+section One 수정- padding left 0
+
+로그인 되어있을 때 회원가입 막기-
+
 ———————————————
 
 
