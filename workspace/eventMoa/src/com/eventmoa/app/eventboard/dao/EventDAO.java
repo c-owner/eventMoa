@@ -32,7 +32,7 @@ public class EventDAO {
 	}
 	
 	public int getBoardNum() {
-		return session.selectOne("EventBoard.getboard_Num");
+		return session.selectOne("EventBoard.getBoardNum");
 	}
 
 	

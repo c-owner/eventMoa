@@ -55,7 +55,7 @@ public class FreeBoardModifyOkAction implements Action{
 			ff_dao.deleteFile(board_Num);
 			
 			//새롭게 추가한 첨부파일 DB에 추가
-			ff_dao.insertFile(board_Num, multi);
+			ff_dao.insertFiles(board_Num, multi);
 			
 			f_vo.setBoard_Num(board_Num);
 			f_vo.setBoard_Title(multi.getParameter("board_Title"));

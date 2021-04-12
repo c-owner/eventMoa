@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,7 +19,11 @@ public class FileDownloadAction implements Action {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		String savePath = "C:\\0900_gb_ssh\\jsp\\workspace\\eventMoa\\WebContent\\app\\upload";
+		String uploadFolder = "/app/upload";
+		ServletContext context= req.getSession().getServletContext();
+		String realPath= context.getRealPath(uploadFolder);
+		
+		//String savePath = "C:\\0900_gb_ssh\\jsp\\workspace\\eventMoa\\WebContent\\app\\upload";
 		
 		String fileName = req.getParameter("file_Name");
 		
@@ -33,7 +38,7 @@ public class FileDownloadAction implements Action {
 		boolean check = true;
 		
 		try {
-			file = new File(savePath, fileName);
+			file = new File(realPath, fileName);
 			in = new FileInputStream(file);
 		} catch (Exception e) {
 			System.out.println("파일이 존재하지 않음");
