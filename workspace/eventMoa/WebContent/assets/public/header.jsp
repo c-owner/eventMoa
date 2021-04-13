@@ -80,7 +80,7 @@
 				<div class="navSearch" style="width: 50%;text-align: right;margin: 0 auto;padding-left: 0;margin-left: 0;padding-right: 20%;">
 					<input type="search" class="searchTerm" placeholder="검색어를 입력하세요"
 					style="border-radius: initial; height:30px; ">
-					<a href="${pageContext.request.contextPath}/searchViewPage.jsp" class="fas fa-search"></a>
+					<a href="${pageContext.request.contextPath}/search/search.us" class="fas fa-search"></a>
 				</div>
 			</div>
 

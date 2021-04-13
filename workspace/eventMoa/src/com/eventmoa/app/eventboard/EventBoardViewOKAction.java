@@ -34,12 +34,8 @@ public class EventBoardViewOKAction implements Action{
 		
 		e_vo = e_dao.getDetail(boardNum);
 		
-		JSONArray jsonArray=new JSONArray();
-		
-		List<EventFilesVO> filesList = ef_dao.getFileList(boardNum);
-		
 		if(e_vo != null ) {
-			e_dao.updateReadCount(boardNum);
+			e_dao.updateReadCount(boardNum); // 조회수
 			
 		}
 		

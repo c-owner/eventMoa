@@ -33,12 +33,9 @@ public class FreeBoardWriteOkAction implements Action{
 		f_vo.setBoard_Title(multi.getParameter("board_Title"));
 		f_vo.setBoard_Id(multi.getParameter("board_Id"));
 		f_vo.setBoard_Content(multi.getParameter("board_Content"));
-		System.out.println("작성 컨트롤러1");
 		
 		if(f_dao.insertBoard(f_vo)) {
-			System.out.println("작성 컨트롤러2");
 			if(ff_dao.insertFiles(f_dao.getBoardNum(), multi)) {
-				System.out.println("작성 컨트롤러3");
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath() + "/freeboard/FreeBoardList.bo");

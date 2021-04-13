@@ -25,7 +25,7 @@ public class FileDownloadAction implements Action {
 		
 		//String savePath = "C:\\0900_gb_ssh\\jsp\\workspace\\eventMoa\\WebContent\\app\\upload";
 		
-		String fileName = req.getParameter("file_Name");
+		String fileName = req.getParameter("fileName");
 		
 		PrintWriter writer = resp.getWriter();
 		
@@ -56,9 +56,9 @@ public class FileDownloadAction implements Action {
 			try {
 				fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 				if(client.indexOf("MSIE") != -1) {
-					resp.setHeader("Content-Disposition", "attachment;filename="+fileName);
+					resp.setHeader("Content-Disposition", "attachment;fileName="+fileName);
 				}else {
-					resp.setHeader("Content-Disposition", "attachment;filename=\""+fileName + "\"");
+					resp.setHeader("Content-Disposition", "attachment;fileName=\""+fileName + "\"");
 					resp.setHeader("Content-Type", "application/octet-stream;charset=utf-8");
 				}
 				resp.setHeader("Content-Length", "" + file.length());

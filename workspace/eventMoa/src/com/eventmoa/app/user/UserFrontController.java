@@ -241,6 +241,23 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		
+		/* 검색 페이지	*/
+		else if (command.equals("/search/search.us")) {
+			try {
+				forward = new searchKeywordAction().execute(req, resp);
+//				 forward = new ActionForward();
+//				 forward.setRedirect(false);
+//				 System.out.println(req.getParameter("keyword"));
+//				 forward.setPath("/searchViewPage.jsp");
+			} catch (Exception e) {e.printStackTrace();}
+		}
+//		else if (command.equals("/search/searchOkAction.us")) {
+//			try {
+//				forward = new searchKeywordAction().execute(req, resp);
+//			} catch (Exception e) {e.printStackTrace();}
+//			
+//		}
+		
 		/* 에러 응답없는 404 페이지 */
 		else {
 			forward = new ActionForward();

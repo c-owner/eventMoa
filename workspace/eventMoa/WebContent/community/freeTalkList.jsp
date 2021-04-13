@@ -48,7 +48,7 @@
 				<p class="col_desc"> </p>
 		
 						<form method="post" action="#" class="combined" style="margin-bottom: 0;">
-		         			<select name="category" class="button primary icon solid fa-search" id="category" style="font-size: 10px; width: 13%; padding: 0; text-align-last: center;
+		         			<select name="category" class="button primary icon solid fa-search" id="category" style="font-size: 10px; width: 13%; padding-left: 10px; text-align-last: center;
    text-align: center;
    -ms-text-align-last: center;
    -moz-text-align-last: center;">

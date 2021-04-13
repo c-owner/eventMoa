@@ -31,16 +31,12 @@ public class FreeboardFilesDAO {
 			
 			vo.setFile_Name(systemName);
 			vo.setBoard_Num(board_Num);
-			System.out.println("파일 다오1");
 			
 			if(session.insert("FreeBoardFiles.insertFile", vo) != 1) {
-				System.out.println("파일 다오2");
 				check = false;
-				System.out.println("파일 다오3");
 				break;
 			}
 		}
-		System.out.println("파일 다오4");
 		return check;
 	}
 	

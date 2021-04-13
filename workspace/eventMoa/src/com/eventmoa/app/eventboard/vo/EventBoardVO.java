@@ -26,6 +26,7 @@ public class EventBoardVO {
 	private String board_Address;
 	private String board_Address_Detail;
 	private String board_Address_etc;
+	private int board_Like;
 	private String EVT_START_DT; 
 	private String EVT_END_DT;
 	private String file_name;
@@ -111,6 +112,14 @@ public class EventBoardVO {
 
 	public void setBoard_Address_etc(String board_Address_etc) {
 		this.board_Address_etc = board_Address_etc;
+	}
+	
+	public int getBoard_Like() {
+		return board_Like;
+	}
+
+	public void setBoard_Like(int board_Like) {
+		this.board_Like = board_Like;
 	}
 
 	public String getEVT_START_DT() {
