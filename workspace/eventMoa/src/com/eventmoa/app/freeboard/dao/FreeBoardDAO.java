@@ -29,13 +29,23 @@ public class FreeBoardDAO {
 	}
 	
 	//게시글 목록 조회순
-	public List<FreeBoardVO> getBoardListView() {
-		return session.selectList("FreeBoard.listView");
+	public List<FreeBoardVO> getBoardListView(int startRow, int endRow) {
+		HashMap<String, Integer> pageMap = new HashMap<>();
+		
+		pageMap.put("startRow", startRow);
+		pageMap.put("endRow", endRow);
+		
+		return session.selectList("FreeBoard.listView", pageMap);
 	}
 	
 	//게시글 목록 추천순
-	public List<FreeBoardVO> getBoardListLikes() {
-		return session.selectList("FreeBoard.listLikes");
+	public List<FreeBoardVO> getBoardListLikes(int startRow, int endRow) {
+		HashMap<String, Integer> pageMap = new HashMap<>();
+		
+		pageMap.put("startRow", startRow);
+		pageMap.put("endRow", endRow);
+		
+		return session.selectList("FreeBoard.listLikes", pageMap);
 	}
 	
 	//게시글 갯수

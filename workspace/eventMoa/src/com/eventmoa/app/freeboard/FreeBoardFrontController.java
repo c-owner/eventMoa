@@ -38,20 +38,6 @@ public class FreeBoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
-		case "/freeboard/FreeBoardListView.bo":
-			try {
-				forward = new FreeBoardListViewOkAction().execute(req, resp);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		case "/freeboard/FreeBoardListLikes.bo":
-			try {
-				forward = new FreeBoardListLikesOkAction().execute(req, resp);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
 		case "/freeboard/FreeBoardWriteOk.bo":
 			try {
 				forward = new FreeBoardWriteOkAction().execute(req, resp);
