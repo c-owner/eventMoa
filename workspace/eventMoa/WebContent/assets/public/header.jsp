@@ -24,7 +24,7 @@
 	<c:set var="login" value="${login}"/>
 	<c:set var="session_id" value="${session_id}"/>
 	<c:set var="user_AddressAll" value="${user_AddressAll}"/>
-	      
+	<c:set var="keyword" value="${keyword}"/>      
 	<c:set var = 'userStatus' value = "false"></c:set>
 	<c:if test="${session_id ne null }">
 		<c:set var = 'userStatus' value = 'true'/>
@@ -60,7 +60,7 @@
 								<li><a href="${pageContext.request.contextPath}/user/mypage/myWrite.jsp">내가 쓴 글</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/myReply.jsp">내가 쓴 댓글</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.jsp">결제 내역</a><li>
-								<li><a href="${pageContext.request.contextPath}/user/UserLogin.us" class="button small">로그아웃</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/UserLogin.us">로그아웃</a><li>
 							</ul>
 						</li>
 					</c:if>
@@ -78,9 +78,9 @@
 					</ul>
 				</nav>
 				<div class="navSearch" style="width: 50%;text-align: right;margin: 0 auto;padding-left: 0;margin-left: 0;padding-right: 20%;">
-					<input type="search" class="searchTerm" placeholder="검색어를 입력하세요"
+					<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
 					style="border-radius: initial; height:30px; ">
-					<a href="${pageContext.request.contextPath}/search/search.us" class="fas fa-search"></a>
+					<a href="${pageContext.request.contextPath}/search/search.us?keyword=${keyword}" class="fas fa-search"></a>
 				</div>
 			</div>
 

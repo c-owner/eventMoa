@@ -9,6 +9,14 @@
 				(SELECT * FROM TABLE_BOARD_freeTalk ORDER BY BOARD_NUM DESC) D) B
 		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
+
+	<select id="listView" resultType="freeBoardVO">
+		SELECT * FROM TABLE_BOARD_freeTalk ORDER BY BOARD_VIEW DESC, BOARD_DATE DESC;
+	</select>
+	
+	<select id="listLikes" resultType="freeBoardVO">
+		SELECT * FROM TABLE_BOARD_freeTalk ORDER BY BOARD_LIKES DESC, BOARD_DATE DESC;
+	</select>
 	
 	<select id="getBoardCnt" resultType="_int">
 		SELECT COUNT(*) FROM TABLE_BOARD_freeTalk
@@ -46,7 +54,7 @@
 		SELECT BOARD_SEQ_freeTalk.CURRVAL FROM DUAL
 	</select>
 	
-	<!-- 댓글 -->
+	<!-- 댓글  -->
 	<insert id="insertReply" parameterType="freeReplyVO">
 		INSERT INTO TABLE_REPLY_freeTalk 
 		VALUES(REPLY_SEQ_freeTalk.NEXTVAL, #{board_Num}, #{user_Id}, #{reply_Content})
@@ -65,4 +73,12 @@
 		SET REPLY_CONTENT = #{reply_Content}
 		WHERE REPLY_NUM = #{reply_Num}
 	</update>
+	
+	<!-- 추천  -->
+	<update id="updateBoardLikes" parameterType="_int">
+		UPDATE TABLE_BOARD_freeTalk 
+		SET BOARD_LIKES = BOARD_LIKES + 1 
+		WHERE BOARD_NUM = #{board_Num}
+	</update>
+	
 </mapper>

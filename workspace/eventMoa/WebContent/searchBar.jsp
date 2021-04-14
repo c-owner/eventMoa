@@ -63,7 +63,7 @@
 				<option value="chungnam">	충남		</option>
 				<option value="jeju">		제주		</option>
                 </select>
-				<input type="search" name="keyword" class="searchTerm" placeholder="검색어를 입력하세요"
+				<input type="search" name="keyword" class="searchTerm searchBar" placeholder="검색어를 입력하세요"
 				style="border-radius: initial; height: 39px;">
 				<a href="javascript:searchForm.submit();" id="searchIcon" 
 				class="button primary icon solid fa-search"

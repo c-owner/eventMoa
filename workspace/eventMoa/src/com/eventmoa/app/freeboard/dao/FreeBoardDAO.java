@@ -28,6 +28,16 @@ public class FreeBoardDAO {
 		return session.selectList("FreeBoard.listAll", pageMap);
 	}
 	
+	//게시글 목록 조회순
+	public List<FreeBoardVO> getBoardListView() {
+		return session.selectList("FreeBoard.listView");
+	}
+	
+	//게시글 목록 추천순
+	public List<FreeBoardVO> getBoardListLikes() {
+		return session.selectList("FreeBoard.listLikes");
+	}
+	
 	//게시글 갯수
 	public int getBoardCnt() {
 		return session.selectOne("FreeBoard.getBoardCnt");

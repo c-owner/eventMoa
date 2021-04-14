@@ -23,6 +23,8 @@
 	
 	<body class="is-preload">
 	  <c:set var="list" value="${boardList}"/>
+	  <c:set var="listView" value="${boardListView}"/>
+	  <c:set var="listLikes" value="${boardListLikes}"/>
       <c:set var="totalCnt" value="${totalCnt}"/>
       <c:set var="startPage" value="${startPage}"/>
       <c:set var="endPage" value="${endPage}"/>
@@ -51,7 +53,7 @@
 		         			<select name="category" class="button primary icon solid fa-search" id="category" style="font-size: 10px; width: 13%; padding-left: 10px; text-align-last: center;
    text-align: center;
    -ms-text-align-last: center;
-   -moz-text-align-last: center;">
+   -moz-text-align-last: center;" onchange="Onchange(this);">
 			         				<option value="recent">등록일순　</option>
 			         				<option value="view">조회순　</option>
 			         				<option value="likes">추천순　</option>
@@ -63,8 +65,8 @@
 								 
 	         			</form>
 	         			<p></p>
-	         			
-	         			<table border="1" cellpadding="0" cellspacing="0" width="900px" >
+	         			<!-- 최근순 -->
+	         			<table border="1" cellpadding="0" cellspacing="0" width="900px" id="listOrderRecent">
 	         			<thead>
 										<tr>
 											<th style="text-align: center;">게시글 번호</th>
@@ -78,6 +80,120 @@
                <c:choose>
                <c:when test="${list != null and fn:length(list) > 0}">
 	               <c:forEach var="b_bean" items="${list}">
+	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
+	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
+	               			${b_bean.getBoard_Num()}
+	               		</td>
+	               		<td style="font-family:Tahoma; font-size:10pt;">
+	               			<div align="left">
+	               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
+	               					${b_bean.getBoard_Title()}
+	               				</a>
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_Id()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_Date()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_View()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_Likes()}
+	               			</div>
+	               		</td>
+	               	</tr>
+	               </c:forEach>
+	           </c:when>
+	           <c:otherwise>
+	           	<tr>
+	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
+	           	</tr>
+	           </c:otherwise>
+               </c:choose>
+         </table>
+         
+         	<!-- 조회순 -->
+			<table border="1" cellpadding="0" cellspacing="0" width="900px" id="listOrderView">
+	         			<thead>
+										<tr>
+											<th style="text-align: center;">게시글 번호</th>
+											<th style="text-align: center;">제목</th>
+											<th style="text-align: center;">닉네임</th>
+											<th style="text-align: center;">날짜</th>
+											<th style="text-align: center;">조회수</th>
+											<th style="text-align: center;">추천</th>
+										</tr>
+									</thead>
+               <c:choose>
+               <c:when test="${listView != null and fn:length(listView) > 0}">
+	               <c:forEach var="b_bean" items="${listView}">
+	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
+	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
+	               			${b_bean.getBoard_Num()}
+	               		</td>
+	               		<td style="font-family:Tahoma; font-size:10pt;">
+	               			<div align="left">
+	               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
+	               					${b_bean.getBoard_Title()}
+	               				</a>
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_Id()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_Date()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_View()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoard_Likes()}
+	               			</div>
+	               		</td>
+	               	</tr>
+	               </c:forEach>
+	           </c:when>
+	           <c:otherwise>
+	           	<tr>
+	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
+	           	</tr>
+	           </c:otherwise>
+               </c:choose>
+         </table>
+
+			<!-- 추천순 -->         
+         	<table border="1" cellpadding="0" cellspacing="0" width="900px" id="listOrderLikes">
+	         			<thead>
+										<tr>
+											<th style="text-align: center;">게시글 번호</th>
+											<th style="text-align: center;">제목</th>
+											<th style="text-align: center;">닉네임</th>
+											<th style="text-align: center;">날짜</th>
+											<th style="text-align: center;">조회수</th>
+											<th style="text-align: center;">추천</th>
+										</tr>
+									</thead>
+               <c:choose>
+               <c:when test="${listLikes != null and fn:length(listLikes) > 0}">
+	               <c:forEach var="b_bean" items="${listLikes}">
 	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
 	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
 	               			${b_bean.getBoard_Num()}
@@ -148,6 +264,37 @@
 
 		<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
+			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+			<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
+			<script>
+			const tableRecent = document.getElementById("listOrderRecent");
+			const tableView = document.getElementById("listOrderView");
+			const tableLikes = document.getElementById("listOrderLikes");
 			
+			tableRecent.style.display = 'inline-table';
+			tableView.style.display = 'none';
+			tableLikes.style.display = 'none';
+			
+			function Onchange(recent){
+				alert("최근순");
+				tableRecent.style.display = 'inline-table';
+				tableView.style.display = 'none';
+				tableLikes.style.display = 'none';
+			}
+			
+			function Onchange(view){
+				alert("조회순");
+				tableRecent.style.display = 'none';
+				tableView.style.display = 'inline-table';
+				tableLikes.style.display = 'none';
+			}
+			
+			function Onchange(Likes){
+				alert("추천순");
+				tableRecent.style.display = 'none';
+				tableView.style.display = 'none';
+				tableLikes.style.display = 'inline-table';
+			}
+			</script>
 	</body>
 </html>

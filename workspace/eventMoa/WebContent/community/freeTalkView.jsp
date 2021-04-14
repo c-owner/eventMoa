@@ -24,6 +24,15 @@
  			width: 30% !important;
  			}
  		}
+		@media screen and (max-width: 480px){
+ 		.button {
+ 			width: 20% !important;
+ 			}
+ 		}
+ 		#small {
+ 			    margin-top: 2%;
+    			margin-right: 3%;
+ 		}
 		</style>
 	</head>
 	
@@ -36,7 +45,7 @@
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 	<p></p>
 		<!-- Main -->
-			<div id="main">
+			<div id="main" style="padding-bottom: 6%;">
 			
 		<!-- Logo -->
 		<jsp:include page="${pageCofntext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
@@ -44,18 +53,13 @@
 		
 		<!-- FreeTalk -->
 		<section id="banner">
-			<article class="column col4">
+			<article class="column col4" style="border: 1px solid #e3e3e3; border-radius: 6px; width: 95%; margin: 0 auto;">
 				<h2 class="col_tit" style="text-align: left; color: black; margin: auto;">${f_vo.getBoard_Title()}</h2>
 				<p class="col_desc"> </p>
 				
-			<table width="900px" border="1" cellpadding="0" cellspacing="0">
+			<table width="900px" border="1" cellpadding="0" cellspacing="0">		
 				<tr height="30px">
-					<td align="center" width="150px" id="td1">제 목</td>
-					<td style="padding-left:10px;">${f_vo.getBoard_Title()}</td>
-				</tr>
-				
-				<tr height="30px">
-					<td  align="center" width="150px" id="td1">아이디</td>
+					<td  align="center" width="150px" id="td1">작성자</td>
 					<td style="padding-left:10px;">${f_vo.getBoard_Id()}</td>
 				</tr>
 				
@@ -75,18 +79,8 @@
 					</tr>
 				</c:if>
 			</table>
-			<table width="900px" border="0" cellpadding="0" cellspacing="0">
-				<tr align="right" valign="middle">
-					<td>
-						<c:if test="${f_vo.getBoard_Id() eq session_id}">
-							<a href="${pageContext.request.contextPath}/freeboard/FreeBoardModify.bo?board_Num=${f_vo.getBoard_Num()}&page=${page}">[수정]</a>
-							<a href="javascript:deleteBoard()">[삭제]</a>
-						</c:if>
-						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}">[목록]</a>
-					</td>
-				</tr>
-			</table>
-			<form name="boardForm" method="post" style="margin-bottom: -35px;" action="${pageContext.request.contextPath}/freeboard/FreeBoardDeleteOk.bo">
+				<a href="/community/freeTalkWrite.jsp"><div class="button primary small" id="recommand" style="float: right;">👍추천</div></a>
+			<form name="boardForm" method="post" style="margin-bottom: 20px;" action="${pageContext.request.contextPath}/freeboard/FreeBoardDeleteOk.bo">
 				<input type="hidden" name="board_Num" value="${f_vo.getBoard_Num()}">
 				<input type="hidden" name="page" value="${page}">
 			</form>
@@ -94,6 +88,13 @@
 			<table id="replyTable"></table>
 </article>
 </section>
+						<div style="margin-right: 3%;">
+						<c:if test="${f_vo.getBoard_Id() eq session_id}">
+							<a href="${pageContext.request.contextPath}/freeboard/FreeBoardModify.bo?board_Num=${f_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a>
+							<a href="javascript:deleteBoard()"><div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
+						</c:if>
+						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
+						</div>
 </div>
 		<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
@@ -156,12 +157,12 @@
 		    		text +="</td><tr>";
 		    	});
 		    }else{
-		    	text += "<tr align='center'><td align='center' width='150px' colspan='2'>댓글이 없습니다.</td></tr>"
+		    	text += "<tr align='center' style='border-top: solid 1px; border-color: #e3e3e3;'><td align='center' width='150px' colspan='2'>등록된 댓글이 없습니다.</td></tr>"
 		    }
 		    
 		    //로그인일 경우에만 댓글 작성 테이블
 		    if("${session_id}" != null && "${session_id}" != ""){
-				text += "<tr height='200px'>   <td align='center' width='18%;'><div align='center'>댓 글</div></td>"
+				text += "<tr height='100px' style='border: 1px solid #e3e3e3;' 'border-radius: 6px;'><td align='center' width='20%;'><div align='center'>댓 글</div></td>"
 		    	+ "<td style='padding-left:10px'><textarea name='reply_Content' style='height:185px; resize:none;''></textarea>"
 		    	+ "<a href='javascript:insertReply()''>[등록]</a></td></tr>";
 		    }
