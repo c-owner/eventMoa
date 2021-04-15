@@ -1,12 +1,14 @@
 package com.eventmoa.app.user.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.eventmoa.app.freeboard.vo.FreeBoardVO;
 import com.eventmoa.app.user.vo.UserVO;
 import com.eventmoa.mybatis.config.SqlMapConfig;
 import com.eventmoa.util.SHA256;
@@ -193,5 +195,18 @@ public class UserDAO {
 		user.put("new_Email", new_email);
 		
 		return session.update("User.modifyEmail", user) == 1;
+	}
+	
+	//내가 쓴 글
+	public List<FreeBoardVO> getBoardList(String id) {
+		System.out.println("다오 쓴글");
+
+		return session.selectList("User.listAll", id);
+	}
+	
+	//내가 쓴 글수
+	public int getBoardCnt(String id) {
+		System.out.println("다오 쓴글수");
+		return session.selectOne("User.getBoardCnt", id);
 	}
 }

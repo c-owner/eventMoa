@@ -92,7 +92,20 @@
 					</div>
 					<p style="text-align:center">
 						<font style="font-family: 'jua'; font-size: 16px;">
-						${e_vo.getBoard_Content()}
+							<div style="margin-bottom: 10%;">
+									<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="30"
+											style="resize:inherit;width:100%;height:200px;overflow-y:hidden" readonly>
+											${e_vo.getBoard_Content()}
+									</textarea>
+									<script>
+										function xSize(e)
+										{
+											e.style.height = '1px';
+											e.style.height = (e.scrollHeight + 12) + 'px';
+										}
+									</script>
+							</textarea>
+							</div>
 						</font>
 						<p style="text-align: center;">
 						<span style="color:#2f7fa6; font-size: 15px;">이벤트 시작 :</span><span style="color:red">${e_vo.getEVT_START_DT()}</span> ~ 

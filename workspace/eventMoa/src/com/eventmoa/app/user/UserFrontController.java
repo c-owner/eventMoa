@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.user.mypage.UserAddressModifyAction;
 import com.eventmoa.app.user.mypage.UserEmailModifyAction;
+import com.eventmoa.app.user.mypage.UserFreeBoardListOkAction;
 import com.eventmoa.app.user.mypage.UserNameModifyAction;
 import com.eventmoa.app.user.mypage.UserPwModifyAction;
 
@@ -240,7 +241,16 @@ public class UserFrontController extends HttpServlet {
 				System.out.println(e);
 			}
 		}
-		
+		/* 내가 쓴 글*/
+		else if (command.equals("/user/mypage/UserFreeBoardListOk.us")) {
+			System.out.println("프론트1");
+			try {
+				System.out.println("프론트 try");
+				 forward = new UserFreeBoardListOkAction().execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 		/* 검색 페이지	*/
 		else if (command.equals("/search/search.us")) {
 			try {

@@ -3,7 +3,7 @@
 
 <mapper namespace="Map">
 	<select id="getAddress" parameterType="string" resultType="mapVO">
-		SELECT USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ADDRESS_ETC FROM TABLE_USER 
+		SELECT USER_ADDRESS, USER_ADDRESS_ETC FROM TABLE_USER 
 		WHERE USER_ID = #{user_id}
 	</select>
 	

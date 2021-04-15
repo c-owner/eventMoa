@@ -61,13 +61,16 @@
 					<div class="tagNav-div3">
 						<a class="tagNav-div-a" href="javascript:listPage();">목록</a>
 					</div>
+					<div class="tagNav-div3" style="margin-left: auto;">
+						회원 ID : &nbsp; <a class="tagNav-div-a">${session_id}</a>
+					</div>
 				</nav>
 			</div>
 			
 			<div class="mainManager">
 				<main class="mainClass">
 					<section class="mainSection">
-						<form name="writeEventForm" action="${pageContext.request.contextPath}/eventboard/EventWriterOk.ev" method="post" enctype="multipart/form-data">
+						<form name="writeEventForm" id="writeEventForm" action="${pageContext.request.contextPath}/eventboard/EventWriterOk.ev" method="post" enctype="multipart/form-data">
 						<h2>기본정보<span>*필수항목</span></h2>
 						<ul class="ulSection">
 							<li class="liSection"> 
@@ -80,7 +83,7 @@
 									<ul class="imgDiv2-ul" id="imgDiv2-ul">
 										<li class="imgDiv2-li asd" id="addImg-li">
 											<a href="javascript:" onclick="fileUploadAction();" id="fileText"><i class="fas fa-camera" style="margin-left: 40%;"></i><br />이미지 등록</a>
-          									<input type="file" name="input_imgs[]" id="input_imgs" multiple="multiple"/>
+          									<input type="file" name="input_imgs_0" id="input_imgs" multiple="multiple"/>
 										</li>
 										<ul class="imgs_wrap">
 
@@ -345,7 +348,7 @@
 					 telValidator(phoneNumber);
 				}
 				function telValidator(args) {
-					const msg = '유효하지 않는 번호입니다.';
+					var msg = '유효하지 않는 번호입니다.';
 					// IE 브라우저에서는 당연히 var msg로 변경
 					if (/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(args)) {
 						msg = "pass";
@@ -387,6 +390,23 @@
 				
 			}
 
+			// ------------------------이미지 다중 업로드 테스트 --------------------
+			// function uploadFileAdded() {
+			// 	var input_imgs = document.getElementById('input_imgs');
+			// 	for( var i = 0; i < uploadFiles.length; i++ ) {
+			// 		var file = uploadFiles.files[i];
+
+			// 		var uploader = new Uploader(file);
+			// 		// uploader.startUpload();
+			// 	}
+			// 	document.getElementById('writeEventForm').reset();
+			// }
+
+			// function Uploader(file) {
+				
+			// }
+
+			
 			// ----------------------------------썸네일----------------------------------
 			// 이미지 정보 담는 배열
 			var sel_files = [];
@@ -427,11 +447,41 @@
 							+" </li></a>";
 						$(".imgs_wrap").append(html);
 						index++;
+						fileCnt++;
 					document.getElementById("leaderImg_0").style.display = "block";
 					document.getElementById("leaderImg_0").innerHTML = "대표 이미지";
 					}
 					reader.readAsDataURL(f);
 				});
+
+				console.log("업로드 파일 갯수 : "+sel_files.length);
+				var data = new FormData();
+
+				for ( var i = 0, len=sel_files.length; i<len; i++){
+					var name = "image_"+i;
+					data.append(name, sel_files[i]);
+				}
+				data.append("image_count", sel_files.length);
+				
+				$.ajax({
+					url: contextPath + "/AddImgOkAction.ev",
+					enctype: "multipart/form-data",
+					type: "post",
+					data: data,
+					processData: false,
+					contentType: false,
+					timeout: 500000,
+					success: function() {
+						$("#fileText").text("업로드 중...");
+						setTimeout(function(){
+							$("#fileText").text("이미지 등록");
+						}, 5000);
+					},
+					error:function(){	//통신 오류
+	 					alert("네트워크 서버가 불안정합니다. 다시 시도해주세요. (연결 유실) ");
+	 				}
+				});
+				
 
 			}
 
