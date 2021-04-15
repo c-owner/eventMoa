@@ -26,8 +26,7 @@
 					"@dbeaver-connection-type@": "BASIC",
 					"@dbeaver-sid-service@": "SERVICE"
 				},
-				"auth-model": "oracle_native",
-				"handlers": {}
+				"auth-model": "oracle_native"
 			}
 		}
 	},
@@ -43,6 +42,14 @@
 					"properties": {
 						"erd.diagram.state": {
 							"serialized": "<diagram version=\"1\" name=\"TABLE_BOARD_FREETALK\" time=\"202104012230\"><entities><data-source id=\"oracle_thin-1785c9c20bc-6a232e7d00de2b34\"><entity id=\"1\" name=\"TABLE_BOARD_FREETALK\" fq-name=\"EVENTMOA.TABLE_BOARD_FREETALK\" order=\"0\" color-bg=\"128,64,32\" x=\"884\" y=\"396\"><path name=\"EVENTMOA\"/></entity><entity id=\"2\" name=\"TABLE_USER\" fq-name=\"EVENTMOA.TABLE_USER\" order=\"1\" x=\"47\" y=\"420\"><path name=\"EVENTMOA\"/></entity><entity id=\"3\" name=\"TABLE_FILES_FREETALK\" fq-name=\"EVENTMOA.TABLE_FILES_FREETALK\" order=\"2\" x=\"728\" y=\"237\"><path name=\"EVENTMOA\"/></entity><entity id=\"4\" name=\"TABLE_REPLY_FREETALK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK\" order=\"3\" x=\"704\" y=\"77\"><path name=\"EVENTMOA\"/></entity></data-source></entities><relations><relation name=\"FILES_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_FILES_FREETALK.FILES_FREETALK_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"3\"/><relation name=\"REPLY_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK.REPLY_FREETALK_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"4\"/><relation name=\"BOARD_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_BOARD_FREETALK.BOARD_FREETALK_FK\" type=\"fk\" pk-ref=\"2\" fk-ref=\"1\"/><relation name=\"REPLY_FREETALK_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK.REPLY_FREETALK_MEMBER_FK\" type=\"fk\" pk-ref=\"2\" fk-ref=\"4\"/></relations></diagram>"
+						}
+					}
+				},
+				":TABLE_BOARD_EVENT": {
+					"constraints": {
+						"VIRTUAL_PK": {
+							"type": "vpk",
+							"useAllColumns": true
 						}
 					}
 				}
