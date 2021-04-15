@@ -42,9 +42,9 @@
 				<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px;">포인트 결제</h1>
 				<div class="col-6 col-12-medium" style="margin: 0 0 -2em 0;">
         			<ul class="actions" style="display: inline-flex;">
-						<li><a href="${pageContext.request.contextPath}/user/mypage/pointCharge.jsp" class="button" style="display: flex; margin: 0 auto;">
+						<li><a href="${pageContext.request.contextPath}/pointCharge.us" class="button" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/point.png" style="width: auto;">　포인트 충전소</a></li>
-						<li><a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.jsp" class="button" style="display: flex; margin: 0 auto;">
+						<li><a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.us" class="button" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/receipt.png" style="width: auto;">　포인트 결제내역</a></li>
 					</ul>
 				</div>
@@ -52,9 +52,9 @@
         		<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px;">나의 활동</h1>
         		<div class="col-6 col-12-medium" style="margin: 0 0 -2em 0;">
         			<ul class="actions" style="display: inline-flex;">
-						<li><a href="${pageContext.request.contextPath}/user/mypage/myWrite.jsp" class="button" style="display: flex; margin: 0 auto;">
+						<li><a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardListOk.us" class="button" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/board.png" style="width: auto;">　내가 쓴 글　　</a></li>
-						<li><a href="${pageContext.request.contextPath}/user/mypage/myReply.jsp" class="button" style="display: flex; margin: 0 auto;">
+						<li><a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardReplyOk.us" class="button" style="display: flex; margin: 0 auto;">
 						<img src="${pageContext.request.contextPath}/images/user/comment.png" style="width: auto;">　내가 쓴 댓글　</a></li>
 					</ul>
 				</div>

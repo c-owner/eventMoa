@@ -16,15 +16,9 @@
 		<!-- title Icon -->
 		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 		<style>
-		.fa-search {
-			width: 20%;
-			}
-		@media screen and (max-width: 670px){
-			#category {
-			display: none;
-			padding-left: 10%;
-			}
-		}
+ 		.column{
+ 			padding: 45px !important;
+ 		}
 		</style>
 	</head>
 	
@@ -56,19 +50,10 @@
 				<p class="col_desc"> </p>
 		
 						<form method="post" action="#" class="combined" style="margin-bottom: 0;">
-		         			<select name="category" class="button primary icon solid fa-search" id="category" style="font-size: 10px; width: 13%; padding-left: 10px; text-align-last: center;
-   text-align: center;
-   -ms-text-align-last: center;
-   -moz-text-align-last: center;">
-			         				<option value="recent" id="selectRecent">등록일순　</option>
-			         				<option value="view" id="selectView">조회순　</option>
-			         				<option value="likes" id="selectLikes">추천순　</option>
-			         			</select>
 			         			<div style="float:right; font-size: 11px;">
 				         			<p>등록된 글 개수 : <c:out value="${totalCnt}"/>개</p>
 								</div>
 								<br>
-								 
 	         			</form>
 	         			<p></p>
 	         			<table border="1" cellpadding="0" cellspacing="0" width="900px">
@@ -153,6 +138,7 @@
 
 		<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
-			
+			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+			<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	</body>
 </html>

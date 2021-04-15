@@ -92,16 +92,16 @@
    </update>
    
    <!-- 내가 쓴 글 -->
-   <select id="listAll" parameterType="string" resultType="freeBoardVO">
+	<select id="listAll" parameterType="map" resultType="freeBoardVO">
 		SELECT * FROM 
 			(SELECT ROWNUM R, D.* FROM 
-				(SELECT * FROM TABLE_BOARD_freeTalk ORDER BY BOARD_NUM DESC) D) B
-		WHERE BOARD_ID = #{board_Id}
+				(SELECT * FROM TABLE_BOARD_freeTalk ORDER BY BOARD_NUM DESC) D) B 
+		WHERE B.R BETWEEN #{startRow} AND #{endRow} AND BOARD_ID = #{board_Id}
 	</select>
 	
 	<select id="getBoardCnt" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM TABLE_BOARD_freeTalk WHERE BOARD_ID = #{board_Id}
 	</select>
-	
+
    <!-- 내가 쓴 댓글 -->
 </mapper>

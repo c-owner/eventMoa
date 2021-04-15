@@ -2,6 +2,7 @@ package com.eventmoa.app.user.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -198,15 +199,19 @@ public class UserDAO {
 	}
 	
 	//내가 쓴 글
-	public List<FreeBoardVO> getBoardList(String id) {
-		System.out.println("다오 쓴글");
-
-		return session.selectList("User.listAll", id);
+	public List<FreeBoardVO> getBoardList(int startRow, int endRow, String board_Id) {
+		HashMap<String, Object> pageMap = new HashMap<>();
+		
+		pageMap.put("startRow", startRow);
+		pageMap.put("endRow", endRow);
+		pageMap.put("board_Id", board_Id);
+		
+		return session.selectList("User.listAll", pageMap);
 	}
 	
 	//내가 쓴 글수
-	public int getBoardCnt(String id) {
-		System.out.println("다오 쓴글수");
-		return session.selectOne("User.getBoardCnt", id);
+	public int getBoardCnt(String board_Id) {
+		return session.selectOne("User.getBoardCnt", board_Id);
 	}
+	
 }

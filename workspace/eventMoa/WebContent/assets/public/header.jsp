@@ -58,21 +58,20 @@
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/MyPageInfo.us">회원정보수정</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardListOk.us">내가 쓴 글</a><li>
-								<li><a href="${pageContext.request.contextPath}/user/mypage/myReply.jsp">내가 쓴 댓글</a><li>
-								<li><a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.jsp">결제 내역</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardReply.us">내가 쓴 댓글</a><li>
+								<li><a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.us">결제 내역</a><li>
 								<li><a href="${pageContext.request.contextPath}/user/UserLogin.us">로그아웃</a><li>
 							</ul>
 						</li>
 					</c:if>
-						<li><a href="${pageContext.request.contextPath}/user/mypage/pointCharge.jsp">포인트💎</a>
+						<li><a href="${pageContext.request.contextPath}/pointCharge.us">포인트💎</a>
 							<ul>
-								<li><a href="${pageContext.request.contextPath}/user/mypage/pointCharge.jsp">포인트 충전소</a><li>
+								<li><a href="${pageContext.request.contextPath}/pointCharge.us">포인트 충전소</a><li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo">커뮤니티</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo">자유게시판</a><li>
-								<li><a href="${pageContext.request.contextPath}/community/reviews.jsp">인증후기</a><li>
 							</ul>
 						</li>
 					</ul>

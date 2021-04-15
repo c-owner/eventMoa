@@ -77,13 +77,13 @@
 								<div class="imgDiv">
 										 이미지
 										<span>*</span>
-										<small>(<font id="imgCount"></font>/1)</small>
+										<small>(${i}/10)</small>
 								</div>
 								<div class="sc-div">
 									<ul class="imgDiv2-ul" id="imgDiv2-ul">
 										<li class="imgDiv2-li asd" id="addImg-li">
 											<a href="javascript:" onclick="fileUploadAction();" id="fileText"><i class="fas fa-camera" style="margin-left: 40%;"></i><br />이미지 등록</a>
-          									<input type="file" name="input_imgs_0" id="input_imgs_0"/>
+          									<input type="file" name="input_imgs_0" id="input_imgs" multiple="multiple"/>
 										</li>
 										<ul class="imgs_wrap">
 
@@ -96,8 +96,8 @@
 									<div class="imgDiv2 guideText">
 										<br>
 										<b> * 게시글에 올릴 사진을 올려주세요.</b>
-										<br>❗️ 용량이 큰 이미지를 올리실 경우 업로드가 안될 수도 있습니다. (용량 제한: 50M)
-										<br>❗️ 이미지는 3개까지 등록할 수 있습니다.
+										<br>❗️ 용량이 큰 이미지를 여러 개 올리실 경우 업로드가 안될 수도 있습니다. (총 용량 제한: 50M)
+										<br>❗️ 같은 이미지를 여러번 올릴 수 없습니다.
 									</div>
 									</div>
 							</li>
@@ -342,7 +342,7 @@
 					return;
 				} 
 				else if (form.callNumber.value.length > 1 ) {
-					callValidator(callNumber);
+					telValidator(callNumber);
 				}
 				else if (form.phoneNumber.value.length > 1) {
 					 telValidator(phoneNumber);
@@ -351,13 +351,7 @@
 					var msg = '유효하지 않는 번호입니다.';
 					// IE 브라우저에서는 당연히 var msg로 변경
 					if (/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(args)) {
-					} else {
-						alert(msg);
-						return;
-					}
-				}
-				function callValidator(args) {
-					if (/^[0-9]{3,4}-[0-9]{4}/.test(args)){
+						msg = "pass";
 					} else {
 						alert(msg);
 						return;
@@ -396,6 +390,23 @@
 				
 			}
 
+			// ------------------------이미지 다중 업로드 테스트 --------------------
+			// function uploadFileAdded() {
+			// 	var input_imgs = document.getElementById('input_imgs');
+			// 	for( var i = 0; i < uploadFiles.length; i++ ) {
+			// 		var file = uploadFiles.files[i];
+
+			// 		var uploader = new Uploader(file);
+			// 		// uploader.startUpload();
+			// 	}
+			// 	document.getElementById('writeEventForm').reset();
+			// }
+
+			// function Uploader(file) {
+				
+			// }
+
+			
 			// ----------------------------------썸네일----------------------------------
 			/* 
 			 NOTE - this is Thumbnail 
@@ -403,14 +414,13 @@
 			 */
 			// 이미지 정보 담는 배열
 			var sel_files = [];
-			
 
 			$(document).ready(function(){
-				$("#input_imgs_0").on("change", handleImgFileSelect);
+				$("#input_imgs").on("change", handleImgFileSelect);
 				
 			});	
 			function fileUploadAction() {
-				$("#input_imgs_0").trigger('click');
+				$("#input_imgs").trigger('click');
 			}
 			 
 			function handleImgFileSelect(e){ 
@@ -428,9 +438,6 @@
 					if(!f.type.match("image.*")) {
 						alert("확장자는 이미지 확장자만 가능합니다.");
 						return;
-					} else if (sel_files.length > 10 || index > 10) {
-						alert("이미지는 10개 이하로만 업로드가 가능합니다.");
-						return;
 					}
 					sel_files.push(f);
 
@@ -438,7 +445,7 @@
 					reader.onload = function(e) {
 						var html = "<a href=\"javascript:void(0);\" id=\"img_id_"+index+"\">"
 							+" <li id='imageList_"+index+"' class='imgDiv2-li'><div id='leaderImg_"+index+"' class='leaderImg'></div>"
-							// +" <input type=\"file\" name='input_imgs_"+fileCnt+"'>"
+							+" <input type=\"file\" name='input_imgs_"+fileCnt+"'>"
 							+" <button type='button' class=\"deleteImg\" onclick=\"deleteImageAction("+index+")\"></button>"
 							+" <img src=\"" + e.target.result +"\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'>"
 							+" </li></a>";
@@ -447,12 +454,9 @@
 						fileCnt++;
 					document.getElementById("leaderImg_0").style.display = "block";
 					document.getElementById("leaderImg_0").innerHTML = "대표 이미지";
-					document.getElementById("imgCount").innerHTML = sel_files.length+"";
 					}
 					reader.readAsDataURL(f);
 				});
- 
-				
 
 			}
 
@@ -464,9 +468,62 @@
 
 				var img_id = "#img_id_"+index;
 				$(img_id).remove();
-				document.getElementById("imgCount").innerHTML = ""+sel_files.length+"";
 			}
+
+
+			function submitAction() {
+				console.log("업로드 파일 갯수 : "+sel_files.length);
+				var data = new FormData();
+				
+
+				/* 
+				NOTE - 해당 코드는 form 태그로 동작하지 않는다. XMLHttpRequest에 관련해서는 크게 복잡하지 않지만,
+				보다 확실한 이해를 원하면 검색해보는게 더욱 이해함에 도움이 될 것이다.
+				
+				보여지는 이미지들을 어떻게 서버로 옮기는 post 기능을 포함해서 전송할 것인가 이다.
+				
+				아래 for문을 보면 선택된 파일 배열의 크기만큼 반복이 되며, data를 고유값으로 감싸게 된다. 
+				즉, 서버에서 쓰게될 값은 ${FILES['image_1~']} 이런식으로 사용이 가능하다.
+				
+
+				*/
+				for ( var i = 0, len=sel_files.length; i<len; i++){
+					var name = "image_"+i;
+					data.append(name, sel_files[i]);
+				}
+				data.append("image_count", sel_files.length);
+
  
+				// 컨트롤러 송신
+				// var req = new XMLHttpRequest();
+				// req.open("POST", contextPath + "/AddImgOkAction.ev");
+
+				// req.onload = function(e) {
+				// 	if(this.status == 200 ) {
+				// 		console.log("Result : "+e.currentTarget.responseText);
+				// 	}
+				// }
+				// req.send(data);
+				$.ajax({
+					url: contextPath + "/eventboard/EventWriterOk.ev",
+					enctype: "multipart/form-data",
+					type: "post",
+					data: data,
+					processData: false,
+					contentType: false,
+					timeout: 500000,
+					success: function() {
+						$("#fileText").text("업로드 중...");
+						setTimeout(function(){
+							$("#fileText").text("이미지 등록");
+						}, 5000);
+					},
+					error:function(){	//통신 오류
+	 					alert("네트워크 서버가 불안정합니다. 다시 시도해주세요. (연결 유실) ");
+	 				}
+				});
+				
+			}
 			//-------------------------------이미지 드래그------------------------------------
 			$(function() {
 				$(".imgs_wrap").sortable();

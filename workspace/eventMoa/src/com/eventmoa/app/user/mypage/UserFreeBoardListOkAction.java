@@ -2,9 +2,11 @@ package com.eventmoa.app.user.mypage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
+import com.eventmoa.app.freeboard.FreeBoardListOkAction;
 import com.eventmoa.app.user.dao.UserDAO;
 
 public class UserFreeBoardListOkAction implements Action {
@@ -13,15 +15,13 @@ public class UserFreeBoardListOkAction implements Action {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		System.out.println("컨트롤러1");
+		HttpSession session = req.getSession();
+		
 		UserDAO u_dao = new UserDAO();
 		ActionForward forward = new ActionForward();
-		System.out.println("컨트롤러2");
 		
 		String temp = req.getParameter("page");
-		String id = req.getParameter("session_id");
-		System.out.println(temp);
-		System.out.println(id);
+		String board_Id = (String)session.getAttribute("session_id"); 
 		
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		
@@ -36,7 +36,7 @@ public class UserFreeBoardListOkAction implements Action {
 		
 		int endPage = startPage + (pageSize - 1);
 		
-		int totalCnt = u_dao.getBoardCnt(id);
+		int totalCnt = u_dao.getBoardCnt(board_Id);
 		
 		int realEndPage = (totalCnt - 1) / pageSize + 1;
 		
@@ -48,8 +48,8 @@ public class UserFreeBoardListOkAction implements Action {
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("nowPage", page);
 		req.setAttribute("realEndPage", realEndPage);
-		req.setAttribute("boardList", u_dao.getBoardList(id));
-		
+		req.setAttribute("boardList", u_dao.getBoardList(startRow, endRow, board_Id));
+	
 		forward.setRedirect(false);
 		forward.setPath("/user/mypage/myWrite.jsp");
 		

@@ -79,6 +79,19 @@
 						<div class="login_message">
 							<h1>${e_vo.getBoard_Title()}</h1>
 							<br>
+							<p style="text-align: left;">
+								DATE : <span style="color:#2f7fa6">
+									${e_vo.getBoard_Date()}
+										</span>
+								<br>
+								Writer : 
+									<span style="color: #2f7fa6;">
+										${e_vo.getBoard_Id()} 
+									</span>
+								<br>
+								
+							</p>
+							
 						</div>
 					<!-- 이미지 슬라이드 -->
 					<div class="slider" style="width:70%; margin:0 auto;">
@@ -94,7 +107,7 @@
 						<font style="font-family: 'jua'; font-size: 16px;">
 							<div style="margin-bottom: 10%;">
 									<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="30"
-											style="resize:inherit;width:100%;height:200px;overflow-y:hidden" readonly>
+											style="resize:inherit;width:100%;overflow-y:hidden" readonly>
 											${e_vo.getBoard_Content()}
 									</textarea>
 									<script>
@@ -123,7 +136,11 @@
 					</div>
 					<div class="intro">
 						<article class="column col6" style="display:inline">
-							<span style="font-size:25px; display:block;">1588-8282</span>
+							<span style="font-size:25px; display:block;">
+								${e_vo.getBoard_CallNumber()} 
+							<br>
+								${e_vo.getBoard_PhoneNumber()}
+							</span>
 							<h4 class="intro-h4" style="display:inline">
 								연락처
 							</h4>
@@ -131,7 +148,9 @@
 					</div>
 					<div class="intro">
 						<article class="column col6" style="display:inline">
-							<span style="font-size:15px; display:block;">${e_vo.getBoard_Zipcode()} ${e_vo.getBoard_Address()} ${e_vo.getBoard_Address_Detail()} ${e_vo.getBoard_Address_etc()}</span>
+							<span style="font-size:15px; display:block;">${e_vo.getBoard_Zipcode()} 
+								<br>${e_vo.getBoard_Address()} 
+								<br>${e_vo.getBoard_Address_Detail()} ${e_vo.getBoard_Address_etc()}</span>
 							<h4 class="intro-h4" style="display:inline">
 								주소
 							</h4>

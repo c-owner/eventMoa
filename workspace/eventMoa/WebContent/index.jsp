@@ -142,17 +142,17 @@
 						</div>
 						<div class="col-4">
 							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/banner/banner1.jpg"
+								src="${pageContext.request.contextPath}/images/eventAD/1.jpg"
 								alt="" /></span>
 						</div>
 						<div class="col-4">
 							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/banner/banner2.jpg"
+								src="${pageContext.request.contextPath}/images/eventAD/2.jpg"
 								alt="" /></span>
 						</div>
 						<div class="col-4">
 							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/banner/banner3.jpg"
+								src="${pageContext.request.contextPath}/images/eventAD/3.jpg"
 								alt="" /></span>
 						</div>
 					</div>
@@ -232,9 +232,6 @@
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af&libraries=services,clusterer,drawing"></script>
-	<script>
-	 <script type="text/javascript"
-	      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6cdc63540559ff9bbde7b39a1878ce94&libraries=services,clusterer,drawing"></script>
 	   <script>
 	      //이미지 슬라이더
 	      $(".slider").slick({

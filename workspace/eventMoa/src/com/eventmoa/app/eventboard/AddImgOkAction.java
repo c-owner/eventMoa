@@ -24,6 +24,7 @@ public class AddImgOkAction implements Action {
 		ActionForward forward = null;
 		
 		// 업로드
+//		String realPath = "/Users/corner/eventMoa-Project/workspace/eventMoa/WebContent/app/eventFilesUpload";
 		String uploadFolder = "/app/eventFilesUpload";
 		ServletContext context= req.getSession().getServletContext();
 		String realPath= context.getRealPath(uploadFolder);
@@ -32,14 +33,14 @@ public class AddImgOkAction implements Action {
 		
 		MultipartRequest multi = null;
 		
+		System.out.println(multi.getFilesystemName("image_count"));
+		
 		
 		try {
 			multi = new MultipartRequest(req, realPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		ev_vo.setFile_name(multi.getFilesystemName("input_imgs_0"));
 		
 		if(evf_dao.insertFiles(ev_dao.getBoardNum(), multi)) {
 			forward = new ActionForward();

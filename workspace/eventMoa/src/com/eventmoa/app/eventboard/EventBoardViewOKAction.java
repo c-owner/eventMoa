@@ -36,11 +36,11 @@ public class EventBoardViewOKAction implements Action{
 		
 		
 		if(e_vo != null ) {
-			e_dao.updateReadCount(boardNum); // 조회수
+			// 버그 오류로 인해 조회수 메소드 잠금
+//			e_dao.updateReadCount(boardNum); // 조회수
 			req.setAttribute("replies", replyList);
 			req.setAttribute("e_vo", e_vo);
 			req.setAttribute("page", page);
-			
 			if(filesList != null) {
 				req.setAttribute("files", filesList);
 			}
