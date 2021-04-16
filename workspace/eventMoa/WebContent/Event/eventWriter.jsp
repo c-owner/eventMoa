@@ -82,7 +82,8 @@
 								<div class="sc-div">
 									<ul class="imgDiv2-ul" id="imgDiv2-ul">
 										<li class="imgDiv2-li asd" id="addImg-li">
-											<a href="javascript:" onclick="fileUploadAction();" id="fileText"><i class="fas fa-camera" style="margin-left: 40%;"></i><br />이미지 등록</a>
+											<a href="javascript:" onclick="fileUploadAction();" id="fileText" style="cursor: pointer;">
+												<i class="fas fa-camera" style="margin-left: 40%;"></i><br />이미지 등록</a>
           									<input type="file" name="input_imgs_0" id="input_imgs_0"/>
 										</li>
 										<ul class="imgs_wrap">
@@ -341,7 +342,7 @@
 					alert("서비스 연락망은 둘 중에 하나는 입력하셔야 합니다.");
 					return;
 				} 
-				else if (form.callNumber.value.length > 1 ) {
+/* 				else if (form.callNumber.value.length > 1 ) {
 					callValidator(callNumber);
 				}
 				else if (form.phoneNumber.value.length > 1) {
@@ -363,7 +364,7 @@
 						return;
 					}
 				}
-
+ */
 			var x = confirm("정말 이대로 글을 등록하시겠습니까?");
 				if(x) {
 					$("#fileText").text("업로드 중...");

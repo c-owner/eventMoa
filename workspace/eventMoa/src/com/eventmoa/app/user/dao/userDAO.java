@@ -111,6 +111,16 @@ public class UserDAO {
 		return (Integer)session.selectOne("Login", user) == 1;
 	
 	}
+	public String getFindId(String id) {
+		String user_id = null;
+		user_id = session.selectOne("getFindId", id);
+		if(user_id != null || user_id != "") {
+			return user_id;
+		} else {
+			user_id = null;
+			return user_id;
+		}
+	}
 	
 
 	//임시 비밀번호 생성 메소드

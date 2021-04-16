@@ -57,6 +57,14 @@
 		<c:set var="e_vo" value="${e_vo}"/>
 		<c:set var="replies" value="${replies}"/>
 		<c:set var="files" value="${files}"/>
+		
+		<c:set var="session_id" value="${session_id}" />
+		
+		<c:set var='userStatus' value="false"></c:set>
+		<c:if test="${session_id ne null }">
+			<c:set var='userStatus' value='true' />
+		</c:if>
+	
 		<!-- sideBar -->
 <jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
 		<!-- Header -->
@@ -164,11 +172,12 @@
 				</div>
 
 			<!-- KAKAO MAP -->
+			<c:if test="${userStatus eq true}">
 				<article class="column col4">
 					<h2 class="col_tit" style="text-align: center;">MAP</h2>
 					<div id="map" style="border-radius: 10px;"></div>
 				</article>
-					 
+			</c:if>
 					 <br>
 					 
 					 <div style="margin-right: 3%;">
