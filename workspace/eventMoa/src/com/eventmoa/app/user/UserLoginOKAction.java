@@ -35,6 +35,7 @@ public class UserLoginOKAction implements Action{
 			out.println("</script>");
 			out.close();
 		}
+		
 		if(u_dao.login(id, pw)) {
 			String name = u_dao.getUserName(id);
 			String email = u_dao.getUserEmail(id);
@@ -55,7 +56,9 @@ public class UserLoginOKAction implements Action{
 			session.setAttribute("currentPw", currentPw);
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath()+"/main.us");
+			
 			return forward;
+			
 		}else {
 			PrintWriter out = resp.getWriter();
 			out.println("<script> "

@@ -14,6 +14,7 @@ import com.eventmoa.app.user.mypage.PointReceiptAction;
 import com.eventmoa.app.user.mypage.UserAddressModifyAction;
 import com.eventmoa.app.user.mypage.UserEmailModifyAction;
 import com.eventmoa.app.user.mypage.UserFreeBoardListOkAction;
+import com.eventmoa.app.user.mypage.UserFreeBoardReplyListOkAction;
 import com.eventmoa.app.user.mypage.UserNameModifyAction;
 import com.eventmoa.app.user.mypage.UserPwModifyAction;
 
@@ -252,12 +253,9 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		/* 내가 쓴 댓글 */
-		else if (command.equals("/user/mypage/UserFreeBoardReply.us")) {
+		else if (command.equals("/user/mypage/UserFreeBoardReplyListOk.us")) {
 			try {
-//				forward = new UserFreeBoardListOkAction().execute(req, resp);
-				forward = new ActionForward();
-				forward.setRedirect(false);
-				forward.setPath("/user/mypage/myReply.jsp");
+				forward = new UserFreeBoardReplyListOkAction().execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -265,6 +263,7 @@ public class UserFrontController extends HttpServlet {
 		/* 포인트 결제내역 */
 		else if (command.equals("/user/mypage/pointReceipt.us")) {
 			try {
+				
 				forward = new ActionForward();
 				forward.setRedirect(false);
 				forward.setPath("/user/mypage/pointReceipt.jsp");
@@ -301,10 +300,6 @@ public class UserFrontController extends HttpServlet {
 		else if (command.equals("/search/search.us")) {
 			try {
 				forward = new searchKeywordAction().execute(req, resp);
-//				 forward = new ActionForward();
-//				 forward.setRedirect(false);
-//				 System.out.println(req.getParameter("keyword"));
-//				 forward.setPath("/searchViewPage.jsp");
 			} catch (Exception e) {e.printStackTrace();}
 		}
 //		else if (command.equals("/search/searchOkAction.us")) {

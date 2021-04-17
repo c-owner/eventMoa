@@ -183,47 +183,48 @@
 
 	</div>
 	<!-- div id="main" end -->
-	<!-- One -->
-	<section id="one" class="wrapper spotlight"
-		style="text-align: center; text-align-last: center; margin: 0 auto; padding-left: 40%; padding-top: 1%;">
-		<ul class="grid-icons"
-			style="border-left: outset; border-right: inset; border-bottom: inset; border-top: outset;">
-			<li>
-				<div class="inner">
-					<a href="${pageContext.request.contextPath}/Event/nowEvent.jsp">
-						<span class="icon solid fa-check major"></span>
-						<h3>최신 이벤트</h3>
-					</a>
-				</div>
-			</li>
-			<li>
-				<div class="inner">
-					<a
-						href="${pageContext.request.contextPath}/user/mypage/myPage_list.jsp">
-						<span class="icon solid fa-user-lock major"></span>
-						<h3>내 정보</h3>
-					</a>
-				</div>
-			</li>
-			<li>
-				<div class="inner">
-					<a href="${pageContext.request.contextPath}/community/freeTalk.jsp">
-						<span class="icon solid fa-comment major"></span>
-						<h3>자유게시판 베스트</h3>
-					</a>
-				</div>
-			</li>
-			<li>
-				<div class="inner">
-					<a href="${pageContext.request.contextPath}/index.jsp"> <span
-						class="icon solid fa-cog major"></span>
-						<h3>문의하기</h3>
-					</a>
-				</div>
-			</li>
-		</ul>
 
-	</section>
+	<!-- One -->
+	<div id="mainSection">
+		<section id="one" class="wrapper spotlight">
+			<ul class="grid-icons">
+				<li>
+					<div class="inner">
+						<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev">
+							<span class="icon solid fa-check major"></span>
+							<h3>최신 이벤트</h3>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="inner">
+						<a
+							href="${pageContext.request.contextPath}/mypage/myPage.us">
+							<span class="icon solid fa-user-lock major"></span>
+							<h3>내 정보</h3>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="inner">
+						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo">
+							<span class="icon solid fa-comment major"></span>
+							<h3>자유게시판</h3>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="inner">
+						<a href="${pageContext.request.contextPath}/main.us"> <span
+							class="icon solid fa-cog major"></span>
+							<h3>문의하기</h3>
+						</a>
+					</div>
+				</li>
+			</ul>
+
+		</section>
+	</div>
 	<!-- Footer -->
 	<jsp:include
 		page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>

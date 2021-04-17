@@ -190,7 +190,7 @@
 		<c:if test="${userStatus eq true}">
 		<a href="${pageContext.request.contextPath}/mypage/myPage.us">
 		<img src="${pageContext.request.contextPath}/images/sidebar/add-user.png" style="width: auto;
-		display: block;"> 
+		display: block; margin-left: -6px;"> 
 		　마이페이지 </a>
 		</c:if>
 	</div>

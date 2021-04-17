@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
+import com.eventmoa.app.user.dao.PointDAO;
 import com.eventmoa.app.user.dao.UserDAO;
+import com.eventmoa.app.user.vo.PointVO;
 import com.eventmoa.app.user.vo.UserVO;
 
 public class UserJoinOkAction implements Action{
@@ -20,6 +22,8 @@ public class UserJoinOkAction implements Action{
 		
 		UserVO u_vo = new UserVO();
 		UserDAO u_dao = new UserDAO();
+		PointDAO p_dao = new PointDAO();
+		
 		u_vo.setUser_Id(req.getParameter("user_Id"));
 		u_vo.setUser_Pw(req.getParameter("user_Pw"));
 		u_vo.setUser_Name(req.getParameter("user_Name"));
@@ -35,21 +39,39 @@ public class UserJoinOkAction implements Action{
 		if(!u_dao.join(u_vo)) {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out = resp.getWriter();
-			out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.');</script>");
+			out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.');"
+					+ "location.href = '/main.us';</script>");
 			out.close();
 		}else {
 			//DB에서 INSERT 성공 시
-			// 포인트 결제내역 insert문 추가 
+			String content = "회원가입 감사 포인트 지급";
+			String id = req.getParameter("user_Id");
 			
-			forword = new ActionForward();
+			PointVO p_vo = new PointVO();
+			p_vo.setPoint_Content(content);
+			p_vo.setPoint_Amount(300);
+			p_vo.setUser_Id(id);
 			
-			//이동할 페이지 정보를 담아서 리턴
-			forword.setRedirect(false);
-			forword.setPath("/user/UserLogin.us");
+			if(!p_dao.insertPoint(p_vo)) {
+				resp.setContentType("text/html;charset=utf-8");
+				PrintWriter out = resp.getWriter();
+				out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.');"
+						+ "location.href = '/main.us';</script>");
+				out.close();
+			} else {
+			
+				forword = new ActionForward();
+				
+				//이동할 페이지 정보를 담아서 리턴
+				forword.setRedirect(false);
+				forword.setPath("/user/UserLogin.us");
+			}
 		}
-		
-			//alert창 띄우고 페이지이동 : 오류, 절대 불가능
-			//컨트롤러에서 응답은 반드시 한 번만 가능하다.
 			return forword;
 		}
+
+	
+	
+	
+	
 	}
