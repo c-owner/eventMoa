@@ -81,11 +81,10 @@
 								</div>
 								<div class="sc-div">
 									<ul class="imgDiv2-ul" id="imgDiv2-ul">
-										<li class="imgDiv2-li asd" id="addImg-li">
 											<a href="javascript:" onclick="fileUploadAction();" id="fileText" style="cursor: pointer;">
-												<i class="fas fa-camera" style="margin-left: 40%;"></i><br />이미지 등록</a>
+										<li class="imgDiv2-li asd" id="addImg-li">
+												<i class="fas fa-camera"></i><br />이미지 등록</li></a>
           									<input type="file" name="input_imgs_0" id="input_imgs_0"/>
-										</li>
 										<ul class="imgs_wrap">
 
 										</ul>

@@ -27,7 +27,6 @@ public class UserLoginOKAction implements Action{
 		
 		// id먼저 확인 메소드
 		String findGetId = u_dao.getFindId(id);
-		System.out.println(findGetId);
 		if(findGetId == null || findGetId == "") {
 			PrintWriter out = resp.getWriter();
 			out.println("<script> "
@@ -36,8 +35,6 @@ public class UserLoginOKAction implements Action{
 			out.println("</script>");
 			out.close();
 		}
-		
-		
 		if(u_dao.login(id, pw)) {
 			String name = u_dao.getUserName(id);
 			String email = u_dao.getUserEmail(id);
