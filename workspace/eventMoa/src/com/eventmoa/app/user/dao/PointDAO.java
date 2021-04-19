@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.eventmoa.app.eventboard.vo.EventBoardVO;
 import com.eventmoa.app.user.vo.PointVO;
 import com.eventmoa.app.user.vo.UserVO;
 import com.eventmoa.mybatis.config.SqlMapConfig;
@@ -49,11 +48,13 @@ public class PointDAO {
 //	}
 	
 	//페이지 별 게시글 목록
-	public List<PointVO> getReceiptList(int startRow,int endRow){
-		HashMap<String, Integer> pageMap = new HashMap<>();
+	public List<PointVO> getReceiptList(int startRow,int endRow, String user_Id){
+		
+		HashMap<String, Object> pageMap = new HashMap<>();
 		
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		pageMap.put("user_Id", user_Id);		
 		
 		return session.selectList("PointBoard.getReceiptList", pageMap);
 	}

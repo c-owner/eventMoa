@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -31,7 +32,10 @@ public class PointReceiptAction implements Action {
 		int startRow = endRow - (boardSize - 1);
 		
 		JSONArray jsonArray=new JSONArray();
-		List<PointVO> receipt_list = p_dao.getReceiptList(startRow, endRow);
+		
+		HttpSession session = req.getSession();
+		String user_Id = (String) session.getAttribute("session_id");
+		List<PointVO> receipt_list = p_dao.getReceiptList(startRow, endRow, user_Id);
 		
 		for(PointVO receipt : receipt_list) {
 			JSONObject obj = new JSONObject();
