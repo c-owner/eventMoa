@@ -19,16 +19,17 @@ public class FreeBoardDAO {
 	}
 	
 	//페이지 별 게시글 목록
-	public List<FreeBoardVO> getBoardList(int startRow, int endRow) {
-		HashMap<String, Integer> pageMap = new HashMap<>();
-		
-		pageMap.put("startRow", startRow);
-		pageMap.put("endRow", endRow);
-		
-		return session.selectList("FreeBoard.listAll", pageMap);
-	}
+	   public List<FreeBoardVO> getBoardList(int startRow, int endRow, String category) {
+	      HashMap<String, Object> pageMap = new HashMap<>();
+	      
+	      pageMap.put("category", category);
+	      pageMap.put("startRow", startRow);
+	      pageMap.put("endRow", endRow);
+	      
+	      return session.selectList("FreeBoard.listAll", pageMap);
+	   }
 	
-	//게시글 목록 조회순
+	//게시글 목록 조회순,카테고리
 	public List<FreeBoardVO> getBoardListView(int startRow, int endRow) {
 		HashMap<String, Integer> pageMap = new HashMap<>();
 		
