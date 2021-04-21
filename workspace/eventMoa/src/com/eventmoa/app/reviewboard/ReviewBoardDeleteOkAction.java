@@ -29,7 +29,6 @@ public class ReviewBoardDeleteOkAction implements Action{
 		int page = Integer.parseInt(req.getParameter("page"));
 		
 			File f = new File(realPath, f_dao.getFileList(board_Num));
-			System.out.println(f);
 			if(f.exists()) {
 				f.delete();
 			}
@@ -38,7 +37,7 @@ public class ReviewBoardDeleteOkAction implements Action{
 		r_dao.deleteBoard(board_Num);
 		
 		forward.setRedirect(false);
-		forward.setPath(req.getContextPath() + "/reviewboard/ReviewBoardList.rb");
+		forward.setPath(req.getContextPath() + "/reviewboard/ReviewBoardList.rb?category=recent");
 		
 		return forward;
 	}

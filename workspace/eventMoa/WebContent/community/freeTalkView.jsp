@@ -80,7 +80,6 @@
 					</tr>
 				</c:if>
 			</table>
-				<a href="/community/freeTalkWrite.jsp"><div class="button primary small" id="recommand" style="float: right;">👍추천</div></a>
 			<form name="boardForm" method="post" style="margin-bottom: 20px;" action="${pageContext.request.contextPath}/freeboard/FreeBoardDeleteOk.bo">
 				<input type="hidden" name="board_Num" value="${f_vo.getBoard_Num()}">
 				<input type="hidden" name="page" value="${page}">
@@ -94,7 +93,7 @@
 							<a href="${pageContext.request.contextPath}/freeboard/FreeBoardModify.bo?board_Num=${f_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a>
 							<a href="javascript:deleteBoard()"><div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
 						</c:if>
-						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
+						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=recent&page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
 						</div>
 </div>
 		<!-- Footer -->

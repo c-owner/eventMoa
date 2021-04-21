@@ -227,8 +227,7 @@
 		</section>
 	</div>
 	<!-- Footer -->
-	<jsp:include
-		page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
+	<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
 
 

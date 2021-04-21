@@ -54,7 +54,6 @@
    -moz-text-align-last: center;">
 			         				<option value="recent" ${category == 'recent' ? 'selected' : ""}>등록일순　</option>
 			         				<option value="view" ${category == 'view' ? 'selected' : ""}>조회순　</option>
-			         				<option value="likes" ${category == 'likes' ? 'selected' : ""}>추천순　</option>
 			         			</select>
 			         			<div style="float:right; font-size: 11px;">
 				         			<p>등록된 글 개수 : <c:out value="${totalCnt}"/>개</p>
@@ -72,7 +71,6 @@
 											<th style="text-align: center;">닉네임</th>
 											<th style="text-align: center;">날짜</th>
 											<th style="text-align: center;">조회수</th>
-											<th style="text-align: center;">추천</th>
 										</tr>
 									</thead>
                <c:choose>
@@ -104,17 +102,12 @@
 	               				${b_bean.getBoard_View()}
 	               			</div>
 	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Likes()}
-	               			</div>
-	               		</td>
 	               	</tr>
 	               </c:forEach>
 	           </c:when>
 	           <c:otherwise>
 	           	<tr>
-	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
+	           		<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
 	           	</tr>
 	           </c:otherwise>
                </c:choose>
@@ -152,14 +145,12 @@
 			/* 페이지 */
 	         $("#category").on("change", function(){
 	            var category = $("#category option:selected").val();
-	            console.log(category);
 	            location.href = "${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=" + category + "&page=1";            
 	         })
 	         
 	         $("a.paging").on("click", function(){
 	            var page = $(this).attr("href") || 1;
 	            var category = $("#category option:selected").val();
-	            console.log(category);
 	            location.href = "${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=" + category + "&page=" + page;            
 	         });
 			</script>

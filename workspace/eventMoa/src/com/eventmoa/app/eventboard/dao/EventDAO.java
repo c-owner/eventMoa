@@ -98,10 +98,6 @@ public class EventDAO {
 		session.update("EventBoard.updateReadCount", board_Num);
 	}
 	
-	public void updateLikeCount(int board_Num) {
-		session.update("EventBoard.updateLikeCount", board_Num);
-	}
-	
 	public void deleteBoard(int board_Num) {
 		session.delete("EventBoard.deleteBoard", board_Num);
 	}

@@ -163,7 +163,7 @@
 	</div>
 	<c:if test="${userStatus eq true}">
 		<div class="button small main" style="display: flex; margin: 0 auto; width: 95%; box-shadow: none;">
-			<a href="${pageContext.request.contextPath}/pointCharge.us">
+			<a href="${pageContext.request.contextPath}/user/mypage/pointReceipt.us">
 				<span style="width: auto;">💎</span>내 포인트 : ${user_Point}p</a>
 		</div>
 	</c:if>

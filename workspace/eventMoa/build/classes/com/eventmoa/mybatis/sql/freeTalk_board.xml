@@ -16,9 +16,6 @@
                      <when test="category == 'view'">
                         BOARD_VIEW DESC
                      </when>
-                     <when test="category == 'likes'">
-                        BOARD_LIKES DESC
-                     </when>
                   </choose>
             </if>
             ) D) B
@@ -32,7 +29,7 @@
 	<!-- 게시글 등록 -->
 	<insert id="insertBoard" parameterType="freeBoardVO">
 		INSERT INTO TABLE_BOARD_freeTalk 
-		VALUES (BOARD_SEQ_freeTalk.NEXTVAL, 0, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date, 'FREE')
+		VALUES (BOARD_SEQ_freeTalk.NEXTVAL, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date, 'FREE')
 	</insert>
 	
 	<update id="updateBoardView" parameterType="_int">

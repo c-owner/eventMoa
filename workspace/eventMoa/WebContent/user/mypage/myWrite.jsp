@@ -63,7 +63,6 @@
 											<th style="text-align: center;width: 48%;">제목</th>
 											<th style="text-align: center;">날짜</th>
 											<th style="text-align: center;">조회수</th>
-											<th style="text-align: center;">추천</th>
 										</tr>
 									</thead>
                <c:choose>
@@ -115,17 +114,12 @@
 	               				${b_bean.getBoard_View()}
 	               			</div>
 	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Likes()}
-	               			</div>
-	               		</td>
 	               	</tr>
 	               </c:forEach>
 	           </c:when>
 	           <c:otherwise>
 	           	<tr>
-	           		<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+	           		<td colspan="4" align="center">등록된 게시물이 없습니다.</td>
 	           	</tr>
 	           </c:otherwise>
                </c:choose>

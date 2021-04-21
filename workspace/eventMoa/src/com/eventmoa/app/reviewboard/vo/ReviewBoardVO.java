@@ -10,7 +10,6 @@ BOARD_DATE DATE,*/
 
 public class ReviewBoardVO {
 	private int board_Num;
-	private int board_Likes;
 	private String board_Title;
 	private String board_Content;
 	private String board_Id;
@@ -26,14 +25,6 @@ public class ReviewBoardVO {
 
 	public void setBoard_Num(int board_Num) {
 		this.board_Num = board_Num;
-	}
-
-	public int getBoard_Likes() {
-		return board_Likes;
-	}
-
-	public void setBoard_Likes(int board_Likes) {
-		this.board_Likes = board_Likes;
 	}
 
 	public String getBoard_Title() {

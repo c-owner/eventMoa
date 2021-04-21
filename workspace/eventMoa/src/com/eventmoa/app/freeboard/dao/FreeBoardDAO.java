@@ -23,7 +23,6 @@ public class FreeBoardDAO {
 	      HashMap<String, Object> pageMap = new HashMap<>();
 	      
 	      pageMap.put("category", category);
-	      System.out.println(category);
 	      pageMap.put("startRow", startRow);
 	      pageMap.put("endRow", endRow);
 	      

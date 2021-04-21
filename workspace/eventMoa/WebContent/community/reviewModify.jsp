@@ -186,7 +186,7 @@
 									<ul class="actions" style="margin-top: 13%;">
 										<li style="margin: 0 auto;">
 										<a href="javascript:modifyBoard()" class="button primary" type="submit">수정하기</a>
-										<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${page}" class="button" type="submit">목록</a>
+										<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=recent&page=${page}" class="button" type="submit">목록</a>
 										</li>
 										
 									</ul>

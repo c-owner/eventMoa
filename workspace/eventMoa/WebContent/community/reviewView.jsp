@@ -82,7 +82,6 @@
 					</div>
 				</c:if>
 				<br>
-				<a href="/community/reviewWrite.jsp"><div class="button primary small" id="recommand" style="float: right;">👍추천</div></a>
 			<form name="boardForm" method="post" style="margin-bottom: 20px;" action="${pageContext.request.contextPath}/reviewboard/ReviewBoardDeleteOk.rb">
 				<input type="hidden" name="board_Num" value="${r_vo.getBoard_Num()}">
 				<input type="hidden" name="page" value="${page}">
@@ -96,7 +95,7 @@
 							<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardModify.rb?board_Num=${r_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a>
 							<a href="javascript:deleteBoard()"><div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
 						</c:if>
-						<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
+						<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=recent&page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
 						</div>
 </div>
 		<!-- Footer -->

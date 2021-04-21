@@ -23,11 +23,11 @@ public class ReviewBoardModifyOkAction implements Action{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		ActionForward forward = new ActionForward();
 		
 		ReviewBoardDAO r_dao = new ReviewBoardDAO();
 		ReviewFilesDAO f_dao = new ReviewFilesDAO();
 		ReviewFilesVO rf_vo = new ReviewFilesVO();
+		ActionForward forward = null;
 		
 		MultipartRequest multi = null;
 		
@@ -43,10 +43,6 @@ public class ReviewBoardModifyOkAction implements Action{
 			int page = Integer.parseInt(multi.getParameter("page"));
 			int board_Num = Integer.parseInt(multi.getParameter("board_Num"));
 			
-				File f = new File(realPath, f_dao.getFileList(board_Num));
-				if(f.exists()) {
-					f.delete();
-				}
 			
 			f_dao.deleteFile(board_Num);
 			f_dao.insertFiles(board_Num, multi);
@@ -57,6 +53,7 @@ public class ReviewBoardModifyOkAction implements Action{
 			
 			r_dao.updateBoard(r_vo);
 			
+			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath() + "/reviewboard/ReviewBoardView.rb?board_Num=" + r_vo.getBoard_Num() + "&page=" + page);
 		} catch (Exception e) {

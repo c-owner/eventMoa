@@ -126,8 +126,8 @@
 									<br>
 									<ul class="actions">
 										<li style="margin: 0 auto;">
-										<a href="javascript:modifyBoard()">[수정]</a>&nbsp;&nbsp;
-										<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}">[목록]</a>&nbsp;&nbsp;
+										<a href="javascript:modifyBoard()" class="button primary" type="submit">수정하기</a>&nbsp;&nbsp;
+										<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=recent&page=${page}" class="button" type="submit">목록</a>
 										</li>
 										
 									</ul>

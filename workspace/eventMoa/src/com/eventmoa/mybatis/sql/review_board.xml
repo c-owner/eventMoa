@@ -15,9 +15,6 @@
                      <when test="category == 'view'">
                         BOARD_VIEW DESC
                      </when>
-                     <when test="category == 'likes'">
-                        BOARD_LIKES DESC
-                     </when>
                   </choose>
             </if>
             ) D) B
@@ -31,7 +28,7 @@
 	<!-- 리뷰 등록 -->
 	<insert id="insertBoard" parameterType="reviewBoardVO">
 		INSERT INTO TABLE_BOARD_REVIEW 
-		VALUES (BOARD_SEQ_REVIEW.NEXTVAL, 0, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date, 'REVIEW')
+		VALUES (BOARD_SEQ_REVIEW.NEXTVAL, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date, 'REVIEW')
 	</insert>
 	
 	<update id="updateBoardView" parameterType="_int">
@@ -78,13 +75,6 @@
 		UPDATE TABLE_REPLY_REVIEW
 		SET REPLY_CONTENT = #{reply_Content}
 		WHERE REPLY_NUM = #{reply_Num}
-	</update>
-	
-	<!-- 추천 구현 예정-->
-	<update id="updateBoardLikes" parameterType="_int">
-		UPDATE TABLE_BOARD_REVIEW 
-		SET BOARD_LIKES = BOARD_LIKES + 1 
-		WHERE BOARD_NUM = #{board_Num}
 	</update>
 	
 </mapper>

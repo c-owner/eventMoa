@@ -42,7 +42,7 @@ public class FreeBoardDeleteOkAction implements Action {
 		f_dao.deleteBoard(board_Num);
 		
 		forward.setRedirect(false);
-		forward.setPath(req.getContextPath() + "/freeboard/FreeBoardList.bo");
+		forward.setPath(req.getContextPath() + "/freeboard/FreeBoardList.bo?category=recent");
 		
 		return forward;
 	}
