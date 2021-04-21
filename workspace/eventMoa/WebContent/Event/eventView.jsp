@@ -252,7 +252,14 @@
 			
 <script>
 	function deleteBoard(){
-		boardForm.submit();
+		var conY = confirm('정말 삭제 하시겠습니까? 삭제하게 되면 되돌릴 수 없습니다.');
+		if(conY) {
+			boardForm.submit();
+		}
+		else {
+			alert('삭제 취소 하셨습니다.');
+			return;
+		}
 	}
 	//평점
 
@@ -287,10 +294,13 @@
 			var replyArray=JSON.parse(list);
 			if(JSON.parse(list).length==0){
 				content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
-						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
-						content += "<span class='content'>댓글이 없습니다.</span>";
+						content += "<p class='star_rating' style='display:inline;'><a class='star'>댓글이 없습니다.</a></p>";
+						content += "<span class='content'>처음으로 댓글을 달아보는건 어떨까요?</span>";
 						content += "<p class='col_desc'></p></article>";
 				$("#reCon").html(content);
+			}
+			else {
+				content = "";
 			}
 				for(let i=0; i<replyArray.length;i++){
 					var star = replyArray[i].reply_Star;
@@ -309,10 +319,7 @@
 						content += "<br><button id='dayToBtn' style='float:right; font-size:0.9rem;' onclick='javascript:deleteReply("+r_num+")'>삭제</button>"
 					} 
 						content += "<p class='col_desc'></p></article>";
-				}
-			if(replyArray.length == 0 || replyArray.length == null ) {
-				content += "<tr align='center' style='border-top: solid 1px; border-color: #e3e3e3;'><td align='center' width='150px' colspan='2'>등록된 댓글이 없습니다.</td></tr>"
-			}			
+				}		
 		   $("#reCon").html(content);
 	   }
 

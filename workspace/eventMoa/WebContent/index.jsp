@@ -232,8 +232,7 @@
 
 
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=48502393c0ed760f273812559dafbfac&libraries=services,clusterer,drawing"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af&libraries=services,clusterer,drawing"></script>
 	   <script>
 	      //이미지 슬라이더
 	      $(".slider").slick({

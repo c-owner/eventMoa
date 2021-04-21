@@ -64,6 +64,23 @@ public class EventDAO {
 		}
 		return check;
 	}
+	/**
+	 * 
+	 * @param EventBoardVO ev
+	 * @param user_Id
+	 * @param point
+	 * @return boolean
+	 */
+	public boolean insertBoard(EventBoardVO ev, String user_Id, int point) {
+		boolean check = false;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("user_Id", user_Id);
+		map.put("point", point);
+		if(session.update("EventBoard.usePoint", map) == 1) {
+			check = session.insert("EventBoard.insertEventBoard", ev) == 1;
+		}
+		return check;
+	}
 	
 	public int getBoardNum() {
 		return session.selectOne("EventBoard.getBoardNum");

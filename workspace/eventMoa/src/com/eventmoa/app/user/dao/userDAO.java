@@ -65,8 +65,8 @@ public class UserDAO {
 	}
 	
 	//아이디 검사 		true : 중복 아이디 	false : 사용가능 아이디 
-	public boolean checkId(String id) {
-		return (Integer)session.selectOne("User.checkId", id) == 1;
+	public boolean checkId(String user_Id) {
+		return (Integer)session.selectOne("User.checkId", user_Id) == 1;
 	}
 	
 	// 이메일 검사 

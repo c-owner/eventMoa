@@ -14,6 +14,8 @@ import com.eventmoa.app.user.vo.PointVO;
 import com.eventmoa.app.user.vo.UserVO;
 
 public class UserJoinOkAction implements Action{
+	public static final int JOIN_POINT = 300;
+	
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
@@ -33,7 +35,7 @@ public class UserJoinOkAction implements Action{
 		u_vo.setUser_Address(req.getParameter("user_Address"));
 		u_vo.setUser_Address_DETAIL(req.getParameter("user_Address_DETAIL"));
 		u_vo.setUser_Address_Etc(req.getParameter("user_Address_Etc"));
-		u_vo.setUser_Point(300);
+		u_vo.setUser_Point(JOIN_POINT);
 
 		//DB에서 INSERT 실패 시 
 		if(!u_dao.join(u_vo)) {
@@ -49,7 +51,7 @@ public class UserJoinOkAction implements Action{
 			
 			PointVO p_vo = new PointVO();
 			p_vo.setPoint_Content(content);
-			p_vo.setPoint_Amount(300);
+			p_vo.setPoint_Amount(JOIN_POINT);
 			p_vo.setUser_Id(id);
 			
 			if(!p_dao.insertPoint(p_vo)) {

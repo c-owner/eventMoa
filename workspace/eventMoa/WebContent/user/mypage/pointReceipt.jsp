@@ -125,7 +125,7 @@
 		 			}
 		 			for(let i=0; i<receiptArray.length;i++){
 						var year = receiptArray[i].point_Date.substr(0,4);
-						var monts = receiptArray[i].point_Date.substr(5,2);
+						var months = receiptArray[i].point_Date.substr(5,2);
 						var day = receiptArray[i].point_Date.substr(8,2);
 						var hour = receiptArray[i].point_Date.substr(11,2);
 						var min = receiptArray[i].point_Date.substr(15,2);

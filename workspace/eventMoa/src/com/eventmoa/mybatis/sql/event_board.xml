@@ -87,7 +87,7 @@
 	</update>
 	
 	<!-- 글 등록시 포인트 차감-->
-	<update id="usePoint" parameterType="string">
-		UPDATE TABLE_USER SET USER_POINT = (USER_POINT - 200) WHERE user_Id = #{user_Id}
+	<update id="usePoint" parameterType="map">
+		UPDATE TABLE_USER SET USER_POINT = (USER_POINT - #{point}) WHERE user_Id = #{user_Id}
 	</update>
  </mapper>

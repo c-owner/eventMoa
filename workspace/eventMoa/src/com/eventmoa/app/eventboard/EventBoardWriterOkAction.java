@@ -21,6 +21,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class EventBoardWriterOkAction implements Action {
 
+	public static final int EVENT_POINT = 200;
+	
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception { 
 		req.setCharacterEncoding("UTF-8");
@@ -78,8 +80,9 @@ public class EventBoardWriterOkAction implements Action {
 		String point = u_dao.getUserPoint(user_id);
 		int user_Point = Integer.parseInt(point);
 		
-		if(user_Point < 200 || user_Point < 0) {
-			PrintWriter out = resp.getWriter();
+		PrintWriter out = resp.getWriter();
+		
+		if(user_Point < EVENT_POINT || user_Point < 0) {
 			out.print("<script> "
 					+ "alert('포인트가 부족합니다. 충전 후 다시 이용해주세요.');"
 					+ "location.href = '/pointCharge.us';"
@@ -88,23 +91,22 @@ public class EventBoardWriterOkAction implements Action {
 			return null;
 		}
 		
-		if(ev_dao.insertBoard(ev_vo, user_id)) {
+		if(ev_dao.insertBoard(ev_vo, user_id, EVENT_POINT)){
+//		if(ev_dao.insertBoard(ev_vo, user_id)) {
 			//포인트 차감 성공시
 			//포인트 결제/사용 내역에 등록
 			PointVO p_vo = new PointVO();
 			PointDAO p_dao = new PointDAO();
 			
-			p_vo.setPoint_Amount(200);
+			p_vo.setPoint_Amount(EVENT_POINT);
 			p_vo.setPoint_Content("이벤트 등록 포인트 차감");
 			p_vo.setUser_Id(user_id);
 			
 			if(p_dao.usePoint(p_vo)) {} // 결제 내역으로 등록 
 			
-			forward = new ActionForward();
 			
 			if(evf_dao.insertFiles(ev_dao.getBoardNum(), multi)) { // 성공
 			} else { // 실패
-				PrintWriter out = resp.getWriter();
 				out.print("<script> "
 						+ "alert('IMAGE UPLOAD ERROR-');"
 						+ "history.back();"
@@ -112,21 +114,24 @@ public class EventBoardWriterOkAction implements Action {
 				out.close();
 				return null;
 			}
+		
+			forward = new ActionForward();
+			session.setAttribute("session_id", user_id);
 			session.setAttribute("user_Point", point);
 			forward.setRedirect(false);
-			forward.setPath(req.getContextPath() + "/eventboard/EventBoardList.ev");
-			
-			return forward;
-			
+			out.println("<script>");
+			out.println("alert('이벤트 등록을 성공 하였습니다.'); "
+					+ "location.href = '/eventboard/EventBoardList.ev'; ");
+			out.println("</script>");
 		} else {
-			PrintWriter out = resp.getWriter();
 			out.print("<script> "
 					+ "alert('SERVER ERROR-');"
 					+ "history.back();"
 					+ "</script>");
-			out.close();
-			return null;
 		}
+		out.close();
+		
+		return null;
 	}
 
 }
