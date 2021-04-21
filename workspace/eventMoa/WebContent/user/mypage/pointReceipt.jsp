@@ -124,8 +124,13 @@
 		 				check=true;
 		 			}
 		 			for(let i=0; i<receiptArray.length;i++){
+						var year = receiptArray[i].point_Date.substr(0,4);
+						var monts = receiptArray[i].point_Date.substr(5,2);
+						var day = receiptArray[i].point_Date.substr(8,2);
+						var hour = receiptArray[i].point_Date.substr(11,2);
+						var min = receiptArray[i].point_Date.substr(15,2);
 		 				content+="<tr><td>"+receiptArray[i].point_Num+"</td>"
-						content+="<td>"+receiptArray[i].point_Date+"</td>"
+						content+="<td>"+year+"-"+months+"-"+day+"</td>"
 						content+="<td>"+receiptArray[i].point_Amount+"</td>"
 						content+="<td>"+receiptArray[i].point_Content+"</td>";
 		 				/* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */

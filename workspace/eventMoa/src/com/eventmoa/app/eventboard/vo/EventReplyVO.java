@@ -12,6 +12,7 @@ public class EventReplyVO {
 	private String reply_Content;
 	private String reply_Date;
 	private String reply_Star;
+	private String board_Category;
 	
 	
 	public EventReplyVO() {;}
@@ -62,6 +63,14 @@ public class EventReplyVO {
 
 	public void setReply_Star(String reply_Star) {
 		this.reply_Star = reply_Star;
+	}
+
+	public String getBoard_Category() {
+		return board_Category;
+	}
+
+	public void setBoard_Category(String board_Category) {
+		this.board_Category = board_Category;
 	}
 	
 	

@@ -8,8 +8,9 @@ import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.freeboard.FreeBoardListOkAction;
 import com.eventmoa.app.user.dao.UserDAO;
+import com.eventmoa.app.user.vo.UserVO;
 
-public class UserFreeBoardListOkAction implements Action {
+public class UserBoardListOkAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
@@ -21,7 +22,7 @@ public class UserFreeBoardListOkAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String temp = req.getParameter("page");
-		String board_Id = (String)session.getAttribute("session_id"); 
+		String board_Id = (String)session.getAttribute("session_id");
 		
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		

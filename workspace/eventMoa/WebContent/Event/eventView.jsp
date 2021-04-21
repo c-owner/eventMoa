@@ -87,7 +87,7 @@
 				<table>
 					<div style="margin-right: 3%;">
 						<c:if test="${e_vo.getBoard_Id() eq session_id}">
-							<a href="${pageContext.request.contextPath}/eventboard/EventBoardModify.ev?board_Num=${e_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a>
+							<!-- <a href="${pageContext.request.contextPath}/eventboard/EventBoardModify.ev?board_Num=${e_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a> -->
 							<a href="javascript:deleteBoard()"><div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
 						</c:if>
 						<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
@@ -128,10 +128,7 @@
 					<p style="text-align:center">
 						<font style="font-family: 'jua'; font-size: 16px;">
 							<div style="margin-bottom: 10%; margin-top: 10%;">
-									<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="30"
-											style="resize:inherit;width:100%;overflow-y:hidden" readonly>
-											${e_vo.getBoard_Content()}
-									</textarea>
+									<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="30" style="resize:inherit;width:100%;overflow-y:hidden" readonly>${e_vo.getBoard_Content()}</textarea>
 									<script>
 										function xSize(e)
 										{
@@ -191,7 +188,7 @@
 					 
 					 <div style="margin-right: 3%;">
 						<c:if test="${e_vo.getBoard_Id() eq session_id}">
-							<a href="${pageContext.request.contextPath}/eventboard/EventBoardModify.ev?board_Num=${e_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a>
+							<!-- <a href="${pageContext.request.contextPath}/eventboard/EventBoardModify.ev?board_Num=${e_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a> -->
 							<a href="javascript:deleteBoard()"><div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
 						</c:if>
 						<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
@@ -212,13 +209,13 @@
 						<span id="startext">평가하기</span>
 						<c:if test="${session_id == null}" >
 							<textarea name="content" id="reply" rows="4" style="resize:none;" readonly="readonly">
-							로그인 후 이용 가능한 서비스 입니다.</textarea>
+							로그인 후 댓글을 작성하실 수 있습니다.</textarea>
 						</c:if>
 						<c:if test="${session_id != null }">
-							<textarea name="reply_Content" id="reply" rows="4" style="resize:none;"></textarea>
+							<textarea name="reply_Content" id="reply" rows="4" style="resize:none;">10자 이상, 300자 이내 작성</textarea>
+							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 300자)</span>
 							<button id="dayToBtn" style="float:right; font-size:0.9rem;" onclick="insertReply()">등록</button>
 						</c:if>
-							<!-- <textarea name="reply" id="reply" rows="4" style="resize:none;"></textarea> -->
 						</div>
 					</form>
 					
@@ -237,7 +234,22 @@
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
 			<script>var contextPath = "${pageContext.request.contextPath}";</script>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af&libraries=services,clusterer,drawing"></script>
+	<!-- 유효성 -->
+<script>
+	var replyForm = document.replyForm;
+
+	$('#reply').keyup(function (e){
+				var reply_Content = $(this).val();
+				$('#counter').html("("+reply_Content.length+" / 최대 300자)");    //글자수 실시간 카운팅
+
+				if (reply_Content.length > 300){
+					alert("최대 300자까지 입력 가능합니다.");
+					$(this).val(reply_Content.substring(0, 300));
+					$('#counter').html("(300 / 최대 300자)");
+				}
+			});
+</script>
+			
 <script>
 	function deleteBoard(){
 		boardForm.submit();
@@ -251,8 +263,9 @@
 	});
 	</script>
 
+<!--  댓글 script -->
 <script>
-
+	$(document).ready(function(){getList();});
 		var cnt = 0;
 		var replyContent = $("#reCon");
 		var board_Num = "${e_vo.getBoard_Num()}";
@@ -260,45 +273,59 @@
 		var id = '${session_id}';
 
 		function getList(){
-	 		var content = "";
+	 		
 		 	$.ajax({
 				url : contextPath + "/eventboard/EventReplyList.ev?board_Num=" + board_Num,
-		 		dataType:"text",
+				type: "get",
 		 		contentType: "application/json",
-		 		success: function(list){
-		 			//for(){}
-		 			var replyArray=JSON.parse(list);
-		 			for(let i=0; i<replyArray.length;i++){
-						 var star = replyArray[i].reply_Star;
-						 var r_content = replyArray[i].reply_Content;
-						 var r_num = replyArray[i].reply_Num;
-						 var year = replyArray[i].reply_Date.substr(0,4);
-						 var monts = replyArray[i].reply_Date.substr(5,2);
-						 var day = replyArray[i].reply_Date.substr(8,2);
-						 var r_id = replyArray[i].user_Id;
+		 		success: showList
+		 	});
+	 	}
+	 	function showList(list){		
+			
+			var content = "";
+			var replyArray=JSON.parse(list);
+			if(JSON.parse(list).length==0){
+				content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
+						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
+						content += "<span class='content'>댓글이 없습니다.</span>";
+						content += "<p class='col_desc'></p></article>";
+				$("#reCon").html(content);
+			}
+				for(let i=0; i<replyArray.length;i++){
+					var star = replyArray[i].reply_Star;
+					var r_content = replyArray[i].reply_Content;
+					var r_num = replyArray[i].reply_Num;
+					var year = replyArray[i].reply_Date.substr(0,4);
+					var months = replyArray[i].reply_Date.substr(5,2);
+					var day = replyArray[i].reply_Date.substr(8,2);
+					var r_id = replyArray[i].user_Id;
 						content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
 						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
 						content += "<span class='content'>"+ r_content +"</span>";
-						content += "<span id='writer' class='date'>작성일: "+year+"-"+monts+"-"+day+"</span>";
+						content += "<span id='writer' class='date'>작성일: "+year+"-"+months+"-"+day+"</span>";
 						content += "<span id='writer'>작성자: "+ r_id+"</span>";
-						if(r_id == id){
-							content += "<br><button id='dayToBtn' style='float:right; font-size:0.9rem;' onclick='javascript:deleteReply("+r_num+")'>삭제</button>"
-						} 
+					if(r_id == id){
+						content += "<br><button id='dayToBtn' style='float:right; font-size:0.9rem;' onclick='javascript:deleteReply("+r_num+")'>삭제</button>"
+					} 
 						content += "<p class='col_desc'></p></article>";
-		 			}
-		 			
-		 			replyContent.append(content);
-		 		}	
-		 	});
-	 	}
-	 	getList();
+				}
+			if(replyArray.length == 0 || replyArray.length == null ) {
+				content += "<tr align='center' style='border-top: solid 1px; border-color: #e3e3e3;'><td align='center' width='150px' colspan='2'>등록된 댓글이 없습니다.</td></tr>"
+			}			
+		   $("#reCon").html(content);
+	   }
 
-	// <!-- 댓글 -->
-	
 	var score = 1;
 	function insertReply() {
 		score = $('.on').length;
+		
 		var reply_Content = $("textarea[name='reply_Content']").val();
+
+		if(replyForm.reply_Content.value.length > 300 || replyForm.reply_Content.value.length == "" || replyForm.reply_Content.value.length < 10) {
+			alert("글자 수는 10자 이상 300자 이내로 작성하셔야 합니다.");
+			return;
+		}
 			$.ajax({
 				url : contextPath + "/eventboard/EventReplyAdd.ev",
 				type : "post",
@@ -306,73 +333,29 @@
 				dataType : "text",
 				success : function(result){
 					alert(result);
-				}
-			});
-	}
-		function deleteReply(reply_Num){
-			var conX = confirm('정말 삭제 하시겠습니까?');
-			if(conX) {
-				$.ajax({
-					url : contextPath + "/eventboard/EventReplyDeleteOk.ev",
-					type : "post",
-					data : {"reply_Num" : reply_Num},
-					dataType : "text",
-					success : function(result){
-						alert(result);
-					}
-				});
-			}
-		}
-		
-	/* 	function updateReply(num){
-			if(!check){
-				var textarea = $("textarea#" + num);
-				var a_ready = $("a#ready" + num);
-				var a_ok = $("a#ok" + num);
-				
-				textarea.removeAttr("readonly");
-				textarea.css("background-color", "rgba(144, 144, 144, 0.075)");
-				textarea.css("border", "solid 1px");
-				textarea.css("border-color", "#9DC2E5");
-				a_ready.hide();
-				a_ok.show();
-				check = true;
-			}else{
-				alert("수정 중인 댓글이 있습니다.");
-			}
-		} */
-		
-	/* 	function updateOkReply(reply_Num, seq){
-			var content = $("textarea#" + seq).val();
-			$.ajax({
-				url : contextPath + "/eventboard/EventReplyModifyOk.bo",
-				type : "post",
-				data : {"reply_Num" : reply_Num, "content" : content},
-				dataType : "text",
-				success : function(result){
-					alert(result);
-					check = false;
 					getList();
 				}
 			});
-		} */
+	}
+	function deleteReply(reply_Num){
+		var conX = confirm('정말 삭제 하시겠습니까?');
+		if(conX) {
+			$.ajax({
+				url : contextPath + "/eventboard/EventReplyDeleteOk.ev",
+				type : "post",
+				data : {"reply_Num" : reply_Num},
+				dataType : "text",
+				success : function(result){
+					alert(result);
+					getList();
+				}
+			});
+		}
+	}
+		
 	</script>
-	   <script>
-	      //이미지 슬라이더
-	      $(".slider").slick({
-	         dots : true,
-	         autoplay : true,
-	         autoplaySpeed : 3000,
-	         arrows : true,
-	         responsive : [ {
-	            breakpoint : 768,
-	            settings : {
-	               autoplay : false,
-	            }
-	         } ]
-	      });
-	   </script>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af&libraries=services,clusterer,drawing"></script>
 	   <script>
 	      var mapContainer = document.getElementById('map'); // 지도를 표시할 div
 	      var eventAddressesJSON = "";

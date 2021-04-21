@@ -57,8 +57,12 @@ public class EventDAO {
 	}
 
 	// 페이지 작성
-	public boolean insertBoard(EventBoardVO ev) {
-		return session.insert("EventBoard.insertEventBoard", ev) == 1;
+	public boolean insertBoard(EventBoardVO ev, String user_Id) {
+		boolean check = false;
+		if(session.update("EventBoard.usePoint", user_Id) == 1) {
+			check = session.insert("EventBoard.insertEventBoard", ev) == 1;
+		}
+		return check;
 	}
 	
 	public int getBoardNum() {

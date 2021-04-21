@@ -23,8 +23,6 @@
 	
 	<body class="is-preload">
 	  <c:set var="list" value="${boardList}"/>
-	  <c:set var="listView" value="${boardListView}"/>
-	  <c:set var="listLikes" value="${boardListLikes}"/>
       <c:set var="totalCnt" value="${totalCnt}"/>
       <c:set var="startPage" value="${startPage}"/>
       <c:set var="endPage" value="${endPage}"/>
@@ -43,7 +41,7 @@
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
 		
 		
-		<!-- FreeTalk -->
+		<!-- Review -->
 		<section id="banner">
 			<article class="column col4">
 				<h2 class="col_tit" style="text-align: left;">인증 후기</h2>
@@ -54,9 +52,9 @@
    text-align: center;
    -ms-text-align-last: center;
    -moz-text-align-last: center;">
-			         				<option value="recent" id="selectRecent">등록일순　</option>
-			         				<option value="view" id="selectView">조회순　</option>
-			         				<option value="likes" id="selectLikes">추천순　</option>
+			         				<option value="recent" ${category == 'recent' ? 'selected' : ""}>등록일순　</option>
+			         				<option value="view" ${category == 'view' ? 'selected' : ""}>조회순　</option>
+			         				<option value="likes" ${category == 'likes' ? 'selected' : ""}>추천순　</option>
 			         			</select>
 			         			<div style="float:right; font-size: 11px;">
 				         			<p>등록된 글 개수 : <c:out value="${totalCnt}"/>개</p>
@@ -65,8 +63,7 @@
 								 
 	         			</form>
 	         			<p></p>
-	         			<!-- 최근순 -->
-	         			<div id="listOrderRecent">
+						<!-- 테이블 -->
 	         			<table border="1" cellpadding="0" cellspacing="0" width="900px">
 	         			<thead>
 										<tr>
@@ -124,7 +121,7 @@
          </table>
          <div id="two" style="text-align: center; vertical-align: middle; ">
          			<c:if test="${nowPage >1}">
-         				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${nowPage - 1}">&lt;이전</a>
+         				<a class="paging" href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=${category}&page=${nowPage - 1}">&lt;이전</a>
          			</c:if>
 	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
 	         			<c:choose>
@@ -132,177 +129,16 @@
 	         				<a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
 	         				</c:when>
 	         				<c:otherwise>
-	         					<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
+	         					<a class="paging" href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=${category}&page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
 	         				</c:otherwise>
 	         			</c:choose>
 	         		</c:forEach>
          			<c:if test="${realEndPage != nowPage}">
-         				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${nowPage + 1}">다음&gt;</a>
+       				<a class="paging" href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=${category}&page=${nowPage + 1}">다음&gt;</a>
          			</c:if>
          			<br>
                <a href="${pageContext.request.contextPath}/community/reviewWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>								         
-		</div>
-		</div>
-         
-         	<!-- 조회순 -->
-         	<div id="listOrderView">
-			<table border="1" cellpadding="0" cellspacing="0" width="900px">
-	         			<thead>
-										<tr>
-											<th style="text-align: center;">게시글 번호</th>
-											<th style="text-align: center;">제목</th>
-											<th style="text-align: center;">닉네임</th>
-											<th style="text-align: center;">날짜</th>
-											<th style="text-align: center;">조회수</th>
-											<th style="text-align: center;">추천</th>
-										</tr>
-									</thead>
-               <c:choose>
-               <c:when test="${listView != null and fn:length(listView) > 0}">
-	               <c:forEach var="b_bean" items="${listView}">
-	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
-	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
-	               			${b_bean.getBoard_Num()}
-	               		</td>
-	               		<td style="font-family:Tahoma; font-size:10pt;">
-	               			<div align="left">
-	               				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardView.rb?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
-	               					${b_bean.getBoard_Title()}
-	               				</a>
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Id()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Date()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_View()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Likes()}
-	               			</div>
-	               		</td>
-	               	</tr>
-	               </c:forEach>
-	           </c:when>
-	           <c:otherwise>
-	           	<tr>
-	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
-	           	</tr>
-	           </c:otherwise>
-               </c:choose>
-         </table>
-         <div id="two" style="text-align: center; vertical-align: middle; ">
-         			<c:if test="${nowPage >1}">
-         				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${nowPage - 1}">&lt;이전</a>
-         			</c:if>
-	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-	         			<c:choose>
-	         				<c:when test="${i eq nowPage}">
-	         				<a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
-	         				</c:when>
-	         				<c:otherwise>
-	         					<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
-	         				</c:otherwise>
-	         			</c:choose>
-	         		</c:forEach>
-         			<c:if test="${realEndPage != nowPage}">
-         				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${nowPage + 1}">다음&gt;</a>
-         			</c:if>
-         			<br>
-               <a href="${pageContext.request.contextPath}/community/reviewWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>								         
-		</div>
-		</div>
-
-			<!-- 추천순 -->        
-			<div id="listOrderLikes">
-         	<table border="1" cellpadding="0" cellspacing="0" width="900px">
-	         			<thead>
-										<tr>
-											<th style="text-align: center;">게시글 번호</th>
-											<th style="text-align: center;">제목</th>
-											<th style="text-align: center;">닉네임</th>
-											<th style="text-align: center;">날짜</th>
-											<th style="text-align: center;">조회수</th>
-											<th style="text-align: center;">추천</th>
-										</tr>
-									</thead>
-               <c:choose>
-               <c:when test="${listLikes != null and fn:length(listLikes) > 0}">
-	               <c:forEach var="b_bean" items="${listLikes}">
-	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
-	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
-	               			${b_bean.getBoard_Num()}
-	               		</td>
-	               		<td style="font-family:Tahoma; font-size:10pt;">
-	               			<div align="left">
-	               				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardView.rb?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
-	               					${b_bean.getBoard_Title()}
-	               				</a>
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Id()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Date()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_View()}
-	               			</div>
-	               		</td>
-	               		<td>
-	               			<div align="center">
-	               				${b_bean.getBoard_Likes()}
-	               			</div>
-	               		</td>
-	               	</tr>
-	               </c:forEach>
-	           </c:when>
-	           <c:otherwise>
-	           	<tr>
-	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
-	           	</tr>
-	           </c:otherwise>
-               </c:choose>
-         </table>
-         <br/>
-         		<div id="two" style="text-align: center; vertical-align: middle; ">
-         			<c:if test="${nowPage >1}">
-         				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${nowPage - 1}">&lt;이전</a>
-         			</c:if>
-	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-	         			<c:choose>
-	         				<c:when test="${i eq nowPage}">
-	         				<a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
-	         				</c:when>
-	         				<c:otherwise>
-	         					<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
-	         				</c:otherwise>
-	         			</c:choose>
-	         		</c:forEach>
-         			<c:if test="${realEndPage != nowPage}">
-         				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?page=${nowPage + 1}">다음&gt;</a>
-         			</c:if>
-         			<br>
-               <a href="${pageContext.request.contextPath}/community/reviewWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>								         
-				</div>
-		</div>
-							
+		</div>					
 							</article>
 						</section>
 
@@ -313,42 +149,19 @@
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
 			<script>
-			var tableRecent = document.getElementById("listOrderRecent");
-			var tableView = document.getElementById("listOrderView");
-			var tableLikes = document.getElementById("listOrderLikes");
-			var check1 = true;
-			var check2 = false;
-			var check3 = false;
-			
-			tableRecent.style.display = 'block';
-			tableView.style.display = 'none';
-			tableLikes.style.display = 'none';
-			
-			$(function(){
-				$('#category').change(function(){
-					if(this.value == "recent"){
-						$('#selectRecent').attr('selected','selected');
-						tableRecent.style.display = 'block';
-						tableView.style.display = 'none';
-						tableLikes.style.display = 'none';
-					}
-					else if(this.value == "view"){
-						$('#selectView').attr('selected','selected');
-						tableRecent.style.display = 'none';
-						tableView.style.display = 'block';
-						tableLikes.style.display = 'none';
-					}
-					else if(this.value == "likes"){
-						$('#selectLikes').attr('selected','selected');
-						tableRecent.style.display = 'none';
-						tableView.style.display = 'none';
-						tableLikes.style.display = 'block';
-					}
-					else{
-						alert("오류 발생");
-					}
-				});
-			});
+			/* 페이지 */
+	         $("#category").on("change", function(){
+	            var category = $("#category option:selected").val();
+	            console.log(category);
+	            location.href = "${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=" + category + "&page=1";            
+	         })
+	         
+	         $("a.paging").on("click", function(){
+	            var page = $(this).attr("href") || 1;
+	            var category = $("#category option:selected").val();
+	            console.log(category);
+	            location.href = "${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=" + category + "&page=" + page;            
+	         });
 			</script>
 	</body>
 </html>

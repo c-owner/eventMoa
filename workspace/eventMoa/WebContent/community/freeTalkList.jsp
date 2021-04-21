@@ -52,9 +52,10 @@
    text-align: center;
    -ms-text-align-last: center;
    -moz-text-align-last: center;">
-                              <option value="recent" id="selectRecent">등록일순　</option>
-                              <option value="view" id="selectView">조회순　</option>
-                              <option value="likes" id="selectLikes">추천순　</option>
+   								<!-- 클릭시 클릭이벤트 기억하기 -->
+    	                      <option value="recent" ${category == 'recent' ? 'selected' : ""}>등록일순　</option>
+                              <option value="view" ${category == 'view' ? 'selected' : ""}>조회순　</option>
+                              <option value="likes" ${category == 'likes' ? 'selected' : ""}>추천순　</option>
                            </select>
                            <div style="float:right; font-size: 11px;">
                               <p>등록된 글 개수 : <c:out value="${totalCnt}"/>개</p>
@@ -68,7 +69,7 @@
                      <thead>
                               <tr>
                                  <th style="text-align: center;">게시글 번호</th>
-                                 <th style="text-align: center;">제목</th>
+                                 <th style="text-align: center;width: 48%;">제목</th>
                                  <th style="text-align: center;">닉네임</th>
                                  <th style="text-align: center;">날짜</th>
                                  <th style="text-align: center;">조회수</th>
@@ -84,7 +85,7 @@
                         </td>
                         <td style="font-family:Tahoma; font-size:10pt;">
                            <div align="left">
-                              <a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
+                             <a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
                                  ${b_bean.getBoard_Title()}
                               </a>
                            </div>
@@ -119,9 +120,9 @@
               </c:otherwise>
                </c:choose>
          </table>
-         <div id="two" style="text-align: center; vertical-align: middle; ">
+         <div style="text-align: center; vertical-align: middle; ">
                   <c:if test="${nowPage >1}">
-                     <a class="paging" href="${nowPage - 1}">&lt;이전</a>
+                     <a class="paging" href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=${category}&page=${nowPage - 1}">&lt;이전</a>
                   </c:if>
                   <c:forEach var="i" begin="${startPage}" end="${endPage}">
                      <c:choose>
@@ -129,12 +130,12 @@
                         <a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
                         </c:when>
                         <c:otherwise>
-                           <a class="paging" href="${i}" style="margin: 0 2px;">${i}&nbsp;</a>
+                           <a class="paging" href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=${category}&page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
                         </c:otherwise>
                      </c:choose>
                   </c:forEach>
                   <c:if test="${realEndPage != nowPage}">
-                     <a class="paging" href="${nowPage + 1}">다음&gt;</a>
+                     <a class="paging" href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=${category}&page=${nowPage + 1}">다음&gt;</a>
                   </c:if>
                   <br>
                <div class="button primary small" style="float: right;"><a href="${pageContext.request.contextPath}/community/freeTalkWrite.jsp">글쓰기✍</a></div>                           
@@ -151,12 +152,17 @@
          <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
          <script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
          <script>
-
-         $("a.paging").on("click", function(e){
-        	//a태그 막아줌
-        	 e.preventDefault();
-            var page = $(this).attr("href");
-            var category = $("#category:selected").val();
+		/* 페이지 */
+         $("#category").on("change", function(){
+            var category = $("#category option:selected").val();
+            console.log(category);
+            location.href = "${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=" + category + "&page=1";            
+         })
+         
+         $("a.paging").on("click", function(){
+            var page = $(this).attr("href") || 1;
+            var category = $("#category option:selected").val();
+            console.log(category);
             location.href = "${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=" + category + "&page=" + page;            
          });
          

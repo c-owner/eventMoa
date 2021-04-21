@@ -20,6 +20,7 @@ public class EventReplyListOkAction implements Action{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
+		
 		String temp = req.getParameter("board_Num");
 		int board_Num = Integer.parseInt(temp);
 		

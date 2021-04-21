@@ -48,7 +48,7 @@ public class ReviewBoardWriteOkAction implements Action{
 			if(f_dao.insertFiles(r_dao.getBoardNum(), multi)) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath(req.getContextPath() + "/reviewboard/ReviewBoardList.rb");
+			forward.setPath(req.getContextPath() + "/reviewboard/ReviewBoardList.rb?category=recent");
 			}
 		}
 

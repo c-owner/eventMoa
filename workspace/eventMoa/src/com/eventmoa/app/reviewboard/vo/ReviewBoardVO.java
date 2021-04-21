@@ -16,6 +16,7 @@ public class ReviewBoardVO {
 	private String board_Id;
 	private int board_View;
 	private String board_Date;
+	private String board_Category;
 	
 	public ReviewBoardVO() {;}
 
@@ -73,5 +74,13 @@ public class ReviewBoardVO {
 
 	public void setBoard_Date(String board_Date) {
 		this.board_Date = board_Date;
+	}
+
+	public String getBoard_Category() {
+		return board_Category;
+	}
+
+	public void setBoard_Category(String board_Category) {
+		this.board_Category = board_Category;
 	}
 }

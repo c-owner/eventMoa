@@ -362,7 +362,7 @@
 					}
 				}
  */
-			var x = confirm("정말 이대로 글을 등록하시겠습니까?");
+			var x = confirm("정말 이대로 글을 등록하시겠습니까? 포인트는 200p가 차감 됩니다.");
 				if(x) {
 					$("#fileText").text("업로드 중...");
 					setTimeout(function(){

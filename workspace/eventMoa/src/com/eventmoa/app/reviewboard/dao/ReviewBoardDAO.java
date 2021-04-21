@@ -19,33 +19,14 @@ public class ReviewBoardDAO {
 	}
 
 	// 페이지 별 게시글 목록
-	public List<ReviewBoardVO> getBoardList(int startRow, int endRow) {
-		HashMap<String, Integer> pageMap = new HashMap<>();
+	public List<ReviewBoardVO> getBoardList(int startRow, int endRow, String category) {
+		HashMap<String, Object> pageMap = new HashMap<>();
 
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		pageMap.put("category", category);
 
 		return session.selectList("ReviewBoard.listAll", pageMap);
-	}
-
-	// 게시글 목록 조회순
-	public List<ReviewBoardVO> getBoardListView(int startRow, int endRow) {
-		HashMap<String, Integer> pageMap = new HashMap<>();
-
-		pageMap.put("startRow", startRow);
-		pageMap.put("endRow", endRow);
-
-		return session.selectList("ReviewBoard.listView", pageMap);
-	}
-
-	// 게시글 목록 추천순
-	public List<ReviewBoardVO> getBoardListLikes(int startRow, int endRow) {
-		HashMap<String, Integer> pageMap = new HashMap<>();
-
-		pageMap.put("startRow", startRow);
-		pageMap.put("endRow", endRow);
-
-		return session.selectList("ReviewBoard.listLikes", pageMap);
 	}
 
 	// 게시글 갯수

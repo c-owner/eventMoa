@@ -1,16 +1,21 @@
 package com.eventmoa.app.eventboard;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.eventboard.dao.EventDAO;
 import com.eventmoa.app.eventboard.dao.EventFilesDAO;
 import com.eventmoa.app.eventboard.vo.EventBoardVO;
+import com.eventmoa.app.user.dao.PointDAO;
+import com.eventmoa.app.user.dao.UserDAO;
+import com.eventmoa.app.user.vo.PointVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -18,6 +23,8 @@ public class EventBoardWriterOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception { 
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
 		
 		EventBoardVO ev_vo = new EventBoardVO();
 		EventDAO ev_dao = new EventDAO();
@@ -51,8 +58,7 @@ public class EventBoardWriterOkAction implements Action {
 		ev_vo.setEVT_START_DT(multi.getParameter("datepicker1"));
 		ev_vo.setEVT_END_DT(multi.getParameter("datepicker2"));
 		
-		System.out.println(multi.getParameter("callNumber"));
-		System.out.println(multi.getParameter("phoneNumber"));
+		
 		if(multi.getParameter("callNumber") != null ) {
 			ev_vo.setBoard_CallNumber(multi.getParameter("callNumber"));
 		} else {
@@ -66,17 +72,61 @@ public class EventBoardWriterOkAction implements Action {
 		
 		ev_vo.setFile_name(multi.getFilesystemName("input_imgs_0"));
 		
-		if(ev_dao.insertBoard(ev_vo)) {
-			if(evf_dao.insertFiles(ev_dao.getBoardNum(), multi)) {
-				
-			forward = new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath(req.getContextPath() + "/eventboard/EventBoardList.ev");
-			}
-			
+		HttpSession session = req.getSession();
+		UserDAO u_dao = new UserDAO();
+		String user_id = (String)session.getAttribute("session_id");
+		String point = u_dao.getUserPoint(user_id);
+		int user_Point = Integer.parseInt(point);
+		
+		if(user_Point < 200 || user_Point < 0) {
+			PrintWriter out = resp.getWriter();
+			out.print("<script> "
+					+ "alert('포인트가 부족합니다. 충전 후 다시 이용해주세요.');"
+					+ "location.href = '/pointCharge.us';"
+					+ "</script>");
+			out.close();
+			return null;
 		}
-		return forward;
-
+		
+		if(ev_dao.insertBoard(ev_vo, user_id)) {
+			//포인트 차감 성공시
+			//포인트 결제/사용 내역에 등록
+			PointVO p_vo = new PointVO();
+			PointDAO p_dao = new PointDAO();
+			
+			p_vo.setPoint_Amount(200);
+			p_vo.setPoint_Content("이벤트 등록 포인트 차감");
+			p_vo.setUser_Id(user_id);
+			
+			if(p_dao.usePoint(p_vo)) {} // 결제 내역으로 등록 
+			
+			forward = new ActionForward();
+			
+			if(evf_dao.insertFiles(ev_dao.getBoardNum(), multi)) { // 성공
+			} else { // 실패
+				PrintWriter out = resp.getWriter();
+				out.print("<script> "
+						+ "alert('IMAGE UPLOAD ERROR-');"
+						+ "history.back();"
+						+ "</script>");
+				out.close();
+				return null;
+			}
+			session.setAttribute("user_Point", point);
+			forward.setRedirect(false);
+			forward.setPath(req.getContextPath() + "/eventboard/EventBoardList.ev");
+			
+			return forward;
+			
+		} else {
+			PrintWriter out = resp.getWriter();
+			out.print("<script> "
+					+ "alert('SERVER ERROR-');"
+					+ "history.back();"
+					+ "</script>");
+			out.close();
+			return null;
+		}
 	}
 
 }

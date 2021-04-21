@@ -32,6 +32,7 @@ public class EventBoardVO {
 	private String file_name;
 	private String board_CallNumber;
 	private String board_PhoneNumber;
+	private String board_Category;
 	
 	public EventBoardVO() {;}
 
@@ -162,6 +163,14 @@ public class EventBoardVO {
 
 	public void setBoard_PhoneNumber(String board_PhoneNumber) {
 		this.board_PhoneNumber = board_PhoneNumber;
+	}
+
+	public String getBoard_Category() {
+		return board_Category;
+	}
+
+	public void setBoard_Category(String board_Category) {
+		this.board_Category = board_Category;
 	}
 	
 }

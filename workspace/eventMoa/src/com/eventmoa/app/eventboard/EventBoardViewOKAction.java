@@ -18,6 +18,7 @@ public class EventBoardViewOKAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
 		
 		EventDAO e_dao =new EventDAO();
 		EventDAO reply_dao =new EventDAO();

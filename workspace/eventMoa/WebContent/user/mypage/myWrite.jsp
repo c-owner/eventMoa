@@ -59,9 +59,8 @@
 	         			<table border="1" cellpadding="0" cellspacing="0" width="900px">
 	         			<thead>
 										<tr>
-											<th style="text-align: center;">게시글 번호</th>
-											<th style="text-align: center;">제목</th>
-											<th style="text-align: center;">닉네임</th>
+											<th style="text-align: center;">게시판</th>
+											<th style="text-align: center;width: 48%;">제목</th>
 											<th style="text-align: center;">날짜</th>
 											<th style="text-align: center;">조회수</th>
 											<th style="text-align: center;">추천</th>
@@ -71,17 +70,37 @@
                <c:when test="${list != null and fn:length(list) > 0}">
 	               <c:forEach var="b_bean" items="${list}">
 	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
-	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
+	               		<td height="23" style="display: none;">
 	               			${b_bean.getBoard_Num()}
+	               		</td>
+	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
+	               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
+	               				자유게시판
+	               			</c:if>
+	               			<c:if test="${b_bean.getBoard_Category() == 'EVENT'}">
+	               				이벤트게시판
+	               			</c:if>
+	               			<c:if test="${b_bean.getBoard_Category() == 'REVIEW'}">
+	               				후기게시판
+	               			</c:if>
 	               		</td>
 	               		<td style="font-family:Tahoma; font-size:10pt;">
 	               			<div align="left">
-	               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
-	               					${b_bean.getBoard_Title()}
+	               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
+	               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
 	               				</a>
+	               			</c:if>
+	               			<c:if test="${b_bean.getBoard_Category() == 'EVENT'}">
+	               				<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
+	               				</a>
+	               			</c:if>
+	               			<c:if test="${b_bean.getBoard_Category() == 'REVIEW'}">
+	               				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardView.rb?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
+	               				</a>
+	               			</c:if>
 	               			</div>
 	               		</td>
-	               		<td>
+	               		<td style="display: none;">
 	               			<div align="center">
 	               				${b_bean.getBoard_Id()}
 	               			</div>
@@ -106,14 +125,14 @@
 	           </c:when>
 	           <c:otherwise>
 	           	<tr>
-	           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
+	           		<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
 	           	</tr>
 	           </c:otherwise>
                </c:choose>
          </table>
          <div id="two" style="text-align: center; vertical-align: middle; ">
          			<c:if test="${nowPage >1}">
-         				<a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardListOk.us?page=${nowPage - 1}">&lt;이전</a>
+         				<a href="${pageContext.request.contextPath}/user/mypage/UserBoardListOk.us?page=${nowPage - 1}">&lt;이전</a>
          			</c:if>
 	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
 	         			<c:choose>
@@ -121,15 +140,14 @@
 	         				<a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
 	         				</c:when>
 	         				<c:otherwise>
-	         					<a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardListOk.us?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
+	         					<a href="${pageContext.request.contextPath}/user/mypage/UserBoardListOk.us?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
 	         				</c:otherwise>
 	         			</c:choose>
 	         		</c:forEach>
          			<c:if test="${realEndPage != nowPage}">
-         				<a href="${pageContext.request.contextPath}/user/mypage/UserFreeBoardListOk.us?page=${nowPage + 1}">다음&gt;</a>
+         				<a href="${pageContext.request.contextPath}/user/mypage/UserBoardListOk.us?page=${nowPage + 1}">다음&gt;</a>
          			</c:if>
-         			<br>
-               <a href="${pageContext.request.contextPath}/community/freeTalkWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>								         
+         			<br>							         
 		</div>
 			</article>
 						</section>

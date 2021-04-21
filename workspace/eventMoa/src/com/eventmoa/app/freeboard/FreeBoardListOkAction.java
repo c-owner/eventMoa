@@ -42,6 +42,7 @@ public class FreeBoardListOkAction implements Action{
       req.setAttribute("startPage", startPage);
       req.setAttribute("endPage", endPage);
       req.setAttribute("nowPage", page);
+      req.setAttribute("category", category);
       req.setAttribute("realEndPage", realEndPage);
       req.setAttribute("boardList", f_dao.getBoardList(startRow, endRow, category));
       

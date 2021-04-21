@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.user.dao.PointDAO;
+import com.eventmoa.app.user.vo.PointVO;
 import com.eventmoa.app.user.vo.UserVO;
 
 public class PointChargeAction implements Action{
@@ -20,10 +21,15 @@ public class PointChargeAction implements Action{
 		u_vo.setUser_Id((String)session.getAttribute("session_id"));
 		u_vo.setUser_Point(point);
 		
-		System.out.println(u_vo.getUser_Id());
-		System.out.println(u_vo.getUser_Point());
-		
+		String user_id = (String)session.getAttribute("session_id");
 		if(p_dao.charge(u_vo)) {
+			PointVO p_vo = new PointVO();
+			p_vo.setPoint_Amount(point);
+			p_vo.setPoint_Content("사용자 포인트 충전 " + point);
+			p_vo.setUser_Id(user_id);
+			
+			if(p_dao.usePoint(p_vo)) {} // 결제 내역으로 등록 
+			
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath() + "/user/mypage/pointReceipt.jsp");

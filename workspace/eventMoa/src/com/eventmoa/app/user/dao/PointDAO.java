@@ -40,6 +40,9 @@ public class PointDAO {
 		return session.insert("PointBoard.insertPoint", p_vo) == 1;
 	}
 	
+	public boolean usePoint(PointVO p_vo) {
+		return session.insert("PointBoard.usePoint", p_vo ) == 1;
+	}
 	// ----------------------- 포인트 결제내역
 //	
 //	public String getPointReceipt(String user_Id) {

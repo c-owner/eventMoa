@@ -8,7 +8,7 @@ import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.user.dao.UserDAO;
 
-public class UserFreeBoardReplyListOkAction implements Action {
+public class UserBoardReplyListOkAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");

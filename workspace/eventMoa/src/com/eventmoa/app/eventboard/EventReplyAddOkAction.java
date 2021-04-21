@@ -54,6 +54,10 @@ public class EventReplyAddOkAction implements Action{
 		r_vo.setReply_Date(reply_Date);
 		r_vo.setReply_Star(star);
 		
+		if(r_vo.getReply_Content().length() > 300 ) {
+			out.println("글자수가 너무 깁니다. 300자 이내로 작성해주세요.");
+		}
+		
 		if(e_dao.insertReply(r_vo)) {
 			out.print("댓글 작성을 완료 하였습니다.");
 		}else {

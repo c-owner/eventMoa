@@ -38,7 +38,7 @@ public class FreeBoardWriteOkAction implements Action{
 			if(ff_dao.insertFiles(f_dao.getBoardNum(), multi)) {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath(req.getContextPath() + "/freeboard/FreeBoardList.bo");
+			forward.setPath(req.getContextPath() + "/freeboard/FreeBoardList.bo?category=recent");
 			}
 		}
 		
