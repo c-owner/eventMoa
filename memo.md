@@ -60,7 +60,7 @@ select box 옵션 값을 계속 가지고 있으려면 GET 방식으로 계속 �
 
 ### 2. 무료 서버 ( CentOS, MySQL )
 
-### 3. JDK, Oracle, http, Tomcat
+## 3. JDK, Oracle, http, Tomcat
 
 #### 4. JSP 프로젝트를 WAR로 배포 후 서버에 업로드 
 
