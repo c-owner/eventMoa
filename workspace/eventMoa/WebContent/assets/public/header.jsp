@@ -36,12 +36,12 @@
 					<ul>
 						<li class="active"><a href="${pageContext.request.contextPath}/main.us">메인</a></li>
 						<li>
-							<a href="${pageContext.request.contextPath}/eventboard/MainEvent.ev">이벤트</a>
+							<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev">이벤트</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/eventboard/EventWriter.ev">이벤트 등록</a></li>
 								<li><a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev">진행 이벤트</a></li>
-								<li><a href="${pageContext.request.contextPath}/eventboard/futureEvent.jsp">예정 이벤트</a></li>
-								<li><a href="${pageContext.request.contextPath}/eventboard/pastEvent.jsp">종료 이벤트</a></li>
+								<!--  <li><a href="${pageContext.request.contextPath}/eventboard/futureEvent.jsp">예정 이벤트</a></li>
+								<li><a href="${pageContext.request.contextPath}/eventboard/pastEvent.jsp">종료 이벤트</a></li> -->
 
 							</ul>
 						</li>

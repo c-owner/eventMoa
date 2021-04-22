@@ -66,6 +66,7 @@
 		<c:set var="e_vo" value="${e_vo}"/>
 		<c:set var="replyList" value="${replyList}"/>
 		<c:set var="files" value="${files}"/>
+		<c:set var="replyStar" value="${replyStar}"/>
 		
 		<c:set var="session_id" value="${session_id}" />
 		
@@ -147,7 +148,12 @@
 				<div style="border-bottom: 2px solid #dbdbdb; text-align:center; padding-bottom:5%">
 					<div class="intro">
 						<article class="column col6" style="display:inline">
-							<span style="font-size:55px; display:block;">3.5</span>
+						<c:if test="${replyStar eq null}">
+							<span style="font-size:18px; display:block;">등록된 평점이 없습니다.</span>
+						</c:if>
+						<c:if test="${replyStar != null}">
+							<span style="font-size:55px; display:block;">${replyStar}</span>
+						</c:if>
 							<h4 class="intro-h4" style="display:inline">
 								평균 평점
 							</h4>

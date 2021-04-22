@@ -27,7 +27,7 @@ public class EventBoardListOKAction implements Action {
 		String temp = req.getParameter("page");
 		
 		int page = Integer.parseInt(req.getParameter("page"));
-		int boardSize = 15;
+		int boardSize = 6;
 
 		int endRow = page * boardSize;
 		int startRow = endRow - (boardSize - 1);

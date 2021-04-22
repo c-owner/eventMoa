@@ -82,7 +82,7 @@
                            ${b_bean.getBoard_Num()}
                         </td>
                         <td style="font-family:Tahoma; font-size:10pt;">
-                           <div align="left">
+                           <div align="center">
                              <a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">
                                  ${b_bean.getBoard_Title()}
                               </a>

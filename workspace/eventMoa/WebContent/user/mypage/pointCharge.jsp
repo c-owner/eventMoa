@@ -186,7 +186,7 @@
 				merchant_uid : 'merchant_' + new Date().getTime(),
 				name : '결제테스트',
 				amount : point,
-				buyer_email : 's10269@naver.com',
+				buyer_email : 'eventmoa1515@gmail.com',
 				buyer_name : '이벤트모아(주)',
 				buyer_tel : '010-1234-5678',
 				buyer_addr : '서울특별시 강남구 삼성동',

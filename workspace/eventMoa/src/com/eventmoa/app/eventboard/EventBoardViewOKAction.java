@@ -21,8 +21,9 @@ public class EventBoardViewOKAction implements Action{
 		resp.setContentType("text/html;charset=utf-8");
 		
 		EventDAO e_dao =new EventDAO();
-		EventDAO reply_dao =new EventDAO();
+		EventDAO reply_dao = new EventDAO();
 		EventBoardVO e_vo = null;
+		EventReplyVO er_vo = new EventReplyVO();
 		
 		EventFilesDAO ef_dao = new EventFilesDAO();
 		ActionForward forward = null;
@@ -44,7 +45,10 @@ public class EventBoardViewOKAction implements Action{
 			if(filesList != null) {
 				req.setAttribute("files", filesList);
 			}
-			
+			if(replyList.size() > 0) {
+				int replyStar = e_dao.getReplyStar(boardNum);
+				req.setAttribute("replyStar", replyStar);
+			}
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/Event/eventView.jsp");

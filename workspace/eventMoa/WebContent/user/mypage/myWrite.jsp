@@ -84,7 +84,7 @@
 	               			</c:if>
 	               		</td>
 	               		<td style="font-family:Tahoma; font-size:10pt;">
-	               			<div align="left">
+	               			<div align="center">
 	               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
 	               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
 	               				</a>

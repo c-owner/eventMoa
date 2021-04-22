@@ -14,6 +14,7 @@
 	href="${pageContext.request.contextPath}/images/title-icon.png">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/map.css">
+	<link rel="stylesheet" href="${pagetext.request.contextPath}/assets/css/event.css">
 </head>
 
 
@@ -104,72 +105,25 @@
 		</section>
 
 		<br>
-
-		<section id="two">
-			<article class="column col4">
-				<h2 class="col_tit" style="text-align: center;">지금 따끈따끈 올라온 이벤트
-				</h2>
-				<div class="box alt">
-					<div class="row gtr-uniform">
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/ad/ad1.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/ad/ad2.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/ad/ad3.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/ad/ad4.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/banner/ADbanner1.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/banner/ADbanner2.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/eventAD/1.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/eventAD/2.jpg"
-								alt="" /></span>
-						</div>
-						<div class="col-4">
-							<span class="image fit"><img
-								src="${pageContext.request.contextPath}/images/eventAD/3.jpg"
-								alt="" /></span>
+				<section class="wrapper special">
+					<article class="column col4">
+					<h2 class="col_tit" style="text-align: center;">지금 따끈따끈 올라온 이벤트
+					</h2>
+				
+					<div class="pmobi_glist">
+						<div class="detailnfo,showstep1">
+							<div class= ""> 
+								 <div class="content">
+									<ul id="eventList">
+										
+									</ul>	
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<!-- <p>
-				<span class="image left"><img src="images/pic05.jpg" alt="" />
-				</span>
-				Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien. Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan.
-			</p>
-			<p>
-				<span class="image right"><img src="images/pic06.jpg" alt="" />
-				</span>
-				Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius. Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat. Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar.
-			</p> -->
-		</section>
+					<a href="#" class="btn_open">더보기</a>
+				</article>
+				</section>
 
 
 
@@ -247,6 +201,49 @@
 	         } ]
 	      });
 	   </script>
+	   	<script>
+			var page=1;
+			var cnt = 0;
+			var ul = $("#eventList");
+			
+			function getList(){
+				 var check=false;
+				 var content = ""
+				 $.ajax({
+					 url:"${pageContext.request.contextPath}/eventboard/EventBoardListOK.ev",
+					 dataType:"text",
+					 data:{"page":page},
+					 contentType: "application/json",
+					 success: function(list){
+						 //for(){}
+						 var eventArray=JSON.parse(list);
+						 if(JSON.parse(list).length==0){
+							 alert("등록된 게시물이 없습니다.");
+							 check=true;
+						 }
+						 for(let i=0; i<eventArray.length;i++){
+							 content+="<li><a href='${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num="+eventArray[i].board_Num+"&page="+page+"'><img src='${pageContext.request.contextPath}/app/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
+							 /* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */
+							 content+="</a></li>";
+						 }
+						 
+						 ul.append(content);
+					 }	
+				 });
+				 if(check){
+					 return;
+				 }
+				 page+=1;
+			 }
+			 getList();
+			 $(".btn_open").on("click",function(e){
+				 //a테크 이동 막기
+				 e.preventDefault();
+				 getList();
+			 });
+			 
+		</script>
+		
 
 	   <script>
 	      var mapContainer = document.getElementById('map'); // 지도를 표시할 div

@@ -28,10 +28,6 @@ public class ReviewBoardDeleteOkAction implements Action{
 		int board_Num = Integer.parseInt(req.getParameter("board_Num"));
 		int page = Integer.parseInt(req.getParameter("page"));
 		
-			File f = new File(realPath, f_dao.getFileList(board_Num));
-			if(f.exists()) {
-				f.delete();
-			}
 			
 		f_dao.deleteFile(board_Num);
 		r_dao.deleteBoard(board_Num);

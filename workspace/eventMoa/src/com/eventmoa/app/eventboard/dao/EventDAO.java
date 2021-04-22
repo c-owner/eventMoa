@@ -118,6 +118,10 @@ public class EventDAO {
 		return session.delete("EventBoard.deleteReply", reply_Num) == 1;
 	}
 	
+	//댓글 평점
+	public int getReplyStar(int board_Num) {
+		return session.selectOne("EventBoard.getReplyStar", board_Num);
+	}
 	
 }
 
