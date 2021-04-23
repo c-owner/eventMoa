@@ -158,7 +158,7 @@
                   document.getElementById('user_Id').readOnly = true;   
                   document.getElementById('idCheckBtn').style.display = "none";
                   document.getElementById('idModifyBtn').style.display = "";
-               } else {
+               } else if(result.trim() == "not-ok"){
                    $("input[id='user_Pw").css("margin-top", "5%");
 	 					$("#idCheck_text").text("🔴중복된 아이디입니다.");
                   $("#idCheck_text").attr('color', '#f82a2aa3');
@@ -166,7 +166,15 @@
                   document.getElementById('idCheckBtn').style.display = "";
                   document.getElementById('idModifyBtn').style.display = "none";
                   id_Check = false;
-	 				}
+	 				} else {
+                  $("input[id='user_Pw").css("margin-top", "5%");
+                  $("#idCheck_text").text("🔴서버 오류.");
+                 $("#idCheck_text").attr('color', '#f82a2aa3');
+                 document.getElementById('user_Id').readOnly = false; 
+                 document.getElementById('idCheckBtn').style.display = "";
+                 document.getElementById('idModifyBtn').style.display = "none";
+                 id_Check = false;
+                }
 	 			},
 	 			error:function(){	//통신 오류 시
 	 				console.log("오류");

@@ -57,22 +57,52 @@ public class UserVerifyEmailAction implements Action {
 		p.put("mail.smtp.socketFactory.fallback", "false");
 		
 		try {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter script = resp.getWriter();
+			
+			script.print("1");
+			
 			Authenticator auth = new Gmail();
+			
+			script.print("2");
+			
 			Session ses = Session.getInstance(p, auth);
+			
+			script.print("3");
+			
 			ses.setDebug(true);
+			
+			script.print("4");
+			
 			MimeMessage msg = new MimeMessage(ses);
+			
+			script.print("5");
+			
 			msg.setSubject(subject);
+			
+			script.print("6");
+			
 			Address fromAddr = new InternetAddress(from);
+			
+			script.print("7");
+			
 			msg.setFrom(fromAddr);
+			
+			script.print("8");
+			
 			Address toAddr = new InternetAddress(to);
+			
+			script.print("9");
+			
 			msg.addRecipient(Message.RecipientType.TO, toAddr);
+			
+			script.print("10");
 			
 			msg.setContent(content, "text/html;charset=UTF-8");
 			Transport.send(msg);
+			script.print("11");
 			
 			String result = Integer.toString(dice);
-			resp.setContentType("text/html;charset=UTF-8");
-			PrintWriter script = resp.getWriter();
 			script.println(result);
 			script.close();
 		} catch (Exception e) {
@@ -81,6 +111,7 @@ public class UserVerifyEmailAction implements Action {
 			script.println("<script>");
 			script.println("alert('오류가 발생했습니다.'); history.back();");
 			script.println("</script>");
+			script.close();
 		}
 		
 		return forward;

@@ -37,11 +37,16 @@
 			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
-				"host": "event-moa.kro.kr",
+				"host": "127.0.0.1",
 				"port": "1515",
 				"database": "XE",
-				"url": "jdbc:oracle:thin:@//event-moa.kro.kr:1515/XE",
+				"url": "jdbc:oracle:thin:@127.0.0.1:1515:XE",
 				"type": "dev",
+				"properties": {
+					"useFetchSizeWithLongColumn": "true",
+					"loginTimeout": "20",
+					"oracle.jdbc.fanEnabled": "false"
+				},
 				"provider-properties": {
 					"@dbeaver-check-schema-content@": "false",
 					"@dbeaver-always-show-dba@": "false",
@@ -52,10 +57,25 @@
 					"@dbeaver-use-meta-optimizer@": "false",
 					"@dbeaver-meta-use-alternative-table-query@": "false",
 					"@dbeaver-connection-type@": "BASIC",
-					"@dbeaver-sid-service@": "SERVICE"
+					"@dbeaver-sid-service@": "SID"
 				},
 				"auth-model": "oracle_native",
-				"handlers": {}
+				"handlers": {
+					"ssh_tunnel": {
+						"type": "TUNNEL",
+						"enabled": true,
+						"save-password": true,
+						"properties": {
+							"port": 3389,
+							"implementation": "jsch",
+							"host": "106.10.40.117",
+							"authType": "PASSWORD"
+						}
+					}
+				}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},
