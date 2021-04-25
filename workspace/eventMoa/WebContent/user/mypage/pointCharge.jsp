@@ -113,16 +113,10 @@
 						
 						<!-- 이용권 공통 유틸버튼   -->
 					<div id="two" style="text-align: center; vertical-align: middle; ">
-     					  <div class="button primary small" style="width: auto;">
-        				<a href="${pageContext.request.contextPath}/">결제 오류 FAQ ></a>
-        				</div>
-     					  <div class="button primary small" style="width: auto;">
+        				<a onclick="openPopup()"><div class="button primary small" style="width: auto;">결제 오류 FAQ</div></a>
          					<!-- 페이지 수 -->&nbsp;
-         					<a href="${pageContext.request.contextPath}/">결제 및 환불 약관 ></a>
-             		  	</div>
-      					  <div class="button primary small" style="width: autol;">
-        				<a href="${pageContext.request.contextPath}/">제휴사 체결 ></a>
-              		 	</div>
+         					<a onclick="openPopup2()"> <div class="button primary small" style="width: auto;">취소 및 환불 약관</div></a>
+        				<a href="${pageContext.request.contextPath}/"><div class="button primary small" style="width: autol;">제휴사 체결 </div></a>
 					</div>
 					
 					<p>&nbsp;</p>
@@ -210,6 +204,15 @@
 		})
 		
 	</script>
+	<script>
+    function openPopup(){
+        window.open("${pageContext.request.contextPath}/user/point/pointFAQ.jsp", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=500, left=0, top=0" );
+    }
+    function openPopup2(){
+        window.open("${pageContext.request.contextPath}/user/point/pointPolicy.jsp", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=700, left=0, top=0" );
+    }
+	</script>
+	
 </html>
 
 

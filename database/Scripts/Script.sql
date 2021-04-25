@@ -12,7 +12,9 @@ CREATE TABLE TABLE_USER (
    user_Point NUMBER(10)  DEFAULT 0,
    CONSTRAINT EVENT_USER_PK PRIMARY KEY(user_Id)
 );
-
+INSERT INTO TABLE_USER VALUES(
+'admin1', '111', 'aaa', 'aa', 'aa', 'aa','aa','aa','aa', 300
+);
 ------------------------------
 
 --자유 게시판(게시판)

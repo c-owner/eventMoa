@@ -32,7 +32,7 @@
 		"oracle_thin-178f96a4690-28742cdfa814fc61": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "본서버",
+			"name": "네이버서버",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
@@ -66,13 +66,52 @@
 						"enabled": true,
 						"save-password": true,
 						"properties": {
-							"port": 3389,
-							"implementation": "jsch",
 							"host": "106.10.40.117",
-							"authType": "PASSWORD"
+							"authType": "PASSWORD",
+							"port": 3389.0,
+							"implementation": "jsch"
 						}
 					}
 				}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
+			}
+		},
+		"oracle_thin-178feb439a4-71bb8dbfc2a9c060": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "본서버(오라클 클라우드)",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "event-moa.kro.kr",
+				"port": "1515",
+				"database": "XE",
+				"url": "jdbc:oracle:thin:@event-moa.kro.kr:1515:XE",
+				"type": "dev",
+				"properties": {
+					"useFetchSizeWithLongColumn": "true",
+					"loginTimeout": "20",
+					"oracle.jdbc.fanEnabled": "false"
+				},
+				"provider-properties": {
+					"@dbeaver-check-schema-content@": "false",
+					"@dbeaver-always-show-dba@": "false",
+					"@dbeaver-always-use-dba-views@": "false",
+					"@dbeaver-meta-use-sys-schema@": "false",
+					"@dbeaver-meta-use-simple-constraints@": "false",
+					"@dbeaver-use-rule-hint@": "false",
+					"@dbeaver-use-meta-optimizer@": "false",
+					"@dbeaver-meta-use-alternative-table-query@": "false",
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-sid-service@": "SID",
+					"@dbeaver-session-language@": "KOREAN",
+					"@dbeaver-session-territory@": "KOREA"
+				},
+				"auth-model": "oracle_native",
+				"handlers": {}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
@@ -105,6 +144,30 @@
 			}
 		},
 		"oracle_thin-178f96a4690-28742cdfa814fc61": {
+			"EVENTMOA": {
+				"@properties": {
+					"erd.diagram.state": {
+						"serialized": "<diagram version=\"1\" name=\"EVENTMOA\" time=\"202104012232\"><entities><data-source id=\"oracle_thin-1785c9c20bc-6a232e7d00de2b34\"><entity id=\"1\" name=\"TABLE_BOARD_EVENT\" fq-name=\"EVENTMOA.TABLE_BOARD_EVENT\" order=\"0\" x=\"625\" y=\"478\"><path name=\"EVENTMOA\"/></entity><entity id=\"2\" name=\"TABLE_BOARD_FREETALK\" fq-name=\"EVENTMOA.TABLE_BOARD_FREETALK\" order=\"1\" x=\"622\" y=\"275\"><path name=\"EVENTMOA\"/></entity><entity id=\"3\" name=\"TABLE_BOARD_POINT\" fq-name=\"EVENTMOA.TABLE_BOARD_POINT\" order=\"2\" border-width=\"3\" x=\"82\" y=\"113\"><path name=\"EVENTMOA\"/></entity><entity id=\"4\" name=\"TABLE_FILES_EVENT\" fq-name=\"EVENTMOA.TABLE_FILES_EVENT\" order=\"3\" x=\"981\" y=\"526\"><path name=\"EVENTMOA\"/></entity><entity id=\"5\" name=\"TABLE_FILES_FREETALK\" fq-name=\"EVENTMOA.TABLE_FILES_FREETALK\" order=\"4\" x=\"977\" y=\"311\"><path name=\"EVENTMOA\"/></entity><entity id=\"6\" name=\"TABLE_REPLY_EVENT\" fq-name=\"EVENTMOA.TABLE_REPLY_EVENT\" order=\"5\" x=\"635\" y=\"715\"><path name=\"EVENTMOA\"/></entity><entity id=\"7\" name=\"TABLE_REPLY_FREETALK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK\" order=\"6\" x=\"627\" y=\"77\"><path name=\"EVENTMOA\"/></entity><entity id=\"8\" name=\"TABLE_USER\" fq-name=\"EVENTMOA.TABLE_USER\" order=\"7\" x=\"61\" y=\"367\"><path name=\"EVENTMOA\"/></entity></data-source></entities><relations><relation name=\"FILES_EVENT_FK\" fq-name=\"EVENTMOA.TABLE_FILES_EVENT.FILES_EVENT_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"4\"/><relation name=\"REPLY_EVENT_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_EVENT.REPLY_EVENT_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"6\"/><relation name=\"FILES_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_FILES_FREETALK.FILES_FREETALK_FK\" type=\"fk\" pk-ref=\"2\" fk-ref=\"5\"/><relation name=\"REPLY_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK.REPLY_FREETALK_FK\" type=\"fk\" pk-ref=\"2\" fk-ref=\"7\"/><relation name=\"BOARD_EVENT_FK\" fq-name=\"EVENTMOA.TABLE_BOARD_EVENT.BOARD_EVENT_FK\" type=\"fk\" pk-ref=\"8\" fk-ref=\"1\"/><relation name=\"BOARD_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_BOARD_FREETALK.BOARD_FREETALK_FK\" type=\"fk\" pk-ref=\"8\" fk-ref=\"2\"/><relation name=\"POINT_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_BOARD_POINT.POINT_MEMBER_FK\" type=\"fk\" pk-ref=\"8\" fk-ref=\"3\"/><relation name=\"REPLY_EVENT_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_EVENT.REPLY_EVENT_MEMBER_FK\" type=\"fk\" pk-ref=\"8\" fk-ref=\"6\"/><relation name=\"REPLY_FREETALK_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK.REPLY_FREETALK_MEMBER_FK\" type=\"fk\" pk-ref=\"8\" fk-ref=\"7\"/></relations></diagram>"
+					}
+				},
+				":TABLE_BOARD_FREETALK": {
+					"properties": {
+						"erd.diagram.state": {
+							"serialized": "<diagram version=\"1\" name=\"TABLE_BOARD_FREETALK\" time=\"202104012230\"><entities><data-source id=\"oracle_thin-1785c9c20bc-6a232e7d00de2b34\"><entity id=\"1\" name=\"TABLE_BOARD_FREETALK\" fq-name=\"EVENTMOA.TABLE_BOARD_FREETALK\" order=\"0\" color-bg=\"128,64,32\" x=\"884\" y=\"396\"><path name=\"EVENTMOA\"/></entity><entity id=\"2\" name=\"TABLE_USER\" fq-name=\"EVENTMOA.TABLE_USER\" order=\"1\" x=\"47\" y=\"420\"><path name=\"EVENTMOA\"/></entity><entity id=\"3\" name=\"TABLE_FILES_FREETALK\" fq-name=\"EVENTMOA.TABLE_FILES_FREETALK\" order=\"2\" x=\"728\" y=\"237\"><path name=\"EVENTMOA\"/></entity><entity id=\"4\" name=\"TABLE_REPLY_FREETALK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK\" order=\"3\" x=\"704\" y=\"77\"><path name=\"EVENTMOA\"/></entity></data-source></entities><relations><relation name=\"FILES_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_FILES_FREETALK.FILES_FREETALK_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"3\"/><relation name=\"REPLY_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK.REPLY_FREETALK_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"4\"/><relation name=\"BOARD_FREETALK_FK\" fq-name=\"EVENTMOA.TABLE_BOARD_FREETALK.BOARD_FREETALK_FK\" type=\"fk\" pk-ref=\"2\" fk-ref=\"1\"/><relation name=\"REPLY_FREETALK_MEMBER_FK\" fq-name=\"EVENTMOA.TABLE_REPLY_FREETALK.REPLY_FREETALK_MEMBER_FK\" type=\"fk\" pk-ref=\"2\" fk-ref=\"4\"/></relations></diagram>"
+						}
+					}
+				},
+				":TABLE_BOARD_EVENT": {
+					"constraints": {
+						"VIRTUAL_PK": {
+							"type": "vpk",
+							"useAllColumns": true
+						}
+					}
+				}
+			}
+		},
+		"oracle_thin-178feb439a4-71bb8dbfc2a9c060": {
 			"EVENTMOA": {
 				"@properties": {
 					"erd.diagram.state": {
