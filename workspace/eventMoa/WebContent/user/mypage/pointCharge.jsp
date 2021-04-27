@@ -116,7 +116,6 @@
         				<a onclick="openPopup()"><div class="button primary small" style="width: auto;">결제 오류 FAQ</div></a>
          					<!-- 페이지 수 -->&nbsp;
          					<a onclick="openPopup2()"> <div class="button primary small" style="width: auto;">취소 및 환불 약관</div></a>
-        				<a href="${pageContext.request.contextPath}/"><div class="button primary small" style="width: autol;">제휴사 체결 </div></a>
 					</div>
 					
 					<p>&nbsp;</p>

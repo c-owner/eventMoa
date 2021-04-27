@@ -14,7 +14,6 @@ CREATE TABLE TABLE_USER (
 	user_Address_Detail varchar2(300),
 	user_Address_Etc  varchar2(100),
 	user_Point NUMBER(10) DEFAULT 0,
-  	
 	CONSTRAINT EVENT_USER_PK PRIMARY KEY(user_Id)
 );
 

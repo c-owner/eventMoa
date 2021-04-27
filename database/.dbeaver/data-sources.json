@@ -32,7 +32,7 @@
 		"oracle_thin-178f96a4690-28742cdfa814fc61": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "네이버서버",
+			"name": "event-test.kro.kr",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
@@ -42,6 +42,7 @@
 				"database": "XE",
 				"url": "jdbc:oracle:thin:@127.0.0.1:1515:XE",
 				"type": "dev",
+				"config-profile": "event-web",
 				"properties": {
 					"useFetchSizeWithLongColumn": "true",
 					"loginTimeout": "20",
@@ -66,10 +67,11 @@
 						"enabled": true,
 						"save-password": true,
 						"properties": {
-							"host": "106.10.40.117",
-							"authType": "PASSWORD",
-							"port": 3389.0,
-							"implementation": "jsch"
+							"port": 22,
+							"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
+							"implementation": "jsch",
+							"host": "132.226.229.33",
+							"authType": "PUBLIC_KEY"
 						}
 					}
 				}
@@ -81,15 +83,15 @@
 		"oracle_thin-178feb439a4-71bb8dbfc2a9c060": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "본서버(오라클 클라우드)",
+			"name": "event-moa.kro.kr",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
-				"host": "event-moa.kro.kr",
+				"host": "127.0.0.1",
 				"port": "1515",
 				"database": "XE",
-				"url": "jdbc:oracle:thin:@event-moa.kro.kr:1515:XE",
+				"url": "jdbc:oracle:thin:@127.0.0.1:1515:XE",
 				"type": "dev",
 				"properties": {
 					"useFetchSizeWithLongColumn": "true",
@@ -111,7 +113,20 @@
 					"@dbeaver-session-territory@": "KOREA"
 				},
 				"auth-model": "oracle_native",
-				"handlers": {}
+				"handlers": {
+					"ssh_tunnel": {
+						"type": "TUNNEL",
+						"enabled": true,
+						"save-password": true,
+						"properties": {
+							"host": "132.226.228.201",
+							"authType": "PUBLIC_KEY",
+							"port": 22.0,
+							"keyPath": "/Users/corner/.ssh/id_rsa.pem",
+							"implementation": "jsch"
+						}
+					}
+				}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
@@ -187,6 +202,42 @@
 							"type": "vpk",
 							"useAllColumns": true
 						}
+					}
+				}
+			}
+		}
+	},
+	"network-profiles": {
+		"event-web": {
+			"name": "event-web",
+			"handlers": {
+				"ssh_tunnel": {
+					"type": "TUNNEL",
+					"enabled": true,
+					"save-password": true,
+					"properties": {
+						"port": 22,
+						"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
+						"implementation": "jsch",
+						"host": "132.226.229.33",
+						"authType": "PUBLIC_KEY"
+					}
+				}
+			}
+		},
+		"eventmoa": {
+			"name": "eventmoa",
+			"handlers": {
+				"ssh_tunnel": {
+					"type": "TUNNEL",
+					"enabled": true,
+					"save-password": true,
+					"properties": {
+						"port": 22,
+						"keyPath": "/Users/corner/.ssh/id_rsa.pem",
+						"implementation": "jsch",
+						"host": "132.226.228.201",
+						"authType": "PUBLIC_KEY"
 					}
 				}
 			}

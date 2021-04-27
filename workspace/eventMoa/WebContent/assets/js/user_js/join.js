@@ -55,12 +55,11 @@
  function EmailCheck(){
     var email = $("input[name='user_Email").val();
     alert('잠시만 기다려주세요. 인증번호 전송 요청중입니다.');
- 
+    
     email_Check = false;
     if(email == "" ) {
        alert('이메일을 입력하세요.');
     } else {
-       console.log('들어옴');
        $.ajax({
           url: contextPath + "/user/verifyCheckEmail.us?email=" + email,
           type: "GET",
@@ -98,7 +97,6 @@
          type: "GET",
          dataType: "text",
          success: function(result){
-            console.log('result : ' + result);
             alert('해당 이메일로 인증번호 7자리를 발송하였습니다.');
             inputVerify.attr("disabled", false);
             // inputVerifyBox.attr("id", "mail_verify_input_box_true");
@@ -117,8 +115,7 @@
        var verify = $("#email_verify").val();
        verify = parseInt(verify);
        code = parseInt(code);
-       console.log('code = '+code);
-       console.log('verify = ' + verify);
+
        verify_Check = false;
        if(verify != code ) {
             verify_Check = false;
