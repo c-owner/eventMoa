@@ -25,7 +25,7 @@
 					</li>
 					<li>
 						<h3 class="icon solid fa-envelope major"><span class="label">Email</span></h3>
-						<p><a href="#">admin5252@gmail.com</a></p>
+						<p>admin5252@gmail.com</p>
 					</li>
 				</ul>
 				<ul class="joined-icons">

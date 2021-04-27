@@ -32,6 +32,7 @@ public class EventReplyAddOkAction implements Action{
 		
 		int cntStar = Integer.parseInt(req.getParameter("reply_Star"));
 		
+		
 		String star = "★";
 		if(cntStar == 1 ) {
 			star = "★";

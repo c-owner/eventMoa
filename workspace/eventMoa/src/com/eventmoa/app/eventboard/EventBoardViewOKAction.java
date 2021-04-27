@@ -46,7 +46,7 @@ public class EventBoardViewOKAction implements Action{
 				req.setAttribute("files", filesList);
 			}
 			if(replyList.size() > 0) {
-				int replyStar = e_dao.getReplyStar(boardNum);
+				float replyStar = e_dao.getReplyStar(boardNum);
 				req.setAttribute("replyStar", replyStar);
 			}
 			forward = new ActionForward();

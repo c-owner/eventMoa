@@ -81,8 +81,8 @@
 	</update>
 	
 	<!-- 댓글 평점 -->
-	<select id="getReplyStar" parameterType="_int" resultType="_int">
-		SELECT AVG(LENGTH(REPLY_STAR)) FROM TABLE_REPLY_EVENT WHERE BOARD_NUM = #{board_Num}
+	<select id="getReplyStar" parameterType="_int" resultType="_float">
+		SELECT ROUND(AVG(LENGTH(REPLY_STAR)),2) FROM TABLE_REPLY_EVENT WHERE BOARD_NUM = #{board_Num}
 	</select>
 	
 	<!-- 글 등록시 포인트 차감-->

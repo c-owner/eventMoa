@@ -67,7 +67,7 @@
 		<c:set var="replyList" value="${replyList}"/>
 		<c:set var="files" value="${files}"/>
 		<c:set var="replyStar" value="${replyStar}"/>
-		
+
 		<c:set var="session_id" value="${session_id}" />
 		
 		<c:set var='userStatus' value="false"></c:set>

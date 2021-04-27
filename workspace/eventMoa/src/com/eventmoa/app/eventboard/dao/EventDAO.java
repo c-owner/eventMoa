@@ -119,7 +119,7 @@ public class EventDAO {
 	}
 	
 	//댓글 평점
-	public int getReplyStar(int board_Num) {
+	public float getReplyStar(int board_Num) {
 		return session.selectOne("EventBoard.getReplyStar", board_Num);
 	}
 	

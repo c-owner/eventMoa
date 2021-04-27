@@ -162,7 +162,7 @@
 				</li>
 				<li>
 					<div class="inner">
-						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo">
+						<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=recent">
 							<span class="icon solid fa-comment major"></span>
 							<h3>자유게시판</h3>
 						</a>
