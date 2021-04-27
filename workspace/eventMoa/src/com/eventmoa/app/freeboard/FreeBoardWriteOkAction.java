@@ -1,6 +1,5 @@
 package com.eventmoa.app.freeboard;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,9 +21,12 @@ public class FreeBoardWriteOkAction implements Action{
 		ActionForward forward = null;
 		
 		//경로도 추후 설정
-		String uploadFolder = "/app/upload";
-		ServletContext context= req.getSession().getServletContext();
-		String realPath= context.getRealPath(uploadFolder);
+//		String uploadFolder = "/app/upload";
+//		ServletContext context= req.getSession().getServletContext();
+//		String realPath= context.getRealPath(uploadFolder);
+		String realPath = "/usr/local/apache-tomcat-8.5.63/"
+				+ "webapps/app/upload/";
+		
 		
 		//String saveFolder = "C:\\0900_gb_ssh\\jsp\\workspace\\eventMoa\\WebContent\\app\\upload";
 		int fileSize = 5 * 1024 * 1024; //5M

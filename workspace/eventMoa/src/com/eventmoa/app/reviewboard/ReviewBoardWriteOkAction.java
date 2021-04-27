@@ -2,7 +2,6 @@ package com.eventmoa.app.reviewboard;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,9 +23,11 @@ public class ReviewBoardWriteOkAction implements Action{
 		ReviewFilesVO rf_vo = new ReviewFilesVO();
 		ActionForward forward = null;
 		
-		String uploadFolder = "/app/reviewFilesUpload";
-		ServletContext context= req.getSession().getServletContext();
-		String realPath= context.getRealPath(uploadFolder);
+//		String uploadFolder = "/app/reviewFilesUpload";
+//		ServletContext context= req.getSession().getServletContext();
+//		String realPath= context.getRealPath(uploadFolder);
+		String realPath = "/usr/local/apache-tomcat-8.5.63/"
+				+ "webapps/app/reviewFilesUpload/";
 		
 		int fileSize = 1024 * 1024 * 50; // 10M
 		

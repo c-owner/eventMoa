@@ -3,7 +3,6 @@ package com.eventmoa.app.eventboard;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -50,10 +49,14 @@ public class EventBoardWriterOkAction implements Action {
 		}
 		
 		// 업로드
-//		String realPath = "/Users/corner/eventMoa-Project/workspace/eventMoa/WebContent/app/eventFilesUpload";
-		String uploadFolder = "/app/eventFilesUpload";
-		ServletContext context= req.getSession().getServletContext();
-		String realPath= context.getRealPath(uploadFolder);
+		// 방법 1. 테스트 서버에서 파일을 배포한다 -> 임포트해서 작업하고 다시 배포한다 ? 
+		// 방법 2. 테스트 서버에서 파일 경로를 절대경로로 바꾼다.?
+		String realPath = "/usr/local/apache-tomcat-8.5.63/"
+				+ "webapps/app/eventFilesUpload/";
+		
+//		String uploadFolder = "/app/eventFilesUpload";
+//		ServletContext context= req.getSession().getServletContext();
+//		String realPath= context.getRealPath(uploadFolder);
 		
 		int fileSize = 1024 * 1024 * 50; // 10M
 		
