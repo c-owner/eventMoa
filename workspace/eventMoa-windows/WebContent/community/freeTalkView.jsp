@@ -66,8 +66,11 @@
             
             <tr height="200px">
                <td align="center" width="150px" id="td1">내 용</td>
-               <td valign="top" style="padding-top:10px; padding-left:10px;"><textarea style="height:300px; resize: none; border: none;
-    background: none;" minlength = "1"><c:out value="${f_vo.getBoard_Content()}" /></textarea></td>
+               <td valign="top" style="padding-top:10px; padding-left:10px;">
+					<pre style="font-family:'Nanum Gothic'; white-space: pre-line;">
+						<c:out value="${f_vo.getBoard_Content()}" />
+					</pre>
+				</td>
             </tr>
             
             <c:if test="${files != null}">

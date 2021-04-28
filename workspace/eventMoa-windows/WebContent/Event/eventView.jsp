@@ -116,11 +116,9 @@
 							</p>
 							
 						</div>
-					<!-- 이미지 슬라이드 -->
 					<div class="slider" style="width:100%; height: 100%; margin:0 auto; margin-top: 10%;">
 						<div>
 							<figure>
-								<!-- 이미지 뿌려주기  -->
 								<img src='${pageContext.request.contextPath}/app/eventFilesUpload/${e_vo.getFile_name()}'>
 							</figure>
 						</div>
@@ -129,14 +127,9 @@
 					<p style="text-align:center">
 						<font style="font-family: 'jua'; font-size: 16px;">
 							<div style="margin-bottom: 10%; margin-top: 10%;">
-								<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="1" style="resize:inherit;width:100%;overflow-y:hidden" readonly>${e_vo.getBoard_Content()}</textarea>
-									<script>
-									 function xSize(e)
-										{
-											e.style.height = '1px';
-											e.style.height = (e.scrollHeight + 12) + 'px';
-										} 
-									</script>
+								<pre name="content" class="content" id="content" 
+								style="text-align: center;font-family:'Nanum Gothic'; white-space: pre-line;">
+								<span class="content">${e_vo.getBoard_Content()}</span></pre>
 								</div>
 						</font>
 						<p style="text-align: center;">
@@ -320,9 +313,7 @@
 					var r_id = replyArray[i].user_Id;
 						content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
 						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
-						// content += "<span class='content'><textarea id='input-letter' maxlength='40' rows='1' style='resize: none;' spellcheck='false'>";
-						content += "<pre><textarea id='input-letter' maxlength='40' rows='1' style='resize: none;' spellcheck='false'>";
-						content += ""+r_content +"</textarea></pre>";
+						content += "<pre><span class='content'>"+r_content +"</span></pre>"; 
 						content += "<span id='writer' class='date'>작성일: "+year+"-"+months+"-"+day+"</span>";
 						content += "<span id='writer'>작성자: "+ r_id+"</span>";
 					if(r_id == id){

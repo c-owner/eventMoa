@@ -67,8 +67,11 @@
             
             <tr height="200px">
                <td align="center" width="150px" id="td1">내 용</td>
-               <td valign="top" style="padding-top:10px; padding-left:10px;"><textarea style="height:300px; resize: none; border: none;
-    background: none;" minlength = "1"><c:out value="${r_vo.getBoard_Content()}" /></textarea></td>
+               <td valign="top" style="padding-top:10px; padding-left:10px;"> 
+               		<pre style="font-family:'Nanum Gothic'; white-space: pre-line;">
+		    			<c:out value="${r_vo.getBoard_Content()}" />
+               		</pre>
+    			</td>
             </tr>
             
          </table>
@@ -76,7 +79,6 @@
                <div class="slider" style="width:100%; height: 100%; margin:0 auto; margin-top: 10%;">
                   <div>
                      <figure>
-                        <!-- 이미지 뿌려주기  -->
                         <img src='${pageContext.request.contextPath}/app/reviewFilesUpload/${files}'>
                      </figure>
                   </div>
