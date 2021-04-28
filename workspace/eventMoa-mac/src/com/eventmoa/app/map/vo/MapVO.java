@@ -28,7 +28,7 @@ public class MapVO {
 	
 	@Override
 	public String toString() {
-		return user_address + " " + user_address_detail + " " + user_address_etc;
+		return user_address + " " + user_address_etc;
 	}
 	
 }
