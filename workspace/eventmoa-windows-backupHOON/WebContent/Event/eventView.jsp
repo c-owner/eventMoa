@@ -129,15 +129,16 @@
 					<p style="text-align:center">
 						<font style="font-family: 'jua'; font-size: 16px;">
 							<div style="margin-bottom: 10%; margin-top: 10%;">
-								<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="1" style="resize:inherit;width:100%;overflow-y:hidden" readonly>${e_vo.getBoard_Content()}</textarea>
+									<textarea name="content" id="content" class="content" onkeyup="xSize(this)" rows="30" style="resize:inherit;width:100%;overflow-y:hidden" readonly>${e_vo.getBoard_Content()}</textarea>
 									<script>
-									 function xSize(e)
+										function xSize(e)
 										{
 											e.style.height = '1px';
 											e.style.height = (e.scrollHeight + 12) + 'px';
-										} 
+										}
 									</script>
-								</div>
+							</textarea>
+							</div>
 						</font>
 						<p style="text-align: center;">
 						<span style="color:#2f7fa6; font-size: 15px;">이벤트 시작 :</span><span style="color:red">${e_vo.getEVT_START_DT()}</span> ~ 
@@ -225,16 +226,13 @@
 					</form>
 					
 				</section> 
-					<div id="reCon">
-	
-					</div>
-					<script>
-					 function xSize(e)
-						{
-							e.style.height = '1px';
-							e.style.height = (e.scrollHeight + 12) + 'px';
-						} 
-					</script>
+				<div id="reCon">
+
+				</div>
+			
+			
+			
+
 
 			</div> <!-- div id="main" end -->
 
@@ -320,9 +318,7 @@
 					var r_id = replyArray[i].user_Id;
 						content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
 						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
-						// content += "<span class='content'><textarea id='input-letter' maxlength='40' rows='1' style='resize: none;' spellcheck='false'>";
-						content += "<pre><textarea id='input-letter' maxlength='40' rows='1' style='resize: none;' spellcheck='false'>";
-						content += ""+r_content +"</textarea></pre>";
+						content += "<textarea><span class='content'>"+ r_content +"</span></textarea>";
 						content += "<span id='writer' class='date'>작성일: "+year+"-"+months+"-"+day+"</span>";
 						content += "<span id='writer'>작성자: "+ r_id+"</span>";
 					if(r_id == id){
