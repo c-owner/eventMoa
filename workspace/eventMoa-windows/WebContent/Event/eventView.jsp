@@ -318,7 +318,7 @@
 					var r_id = replyArray[i].user_Id;
 						content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
 						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
-						content += "<span class='content'>"+ r_content +"</span>";
+						content += "<textarea><span class='content'>"+ r_content +"</span></textarea>";
 						content += "<span id='writer' class='date'>작성일: "+year+"-"+months+"-"+day+"</span>";
 						content += "<span id='writer'>작성자: "+ r_id+"</span>";
 					if(r_id == id){
