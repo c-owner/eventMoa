@@ -29,8 +29,8 @@ public class UserVerifyEmailAction implements Action {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		final String HOST = "smtp.gmail.com";
-		final String USER = "eventmoa1515@gmail.com";
+		final String HOST = "smtp.naver.com";
+		final String USER = "eventmoa1515@naver.com";
 		final String PASSWORD = "@ventmoa1515";
 		
 		ActionForward forward = null;
@@ -47,7 +47,7 @@ public class UserVerifyEmailAction implements Action {
 		String to = userEmail;
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", HOST);
-		prop.put("mail.smtp.port", "587");
+		prop.put("mail.smtp.port", "465");
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.ssl.enable", "true");
 		prop.put("mail.smtp.trust", HOST);
