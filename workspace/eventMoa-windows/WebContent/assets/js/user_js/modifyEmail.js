@@ -54,8 +54,7 @@
        var verify = $("#email_verify").val();
        verify = parseInt(verify);
        code = parseInt(code);
-       console.log('code = '+code);
-       console.log('verify = ' + verify);
+ 
        verify_Check = false;
        if(verify != code ) {
             verify_Check = false;
