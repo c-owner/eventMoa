@@ -65,7 +65,7 @@
 							<img src="${pageContext.request.contextPath}/images/banner/banner02.jpg"
 								alt="이미지2">
 							<figcaption>
-								<em> 이벤트 모아  </em><span> 댓글 이벤트  </span>
+								<em> 이벤트 모아  </em><span> 댓글 이벤트 </span>
 							</figcaption>
 						</figure>
 					</div>
