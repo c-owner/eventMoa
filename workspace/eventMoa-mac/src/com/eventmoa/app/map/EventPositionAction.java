@@ -37,8 +37,16 @@ public class EventPositionAction implements Action{
 			address = m_dao.getUserAddress(session_id);
 		}
 		
+		MapBoardVO notList = new MapBoardVO();
+		if(eventPositions.isEmpty()) {
+			notList.setBoard_address("서울특별시 강남구 테헤란로 146");
+			notList.setBoard_address_etc("(역삼동)");
+			notList.setBoard_title("회사");
+			eventPositions.add(notList);
+		}
+		
 		JSONObject event = new JSONObject();
-		event.put("eventTitle", "현재 보고계신 이벤트 위치");
+		event.put("eventTitle", "우리 집");
 		event.put("eventAddress", address);
 		eventArray.add(event);
 		for(MapBoardVO mb_vo : eventPositions) {
