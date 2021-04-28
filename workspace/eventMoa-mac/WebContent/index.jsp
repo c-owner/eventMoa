@@ -87,15 +87,6 @@
 							</figcaption>
 						</figure>
 					</div>
-					<div>
-						<figure>
-							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
-								alt="이미지4">
-							<figcaption>
-								<em> 이벤트 모아  </em><span> 회원가입시 무료 300포인트 지급</span>
-							</figcaption>
-						</figure>
-					</div>
 				</div>
 			</article>
 			<!-- //이미지 슬라이드 -->
@@ -190,6 +181,12 @@
 
 		</section>
 	</div>
+	
+	<div align="center" style="margin: 0 auto; padding-top: 5%; width: 80%;">
+		<img src="${pageContext.request.contextPath}/images/banner/banner01.jpg">
+	</div>	
+	
+	
 	<!-- Footer -->
 	<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 

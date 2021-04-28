@@ -17,10 +17,13 @@
     box-sizing: border-box;
 	padding-left: 0;
 }
-
-img {
-	border-style: solid;
-    border-width: 4px;
+figure > img {
+    border-style: solid !important;
+    border-width: 4px !important;
+}
+a > img {
+	border-style: solid !important;
+    border-width: 4px !important;
 }
 
 ul,ol,li{
