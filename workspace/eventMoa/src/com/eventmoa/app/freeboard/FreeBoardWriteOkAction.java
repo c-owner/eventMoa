@@ -13,7 +13,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class FreeBoardWriteOkAction implements Action{
 	protected static final String RealPATH = "/usr/local/apache-tomcat-8.5.63/"
-			+ "webapps/app/";
+			+ "webapps/uploadFolder/";
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		FreeBoardVO f_vo = new FreeBoardVO();

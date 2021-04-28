@@ -127,7 +127,7 @@ button#next {
 
 button#prev {
     left: auto;
-    bottom: -3.5%;
+    bottom: -1.5%;
     position: absolute;
     display: flex;
 }

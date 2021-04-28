@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 
-public class UserVerifyEmailAction implements Action {
+public class UserModifyVerifyEmailAction implements Action {
 	
 	protected static final String HTTPS_PROTOCOLS = "TLSv1,TLSv1.1,TLSv1.2"; 
 	
@@ -63,7 +63,7 @@ public class UserVerifyEmailAction implements Action {
 			message.setFrom(new InternetAddress(USER));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			// 메일 제목
-			String subject = "[이벤트 모아] 회원가입 인증번호 발송 메일입니다.";
+			String subject = "[이벤트 모아] 이메일 변경 인증번호 발송 메일입니다.";
 			message.setSubject(MimeUtility.encodeText(subject,"UTF-8","B"));
 			
 			String tempPass = Integer.toString(dice);

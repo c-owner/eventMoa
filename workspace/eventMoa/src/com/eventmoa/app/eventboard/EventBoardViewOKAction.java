@@ -23,7 +23,6 @@ public class EventBoardViewOKAction implements Action{
 		EventDAO e_dao =new EventDAO();
 		EventDAO reply_dao = new EventDAO();
 		EventBoardVO e_vo = null;
-		EventReplyVO er_vo = new EventReplyVO();
 		
 		EventFilesDAO ef_dao = new EventFilesDAO();
 		ActionForward forward = null;

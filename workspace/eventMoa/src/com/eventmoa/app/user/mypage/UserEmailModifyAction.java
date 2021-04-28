@@ -21,8 +21,7 @@ public class UserEmailModifyAction implements Action{
 		String user_email = req.getParameter("user_Email");
 		String new_email = req.getParameter("new_Email");
 		String userId = req.getParameter("session_id");
-		System.out.println(user_email);
-		System.out.println(userId);
+		
 		UserDAO dao = new UserDAO();
 		ActionForward forward = null;
 		PrintWriter out = resp.getWriter();

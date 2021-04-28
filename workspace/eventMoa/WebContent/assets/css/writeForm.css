@@ -5,6 +5,10 @@
  KING KI HOON BOARD FORM CSS
  */
 
+textarea {
+    background-color: white !important;
+}
+
 .tagManager {
 	height: 4rem;
 	border-bottom-width: 1px;

@@ -203,6 +203,13 @@ public class UserFrontController extends HttpServlet {
 				System.out.println(e);
 			}
 		}
+		else if (command.equals("/user/modfiyEmailSend.us")) {
+			try {
+				forward = new UserModifyVerifyEmailAction().execute(req, resp);  
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
 		else if (command.equals("/user/mypage/UserModifyEmailOk.us")) {
 			try {
 				forward = new UserEmailModifyAction().execute(req, resp);  

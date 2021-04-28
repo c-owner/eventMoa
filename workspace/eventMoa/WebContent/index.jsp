@@ -16,7 +16,7 @@
 	href="${pageContext.request.contextPath}/assets/css/map.css">
 	<link rel="stylesheet" href="${pagetext.request.contextPath}/assets/css/event.css">
 </head>
-
+<!-- test -->
 
 <body class="is-preload">
 
@@ -53,37 +53,46 @@
 				<div class="slider">
 					<div>
 						<figure>
-							<img src="${pageContext.request.contextPath}/images/ad/ad1.jpg"
-								alt="이미지1">
-							<figcaption>
-								<em> SNS • 배너 광고 디자인 </em><span> #페이스북 #인스타그램 </span>
-							</figcaption>
-						</figure>
-					</div>
-					<div>
-						<figure>
-							<img src="${pageContext.request.contextPath}/images/ad/ad2.jpg"
-								alt="이미지2">
-							<figcaption>
-								<em> 카울리 인사이트 </em><span> 광고 소재 제작 Tip</span>
-							</figcaption>
-						</figure>
-					</div>
-					<div>
-						<figure>
-							<img src="${pageContext.request.contextPath}/images/ad/ad3.jpg"
-								alt="이미지3">
-							<figcaption>
-								<em> CROLO </em><span> 배너 디자인 이제 AI에게 맡기세요. </span>
-							</figcaption>
-						</figure>
-					</div>
-					<div>
-						<figure>
-							<img src="${pageContext.request.contextPath}/images/ad/ad4.jpg"
+							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
 								alt="이미지4">
 							<figcaption>
-								<em> Banner Template </em><span> Plan Your ...</span>
+								<em> 이벤트 모아  </em><span> 회원가입시 무료 300포인트 지급</span>
+							</figcaption>
+						</figure>
+					</div>
+					<div>
+						<figure>
+							<img src="${pageContext.request.contextPath}/images/banner/banner02.jpg"
+								alt="이미지2">
+							<figcaption>
+								<em> 이벤트 모아  </em><span> 댓글 이벤트 </span>
+							</figcaption>
+						</figure>
+					</div>
+					<div>
+						<figure>
+							<img src="${pageContext.request.contextPath}/images/banner/banner03.jpg"
+								alt="이미지3">
+							<figcaption>
+								<em> 이벤트 모아  </em><span> 홍보하기 쉽고 빠른 사이트. </span>
+							</figcaption>
+						</figure>
+					</div>
+					<div>
+						<figure>
+							<img src="${pageContext.request.contextPath}/images/banner/banner04.jpg"
+								alt="이미지4">
+							<figcaption>
+								<em> 이벤트 모아  </em><span> Plan Your ...</span>
+							</figcaption>
+						</figure>
+					</div>
+					<div>
+						<figure>
+							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
+								alt="이미지4">
+							<figcaption>
+								<em> 이벤트 모아  </em><span> 회원가입시 무료 300포인트 지급</span>
 							</figcaption>
 						</figure>
 					</div>

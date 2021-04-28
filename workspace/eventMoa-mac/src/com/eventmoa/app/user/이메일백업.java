@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 
-public class UserVerifyEmailAction implements Action {
+public class 이메일백업 implements Action {
 	
 	protected static final String HTTPS_PROTOCOLS = "TLSv1,TLSv1.1,TLSv1.2"; 
 	
@@ -29,9 +29,9 @@ public class UserVerifyEmailAction implements Action {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		final String HOST = "smtp.googlemail.com";
-		final String USER = "eventmoa1515@gmail.com";
-		final String PASSWORD = "@ventmoa15";
+		final String HOST = "smtp.naver.com";
+		final String USER = "eventmoa1515@naver.com";
+		final String PASSWORD = "@ventmoa1515";
 		
 		ActionForward forward = null;
 		

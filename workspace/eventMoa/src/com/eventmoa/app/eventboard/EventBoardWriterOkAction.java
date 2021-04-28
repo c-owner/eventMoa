@@ -22,7 +22,7 @@ public class EventBoardWriterOkAction implements Action {
 
 	public static final int EVENT_POINT = 200;
 	protected static final String RealPATH = "/usr/local/apache-tomcat-8.5.63/"
-			+ "webapps/app/";
+			+ "webapps/uploadFolder/";
 	
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception { 
