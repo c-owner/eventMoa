@@ -26,23 +26,10 @@ public class EventPositionAction implements Action{
 		
 		JSONArray eventArray = new JSONArray();
 		
+		List<MapBoardVO> eventPositions = m_dao.getEventAddresses();
 		HttpSession  session = req.getSession();
 		
-		String address = "";
-		if(session.getAttribute("session_id") != null || (String)session.getAttribute("session_id") != "" ) {
-			address = m_dao.getUserAddress((String)session.getAttribute("session_id"));
-		} else {
-			address = m_dao.getUserAddress("eventmoa");
-		}
-		List<MapBoardVO> eventPositions = m_dao.getEventAddresses();
-		MapBoardVO notList = new MapBoardVO();
-		if(eventPositions.isEmpty()) {
-			notList.setBoard_address("서울특별시 강남구 테헤란로 146");
-			notList.setBoard_address_etc("(역삼동)");
-			notList.setBoard_title("코리아IT");
-			eventPositions.add(notList);
-		}
-		
+		String address = m_dao.getUserAddress((String)session.getAttribute("session_id"));
 		JSONObject event = new JSONObject();
 		event.put("eventTitle", "우리 집");
 		event.put("eventAddress", address);

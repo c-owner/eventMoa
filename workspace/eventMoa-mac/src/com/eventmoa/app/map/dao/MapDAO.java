@@ -19,21 +19,11 @@ public class MapDAO {
 	
 	public String getUserAddress(String user_id) {
 		MapVO userPosition = session.selectOne("Map.getAddress", user_id);
-		if(userPosition.toString() == null || userPosition.toString().equals("")) {
-			return "서울특별시 강남구 테헤란로 146"+ " " + "(역삼동)";
-		}
 		return userPosition.toString();
 	}
 
 	public List<MapBoardVO> getEventAddresses() {
 		List<MapBoardVO> eventPosition = session.selectList("Map.getAddressList");
-		if(eventPosition.isEmpty()) {
-			MapBoardVO mv = new MapBoardVO();
-			mv.setBoard_address("서울특별시 강남구 테헤란로 146");
-			mv.setBoard_title("(역삼동)");
-			eventPosition.add(mv);
-			return eventPosition;
-		}
 		return eventPosition;
 	}
 	
