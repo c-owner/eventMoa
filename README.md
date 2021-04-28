@@ -6,7 +6,9 @@
 
 
 
-### [EVENT MOA CONNECT ](http://event-moa.kro.kr)
+### 본 서버 [EVENT MOA CONNECT ](http://event-moa.kro.kr)
+
+### 테스트 서버 [EVENT TEST CONNECT](http://event-test.kro.kr)
 
 ![bg](https://github.com/Eight-Corner/eventMoa/blob/master/logo%20design/event-logo.png)
 
