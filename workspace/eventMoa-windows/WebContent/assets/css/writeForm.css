@@ -6,8 +6,8 @@
  */
 
 textarea {
-    background-color: white;
-    border: 0;
+    background-color: white !important;
+    border: 0 !important;
 }
 
 .tagManager {
