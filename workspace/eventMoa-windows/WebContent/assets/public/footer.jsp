@@ -3,9 +3,33 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+		<style>
+		#footBanner {
+			margin: 0 auto; 
+			padding-top: 5%; 
+			width: 80%;
+		}
 		
+		@media screen and (min-width: 1200px) {
+			#footBanner {
+				width: 60%;
+			}
+		}
+		@media screen and (max-width: 980px) {
+			#footBanner {
+				width: 100%;
+			}
+		}
+		
+		</style>
 	</head>
 	<body class="is-preload">
+	
+	<div id="footBanner" align="center">
+		<img src="${pageContext.request.contextPath}/images/banner/banner01.jpg">
+	</div>	
 
 			<div id="footer">
 				<h2>서비스 정보</h2>
@@ -35,6 +59,7 @@
 				</ul>
 				<p class="copyright">&copy;Copyright 2021. EventMoa All rights reserved.</p>
 			</div>
+
 
 		<!-- Scripts -->
 			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>

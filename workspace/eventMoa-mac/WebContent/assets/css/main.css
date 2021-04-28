@@ -4126,6 +4126,7 @@ input, select, textarea {
 			position: absolute;
 			border-bottom-style: solid;
 		    border-bottom-width: 2px;
+		    z-index: 1;
 			/* background-color: #97c8e5; */
 		}
 

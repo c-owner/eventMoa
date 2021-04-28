@@ -79,7 +79,7 @@
                <div class="slider" style="width:100%; height: 100%; margin:0 auto; margin-top: 10%;">
                   <div>
                      <figure>
-                        <img src='${pageContext.request.contextPath}/app/reviewFilesUpload/${files}'>
+                        <img src='${pageContext.request.contextPath}/uploadFolder/reviewFilesUpload/${files}'>
                      </figure>
                   </div>
                </div>

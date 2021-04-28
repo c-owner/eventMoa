@@ -132,8 +132,21 @@ button#prev {
     display: flex;
 }
 
+
+/* 슬라이더 사이즈 조정 */
+.slick-dotted {
+	width: 80%;
+	margin: 0 auto;
+}
+
 @media screen and (max-width: 480px) {
     button#next, button#prev {
         display: none !important;
     }
+}
+
+@media screen and (max-width: 580px) {
+	.slick-dotted {
+		width: 100%;
+	}
 }

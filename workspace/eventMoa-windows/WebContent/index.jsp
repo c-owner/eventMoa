@@ -10,13 +10,17 @@
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta name="author" content="corner3499">
-<link rel="shortcut icon" type="image/x-icon"
-	href="${pageContext.request.contextPath}/images/title-icon.png">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/map.css">
-	<link rel="stylesheet" href="${pagetext.request.contextPath}/assets/css/event.css">
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/map.css">
+<link rel="stylesheet" href="${pagetext.request.contextPath}/assets/css/event.css">
+<style>
+/* 이미지 조정  */
+#eventList a > img {
+	height: 25rem;
+}
+</style>
 </head>
-
+<!-- test -->
 
 <body class="is-preload">
 
@@ -50,7 +54,7 @@
 				<h2 class="col_tit" style="text-align: center;">이벤트 모아</h2>
 				<p class="col_desc"></p>
 				<!-- 이미지 슬라이드 -->
-				<div class="slider">
+				<div class="slider" align="center">
 					<div>
 						<figure>
 							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
@@ -84,15 +88,6 @@
 								alt="이미지4">
 							<figcaption>
 								<em> 이벤트 모아  </em><span> Plan Your ...</span>
-							</figcaption>
-						</figure>
-					</div>
-					<div>
-						<figure>
-							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
-								alt="이미지4">
-							<figcaption>
-								<em> 이벤트 모아  </em><span> 회원가입시 무료 300포인트 지급</span>
 							</figcaption>
 						</figure>
 					</div>
@@ -138,12 +133,13 @@
 
 
 		<!-- KAKAO MAP -->
-		<c:if test="${userStatus eq true}">
 			<article class="column col4">
 				<h2 class="col_tit" style="text-align: center;">MAP</h2>
 				<div id="map" style="border-radius: 10px;"></div>
+				<c:if test="${userStatus eq false}">
+				<span style="font-size: 11px;">* 로그인을 하시면 사용자 주변을 확인하실 수 있습니다. :)</span>
+				</c:if>
 			</article>
-		</c:if>
 
 	</div>
 	<!-- div id="main" end -->
@@ -189,12 +185,11 @@
 
 		</section>
 	</div>
+	
 	<!-- Footer -->
 	<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
 
-
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af&libraries=services,clusterer,drawing"></script>
 	   <script>
 	      //이미지 슬라이더
 	      $(".slider").slick({
@@ -227,13 +222,14 @@
 						 //for(){}
 						 var eventArray=JSON.parse(list);
 						 if(JSON.parse(list).length==0){
-							 alert("등록된 게시물이 없습니다.");
+							 alert('등록된 이벤트가 없습니다.');
 							 check=true;
-						 }
-						 for(let i=0; i<eventArray.length;i++){
-							 content+="<li><a href='${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num="+eventArray[i].board_Num+"&page="+page+"'><img src='${pageContext.request.contextPath}/app/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
-							 /* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */
-							 content+="</a></li>";
+						 } else { 
+							 for(let i=0; i<eventArray.length;i++){
+								 content+="<li><a href='${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num="+eventArray[i].board_Num+"&page="+page+"'><img src='${pageContext.request.contextPath}/uploadFolder/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
+								 /* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */
+								 content+="</a></li>";
+							 }
 						 }
 						 
 						 ul.append(content);
@@ -253,6 +249,7 @@
 			 
 		</script>
 		
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b014e09a77678170402c5f935f0a72af&libraries=services,clusterer,drawing"></script>
 
 	   <script>
 	      var mapContainer = document.getElementById('map'); // 지도를 표시할 div

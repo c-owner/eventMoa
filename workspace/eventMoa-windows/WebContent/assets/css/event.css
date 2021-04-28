@@ -17,7 +17,14 @@
     box-sizing: border-box;
 	padding-left: 0;
 }
-		
+figure > img {
+    border-style: solid !important;
+    border-width: 4px !important;
+}
+#eventList a > img {
+    border-style: solid !important;
+    border-width: 4px !important;
+}
 ul,ol,li{
 	list-style : none;
 }
@@ -112,6 +119,7 @@ dl{
 #eventList a > img {
 	height: 25rem;
 }
+
 .wrapper { 
 	padding: 0px !important;
 }

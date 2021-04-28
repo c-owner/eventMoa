@@ -4124,6 +4124,8 @@ input, select, textarea {
 			box-shadow: none;
 			height: 8em;
 			position: absolute;
+			border-bottom-style: solid;
+		    border-bottom-width: 2px;
 			/* background-color: #97c8e5; */
 		}
 
@@ -4332,7 +4334,9 @@ input, select, textarea {
 				text-align-last: center; 
 				margin: 0 auto; 
 				padding-top: 1%;
+				
 			}
+			
 			
 
 		}
