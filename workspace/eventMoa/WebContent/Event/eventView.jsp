@@ -40,6 +40,8 @@
 		}
 		.content{
 			display:block;
+			font-size: 14px;
+			font-family: 'Nanum Gothic';
 		}
 		.intro h4 {
 			font-size: 25px; color: black; padding-bottom: 5px; font-weight:600;
@@ -86,13 +88,6 @@
 				<!-- Header -->
 				<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
 				<table>
-					<div style="margin-right: 3%;">
-						<c:if test="${e_vo.getBoard_Id() eq session_id}">
-							<!-- <a href="${pageContext.request.contextPath}/eventboard/EventBoardModify.ev?board_Num=${e_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a> -->
-							<a href="javascript:deleteBoard()"><div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
-						</c:if>
-						<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
-					</div>
 				</table>
 				<form name="boardForm" method="post" action="${pageContext.request.contextPath}/eventboard/EventDeleteOk.ev">
 					<input type="hidden" name="board_Num" value="${e_vo.getBoard_Num()}">
@@ -102,7 +97,7 @@
 						<div class="login_message">
 							<h1>${e_vo.getBoard_Title()}</h1>
 							<br>
-							<p style="text-align: left;">
+							<p style="text-align: right;">
 								DATE : <span style="color:#2f7fa6">
 									${e_vo.getBoard_Date()}
 										</span>
@@ -112,6 +107,14 @@
 										${e_vo.getBoard_Id()} 
 									</span>
 								<br>
+					<div style="margin-right: 3%; float: right;">
+						<c:if test="${e_vo.getBoard_Id() eq session_id}">
+							<!-- <a href="${pageContext.request.contextPath}/eventboard/EventBoardModify.ev?board_Num=${e_vo.getBoard_Num()}&page=${page}"><div class="button small" style="float: right;  margin-top: 2%;">수정</div></a> -->
+							<a href="javascript:deleteBoard()">
+							<div class="button small" style="float: right; margin-top: 2%;">삭제</div></a>
+						</c:if>
+						<a href="${pageContext.request.contextPath}/eventboard/EventBoardList.ev?page=${page}"><div class="button small" style="float: right; margin-top: 2%;">목록</div></a>
+					</div>
 								
 							</p>
 							
@@ -119,7 +122,7 @@
 					<div class="slider" style="width:100%; height: 100%; margin:0 auto; margin-top: 10%;">
 						<div>
 							<figure>
-								<img src='${pageContext.request.contextPath}/app/eventFilesUpload/${e_vo.getFile_name()}'>
+								<img src='${pageContext.request.contextPath}/uploadFolder/eventFilesUpload/${e_vo.getFile_name()}'>
 							</figure>
 						</div>
 					 
@@ -176,12 +179,10 @@
 				</div>
 
 			<!-- KAKAO MAP -->
-			<c:if test="${userStatus eq true}">
 				<article class="column col4">
 					<h2 class="col_tit" style="text-align: center;">MAP</h2>
 					<div id="map" style="border-radius: 10px;"></div>
 				</article>
-			</c:if>
 					 <br>
 					 
 					 <div style="margin-right: 3%;">
@@ -368,10 +369,9 @@
 	      var mapContainer = document.getElementById('map'); // 지도를 표시할 div
 	      var eventAddressesJSON = "";
 	      var geocoder = new kakao.maps.services.Geocoder();
-
+	      var board_Num = ${e_vo.getBoard_Num()}
 	      $.ajax({
-	         url : contextPath + "/map/getEventAddress.map",
-			// data : boardNum,
+	         url : contextPath + "/map/getEventBoardAddress.map?board_Num="+board_Num+"",
 	         dataType : "text",
 	         success : function(addresses){
 	            eventAddressesJSON = JSON.parse(addresses);
@@ -403,27 +403,27 @@
 	                              imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 	                           }
 	      
-	                              // 마커 이미지의 이미지 크기 입니다
-	                              var imageSize = new kakao.maps.Size(24, 35);
-	      
-	                              // 마커 이미지를 생성합니다    
-	                              var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-	      
-	                              // 마커를 생성합니다
-	                              var marker = new kakao.maps.Marker({
-	                                 map : map, // 마커를 표시할 지도
-	                                 position : mapObject.latlng, // 마커를 표시할 위치
-	                                 title : mapObject.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-	                                 image : markerImage
-	                              // 마커 이미지 
-	                              });
-	                         }
-	                  });
-	               }
-	            });
-	         }
-	      });
-		
+                              // 마커 이미지의 이미지 크기 입니다
+                              var imageSize = new kakao.maps.Size(24, 35);
+      
+                              // 마커 이미지를 생성합니다    
+                              var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+      
+                              // 마커를 생성합니다
+                              var marker = new kakao.maps.Marker({
+                                 map : map, // 마커를 표시할 지도
+                                 position : mapObject.latlng, // 마커를 표시할 위치
+                                 title : mapObject.title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                 image : markerImage
+                              // 마커 이미지 
+                        });
+                      }
+                 });
+              }
+           });
+        }
+     });
+
 	</script>
 </body>
 </html>

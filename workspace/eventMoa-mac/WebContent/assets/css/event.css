@@ -17,7 +17,12 @@
     box-sizing: border-box;
 	padding-left: 0;
 }
-		
+
+img {
+	border-style: solid;
+    border-width: 4px;
+}
+
 ul,ol,li{
 	list-style : none;
 }

@@ -26,7 +26,7 @@ public class EventBoardListOKAction implements Action {
 
 		String temp = req.getParameter("page");
 		
-		int page = Integer.parseInt(req.getParameter("page"));
+		int page = Integer.parseInt(temp);
 		int boardSize = 6;
 
 		int endRow = page * boardSize;
@@ -56,6 +56,7 @@ public class EventBoardListOKAction implements Action {
 			jsonArray.add(jsonObj);
 		}
 		out.println(jsonArray.toJSONString());
+		out.close();
 
 		return null;
 	}

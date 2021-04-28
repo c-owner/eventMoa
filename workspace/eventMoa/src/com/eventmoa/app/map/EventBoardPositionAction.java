@@ -15,7 +15,7 @@ import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.map.dao.MapDAO;
 import com.eventmoa.app.map.vo.MapBoardVO;
 
-public class EventPositionAction implements Action{
+public class EventBoardPositionAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
@@ -24,31 +24,21 @@ public class EventPositionAction implements Action{
 		MapDAO m_dao = new MapDAO();
 		PrintWriter out = resp.getWriter();
 		
-		JSONArray eventArray = new JSONArray();
+		HttpSession session = req.getSession();
 		
 		List<MapBoardVO> eventPositions = m_dao.getEventAddresses();
-		HttpSession  session = req.getSession();
+		JSONArray eventArray = new JSONArray();
 		
-		String address = "";
-		String session_id = (String)session.getAttribute("session_id");
-		if(session_id == null || session_id == "" ) {
-			address = "서울특별시 강남구 테헤란로 146";
-		} else {
-			address = m_dao.getUserAddress(session_id);
-		}
-		
-		MapBoardVO notList = new MapBoardVO();
-		if(eventPositions.isEmpty()) {
-			notList.setBoard_address("서울특별시 강남구 테헤란로 146");
-			notList.setBoard_address_etc("(역삼동)");
-			notList.setBoard_title("회사");
-			eventPositions.add(notList);
-		}
+		String board_Num = req.getParameter("board_Num");
+//		String board_Num = (String)session.getAttribute("board_Num");
+		int ib_num = Integer.parseInt(board_Num);
+		String address = m_dao.getEventboardAddress(ib_num);
 		
 		JSONObject event = new JSONObject();
-		event.put("eventTitle", "우리 집");
+		event.put("eventTitle", "현재 이벤트 스팟");
 		event.put("eventAddress", address);
 		eventArray.add(event);
+		
 		for(MapBoardVO mb_vo : eventPositions) {
 			event = new JSONObject();
 			event.put("eventTitle", mb_vo.getBoard_title());
