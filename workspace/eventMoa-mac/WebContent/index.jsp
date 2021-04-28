@@ -186,11 +186,6 @@
 		</section>
 	</div>
 	
-	<div align="center" style="margin: 0 auto; padding-top: 5%; width: 80%;">
-		<img src="${pageContext.request.contextPath}/images/banner/banner01.jpg">
-	</div>	
-	
-	
 	<!-- Footer -->
 	<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
