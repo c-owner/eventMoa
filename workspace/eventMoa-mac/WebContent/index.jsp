@@ -141,7 +141,9 @@
 			<article class="column col4">
 				<h2 class="col_tit" style="text-align: center;">MAP</h2>
 				<div id="map" style="border-radius: 10px;"></div>
+				<c:if test="${userStatus eq false}">
 				<span style="font-size: 11px;">* 로그인을 하시면 사용자 주변을 확인하실 수 있습니다. :)</span>
+				</c:if>
 			</article>
 
 	</div>
