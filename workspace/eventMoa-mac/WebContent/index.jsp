@@ -228,7 +228,7 @@
 							 check=true;
 						 } else { 
 							 for(let i=0; i<eventArray.length;i++){
-								 content+="<li><a href='${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num="+eventArray[i].board_Num+"&page="+page+"'><img src='${pageContext.request.contextPath}/app/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
+								 content+="<li><a href='${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num="+eventArray[i].board_Num+"&page="+page+"'><img src='${pageContext.request.contextPath}/uploadFolder/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
 								 /* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */
 								 content+="</a></li>";
 							 }
