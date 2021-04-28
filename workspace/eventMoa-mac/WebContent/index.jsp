@@ -10,11 +10,15 @@
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta name="author" content="corner3499">
-<link rel="shortcut icon" type="image/x-icon"
-	href="${pageContext.request.contextPath}/images/title-icon.png">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/map.css">
-	<link rel="stylesheet" href="${pagetext.request.contextPath}/assets/css/event.css">
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/map.css">
+<link rel="stylesheet" href="${pagetext.request.contextPath}/assets/css/event.css">
+<style>
+/* 이미지 조정  */
+#eventList a > img {
+	height: 25rem;
+}
+</style>
 </head>
 <!-- test -->
 
@@ -50,7 +54,7 @@
 				<h2 class="col_tit" style="text-align: center;">이벤트 모아</h2>
 				<p class="col_desc"></p>
 				<!-- 이미지 슬라이드 -->
-				<div class="slider">
+				<div class="slider" align="center">
 					<div>
 						<figure>
 							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
