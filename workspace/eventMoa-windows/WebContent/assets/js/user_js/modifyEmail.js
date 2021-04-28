@@ -32,7 +32,7 @@
       //  var inputVerifyBox = $(".mail_verify_input_box");
 
        $.ajax({
-          url: contextPath +"//user/modfiyEmailSend.us?email="+email,
+          url: contextPath +"/user/modfiyEmailSend.us?email="+email,
          type: "GET",
          dataType: "text",
          success: function(result){
