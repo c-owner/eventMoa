@@ -29,9 +29,9 @@ public class UserVerifyEmailAction implements Action {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		final String HOST = "smtp.naver.com";
-		final String USER = "eventmoa1515@naver.com";
-		final String PASSWORD = "@ventmoa1515";
+		final String HOST = "smtp.googlemail.com";
+		final String USER = "eventmoa1515@gmail.com";
+		final String PASSWORD = "@ventmoa15";
 		
 		ActionForward forward = null;
 		
