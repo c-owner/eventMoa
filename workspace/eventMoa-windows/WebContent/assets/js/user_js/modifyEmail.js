@@ -6,7 +6,6 @@
        alert('이메일을 입력하세요.');
       } else {
       alert('잠시만 기다려주세요. 인증번호 전송 요청중입니다.');
-      console.log('js ajax email = '+email);
        $.ajax({
           url: contextPath + "/user/verifyCheckEmail.us?email=" + email,
           type: "GET",
@@ -33,7 +32,7 @@
       //  var inputVerifyBox = $(".mail_verify_input_box");
 
        $.ajax({
-          url: contextPath +"/user/verifyEmail.us?email="+email,
+          url: contextPath +"//user/modfiyEmailSend.us?email="+email,
          type: "GET",
          dataType: "text",
          success: function(result){
