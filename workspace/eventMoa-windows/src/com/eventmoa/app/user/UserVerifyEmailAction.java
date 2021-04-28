@@ -31,7 +31,7 @@ public class UserVerifyEmailAction implements Action {
 		
 		final String HOST = "smtp.naver.com";
 		final String USER = "eventmoa1515@naver.com";
-		final String PASSWORD = "@ventmoa15";
+		final String PASSWORD = "@ventmoa1515";
 		
 		ActionForward forward = null;
 		
