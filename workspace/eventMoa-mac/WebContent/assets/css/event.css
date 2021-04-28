@@ -21,11 +21,10 @@ figure > img {
     border-style: solid !important;
     border-width: 4px !important;
 }
-a > img {
-	border-style: solid !important;
+#eventList a > img {
+    border-style: solid !important;
     border-width: 4px !important;
 }
-
 ul,ol,li{
 	list-style : none;
 }
