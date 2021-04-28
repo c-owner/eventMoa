@@ -71,7 +71,7 @@
 		
 		<c:if test="${session_id eq null}">
 			<script>
-			   alert("로그인 후 이용해주세요");
+			   alert("이미 로그인 중 입니다. 로그아웃 후 이용해주세요");
 			   location.replace("${pageContext.request.contextPath}/user/UserLogin.us");
 			</script>
 		 </c:if>
