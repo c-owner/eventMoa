@@ -68,6 +68,14 @@
 
 	</head>
 	<body class="is-preload">
+		
+		<c:if test="${session_id eq null}">
+			<script>
+			   alert("로그인 후 이용해주세요");
+			   location.replace("${pageContext.request.contextPath}/user/UserLogin.us");
+			</script>
+		 </c:if>
+		 
 
 		<c:set var = 'userStatus' value = "false"></c:set>
 		<c:if test="${param.type eq 'login' }">
