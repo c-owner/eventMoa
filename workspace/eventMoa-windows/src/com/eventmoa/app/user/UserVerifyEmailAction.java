@@ -47,7 +47,7 @@ public class UserVerifyEmailAction implements Action {
 		String to = userEmail;
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", HOST);
-		prop.put("mail.smtp.port", "465");
+		prop.put("mail.smtp.port", "587");
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.ssl.enable", "true");
 		prop.put("mail.smtp.trust", HOST);
