@@ -47,6 +47,9 @@
 						}
 					}
 				}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		},
 		"oracle_thin-1791684f7ff-4f9dd1f485e81385": {
@@ -62,7 +65,7 @@
 				"url": "jdbc:oracle:thin:@127.0.0.1:1515:XE",
 				"home": "H:\\oraclexe\\app\\oracle\\product\\11.2.0\\server",
 				"type": "dev",
-				"config-profile": "테스트서버",
+				"config-profile": "본서버",
 				"properties": {
 					"useFetchSizeWithLongColumn": "true",
 					"loginTimeout": "20",
@@ -88,13 +91,16 @@
 						"save-password": true,
 						"properties": {
 							"port": 22,
-							"keyPath": "G:\\이벤트키\\ssh-key-2021-04-25.key.ppk",
+							"keyPath": "G:\\이벤트키\\id_rsa_for_mac_putty.ppk",
 							"implementation": "jsch",
-							"host": "132.226.229.33",
+							"host": "132.226.228.201",
 							"authType": "PUBLIC_KEY"
 						}
 					}
 				}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},
@@ -108,7 +114,7 @@
 					"save-password": true,
 					"properties": {
 						"port": 22,
-						"keyPath": "G:\\이벤트키\\id_rsa_for_windows_putty.ppk",
+						"keyPath": "G:\\이벤트키\\id_rsa_for_mac_putty.ppk",
 						"implementation": "jsch",
 						"host": "132.226.228.201",
 						"authType": "PUBLIC_KEY"
