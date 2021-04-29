@@ -23,9 +23,9 @@ public class ReviewBoardReplyDeleteOkAction implements Action{
 		int reply_Num = Integer.parseInt(req.getParameter("reply_Num"));
 		
 		if(r_dao.deleteReply(reply_Num)) {
-			out.println("삭제 성공");
+			out.println("댓글이 삭제되었습니다.");
 		}else {
-			out.println("삭제 실패");
+			out.println("댓글 삭제 실패");
 		}
 		out.close();
 		

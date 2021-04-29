@@ -129,7 +129,6 @@
             data : {"reply_Content" : reply_Content, "board_Num" : board_Num, "reply_Date" : reply_Date},
             dataType : "text",
             success : function(result){
-               alert(result);
                getList();
             }
          });
@@ -219,7 +218,6 @@
             data : {"reply_Num" : reply_Num, "content" : content},
             dataType : "text",
             success : function(result){
-               alert(result);
                check = false;
                getList();
             }

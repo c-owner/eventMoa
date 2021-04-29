@@ -35,11 +35,11 @@ public class FreeBoardReplyOkAction implements Action{
 		r_vo.setReply_Date(reply_Date);
 		
 		if(r_dao.insertReply(r_vo)) {
-			out.print("추가 성공");
+
 		}else {
-			out.print("추가 실패");
+
 		}
-		out.close();
+
 		
 		
 		return null;

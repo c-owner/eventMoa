@@ -89,6 +89,11 @@ input, select, textarea {
 		html, body {
 			min-width: 320px;
 		}
+		
+		#btn_open {
+			width: 50%;
+			margin-top: 2%;
+		}
 
 	}
 
@@ -4015,6 +4020,9 @@ input, select, textarea {
 		top: 0;
 		width: 100%;
 		z-index: 10001;
+		/* header메뉴 바 라인  */
+		border-bottom-style: solid;
+		border-bottom-width: 2px;
 	}
 	
 	

@@ -250,4 +250,5 @@ public class UserDAO {
 	public int getReplyCnt(String user_Id) {
 		return session.selectOne("User.getReplyCnt", user_Id);
 	}
+	
 }

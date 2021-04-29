@@ -27,33 +27,15 @@ public class EventDAO {
 		return session.selectList("EventBoard.listAll", pageMap);
 	}
 	
-	public List<EventBoardVO> searchList(String category, String keyword){
+	public List<EventBoardVO> searchList(String category, String keyword,int startRow,int endRow){
 		
-		HashMap<String, String> searchMap = new HashMap();
-		String col = null;
-		if(category.equals("seoul")){
-			col = "서울";
-		}
-		else if(category.equals("busan")) col = "부산";
-		else if(category.equals("daegu")) col = "대구";
-		else if(category.equals("gwanju")) col = "광주";
-		else if(category.equals("incheon"))	col = "인천";
-		else if(category.equals("daejeon")) col = "대전";
-		else if(category.equals("ulsan")) col = "울산";
-		else if(category.equals("gyeonggi")) col = "경기";
-		else if(category.equals("gangwon")) col = "강원";
-		else if(category.equals("gyeongbuk")) col = "경북";
-		else if(category.equals("gyeongnam")) col = "경남";
-		else if(category.equals("chungbuk")) col = "충북";
-		else if(category.equals("chungnam")) col = "충남";
-		else if(category.equals("jeju")) col = "제주";
-		else {
-			col = "";
-		}
-			
-		searchMap.put("category", col);
+		HashMap<String, Object> searchMap = new HashMap();
+		
+		searchMap.put("startRow", startRow);
+		searchMap.put("endRow", endRow);	
+		searchMap.put("category", category);
 		searchMap.put("keyword", keyword);
-		return session.selectList("EventBoard.searchList", searchMap);
+		return session.selectList("EventBoard.listAll", searchMap);
 	}
 
 	// 페이지 작성

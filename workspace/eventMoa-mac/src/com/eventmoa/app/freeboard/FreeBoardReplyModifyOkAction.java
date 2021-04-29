@@ -29,11 +29,11 @@ public class FreeBoardReplyModifyOkAction implements Action{
 		r_vo.setReply_Content(reply_Content);
 		
 		if(r_dao.updateReply(r_vo)) {
-			out.println("수정 성공");
+
 		}else {
-			out.println("수정 실패");
+
 		}
-		out.close();
+
 		
 		return null;
 	}

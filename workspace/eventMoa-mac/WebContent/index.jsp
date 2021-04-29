@@ -54,7 +54,7 @@
 				<h2 class="col_tit" style="text-align: center;">이벤트 모아</h2>
 				<p class="col_desc"></p>
 				<!-- 이미지 슬라이드 -->
-				<div class="slider" align="center">
+				<div class="slider">
 					<div>
 						<figure>
 							<img src="${pageContext.request.contextPath}/images/banner/banner05.jpg"
@@ -125,7 +125,7 @@
 							</div>
 						</div>
 					</div>
-					<a href="#" class="btn_open">더보기</a>
+					<a href="#" id="btn_open" class="button">더보기</a>
 				</article>
 				</section>
 
@@ -241,7 +241,7 @@
 				 page+=1;
 			 }
 			 getList();
-			 $(".btn_open").on("click",function(e){
+			 $("#btn_open").on("click",function(e){
 				 //a테크 이동 막기
 				 e.preventDefault();
 				 getList();

@@ -83,7 +83,6 @@ public class FreeBoardDAO {
 	
 	//댓글 수정
 	public boolean updateReply(FreeReplyVO r_vo) {
-		System.out.println("수정 다오");
 		return session.update("FreeBoard.updateReply", r_vo) == 1;
 	}
 }

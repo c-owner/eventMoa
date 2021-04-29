@@ -75,7 +75,7 @@
 				</div>
 			</div>
 		</div>
-		<a href="#" class="btn_open">더보기</a>
+		<a href="#" id="btn_open" class="button" style="margin: 0;">더보기</a>
 		
 	</section>
 </div>
@@ -119,7 +119,7 @@
 		 	page+=1;
 	 	}
 	 	getList();
-	 	$(".btn_open").on("click",function(e){
+	 	$("#btn_open").on("click",function(e){
 	 		//a테크 이동 막기
 	 		e.preventDefault();
 	 		console.log("sad")

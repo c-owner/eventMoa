@@ -21,6 +21,9 @@ public class searchKeywordAction implements Action {
 		
 		String category = req.getParameter("category");
 		String keyword = req.getParameter("keyword");
+	      if(category.equals("지역별")) {
+	         category= null;
+	      }
 		
 //		List<EventBoardVO> ev_list = e_dao.searchList(category, keyword);
 		
@@ -42,9 +45,7 @@ public class searchKeywordAction implements Action {
 		int realEndPage = (totalCnt - 1) / pageSize + 1;
 		
 		endPage = endPage > realEndPage ? realEndPage : endPage;
-		
-		req.setAttribute("EventBoardList", e_dao.getBoardList(startRow, endRow));
-		req.setAttribute("FreeBoardList", f_dao.getBoardList(startRow, endRow,category));
+		req.setAttribute("EventBoardList", e_dao.searchList(category,keyword,startRow, endRow));
 		req.setAttribute("category", category);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("totalCnt", totalCnt);

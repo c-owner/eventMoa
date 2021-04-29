@@ -47,21 +47,21 @@
 			<div class="search">
 			<select name="category" class="button primary icon solid fa-search" id="category" 
 			style="margin: 0 auto; width: 40%; border-radius: initial;">
-				<option value="select">- 지역별 -</option>
-				<option value="seoul">		서울		</option>
-				<option value="busan">		부산		</option>
-				<option value="daegu">		대구		</option>
-				<option value="gwanju">		광주		</option>
-				<option value="incheon">	인천		</option>
-				<option value="daejeon">	대전		</option>
-				<option value="ulsan">		울산		</option>
-				<option value="gyeonggi">	경기		</option>
-				<option value="gangwon">	강원		</option>
-				<option value="gyeongbuk">	경북		</option>
-				<option value="gyeongnam">	경남		</option>
-				<option value="chungbuk">	충북		</option>
-				<option value="chungnam">	충남		</option>
-				<option value="jeju">		제주		</option>
+				<option value="지역별">- 지역별 -</option>
+				<option value="서울">		서울		</option>
+				<option value="부산">		부산		</option>
+				<option value="대구">		대구		</option>
+				<option value="광주">		광주		</option>
+				<option value="인천">		인천		</option>
+				<option value="대전">		대전		</option>
+				<option value="울산">		울산		</option>
+				<option value="경기">		경기		</option>
+				<option value="강원">		강원		</option>
+				<option value="경북">		경북		</option>
+				<option value="경남">		경남		</option>
+				<option value="충북">		충북		</option>
+				<option value="충남">		충남		</option>
+				<option value="제주">		제주		</option>
                 </select>
 				<input type="search" name="keyword" class="searchTerm searchBar" placeholder="검색어를 입력하세요"
 				style="border-radius: initial; height: 39px;">
@@ -74,16 +74,46 @@
 	</form>
 	<br>
 	<div class="hashTags" style="text-align: center;">
-        <a href="javascript:;" class="hashTag">#서울</a>
-        <a href="javascript:;" class="hashTag">#경기</a>
-        <a href="javascript:;" class="hashTag">#강원</a>
-        <a href="javascript:;" class="hashTag">#경북</a>
-        <a href="javascript:;" class="hashTag">#경남</a>
-        <a href="javascript:;" class="hashTag">#충북</a>
-        <a href="javascript:;" class="hashTag">#충남</a>
-        <a href="javascript:;" class="hashTag">#제주</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=서울" class="hashTag">#서울</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=경기" class="hashTag">#경기</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=강원" class="hashTag">#강원</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=경북" class="hashTag">#경북</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=경남" class="hashTag">#경남</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=충북" class="hashTag">#충북</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=충남" class="hashTag">#충남</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=제주" class="hashTag">#제주</a>
      </div>
 		<p></p>
 
 	</body>
+	<script> 
+switch(){
+case "#서울" :
+    document.write();
+    break;
+case "#경기" :
+    document.write();
+    break;
+case "#강원" :
+    document.write();
+    break;
+case "#경북" :
+      document.write();
+      break;
+case "#경남" :
+    document.write();
+    break;
+case "#충북" :
+    document.write();
+case "#충남" :
+    document.write();
+case "#제주" :
+    document.write();
+    break;
+}
+	</script>
+	<script>
+	
+	</script>
+	
 </html>

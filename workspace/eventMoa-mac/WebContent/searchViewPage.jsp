@@ -20,14 +20,13 @@
 	<body class="is-preload">
 
  	  <c:set var="eventList" value="${EventBoardList}"/>
- 	  <c:set var="freeList" value="${FreeBoardList}"/>
       <c:set var="totalCnt" value="${totalCnt}"/>
       <c:set var="startPage" value="${startPage}"/>
       <c:set var="endPage" value="${endPage}"/>
       <c:set var="nowPage" value="${nowPage}"/>
       <c:set var="realEndPage" value="${realEndPage}"/>
       <c:set var="keyword" value="${keyword}"/>
-	  <c:set var="category" value="${cateogry}"/>
+	  <c:set var="category" value="${category}"/>
 		<!-- Header -->
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 		<p></p>
@@ -41,21 +40,21 @@
 			<section id="banner">
 				<article class="column col4">
 					<article class="column col5">
-						<h4 class="col_tit"> 
+						<h4 class="col_tit" id="category"> 
 						지역 - 
 						<c:if test="${category ne null}">
 							"${category}" 
 						</c:if>
 						전체 검색 결과
 						</h4>
-						<p class="col_desc"> "${keyword}"에 대한 내용 결과 입니다.</p>
+						<p class="col_desc"> "${category}"에 대한 내용 결과 입니다.</p>
 					</article>
 									<table>
 										<tbody>
 											<tr>
 												<td height="30" bgcolor="#f8f8fd" style="padding-left:20px" class="black_b_s">
 													검색하신 "
-													<b><font color="f75151">${keyword}</font></b>
+													<b><font color="f75151">${keyword eq null ? category:keyword}</font></b>
 													"에 대한 검색 결과가
 													<!-- if 있으면 "결과 입니다." -->
 													<%-- <choose>
@@ -79,21 +78,21 @@
 														</thead>
 														<tbody id="boardList">
 															<c:choose>
-															<c:when test="${freeList != null and fn:length(freeList) > 0}">
-	               												<c:forEach var="f_bean" items="${freeList}">
+															<c:when test="${eventList != null and fn:length(eventList) > 0}">
+	               												<c:forEach var="e_bean" items="${eventList}">
 															<tr>
 															<td>
-															${f_bean.getBoard_Num()}
+															${e_bean.getBoard_Num()}
 															</td>
 																	<td>
-																<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${f_bean.getBoard_Num()}&page=${nowPage}">
-																	${f_bean.getBoard_Title()}
+																<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${e_bean.getBoard_Num()}&page=${nowPage}">
+																	${e_bean.getBoard_Title()}
 																</a>
 																	
 																	</td>
-																<td>${f_bean.getBoard_Id()}</td>
-																<td>${f_bean.getBoard_View()}</td>
-																<td>${f_bean.getBoard_Date()}</td>
+																<td>${e_bean.getBoard_Id()}</td>
+																<td>${e_bean.getBoard_View()}</td>
+																<td>${e_bean.getBoard_Date()}</td>
 															</tr>
 																</c:forEach>
 															</c:when>
@@ -110,9 +109,8 @@
 										<div style="margin-bottom: 20%;"> 
 											<select name="category" class="button primary icon solid fa-search" id="category" 
 											style="font-size: 10px; width: 15%;">
-													<option value="recent">등록일순</option>
-													<option value="view">조회순</option>
-													<option value="likes">추천순</option>
+													<option value="recent" ${category == 'recent' ? 'selected' : ""}>등록일순　</option>
+                              						<option value="view" ${category == 'view' ? 'selected' : ""}>조회순　</option>
 												</select>
 										 
 												<div class="table-wrapper">
@@ -135,13 +133,10 @@
 													<a href="${pageContext.request.contextPath}/search/search.us?page=${nowPage + 1}">다음&gt;</a>
 												</c:if>
 											<br>
-										  <a href="${pageContext.request.contextPath}/community/freeTalkWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>								         
 										</div>
 											<hr>
 													</table>
 												</div>			
-										</div>	 
-										
 							</article>
 						</section>
 				
@@ -180,8 +175,7 @@
 	</body>
 	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script>
-		 
-
+	<script>	
+	
 	</script>
 </html>
