@@ -126,7 +126,7 @@
 									<ul class="actions">
 										<li style="margin: 0 auto;">
 										<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
-										<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?page=${page}" class="button" type="submit">목록</a>
+										<a href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=recent&page=${page}" class="button" type="submit">목록</a>
 										</li>
 										
 									</ul>

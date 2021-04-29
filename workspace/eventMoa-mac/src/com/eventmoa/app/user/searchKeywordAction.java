@@ -1,5 +1,7 @@
 package com.eventmoa.app.user;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,10 +23,10 @@ public class searchKeywordAction implements Action {
 		
 		String category = req.getParameter("category");
 		String keyword = req.getParameter("keyword");
-	      if(category.equals("지역별")) {
+	      if(category.equals("지역별") || category == "" || category == null) {
 	         category= null;
 	      }
-		
+ 
 //		List<EventBoardVO> ev_list = e_dao.searchList(category, keyword);
 		
 		String temp = req.getParameter("page");

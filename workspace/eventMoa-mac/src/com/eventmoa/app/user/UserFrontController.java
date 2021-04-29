@@ -325,15 +325,11 @@ public class UserFrontController extends HttpServlet {
 			try {
 				
 				forward = new searchKeywordAction().execute(req, resp);
-				 forward = new ActionForward();
-				 forward.setRedirect(false);
-				 System.out.println(req.getParameter("keyword"));
-			 forward.setPath("/searchViewPage.jsp");
 			} catch (Exception e) {e.printStackTrace();}
 		}
-		else if (command.equals("/search/searchOkAction.us")) {
+		else if (command.equals("/search/searchEvent.us")) {
 			try {
-				forward = new searchKeywordAction().execute(req, resp);
+				forward = new EventBoardSearchViewAction().execute(req, resp);
 			} catch (Exception e) {e.printStackTrace();}
 					}
 		/* 에러 응답없는 404 페이지 */

@@ -46,7 +46,7 @@
 		<jsp:include page="${pageContext.request.contextPath}/assets/public/logo.jsp"></jsp:include>
 		<section id="banner">
 			<article class="column col4">
-				<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;">내가 쓴 글</h1>
+				<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;">내가 쓴 댓글</h1>
 				<p class="col_desc"> </p>
 		
 						<form method="post" action="#" class="combined" style="margin-bottom: 0;">

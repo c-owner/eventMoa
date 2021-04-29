@@ -17,6 +17,17 @@ public class EventDAO {
 	public EventDAO() {
 		session = sessionf.openSession(true);
 	}
+	
+	// 검색 이벤트 목록
+	public List<EventBoardVO> searchList(String category, String keyword) {
+		HashMap<String, Object> searchMap = new HashMap<String, Object>();
+		
+		searchMap.put("category", category);
+		searchMap.put("keyword", keyword);
+		
+		return session.selectList("EventBoard.searchEvent", searchMap);
+	}
+	
 	//페이지 별 게시글 목록
 	public List<EventBoardVO> getBoardList(int startRow,int endRow){
 		HashMap<String, Integer> pageMap = new HashMap<>();

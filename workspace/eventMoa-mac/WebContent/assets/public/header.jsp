@@ -78,9 +78,12 @@
 					</ul>
 				</nav>
 				<div class="navSearch" style="width: 50%;text-align: right;margin: 0 auto;padding-left: 0;margin-left: 0;padding-right: 20%;">
-					<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
-					style="border-radius: initial; height:30px; ">
-					<a href="${pageContext.request.contextPath}/search/search.us?keyword=${keyword}" class="fas fa-search"></a>
+					<form action="${pageContext.request.contextPath}/search/search.us" name="searchForm2" id="search" method="post">
+						<input type="hidden" name="category" value="지역별">
+						<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
+						style="border-radius: initial; height:30px; width: 100%; ">
+						<a href="javascript:searchForm2.submit();" class="fas fa-search" style="padding-top: 5%;"></a>
+					</form>
 				</div>
 			</div>
 

@@ -86,34 +86,4 @@
 		<p></p>
 
 	</body>
-	<script> 
-switch(){
-case "#서울" :
-    document.write();
-    break;
-case "#경기" :
-    document.write();
-    break;
-case "#강원" :
-    document.write();
-    break;
-case "#경북" :
-      document.write();
-      break;
-case "#경남" :
-    document.write();
-    break;
-case "#충북" :
-    document.write();
-case "#충남" :
-    document.write();
-case "#제주" :
-    document.write();
-    break;
-}
-	</script>
-	<script>
-	
-	</script>
-	
 </html>
