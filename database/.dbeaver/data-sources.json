@@ -12,7 +12,7 @@
 				"host": "localhost",
 				"port": "1515",
 				"database": "XE",
-				"url": "jdbc:oracle:thin:@//localhost:1515/XE",
+				"url": "jdbc:oracle:thin:@localhost:1515:XE",
 				"type": "dev",
 				"provider-properties": {
 					"@dbeaver-check-schema-content@": "false",
@@ -24,9 +24,16 @@
 					"@dbeaver-use-meta-optimizer@": "false",
 					"@dbeaver-meta-use-alternative-table-query@": "false",
 					"@dbeaver-connection-type@": "BASIC",
-					"@dbeaver-sid-service@": "SERVICE"
+					"@dbeaver-sid-service@": "SID"
 				},
-				"auth-model": "oracle_native"
+				"auth-model": "oracle_native",
+				"auth-properties": {
+					"oracle.logon-as": "sysdba"
+				},
+				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		},
 		"oracle_thin-178f96a4690-28742cdfa814fc61": {
@@ -67,11 +74,11 @@
 						"enabled": true,
 						"save-password": true,
 						"properties": {
-							"port": 22,
-							"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
-							"implementation": "jsch",
 							"host": "132.226.229.33",
-							"authType": "PUBLIC_KEY"
+							"authType": "PUBLIC_KEY",
+							"port": 22.0,
+							"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
+							"implementation": "jsch"
 						}
 					}
 				}
@@ -216,11 +223,11 @@
 					"enabled": true,
 					"save-password": true,
 					"properties": {
-						"port": 22,
-						"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
-						"implementation": "jsch",
 						"host": "132.226.229.33",
-						"authType": "PUBLIC_KEY"
+						"authType": "PUBLIC_KEY",
+						"port": 22.0,
+						"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
+						"implementation": "jsch"
 					}
 				}
 			}
@@ -233,11 +240,11 @@
 					"enabled": true,
 					"save-password": true,
 					"properties": {
-						"port": 22,
-						"keyPath": "/Users/corner/.ssh/id_rsa.pem",
-						"implementation": "jsch",
 						"host": "132.226.228.201",
-						"authType": "PUBLIC_KEY"
+						"authType": "PUBLIC_KEY",
+						"port": 22.0,
+						"keyPath": "/Users/corner/.ssh/id_rsa.pem",
+						"implementation": "jsch"
 					}
 				}
 			}
