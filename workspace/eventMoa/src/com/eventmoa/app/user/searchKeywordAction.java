@@ -1,7 +1,5 @@
 package com.eventmoa.app.user;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +7,7 @@ import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.eventboard.dao.EventDAO;
 import com.eventmoa.app.freeboard.dao.FreeBoardDAO;
+import com.eventmoa.app.user.dao.UserDAO;
 
 public class searchKeywordAction implements Action {
 
@@ -18,6 +17,7 @@ public class searchKeywordAction implements Action {
 		resp.setCharacterEncoding("UTF-8");
 		
 		EventDAO e_dao = new EventDAO();
+		UserDAO u_dao = new UserDAO();
 		FreeBoardDAO f_dao = new FreeBoardDAO();
 		ActionForward forward = new ActionForward();
 		
@@ -31,23 +31,27 @@ public class searchKeywordAction implements Action {
 		
 		String temp = req.getParameter("page");
 		
+		
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		
 		int boardSize = 10;
 		int pageSize = 10;
-		
+				
 		int endRow = page * boardSize;
-		
+				
 		int startRow = endRow - (boardSize - 1);
 		
-		int startPage = ((page - 1) / pageSize) * pageSize + 1;
+		int startPage = ((page - 1) / pageSize) * pageSize  + 1;
+		
 		int endPage = startPage + (pageSize - 1);
 		
-		int totalCnt = (f_dao.getBoardCnt() + e_dao.getBoardCnt());
+		int totalCnt = u_dao.getSearchBoardCnt();
+		
 		int realEndPage = (totalCnt - 1) / pageSize + 1;
 		
 		endPage = endPage > realEndPage ? realEndPage : endPage;
-		req.setAttribute("EventBoardList", e_dao.searchList(category,keyword,startRow, endRow));
+		
+		req.setAttribute("boardList", u_dao.searchList(category,keyword,startRow, endRow));
 		req.setAttribute("category", category);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("totalCnt", totalCnt);

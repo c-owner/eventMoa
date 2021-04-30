@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body class="is-preload">
 
-  <c:set var="list" value="${boardList}"/>>
+  <c:set var="eventList" value="${EventBoardList}"/>
   
   <c:set var="totalCnt" value="${totalCnt}"/>
   <c:set var="startPage" value="${startPage}"/>
@@ -73,57 +73,23 @@ pageEncoding="UTF-8"%>
 						</thead>
 							<tbody id="boardList">
 								<c:choose>
-								 <c:when test="${list != null and fn:length(list) > 0}">
-					               <c:forEach var="b_bean" items="${list}">
-					               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
-					               		<td height="23" style="display: none;">
-					               			${b_bean.getBoard_Num()}
-					               		</td>
-					               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
-					               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
-					               				자유게시판
-					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'EVENT'}">
-					               				이벤트게시판
-					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'REVIEW'}">
-					               				후기게시판
-					               			</c:if>
-					               		</td>
-					               		<td style="font-family:Tahoma; font-size:10pt;">
-					               			<div align="center">
-					               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
-					               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
-					               				</a>
-					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'EVENT'}">
-					               				<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
-					               				</a>
-					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'REVIEW'}">
-					               				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardView.rb?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
-					               				</a>
-					               			</c:if>
-					               			</div>
-					               		</td>
-					               		<td style="display: none;">
-					               			<div align="center">
-					               				${b_bean.getBoard_Id()}
-					               			</div>
-					               		</td>
-					               		<td>
-					               			<div align="center">
-					               				${b_bean.getBoard_Date()}
-					               			</div>
-					               		</td>
-					               		<td>
-					               			<div align="center">
-					               				${b_bean.getBoard_View()}
-					               			</div>
-					               		</td>
-					               	</tr>
-				             	  </c:forEach>
-					           </c:when>
+								<c:when test="${eventList != null and fn:length(eventList) > 0}">
+									<c:forEach var="e_bean" items="${eventList}">
+								<tr>
+								<td>
+								${e_bean.getBoard_Num()}
+								</td>
+										<td>
+									<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${e_bean.getBoard_Num()}&page=${nowPage}">
+										${e_bean.getBoard_Title()}
+									</a>
+										</td>
+									<td>${e_bean.getBoard_Id()}</td>
+									<td>${e_bean.getBoard_View()}</td>
+									<td>${e_bean.getBoard_Date()}</td>
+								</tr>
+									</c:forEach>
+								</c:when>
 								<c:otherwise>
 						           	<tr>
 						           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>

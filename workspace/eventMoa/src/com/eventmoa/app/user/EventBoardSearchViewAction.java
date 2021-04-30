@@ -29,7 +29,6 @@ public class EventBoardSearchViewAction implements Action{
 		
 		PrintWriter out = resp.getWriter();
 		UserDAO u_dao = new UserDAO();
-		HttpSession session = req.getSession();
 		
 		String category = req.getParameter("category");
 		String keyword = req.getParameter("keyword");

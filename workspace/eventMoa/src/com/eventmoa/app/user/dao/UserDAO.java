@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.eventmoa.app.eventboard.vo.EventBoardVO;
 import com.eventmoa.app.freeboard.vo.FreeBoardVO;
 import com.eventmoa.app.freeboard.vo.FreeReplyVO;
 import com.eventmoa.app.user.vo.UserVO;
@@ -251,4 +252,20 @@ public class UserDAO {
 		return session.selectOne("User.getReplyCnt", user_Id);
 	}
 	
+//	검색 리스트
+	
+//	searchList
+	public List<FreeBoardVO> searchList(String category, String keyword,int startRow,int endRow){
+		
+		HashMap<String, Object> searchMap = new HashMap();
+		
+		searchMap.put("startRow", startRow);
+		searchMap.put("endRow", endRow);	
+		searchMap.put("category", category);
+		searchMap.put("keyword", keyword);
+		return session.selectList("User.searchList", searchMap);
+	}	
+	public int getSearchBoardCnt() {
+		return session.selectOne("User.searchBoardCnt");
+	}
 }
