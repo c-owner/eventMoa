@@ -36,6 +36,13 @@ table th {
 section#two {
     margin-top: 1%;
 }
+.content {
+	border-color: black;
+    border-right-style: solid;
+    border-width: 1px;
+    border-top-style: double;
+    border-bottom-style: double;
+}
 </style>
 
 </head>
