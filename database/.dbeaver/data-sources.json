@@ -27,9 +27,6 @@
 					"@dbeaver-sid-service@": "SID"
 				},
 				"auth-model": "oracle_native",
-				"auth-properties": {
-					"oracle.logon-as": "sysdba"
-				},
 				"handlers": {}
 			},
 			"custom-properties": {
