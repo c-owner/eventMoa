@@ -3914,8 +3914,8 @@ input, select, textarea {
 				}
 
 				.wrapper.spotlight > .image {
-					height: 40em;
-					max-height: 50vh;
+					height: 50%;
+					/* max-height: 50vh; */
 				}
 
 				.wrapper.spotlight.alt {

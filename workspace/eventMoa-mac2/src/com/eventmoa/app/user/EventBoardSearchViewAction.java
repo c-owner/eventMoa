@@ -30,22 +30,13 @@ public class EventBoardSearchViewAction implements Action{
 		PrintWriter out = resp.getWriter();
 		UserDAO u_dao = new UserDAO();
 		HttpSession session = req.getSession();
-		String user_Id = (String)session.getAttribute("session_id");
-		
 		
 		String category = req.getParameter("category");
 		String keyword = req.getParameter("keyword");
-//		String category = "서울";
-//		String keyword = "아이유";
-		System.out.println(category);
-		System.out.println(keyword);
 	
 	      try {
 			if(category.equals("지역별") || category == "" || category == null) {
-			     category= "서울";
-			  }
-			  if(keyword == null || keyword.equals("")) {
-				  keyword = "아이유";
+			     category= null;
 			  }
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -62,7 +62,7 @@
 		<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;">
 			${session_id} 님의 '${user_Email}' 이메일 변경</h1>
 		</header>
-		<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;">이메일</h1>
+		<h1 style="color: #444; font-size: 20px; font-weight: bold; letter-spacing: -2px; text-align: center;"></h1>
 
 				<!-- Content -->
 	<div class="contents2" id="myPage">

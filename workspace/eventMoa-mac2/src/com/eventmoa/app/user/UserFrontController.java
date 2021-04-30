@@ -327,11 +327,11 @@ public class UserFrontController extends HttpServlet {
 				forward = new searchKeywordAction().execute(req, resp);
 			} catch (Exception e) {e.printStackTrace();}
 		}
-//		else if (command.equals("/search/searchEvent.us")) {
-//			try {
-//				forward = new EventBoardSearchViewAction().execute(req, resp);
-//			} catch (Exception e) {e.printStackTrace();}
-//		}
+		else if (command.equals("/search/searchEvent.us")) {
+			try {
+				forward = new EventBoardSearchViewAction().execute(req, resp);
+			} catch (Exception e) {e.printStackTrace();}
+		}
 		/* 에러 응답없는 404 페이지 */
 		else {
 			forward = new ActionForward();
