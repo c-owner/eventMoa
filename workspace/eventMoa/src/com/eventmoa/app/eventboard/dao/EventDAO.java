@@ -17,6 +17,7 @@ public class EventDAO {
 	public EventDAO() {
 		session = sessionf.openSession(true);
 	}
+	
 	//페이지 별 게시글 목록
 	public List<EventBoardVO> getBoardList(int startRow,int endRow){
 		HashMap<String, Integer> pageMap = new HashMap<>();

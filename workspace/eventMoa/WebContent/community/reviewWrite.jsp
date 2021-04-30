@@ -123,7 +123,7 @@
 				<h2 class="col_tit" style="text-align: left; color: black;">인증후기 글쓰기</h2>
 				<p class="col_desc"> </p>
 		
-						<form method="post" action="${pageContext.request.contextPath}/reviewboard/ReviewBoardWriteOk.rb" class="combined" name="freeBoardform" enctype="multipart/form-data" style="margin-bottom: 0;">
+						<form method="post" action="${pageContext.request.contextPath}/reviewboard/ReviewBoardWriteOk.rb" class="combined" name="reviewBoardform" enctype="multipart/form-data" style="margin-bottom: 0;">
 	         			
 					<table  border="1" cellpadding="0" cellspacing="0" width="900px" >
 					<tr height="30px">
@@ -203,7 +203,7 @@
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<script>
-		var form = document.freeBoardform;
+		var form = document.reviewBoardform;
 		
 		function addBoard(){
 			if(!form.board_Title.value){
@@ -216,7 +216,7 @@
 				form.board_Content.focus();
 				return;
 			}
-				freeBoardform.submit();
+				reviewBoardform.submit();
 		}
 	</script>
 	<script>

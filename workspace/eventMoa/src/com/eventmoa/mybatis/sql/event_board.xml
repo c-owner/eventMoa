@@ -21,6 +21,23 @@
 				ORDER BY BOARD_NUM DESC) D) B
 		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
+  <select id="searchEvent" parameterType="map" resultType="eventBoardVO">
+ 	SELECT * FROM 
+			(SELECT ROWNUM R, D.* FROM 
+				(SELECT * FROM TABLE_BOARD_EVENT
+				<trim prefix="WHERE" prefixOverrides="AND">
+					<if test="keyword != null and keyword != ''">
+						AND (
+								BOARD_Address LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
+							)
+					</if>
+					<if test="category != null and category != ''">
+						AND BOARD_Address LIKE '%'|| #{category} ||'%' 
+	           		 </if>
+	           	</trim>
+				ORDER BY BOARD_NUM DESC) D) B
+	</select>
 	
 	
 	<!-- 게시글 등록 -->
