@@ -21,24 +21,6 @@
 				ORDER BY BOARD_NUM DESC) D) B
 		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
-  <select id="searchEvent" parameterType="map" resultType="eventBoardVO">
- 	SELECT * FROM 
-			(SELECT ROWNUM R, D.* FROM 
-				(SELECT * FROM TABLE_BOARD_EVENT
-				<trim prefix="WHERE" prefixOverrides="AND">
-					<if test="keyword != null and keyword != ''">
-						AND (
-								BOARD_Address LIKE '%'|| #{keyword} ||'%' 
-								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
-							)
-					</if>
-					<if test="category != null and category != ''">
-						AND BOARD_Address LIKE '%'|| #{category} ||'%' 
-	           		 </if>
-	           	</trim>
-				ORDER BY BOARD_NUM DESC) D) B
-	</select>
-	
 	
 	<!-- 게시글 등록 -->
 	<insert id="insertEventBoard" parameterType="eventBoardVO">
@@ -75,21 +57,6 @@
 	<delete id="deleteBoard" parameterType="_int">
 		DELETE FROM TABLE_BOARD_EVENT WHERE BOARD_NUM = #{board_Num}
 	</delete>
-	
-	<!-- SELECT AREA -->
-	<!-- 검색 리스트 -->
-	<select id="searchList" resultType="eventBoardVO">
-		SELECT * FROM TABLE_BOARD_EVENT WHERE 1 = 1
-		<if test="areaType != null and areaType != ''">
-			AND BOARD_ADDRESS LIKE '#{col}'
-		</if>
-		<!-- 검색 타입 -->
-		<if test="searchType != null and searchType != ''">
-			AND BOARD_CONTENT LIKE '#{keyword}%' 
-			OR BOARD_TITLE LIKE '#{keyword}%' 
-			OR BOARD_ADDRESS LIKE '#{keyword}%'
-		</if>
-	</select>
 	
 	<!-- 댓글-->
 	<select id="getReplyList" parameterType="_int" resultType="eventReplyVO">

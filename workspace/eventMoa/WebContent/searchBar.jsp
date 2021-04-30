@@ -71,6 +71,7 @@
 				<a href="javascript:searchForm.submit();" id="searchIcon2"
 				class="fas fa-search"></a>
 			</div>
+			<input type="hidden" name="category2" value="recent">
 	</form>
 	<br>
 	<div class="hashTags" style="text-align: center;">

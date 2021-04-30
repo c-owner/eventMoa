@@ -20,9 +20,27 @@
             ) D) B
 		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
-	
 	<select id="getBoardCnt" resultType="_int">
 		SELECT COUNT(*) FROM TABLE_BOARD_REVIEW
+	</select>
+<!-- 검색 -->
+	<select id="searchList" parameterType="map" resultType="reviewBoardVO">
+		SELECT * FROM 
+			(SELECT ROWNUM R, D.* FROM 
+				(SELECT * FROM TABLE_BOARD_REVIEW
+				<trim prefix="WHERE" prefixOverrides="AND">
+					<if test="keyword != null and keyword != ''">
+						AND (
+								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_CATEGORY LIKE '%'|| #{keyword} ||'%' 
+							)
+					</if>
+					<if test="category != null and category != ''">
+						AND BOARD_CATEGORY LIKE '%'|| #{category} ||'%' 
+	           		 </if>
+	           	</trim>
+				ORDER BY BOARD_NUM DESC) D) B
 	</select>
 	
 	<!-- 리뷰 등록 -->

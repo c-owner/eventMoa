@@ -131,7 +131,7 @@
                      <a class="paging" href="${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=${category}&page=${nowPage + 1}">다음&gt;</a>
                   </c:if>
                   <br>
-               <a href="${pageContext.request.contextPath}/community/freeTalkWrite.jsp"><div class="button primary small" style="float: right;">글쓰기✍</div></a>                         
+               <a href="${pageContext.request.contextPath}/freeboard/FreeBoardWrite.bo"><div class="button primary small" style="float: right;">글쓰기✍</div></a>                         
          </div>
          </div>
                         

@@ -1,5 +1,7 @@
 package com.eventmoa.app.freeboard;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,7 +34,13 @@ public class FreeBoardWriteOkAction implements Action{
 		//String saveFolder = "C:\\0900_gb_ssh\\jsp\\workspace\\eventMoa\\WebContent\\app\\upload";
 		int fileSize = 5 * 1024 * 1024; //5M
 		MultipartRequest multi = null;
-		multi = new MultipartRequest(req, realPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		try {
+			multi = new MultipartRequest(req, realPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		f_vo.setBoard_Title(multi.getParameter("board_Title"));
 		f_vo.setBoard_Id(multi.getParameter("board_Id"));
 		f_vo.setBoard_Content(multi.getParameter("board_Content"));

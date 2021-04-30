@@ -85,4 +85,21 @@ public class FreeBoardDAO {
 	public boolean updateReply(FreeReplyVO r_vo) {
 		return session.update("FreeBoard.updateReply", r_vo) == 1;
 	}
+	
+//	----------------검색
+//	searchListFree - 프리보드 
+	public List<FreeBoardVO> searchList(String category, String category2,String keyword,int startRow,int endRow){
+		
+		HashMap<String, Object> searchMap = new HashMap<>();
+		
+		searchMap.put("startRow", startRow);
+		searchMap.put("endRow", endRow);	
+		searchMap.put("category", category);
+		searchMap.put("category2", category2);
+		searchMap.put("keyword", keyword);
+		return session.selectList("FreeBoard.searchList", searchMap);
+	}	
+	public int getSearchBoardCnt() {
+		return session.selectOne("FreeBoard.searchBoardCnt");
+	}
 }

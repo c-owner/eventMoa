@@ -27,7 +27,7 @@ public class EventDAO {
 		
 		return session.selectList("EventBoard.listAll", pageMap);
 	}
-	
+	// 이벤트 게시판 검색
 	public List<EventBoardVO> searchList(String category, String keyword,int startRow,int endRow){
 		
 		HashMap<String, Object> searchMap = new HashMap();

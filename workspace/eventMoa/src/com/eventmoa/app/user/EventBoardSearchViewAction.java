@@ -24,11 +24,9 @@ public class EventBoardSearchViewAction implements Action{
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		System.out.println("들와");
 		EventDAO e_dao = new EventDAO();
 		
 		PrintWriter out = resp.getWriter();
-		UserDAO u_dao = new UserDAO();
 		
 		String category = req.getParameter("category");
 		String keyword = req.getParameter("keyword");
@@ -58,15 +56,15 @@ public class EventBoardSearchViewAction implements Action{
 			jsonObj.put("board_Title",board.getBoard_Title());
 			jsonObj.put("board_Content", board.getBoard_Content());
 			jsonObj.put("board_Id", board.getBoard_Id());
-			jsonObj.put("board_View", board.getBoard_View());
-			jsonObj.put("board_Date", board.getBoard_Date());
+//			jsonObj.put("board_View", board.getBoard_View());
+//			jsonObj.put("board_Date", board.getBoard_Date());
 			jsonObj.put("board_Zipcode", board.getBoard_Zipcode());
 			jsonObj.put("board_Address", board.getBoard_Address());
 			jsonObj.put("board_Address_Detail", board.getBoard_Address_Detail());
 			jsonObj.put("board_Address_Etc", board.getBoard_Address_etc());
 			jsonObj.put("file_name", board.getFile_name());
-			jsonObj.put("board_CallNumber", board.getBoard_CallNumber());
-			jsonObj.put("board_PhoneNumber", board.getBoard_PhoneNumber());
+//			jsonObj.put("board_CallNumber", board.getBoard_CallNumber());
+//			jsonObj.put("board_PhoneNumber", board.getBoard_PhoneNumber());
 			
 			jsonArray.add(jsonObj);
 		}

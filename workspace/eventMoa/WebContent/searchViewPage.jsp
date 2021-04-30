@@ -14,18 +14,46 @@ pageEncoding="UTF-8"%>
 <meta name="author" content="corner3499">
 <!-- title Icon -->
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+
+<style>
+
+div#two ul {
+    border: 1px solid #525252;
+    display: inline-block;
+    padding: 0;
+    border-left: 0;
+}
+div#two ul li {
+    display: inline-block;
+    border-left: 1px solid #525252;
+}
+h2 {
+	text-align: center;
+}
+table th {
+	text-align: center !important;
+}
+</style>
+
 </head>
 <body class="is-preload">
 
-  <c:set var="list" value="${boardList}"/>>
-  
-  <c:set var="totalCnt" value="${totalCnt}"/>
-  <c:set var="startPage" value="${startPage}"/>
-  <c:set var="endPage" value="${endPage}"/>
-  <c:set var="nowPage" value="${nowPage}"/>
-  <c:set var="realEndPage" value="${realEndPage}"/>
   <c:set var="keyword" value="${keyword}"/>
   <c:set var="category" value="${category}"/>
+  
+  <c:set var="freeBoardList" value="${freeBoardList}"/>
+	  <c:set var="totalCnt" value="${totalCnt}"/>
+	  <c:set var="startPage" value="${startPage}"/>
+	  <c:set var="endPage" value="${endPage}"/>
+	  <c:set var="nowPage" value="${nowPage}"/>
+	  <c:set var="realEndPage" value="${realEndPage}"/>
+  
+  <c:set var="reviewBoardList" value="${reviewBoardList}"/>
+	  <c:set var="r_totalCnt" value="${r_totalCnt}"/>
+	  <c:set var="r_startPage" value="${r_startPage}"/>
+	  <c:set var="r_endPage" value="${r_endPage}"/>
+	  <c:set var="r_nowPage" value="${r_nowPage}"/>
+	  <c:set var="r_realEndPage" value="${r_realEndPage}"/>
 	<!-- Header -->
 	<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 	<p></p>
@@ -56,69 +84,74 @@ pageEncoding="UTF-8"%>
 								<td height="30" bgcolor="#f8f8fd" style="padding-left:20px" class="black_b_s">
 									검색하신 "
 									<b><font color="f75151">${keyword eq null ? category:keyword}</font></b>
-									"에 대한 검색 결과가 입니다.
+									"에 대한 자유게시판 검색 결과가 입니다.
 								 </td>
 							 </tr>
 						 </tbody>
 					 </table>
+					 <h2 class="col_tit">[자유게시판]</h2>
 					 <table class="alt">
 						<thead>
 							<tr>
 								<th>글 번호</th>
+								<th>카테고리</th>
 								<th style="text-align: center;">제목</th>
 								<th>아이디</th>
 								<th>조회수</th>
 								<th>날짜</th>
 							</tr>
 						</thead>
-							<tbody id="boardList">
+							<tbody id="freeBoardList">
 								<c:choose>
-								 <c:when test="${list != null and fn:length(list) > 0}">
-					               <c:forEach var="b_bean" items="${list}">
+								 <c:when test="${freeBoardList != null and fn:length(freeBoardList) > 0}">
+					               <c:forEach var="fb_bean" items="${freeBoardList}">
 					               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
-					               		<td height="23" style="display: none;">
-					               			${b_bean.getBoard_Num()}
+					               		<td height="23">
+					               			${fb_bean.getBoard_Num()}
 					               		</td>
 					               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
-					               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
+					               			<div align="center">
+					               			<c:if test="${fb_bean.getBoard_Category() == 'FREE'}">
 					               				자유게시판
 					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'EVENT'}">
-					               				이벤트게시판
-					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'REVIEW'}">
-					               				후기게시판
-					               			</c:if>
+					               			</div>
 					               		</td>
 					               		<td style="font-family:Tahoma; font-size:10pt;">
 					               			<div align="center">
-					               			<c:if test="${b_bean.getBoard_Category() == 'FREE'}">
-					               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
+					               			<c:if test="${fb_bean.getBoard_Category() == 'FREE'}">
+					               				<a href="${pageContext.request.contextPath}/freeboard/FreeBoardView.bo?board_Num=${fb_bean.getBoard_Num()}&page=${nowPage}">
+						               				<font style="font-weight: 1rem;">
+							               				<c:set var = "board_title" value = "${fb_bean.getBoard_Title()}"/>
+		   												<c:if test="${fn:length(board_title) <= 30}">
+							               					${fb_bean.getBoard_Title()}
+		   												</c:if>
+		   												<c:if test="${fn:length(board_title) > 30}">
+		   													<c:set var = "new_title" value = "${fn:substring(board_title, 0, 30)}" />
+		   													${new_title}
+		   												</c:if>
+						               				</font>
 					               				</a>
 					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'EVENT'}">
-					               				<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
-					               				</a>
-					               			</c:if>
-					               			<c:if test="${b_bean.getBoard_Category() == 'REVIEW'}">
-					               				<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardView.rb?board_Num=${b_bean.getBoard_Num()}&page=${nowPage}">${b_bean.getBoard_Title()}
-					               				</a>
-					               			</c:if>
-					               			</div>
-					               		</td>
-					               		<td style="display: none;">
-					               			<div align="center">
-					               				${b_bean.getBoard_Id()}
 					               			</div>
 					               		</td>
 					               		<td>
 					               			<div align="center">
-					               				${b_bean.getBoard_Date()}
+					               				<c:set var = "user_id" value = "${fb_bean.getBoard_Id()}"/>
+				               				   <c:set var = "id_length" value = "${fn:length(user_id)}"/>
+   												<c:set var = "private_id" value = "${fn:substring(user_id, 0, id_length-2)}" />
+   												${private_id}**
 					               			</div>
 					               		</td>
 					               		<td>
 					               			<div align="center">
-					               				${b_bean.getBoard_View()}
+					               				${fb_bean.getBoard_View()}
+					               			</div>
+					               		</td>
+					               		<td>
+					               			<div align="center">
+				               				  <c:set var = "date1" value = "${fb_bean.getBoard_Date()}"/>
+										      <c:set var = "date2" value = "${fn:substring(date1, 5, 10)}" />
+										      ${date2}
 					               			</div>
 					               		</td>
 					               	</tr>
@@ -126,48 +159,73 @@ pageEncoding="UTF-8"%>
 					           </c:when>
 								<c:otherwise>
 						           	<tr>
-						           		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
+						           		<td colspan="6" align="center">더 이상 등록된 게시물이 없습니다.</td>
 						           	</tr>
 					           </c:otherwise>
 								</c:choose>
 							</tbody>
 						</table>
-					<div style="margin-bottom: 20%;">
-						<select name="category" class="button primary icon solid fa-search" id="category"
+					<div style=" position: relative;">
+				 	<form method="post" action="#" class="combined" style="margin-bottom: 0;">
+						<select name="category2" class="button primary icon solid fa-search" id="category2"
 						style="font-size: 10px; width: 15%;">
-						<option value="recent" ${category == 'recent' ? 'selected' : ""}>등록일순　</option>
-						<option value="view" ${category == 'view' ? 'selected' : ""}>조회순　</option>
+							<option value="recent" ${category2 == 'recent' ? 'selected' : ""}>등록일순　</option>
+							<option value="view" ${category2 == 'view' ? 'selected' : ""}>조회순　</option>
 						</select>
-					</div>
-					<div class="table-wrapper">
-
-						<div id="two" style="text-align: center; vertical-align: middle; margin-bottom: 20%;">
+						<div style="float:right; font-size: 11px;">
+                              <p>등록된 글 개수 : <c:out value="${totalCnt}"/>개</p>
+                        </div>
+                    </form>
+						<div id="two" style="text-align: center;">
+						<ul>
 							<c:if test="${nowPage >1}">
-								<a href="${pageContext.request.contextPath}/search/search.us?page=${nowPage - 1}">&lt;이전</a>
+							<li>						
+								<a href="${pageContext.request.contextPath}/search/search.us?category2=${category2}&page=${nowPage - 1}&category=${category}&keyword=${keyword}&r_page=${r_nowPage - 1}">&lt;이전</a>
+							</li>
 							</c:if>
 							<c:forEach var="i" begin="${startPage}" end="${endPage}">
 								<c:choose>
 									<c:when test="${i eq nowPage}">
+								<li>
 									<a style="border: solid 1px;border-color: darkgray; background-color: #fff; color: #72bee1; margin: 0 2px; padding-left: 4px;">${i}&nbsp;</a>
+								</li>
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/search/search.us?page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
+									<li>
+										<a href="${pageContext.request.contextPath}/search/search.us?category2=${category2}&page=${i}&category=${category}&keyword=${keyword}&r_page=${i}" style="margin: 0 2px;">${i}&nbsp;</a>
+									</li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
-								<c:if test="${realEndPage != nowPage}">
-									<a href="${pageContext.request.contextPath}/search/search.us?page=${nowPage + 1}">다음&gt;</a>
-								</c:if>
-							<br>
+							<c:if test="${realEndPage != nowPage}">
+							<li>
+								<a href="${pageContext.request.contextPath}/search/search.us?category2=${category2}&page=${nowPage + 1}&category=${category}&keyword=${keyword}&r_page=${r_nowPage + 1}">다음&gt;</a>
+							</li>
+							</c:if>
+						</ul>
 						</div>
-					<hr>
-									
 					</div>
+					
 			</article>
 		</section>
+		<article class="column col6">
+			<h4 class="col_tit">인증후기 관련 검색 결과 입니다.</h4>
+			<table>
+				<tbody>
+					<tr>
+					<td height="30" bgcolor="#f8f8fd" style="padding-left:20px" class="black_b_s">
+						검색하신 "
+						<b><font color="f75151">${category} - ${keyword}</font></b>
+						"에 대한 검색 결과가 입니다.
+					 </td>
+					 </tr>
+				 </tbody>
+			 </table>
+		</article>
+		<hr>
 
 		<article class="column col6">
-			<h4 class="col_tit">"이벤트"와 관련된 검색 결과 입니다.</h4>
+			<h4 class="col_tit">이벤트 관련 검색 결과 입니다.</h4>
 			<table>
 				<tbody>
 					<tr>
@@ -183,8 +241,8 @@ pageEncoding="UTF-8"%>
 		<div id="EVT">
 		
 		</div>
-		<div align="center">
-		<a href="#" id="btn_open" class="button" style="margin: 0 auto; margin-top: 5%;"> 이벤트 더보기</a>				
+		<div align="center" id='btn_confirm'>
+		
 		</div>
 
 		<hr>
@@ -199,25 +257,31 @@ pageEncoding="UTF-8"%>
 	var page=1;
 	var cnt = 0;
 	var ul = $("#EVT");
+	var li = $("#btn_confirm");
 	var keyword = "<c:out value='${keyword}'/>";
 	var category = "<c:out value='${category}'/>";
+	var category2 = "<c:out value='${category2}'/>";
+	var r_page = "c:out value='${r_page}'/>";	
 	function getList(){
 		 var check=false;
 		 var content = "";
+		 var li_content = "";
 		 $.ajax({
 			 url:"${pageContext.request.contextPath}/search/searchEvent.us",
 			 dataType:"text",
- 			 data:{"page":page, "keyword":keyword,"category":category},
+ 			 data:{"page":page, "keyword":keyword,"category":category,"category2":category2,"r_page":r_page},
 			 /* data:{"page":page}, */
 			 contentType: "application/json",
 			 success: function(list){
 				 var eventArray=JSON.parse(list);
-				 if(JSON.parse(list).length==0){
-					/* content += "<table><tbody><tr>";
+				 if(JSON.parse(list).length==0 || JSON.parse(list).length<1){
+					content += "<table><tbody><tr>";
 					content += "<td colspan='6' align='center'>등록된 게시물이 없습니다.</td>";
 					content += "</tr></tboydy></table>";
-					$("#EVT").html(content);  */
-					alert('더 이상 등록된 게시물이 존재하지 않습니다.');
+					li_content += '';
+					$("#EVT").html(content);
+					$("#btn_confirm").html(li_content);
+					/* alert('더 이상 등록된 게시물이 존재하지 않습니다.'); */
  					 check=true;
 				 } else { 
 					 for(let i=0; i<eventArray.length;i++){
@@ -235,9 +299,12 @@ pageEncoding="UTF-8"%>
 						 content+="<img src='${pageContext.request.contextPath}/uploadFolder/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
 						 content+="</div></section>";
 					 }
+				 	li_content += '<a href="#" id="btn_open" class="button" style="margin: 0 auto; margin-top: 5%;"> 이벤트 더보기</a>';
 				 }
 				 
 				 ul.append(content);
+				 li.append(li_content);
+				 
 			 }	
 		 });
 		 if(check){
@@ -252,6 +319,19 @@ pageEncoding="UTF-8"%>
 		 getList();
 	 });
 	 
+	 /*  자유게시글 카테고리 옵션 */
+	 $("#category2").on("change", function(){
+            var category2 = $("#category2 option:selected").val();
+            console.log(category2);
+            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=1";            
+         })
+         
+         $("a.paging").on("click", function(){
+            var page = $(this).attr("href") || 1;
+            var category2 = $("#category2 option:selected").val();
+            console.log(category2);
+            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=" + page;            
+         });
 </script>
 
  </html>

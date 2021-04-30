@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.eventmoa.app.freeboard.vo.FreeBoardVO;
 import com.eventmoa.app.reviewboard.vo.ReviewBoardVO;
 import com.eventmoa.app.reviewboard.vo.ReviewReplyVO;
 import com.eventmoa.mybatis.config.SqlMapConfig;
@@ -83,5 +84,21 @@ public class ReviewBoardDAO {
 	// 댓글 수정
 	public boolean updateReply(ReviewReplyVO r_vo) {
 		return session.update("ReviewBoard.updateReply", r_vo) == 1;
+	}
+//	검색 리스트
+	
+//	searchListReview - 인증후기
+	public List<ReviewBoardVO> searchList(String category, String keyword,int startRow,int endRow){
+		
+		HashMap<String, Object> searchMap = new HashMap();
+		
+		searchMap.put("startRow", startRow);
+		searchMap.put("endRow", endRow);	
+		searchMap.put("category", category);
+		searchMap.put("keyword", keyword);
+		return session.selectList("ReviewBoard.searchList", searchMap);
+	}	
+	public int getSearchBoardCnt() {
+		return session.selectOne("ReviewBoard.searchBoardCnt");
 	}
 }
