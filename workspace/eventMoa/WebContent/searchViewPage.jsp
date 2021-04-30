@@ -37,11 +37,21 @@ section#two {
     margin-top: 1%;
 }
 .content {
-	border-color: black;
+    border-color: black;
     border-right-style: solid;
     border-width: 1px;
     border-top-style: double;
     border-bottom-style: double;
+    border-left-style: double;
+    border-radius: 1%;
+}
+.image {
+    border-color: black;
+    border-width: 1px;
+    border-top-style: double;
+    border-bottom-style: double;
+    border-left-style: double;
+    border-radius: 1%;
 }
 </style>
 
