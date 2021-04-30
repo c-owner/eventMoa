@@ -23,7 +23,7 @@
 	        <div class="inner" style="margin: 0 auto; text-align: center;">
    				 <article class="column col4">
 					<h2 class="col_tit" style="text-align: center;"> 
-									   삭제된 게시물입니다.
+									   NO PAGE!
 					 </h2>
 				 </article>
 				 <p></p>

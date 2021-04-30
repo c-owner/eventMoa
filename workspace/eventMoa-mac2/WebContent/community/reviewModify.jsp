@@ -104,7 +104,7 @@
 	<c:if test="${session_id eq null}">
 			<script>
 			   alert("로그인 후 이용해주세요");
-			   location.replace("${pageContext.request.contextPath}/user/UserLogin.us");
+			   location.replace("${pageContext.request.contextPath}/main.us");
 			</script>
 	</c:if>
 		<!-- Header -->
@@ -123,15 +123,16 @@
 				<h2 class="col_tit" style="text-align: left; color: black;">인증후기 글쓰기</h2>
 				<p class="col_desc"> </p>
 		
-						<form method="post" action="${pageContext.request.contextPath}/reviewboard/ReviewBoardWriteOk.rb" class="combined" name="reviewBoardform" enctype="multipart/form-data" style="margin-bottom: 0;">
-	         			
+						<form method="post" action="${pageContext.request.contextPath}/reviewboard/ReviewBoardModifyOk.rb" class="combined" name="modifyForm" enctype="multipart/form-data" style="margin-bottom: 0;">
+	         			<input type="hidden" name="board_Num" value="${r_vo.getBoard_Num()}">
+						<input type="hidden" name="page" value="${page}">
 					<table  border="1" cellpadding="0" cellspacing="0" width="900px" >
 					<tr height="30px">
 						<td align="center" style="width: 11%;">
 							<div align="center">제 목</div>
 						</td>
 						<td style="padding-left:10px;">
-							<input name="board_Title" id="board_Title" type="text" size="50" maxlength="100" value="" minlength = "1"/>
+							<input name="board_Title" type="text" size="50" maxlength="100" value="${r_vo.getBoard_Title()}"/>
 						</td>
 					</tr>
 					<tr height="30px">
@@ -147,7 +148,7 @@
 							<div align="center">내 용</div>
 						</td>
 						<td style="padding-left:10px;">
-							<textarea name="board_Content" id="board_Content" style="height:185px; resize: none;" minlength = "1"></textarea>
+							<textarea name="board_Content" style="height:185px; resize: none;">${r_vo.getBoard_Content()}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -179,11 +180,12 @@
 									</div>
 							</li>
 				</ul>
+				
 				<div class="col-12">
 									<br>
 									<ul class="actions" style="margin-top: 13%;">
 										<li style="margin: 0 auto;">
-										<a href="javascript:addBoard();" class="button primary" type="submit">등록하기</a>
+										<a href="javascript:modifyBoard()" class="button primary" type="submit">수정하기</a>
 										<a href="${pageContext.request.contextPath}/reviewboard/ReviewBoardList.rb?category=recent&page=${page}" class="button" type="submit">목록</a>
 										</li>
 										
@@ -202,23 +204,6 @@
 	</body>
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
-	<script>
-		var form = document.reviewBoardform;
-		
-		function addBoard(){
-			if(!form.board_Title.value){
-				alert("제목을 입력해주세요.");
-				form.board_Title.focus();
-				return;
-			}
-			else if(!form.board_Content.value){
-				alert("내용을 입력해주세요.");
-				form.board_Content.focus();
-				return;
-			}
-				reviewBoardform.submit();
-		}
-	</script>
 	<script>
 	$(document).ready(function(){
 		$("#input_imgs_0").on("change", handleImgFileSelect);
@@ -288,5 +273,18 @@
 		$(".imgs_wrap").disableSelection();
 	});
 	//--------------------------------------------------------------------------
+	</script>
+	<script>
+		function modifyBoard(){
+			modifyForm.submit();
+		}
+		/* function cancleFile(fileTagName){
+			if($.browser.msie){//ie일 때
+				//첨부파일 업로드 전의 태그를 복사해 놓고, 초기화 시 복사된 태그를 덮어 씌워준다.
+				$("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
+			}else{//그 외 브라우저
+				$("input[name='" + fileTagName + "']").val("");
+			}
+		} */
 	</script>
 </html>
