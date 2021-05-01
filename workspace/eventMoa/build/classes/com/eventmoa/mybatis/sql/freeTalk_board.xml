@@ -37,6 +37,17 @@
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_Id LIKE '%'|| #{keyword} ||'%' 
 							)
+										ORDER BY
+						<if test="category2 != null and category2 != ''">
+						 <choose>
+		                     <when test="category2 == 'recent'">
+		                        BOARD_DATE DESC
+		                     </when>
+		                     <when test="category2 == 'view'">
+		                        BOARD_VIEW DESC
+		                     </when>
+	                 	 </choose>
+						</if>
 					</if>
 					<if test="keyword != '' and category != ''">
 						AND (
@@ -46,25 +57,47 @@
 								OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
 							)
+											ORDER BY
+						<if test="category2 != null and category2 != ''">
+						 <choose>
+		                     <when test="category2 == 'recent'">
+		                        BOARD_DATE DESC
+		                     </when>
+		                     <when test="category2 == 'view'">
+		                        BOARD_VIEW DESC
+		                     </when>
+	                 	 </choose>
+						</if>
 					</if>
 					<if test="category != null and category != '' and keyword == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
 							)
+											ORDER BY
+						<if test="category2 != null and category2 != ''">
+						 <choose>
+		                     <when test="category2 == 'recent'">
+		                        BOARD_DATE DESC
+		                     </when>
+		                     <when test="category2 == 'view'">
+		                        BOARD_VIEW DESC
+		                     </when>
+	                 	 </choose>
+						</if>
 	           		 </if>
+						<if test="category2 != null and category2 != ''">
+										ORDER BY
+						 <choose>
+		                     <when test="category2 == 'recent'">
+		                        BOARD_DATE DESC
+		                     </when>
+		                     <when test="category2 == 'view'">
+		                        BOARD_VIEW DESC
+		                     </when>
+	                 	 </choose>
+						</if>
 	           	</trim>
-							ORDER BY
-					<if test="category2 != null and category2 != ''">
-					 <choose>
-	                     <when test="category2 == 'recent'">
-	                        BOARD_DATE DESC
-	                     </when>
-	                     <when test="category2 == 'view'">
-	                        BOARD_VIEW DESC
-	                     </when>
-                 	 </choose>
-					</if>
 				) D) B
       WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
