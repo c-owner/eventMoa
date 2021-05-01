@@ -75,22 +75,26 @@
 	</select>
 	<sql id="search">
 		<choose>
-			<when test="category == null and category == ''">
+			<when test="keyword != null and keyword != ''">
 				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
+				OR E_BOARD_TITLE LIKE '%'||#{keyword}||'%'
 			</when>
 			<when test="category != null and category != ''">
 				WHERE BOARD_ID LIKE '%'||#{category}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
 				OR BOARD_TITLE LIKE '%'||#{category}||'%'
+				OR E_BOARD_TITLE LIKE '%'||#{category}||'%'
 			</when>
 			<otherwise>
 				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
+				OR E_BOARD_TITLE LIKE '%'||#{keyword}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
 				OR BOARD_TITLE LIKE '%'||#{category}||'%'
+				OR E_BOARD_TITLE LIKE '%'||#{category}||'%'
 			</otherwise>
 		</choose>
 	</sql>
