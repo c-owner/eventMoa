@@ -28,7 +28,11 @@ public class searchKeywordAction implements Action {
 		if (category2 == null) {category2 = "recent";};
 		if (category3 == null) {category3 = "recent";};
 		if (keyword == null) {keyword = "";};
-		
+	System.out.println(category);
+		System.out.println(keyword);
+		System.out.println(category2);
+		System.out.println(category3);
+		System.out.println("------------------step2");
 		if(category.equals("지역별") || category == null || category.length() < 1) {
 			category = ""; // default 
 		}
@@ -41,6 +45,11 @@ public class searchKeywordAction implements Action {
 		if(keyword.equals("") || keyword == null || keyword.length() < 1 ) {
 			keyword = "";
 		}
+		System.out.println(category);
+		System.out.println(keyword);
+		System.out.println(category2);
+		System.out.println(category3);
+		System.out.println("----------end-------");
 		
 		
 		String temp = req.getParameter("page");

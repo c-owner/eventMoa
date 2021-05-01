@@ -12,14 +12,21 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/search.css">
 	
 	<style>
-	@media screen and (max-width: 375px){
+	@media screen and (max-width: 414px){
 		.searchTerm {
 			width: 100%;
 			inline-size: auto;
 		}
+		form#search{
+			width: fit-content;
+		}
 		.fa-search {
 			width: 100%;
-			margin-top: 5%;	
+			margin: auto;
+		}
+		.search {
+			width: 80%;
+			
 		}
 		#searchIcon{ 
 			display: none;
@@ -29,7 +36,7 @@
 		}
 		
 	}
-	@media screen and (min-width: 376px) {
+	@media screen and (min-width: 415px) {
 		#searchIcon2{
 			display: none;
 		}
@@ -44,7 +51,7 @@
 	
 		<!-- search-bar -->
 	<form action="${pageContext.request.contextPath}/search/search.us" name="searchForm" id="search" method="post">
-			<div class="search">
+			<div class="search" align="center">
 			<select name="category" class="button primary icon solid fa-search" id="category" 
 			style="margin: 0 auto; width: 40%; border-radius: initial;">
 				<option value="지역별">- 지역별 -</option>

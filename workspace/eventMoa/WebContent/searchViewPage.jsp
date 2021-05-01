@@ -247,7 +247,6 @@ section#two {
 					</tr>
 				</thead>
 				<tbody id="reviewBoardList">
-					<tr>
 					 <c:choose>
 					 <c:when test="${reviewBoardList != null and fn:length(reviewBoardList) > 0}">
 		               <c:forEach var="rb_bean" items="${reviewBoardList}">
@@ -257,7 +256,14 @@ section#two {
 		               		</td>
 		               		<td>
 		               		<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${rb_bean.getE_board_Num()}&page=1">
-		               			${rb_bean.getE_board_Title()}
+		               			<c:set var = "rE_board_title" value = "${rb_bean.getE_board_Title()}"/>
+									<c:if test="${fn:length(rE_board_title) <= 30}">
+									${rb_bean.getE_board_Title()}
+									</c:if>
+									<c:if test="${fn:length(rE_board_title) > 30}">
+									<c:set var = "rE_new_title" value = "${fn:substring(rE_board_title, 0, 30)}" />
+									${rE_new_title}
+									</c:if>
 		               		</a> 
 		               		</td>
 		               		<td style="font-family:Tahoma; font-size:10pt;">
@@ -296,7 +302,7 @@ section#two {
 							      ${r_date2}
 		               			</div>
 		               		</td>
-		               	</tr>
+	               		</tr>
 	             	  </c:forEach>
 		           </c:when>
 					<c:otherwise>
@@ -305,7 +311,6 @@ section#two {
 			           	</tr>
 		           </c:otherwise>
 					</c:choose>
-					 </tr>
 				 </tbody>
 			 </table>
 			 
@@ -452,7 +457,7 @@ section#two {
 	 $("#category2").on("change", function(){
             var category2 = $("#category2 option:selected").val();
             var category3 = $("#category3 option:selected").val();
-            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=1&category3=" + category3 + "&r_page=1";
+            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=1&category3=" + category3 + "&r_page=1&keyword="+keyword+"&category="+category;
          })
          
          $("a.paging").on("click", function(){
@@ -460,12 +465,12 @@ section#two {
             var r_page = $(this).attr("href") || 1;
             var category2 = $("#category2 option:selected").val();
             var category3 = $("#category3 option:selected").val();
-            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=" + page +"&category3="+ category3 +"&r_page=" + r_page;
+            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=" + page +"&category3="+ category3 +"&r_page=" + r_page + "&keyword="+keyword+"&category="+category;
          });
 	 $("#category3").on("change", function(){
 		 	var category2 = $("#category2 option:selected").val();
             var category3 = $("#category3 option:selected").val();
-            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=1&category3=" + category3 + "&r_page=1";           
+            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=1&category3=" + category3 + "&r_page=1&keyword="+keyword+"&category="+category;           
          })
          
          $("a.paging").on("click", function(){
@@ -473,7 +478,7 @@ section#two {
             var r_page = $(this).attr("href") || 1;
             var category2 = $("#category2 option:selected").val();
             var category3 = $("#category3 option:selected").val();
-            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=" + page +"&category3="+ category3 +"&r_page=" + r_page;            
+            location.href = "${pageContext.request.contextPath}/search/search.us?category2=" + category2 + "&page=" + page +"&category3="+ category3 +"&r_page=" + r_page + "&keyword="+keyword+"&category="+category;
          });
 </script>
 
