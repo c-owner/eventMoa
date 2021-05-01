@@ -73,7 +73,7 @@
 							"host": "132.226.229.33",
 							"authType": "PUBLIC_KEY",
 							"port": 22.0,
-							"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
+							"keyPath": "/Users/corner/.ssh/id_rsa.pem",
 							"implementation": "jsch"
 						}
 					}
@@ -222,7 +222,7 @@
 						"host": "132.226.229.33",
 						"authType": "PUBLIC_KEY",
 						"port": 22.0,
-						"keyPath": "/Users/corner/.ssh/ssh-key-2021-04-25.key.ppk",
+						"keyPath": "/Users/corner/.ssh/id_rsa.pem",
 						"implementation": "jsch"
 					}
 				}
