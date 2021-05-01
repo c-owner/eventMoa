@@ -29,24 +29,54 @@
 			(SELECT ROWNUM R, D.* FROM 
 				(SELECT * FROM TABLE_BOARD_REVIEW
 				<trim prefix="WHERE" prefixOverrides="AND">
-					<if test="keyword != null and keyword != ''">
+					<if test="keyword != null and keyword != '' and category == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
-								OR BOARD_CATEGORY LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_Id LIKE '%'|| #{keyword} ||'%' 
 							)
 					</if>
-					<if test="category != null and category != ''">
-						AND BOARD_CATEGORY LIKE '%'|| #{category} ||'%' 
+					<if test="keyword != '' and category != ''">
+						AND (
+								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
+							)
+					</if>
+					<if test="category != null and category != '' and keyword == ''">
+						AND (
+								BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
+							)
 	           		 </if>
 	           	</trim>
-				ORDER BY BOARD_NUM DESC) D) B
+							ORDER BY
+					<if test="category3 != null and category3 != ''">
+					 <choose>
+	                     <when test="category3 == 'recent'">
+	                        BOARD_DATE DESC
+	                     </when>
+	                     <when test="category3 == 'view'">
+	                        BOARD_VIEW DESC
+	                     </when>
+                 	 </choose>
+					</if>
+							) D) B
+      WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="searchEventList" parameterType="_int" resultType="string">
+		SELECT A.BOARD_TITLE FROM TABLE_BOARD_EVENT A INNER JOIN TABLE_BOARD_REVIEW B 
+		ON A.BOARD_NUM = B.#{e_board_Num};
 	</select>
 	
 	<!-- 리뷰 등록 -->
 	<insert id="insertBoard" parameterType="reviewBoardVO">
-		INSERT INTO TABLE_BOARD_REVIEW 
-		VALUES (BOARD_SEQ_REVIEW.NEXTVAL, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date, 'REVIEW')
+		INSERT INTO TABLE_BOARD_REVIEW
+		(BOARD_NUM, BOARD_TITLE, BOARD_CONTENT, BOARD_ID, BOARD_VIEW, BOARD_DATE, BOARD_CATEGORY, E_BOARD_NUM, E_BOARD_TITLE)
+		VALUES (BOARD_SEQ_REVIEW.NEXTVAL, #{board_Title}, #{board_Content}, #{board_Id}, 0, current_date, 'REVIEW', #{e_board_Num}, #{e_board_Title})
 	</insert>
 	
 	<update id="updateBoardView" parameterType="_int">
@@ -77,7 +107,7 @@
 	
 	<!-- 댓글 -->
 	<insert id="insertReply" parameterType="reviewReplyVO">
-		INSERT INTO TABLE_REPLY_REVIEW 
+		INSERT INTO TABLE_REPLY_REVIEW
 		VALUES(BOARD_SEQ_REVIEW.NEXTVAL, #{board_Num}, #{user_Id}, #{reply_Content}, current_date, 'REVIEW')
 	</insert>
 	

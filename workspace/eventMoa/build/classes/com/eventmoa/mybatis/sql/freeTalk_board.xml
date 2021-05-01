@@ -31,14 +31,14 @@
 			(SELECT ROWNUM R, D.* FROM 
 				(SELECT * FROM TABLE_BOARD_freeTalk 
 				<trim prefix="WHERE" prefixOverrides="AND">
-					<if test="keyword != null and keyword != '' and category == null">
+					<if test="keyword != null and keyword != '' and category == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_Id LIKE '%'|| #{keyword} ||'%' 
 							)
 					</if>
-					<if test="keyword != null and category != null">
+					<if test="keyword != '' and category != ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
@@ -47,7 +47,7 @@
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
 							)
 					</if>
-					<if test="category != null and category != '' and keyword == null">
+					<if test="category != null and category != '' and keyword == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
