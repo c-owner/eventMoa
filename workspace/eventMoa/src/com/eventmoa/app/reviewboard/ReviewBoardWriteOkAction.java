@@ -1,6 +1,7 @@
 package com.eventmoa.app.reviewboard;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -28,12 +29,12 @@ public class ReviewBoardWriteOkAction implements Action{
 		ActionForward forward = null;
 		
 		
-		String uploadFolder = "/app/reviewFilesUpload";
-		ServletContext context= req.getSession().getServletContext();
-		String realPath= context.getRealPath(uploadFolder);
-//		String realPath = RealPATH+"/reviewFilesUpload/";
+//		String uploadFolder = "/app/reviewFilesUpload";
+//		ServletContext context= req.getSession().getServletContext();
+//		String realPath= context.getRealPath(uploadFolder);
+		String realPath = RealPATH+"/reviewFilesUpload/";
 		
-		int fileSize = 1024 * 1024 * 50; // 10M
+		int fileSize = 1024 * 1024 * 5; // 5M
 		
 		MultipartRequest multi = null;
 		
@@ -63,6 +64,14 @@ public class ReviewBoardWriteOkAction implements Action{
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath(req.getContextPath() + "/reviewboard/ReviewBoardList.rb?category=recent");
+			}else { // 실패
+				PrintWriter out = resp.getWriter();
+				out.print("<script> "
+						+ "alert('IMAGE UPLOAD ERROR-');"
+						+ "history.back();"
+						+ "</script>");
+				out.close();
+				return null;
 			}
 		}
 

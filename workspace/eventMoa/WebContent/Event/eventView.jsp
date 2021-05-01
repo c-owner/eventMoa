@@ -324,11 +324,13 @@
 					var months = replyArray[i].reply_Date.substr(5,2);
 					var day = replyArray[i].reply_Date.substr(8,2);
 					var r_id = replyArray[i].user_Id;
+					var id_length = r_id.length;
+	            	var private_id = r_id.substr(0,id_length-2);
 						content += "<article class='column col6'> <span style='font-size:35px; display:block;'></span>";
 						content += "<p class='star_rating' style='display:inline;'><a class='star'>"+star+"</a></p>";
 						content += "<pre><span class='content'>"+r_content +"</span></pre>"; 
 						content += "<span id='writer' class='date'>작성일: "+year+"-"+months+"-"+day+"</span>";
-						content += "<span id='writer'>작성자: "+ r_id+"</span>";
+						content += "<span id='writer'>작성자: "+ private_id+"**</span>";
 					if(r_id == id){
 						content += "<br><button id='dayToBtn' style='float:right; font-size:0.9rem;' onclick='javascript:deleteReply("+r_num+")'>삭제</button>"
 					} 

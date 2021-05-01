@@ -94,11 +94,11 @@
     			</td>
             </tr>
             <div align="center" style="margin-bottom: 2%;">
-         		<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${r_vo.getE_board_Num()}&page=${page}" class="button" style="width: 200px !important;">본 이벤트 바로가기</a>
+         		<a href="${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num=${r_vo.getE_board_Num()}&page=${page}" class="button">본 이벤트 바로가기</a>
             </div>
          </table>
             <c:if test="${files != null}">
-               <div class="slider" style="width:100%; height: 100%; margin:0 auto; margin-top: 10%;">
+               <div class="slider" style="width:50%; height: 100%; margin:0 auto; margin-top: 10%;">
                   <div>
                      <figure>
                         <img src='${pageContext.request.contextPath}/uploadFolder/reviewFilesUpload/${files}'>
@@ -172,10 +172,15 @@
          
           if(replys != null && replys.length != 0){
              $.each(replys, function(index, reply){
-                text += "<tr style='border-top: solid 1px; border-color: #e3e3e3;'><td align='center' width='150px' id='replyTd'>" + reply.user_Id + "</td>";
+            	 var year = reply.reply_Date.substr(0,4);
+ 				var months = reply.reply_Date.substr(5,2);
+ 				var day = reply.reply_Date.substr(8,2);
+            	 var id_length = reply.user_Id.length;
+             	var private_id = reply.user_Id.substr(0,id_length-2);
+                text += "<tr style='border-top: solid 1px; border-color: #e3e3e3;'><td align='center' width='150px' id='replyTd'>" + private_id + "**</td>";
                 text += "<td valign='top' style='padding-left:10px;'>";
                 text += "<textarea name='content" + (index + 1) + "' id='"+ (index + 1) +"' class='re' style='height:85px; resize:none; border: none; background-color: white;' readonly>"+ reply.reply_Content +"</textarea>";
-                text += "<p style='float: right;'>" + reply.reply_Date + "</p>";
+                text += "<p style='float: right;'>" + year+"-"+months+"-"+day+ "</p>";
                 if("${session_id}" == reply.user_Id){
                    text +="<a id='ready"+ (index + 1) + "' href='javascript:updateReply(" + (index + 1) + ")'>[수정]</a>";
                    text +="<a id='ok" + (index + 1) + "' href='javascript:updateOkReply(" + reply.reply_Num + ", " + (index+1)+ ")' style='display:none;'>[수정 완료]</a>";
