@@ -99,7 +99,10 @@ public class FreeBoardDAO {
 		searchMap.put("keyword", keyword);
 		return session.selectList("FreeBoard.searchList", searchMap);
 	}	
-	public int getSearchBoardCnt() {
-		return session.selectOne("FreeBoard.searchBoardCnt");
+	public int getSearchBoardCnt(String category, String keyword){
+		HashMap<String, Object> searchMap = new HashMap<>();
+		searchMap.put("category", category);
+		searchMap.put("keyword", keyword);
+		return session.selectOne("FreeBoard.searchListCnt", searchMap);
 	}
 }

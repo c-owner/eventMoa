@@ -25,9 +25,9 @@ public class searchKeywordAction implements Action {
 		String category3 = req.getParameter("category3"); // 순서 정렬 
 		String keyword = req.getParameter("keyword");
 		if (category == null) {category = "";}; // default 
+		if (keyword == null) {keyword = "";};
 		if (category2 == null) {category2 = "recent";};
 		if (category3 == null) {category3 = "recent";};
-		if (keyword == null) {keyword = "";};
 	System.out.println(category);
 		System.out.println(keyword);
 		System.out.println(category2);
@@ -36,14 +36,14 @@ public class searchKeywordAction implements Action {
 		if(category.equals("지역별") || category == null || category.length() < 1) {
 			category = ""; // default 
 		}
+		if(keyword.equals("") || keyword == null || keyword.length() < 1 ) {
+			keyword = "";
+		}
 		if(category2.equals("") || category2 == null || category2.length() < 1) {
 			category2 = "recent";
 		}
 		if(category3.equals("") || category2 == null || category2.length() < 1) {
 			category3 = "recent";
-		}
-		if(keyword.equals("") || keyword == null || keyword.length() < 1 ) {
-			keyword = "";
 		}
 		System.out.println(category);
 		System.out.println(keyword);
@@ -72,6 +72,7 @@ public class searchKeywordAction implements Action {
 			e.printStackTrace();
 		}
 		
+		
 //		-- 프리보드 페이징 처리
 		FreeBoardDAO f_dao = new FreeBoardDAO();
 			int boardSize = 10;
@@ -80,7 +81,11 @@ public class searchKeywordAction implements Action {
 			int startRow = endRow - (boardSize - 1);
 			int startPage = ((page - 1) / pageSize) * pageSize  + 1;
 			int endPage = startPage + (pageSize - 1);
-			int totalCnt = f_dao.getBoardCnt();
+			int totalCnt = f_dao.getSearchBoardCnt(category, keyword);
+			System.out.println("-------------cnt---");
+			System.out.println(f_dao.getSearchBoardCnt(category, keyword));
+			System.out.println(totalCnt);
+			System.out.println("-------------cnt---");
 			int realEndPage = (totalCnt - 1) / pageSize + 1;
 			endPage = endPage > realEndPage ? realEndPage : endPage;
 			
@@ -101,7 +106,8 @@ public class searchKeywordAction implements Action {
 		int r_startRow = r_endRow - (r_boardSize - 1);
 		int r_startPage = ((r_page - 1) / r_pageSize) * r_pageSize  + 1;
 		int r_endPage = r_startPage + (r_pageSize - 1);
-		int r_totalCnt = r_dao.getBoardCnt();
+//		int r_totalCnt = r_dao.getSearchBoardCnt(category, category3, keyword, r_startRow, r_endRow);
+		int r_totalCnt = r_dao.getSearchBoardCnt(category, keyword);
 		int r_realEndPage = (r_totalCnt - 1) / r_pageSize + 1;
 		r_endPage = r_endPage > r_realEndPage ? r_realEndPage : r_endPage;
 		

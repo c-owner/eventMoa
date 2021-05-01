@@ -109,7 +109,7 @@ section#two {
 							 </tr>
 						 </tbody>
 					 </table>
-					 <h2 class="col_tit">[자유게시판]</h2>
+					 <h4 class="col_tit">자유게시판 관련 검색 결과 입니다.</h4>
 					 <table class="alt">
 						<thead>
 							<tr>

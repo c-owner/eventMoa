@@ -98,7 +98,10 @@ public class ReviewBoardDAO {
 		searchMap.put("keyword", keyword);
 		return session.selectList("ReviewBoard.searchList", searchMap);
 	}
-	public String searchEventList(int e_board_num) {
-		return session.selectOne("ReviewBoard.searchEventList", e_board_num);
+	public int getSearchBoardCnt(String category, String keyword){
+		HashMap<String, Object> searchMap = new HashMap<>();
+		searchMap.put("category", category);
+		searchMap.put("keyword", keyword);
+		return session.selectOne("ReviewBoard.searchListCnt", searchMap);
 	}
 }
