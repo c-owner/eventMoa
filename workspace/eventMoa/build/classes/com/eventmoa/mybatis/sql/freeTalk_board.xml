@@ -36,7 +36,6 @@
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_Id LIKE '%'|| #{keyword} ||'%' 
-								OR E_BOARD_TITLE LIKE '%'||#{keyword}||'%'
 							)
 					</if>
 					<if test="keyword != '' and category != ''">
@@ -44,17 +43,14 @@
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
-								OR E_BOARD_TITLE LIKE '%'||#{keyword}||'%'
 								OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
-								OR E_BOARD_TITLE LIKE '%'||#{category}||'%'
-							)
+s							)
 					</if>
 					<if test="category != null and category != '' and keyword == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
-								OR E_BOARD_TITLE LIKE '%'||#{category}||'%'
 							)
 	           		 </if>
 	           	</trim>
@@ -83,22 +79,18 @@
 				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
-				OR E_BOARD_TITLE LIKE '%'||#{keyword}||'%'
 			</when>
 			<when test="category != null and category != ''">
 				WHERE BOARD_ID LIKE '%'||#{category}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
 				OR BOARD_TITLE LIKE '%'||#{category}||'%'
-				OR E_BOARD_TITLE LIKE '%'||#{category}||'%'
 			</when>
 			<otherwise>
 				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
-				OR E_BOARD_TITLE LIKE '%'||#{keyword}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
 				OR BOARD_TITLE LIKE '%'||#{category}||'%'
-				OR E_BOARD_TITLE LIKE '%'||#{category}||'%'
 			</otherwise>
 		</choose>
 	</sql>
