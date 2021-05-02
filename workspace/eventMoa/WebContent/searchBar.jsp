@@ -66,6 +66,8 @@
 				<option value="강원">		강원		</option>
 				<option value="경북">		경북		</option>
 				<option value="경남">		경남		</option>
+				<option value="경북">		전북		</option>
+				<option value="경남">		전남		</option>
 				<option value="충북">		충북		</option>
 				<option value="충남">		충남		</option>
 				<option value="제주">		제주		</option>
@@ -89,6 +91,8 @@
         <a href="${pageContext.request.contextPath}/search/search.us?category=경남" class="hashTag">#경남</a>
         <a href="${pageContext.request.contextPath}/search/search.us?category=충북" class="hashTag">#충북</a>
         <a href="${pageContext.request.contextPath}/search/search.us?category=충남" class="hashTag">#충남</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=전북" class="hashTag">#전북</a>
+        <a href="${pageContext.request.contextPath}/search/search.us?category=전남" class="hashTag">#전남</a>
         <a href="${pageContext.request.contextPath}/search/search.us?category=제주" class="hashTag">#제주</a>
      </div>
 		<p></p>

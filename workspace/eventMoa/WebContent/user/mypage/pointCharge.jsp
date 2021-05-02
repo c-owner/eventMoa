@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "[http://www.w3.org/TR/html4/loose.dtd](http://www.w3.org/TR/html4/loose.dtd)">
 <!--
 페이지 프레임 입니다.
 편하게 복사해서 작업하세요.
@@ -32,7 +34,7 @@
 	
 	<body class="is-preload">
 				      
-		<c:set var = 'userStatus' value = "false"></c:set>
+		<c:set var = 'userStatus' value = "false"/>
 		<c:if test="${session_id ne null }">
 			<c:set var = 'userStatus' value = 'true'/>
 		</c:if>
@@ -51,22 +53,37 @@
 			<section id="five" class="wrapper special">
 				<div class="col-12"><span class="image fit"><img src="${pageContext.request.contextPath}/images/banner/ADbanner1.jpg" height="200px;" alt="" /></span></div> 
 				<h3 style="font-family: jua; font-size: 50px;"> 포인트 충전소 </h3>
-				<c:if test="${userStatus eq true}">
+				<c:if test="${session_id ne null }">
 					<h3><span style="color: black; font-size: 18px;">💎현재 잔여 포인트 :</span> 
 						<span style="font-family: 'jua'; font-size: 15px;">${user_Point}p</span></h3>
 				</c:if>
+				<c:if test="${session_id eq null }">
+					<h3>
+						로그인 후 충전하실 수 있습니다.
+					</h3>
+				</c:if>
 						<ul class="faces">
 							<li>
-								<a id="charge" href="5000">
-								<span class="image" style="font-family: Jua; font-size: 20px;">포인트 충전
-								<img src="${pageContext.request.contextPath}/images/point/point_dia.png" alt="" style="width:100px;" />
-								</span>
-								<h3>적립포인트 5,000p</h3>
-								<p style="font-family: Jua; font-size:18px; font-weight:bold;"> 결제금액 : 5,000원 </p>
+								<c:if test="${userStatus eq false}">
+									<a href="javascript:needLogin()">
+								</c:if>
+								<c:if test="${userStatus eq true}">
+									<a id="charge" href="5000">
+								</c:if>
+									<span class="image" style="font-family: Jua; font-size: 20px;">포인트 충전
+									<img src="${pageContext.request.contextPath}/images/point/point_dia.png" alt="" style="width:100px;" />
+									</span>
+									<h3>적립포인트 5,000p</h3>
+									<p style="font-family: Jua; font-size:18px; font-weight:bold;"> 결제금액 : 5,000원 </p>
 								</a>
 							</li>
 							<li>
+							<c:if test="${userStatus eq false}">
+									<a href="javascript:needLogin()">
+								</c:if>
+							<c:if test="${userStatus eq true}">
 								<a id="charge" href="10000">
+							</c:if>
 								<span class="image" style="font-family: Jua; font-size: 20px;">포인트 충전
 								<img src="${pageContext.request.contextPath}/images/point/point_dia.png" alt="" style="width:100px;" />
 								</span>
@@ -75,7 +92,12 @@
 								</a>
 							</li>
 							<li>
+							<c:if test="${userStatus eq false}">
+								<a href="javascript:needLogin()">
+							</c:if>
+							<c:if test="${userStatus eq true}">
 								<a id="charge" href="30000">
+							</c:if>
 								<span class="image" style="font-family: Jua; font-size: 20px;">포인트 충전
 									<img src="${pageContext.request.contextPath}/images/point/point_dia.png" alt="" style="width:100px;" />
 								</span>
@@ -125,6 +147,12 @@
 		<!-- Footer -->
 			<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 			
+	<script>
+	function needLogin(){
+		alert("로그인 후 이용하실 수 있습니다.");
+		location.href = "${pageContext.request.contextPath}/user/UserLogin.us";
+	}
+	</script>
 	<script type="text/javascript">
 		var $j = jQuery;	
 	

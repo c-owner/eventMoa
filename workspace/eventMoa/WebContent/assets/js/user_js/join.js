@@ -7,6 +7,12 @@
  /* 각 프로퍼티 체크 true 여야지 submit */
  var id_Check, pw_Check, email_Check, verify_Check, name_Check = false;
  
+/* 한글, 영어, 숫자, 특수문자 구분 정규식 모음 */
+var check_num = /[0-9]/; // 숫자 
+var check_eng = /[a-zA-Z]/; // 영어
+var check_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자 
+var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글 체크  
+
  var user_id = $("#user_Id").val();
  var user_pw = $("#user_Pw").val();
  var user_name = $("#user_Name").val();
@@ -136,9 +142,19 @@
       
     }
 	 function checkId(id){
-       id_Check = false;
+       if(!id_Check) {
+			$("#idCheck_text").text("🔴아이디 양식이 틀렸습니다.");
+          $("#idCheck_text").attr('color', '#f82a2aa3');
+			return;
+		}
+		if(check_kor.test(user_Id.value)){
+			$("#idCheck_text").text("🔴아이디를 한글로 하실 수 없습니다.");
+              $("#idCheck_text").attr('color', '#f82a2aa3');
+			return;
+		}
 	 	if(user_Id.value == '' || joinForm.user_Id.value.length < 5){
-	 		$("#idCheck_text").text("아이디를 작성해주세요.");
+			$("#idCheck_text").text("🔴아이디를 입력하셔야 합니다.");
+                  $("#idCheck_text").attr('color', '#f82a2aa3');
           return;
 	 	} else {
 	 		$.ajax({
@@ -148,17 +164,17 @@
 	 			dataType:"text",
 	 			success:function(result) {
 	 				if(result.trim() == "ok"){
-                   alert('사용하실 수 있는 ID 입니다.');
-                  $("input[id='user_Pw").css("margin-top", "5%");
-                  $("#idCheck_text").text("🟢사용할 수 있는 아이디입니다.");
-                  $("#idCheck_text").attr('color', '#00CC00');
-                  id_Check = true;
-                  document.getElementById('user_Id').readOnly = true;   
-                  document.getElementById('idCheckBtn').style.display = "none";
-                  document.getElementById('idModifyBtn').style.display = "";
+		                   alert('사용하실 수 있는 ID 입니다.');
+		                  $("input[id='user_Pw").css("margin-top", "5%");
+		                  $("#idCheck_text").text("🟢사용할 수 있는 아이디입니다.");
+		                  $("#idCheck_text").attr('color', '#00CC00');
+		                  id_Check = true;
+		                  document.getElementById('user_Id').readOnly = true;   
+		                  document.getElementById('idCheckBtn').style.display = "none";
+		                  document.getElementById('idModifyBtn').style.display = "";
                } else if(result.trim() == "not-ok"){
                    $("input[id='user_Pw").css("margin-top", "5%");
-	 					$("#idCheck_text").text("🔴중복된 아이디입니다.");
+ 					$("#idCheck_text").text("🔴중복된 아이디입니다.");
                   $("#idCheck_text").attr('color', '#f82a2aa3');
                   document.getElementById('user_Id').readOnly = false; 
                   document.getElementById('idCheckBtn').style.display = "";
@@ -206,13 +222,26 @@
             $('#idCheck_text').attr('color', '#f82a2aa3');
             $('#idCheck_text').html('❌ 아이디와 비밀번호가 동일 합니다.');
              id_Check = false;
+             id_Check = false;
          } 
          //아이디 유효성 검사 (영문소문자, 숫자만 허용)
    // });
+			else if(check_kor.test(user_Id.value)){
+				$("#idCheck_text").text("❌아이디를 한글로 하실 수 없습니다.");
+           	   $("#idCheck_text").attr('color', '#f82a2aa3');
+             id_Check = false;
+				return;
+			}
+			else if(check_spc.test(user_Id.value)){
+				$("#idCheck_text").text("❌아이디를 한글로 하실 수 없습니다.");
+           	   $("#idCheck_text").attr('color', '#f82a2aa3');
+             id_Check = false;
+				return;
+			}
          else {
             id_Check = true;
             $("input[id='user_Pw").css("margin-top", "5%");
-            $('#idCheck_text').html('✔확인');
+            $('#idCheck_text').html('✔중복확인을 진행 해주세요.');
             $('#idCheck_text').attr('color', '#00CC00');
            
          }
@@ -230,6 +259,7 @@
          else if ($('#user_Pw').val().length < 8) { 
             $('#idCheck_text').attr('color', '#f82a2aa3');
             $('#pwCheck_text').html('❌비밀번호를 8자이상 입력해주세요.');
+            $("input[id='user_Name").css("margin-top", "8%");
             joinForm.user_Pw.focus();
          } 
          else if (pw == $("input[id='user_Id").val()) {
@@ -254,7 +284,7 @@
                //같은 문자를 4번 이상 사용할 수 없다.
                else if(/(\w)\1\1\1/.test(joinForm.user_Pw.value)){
                   //같은 문자가 4개 이상 있다면 
-                  $("input[id='user_Name").css("margin-top", "5%");
+                  $("input[id='user_Name").css("margin-top", "8%");
                     $('#pwCheck_text').html("❌ 같은 문자를 4번 이상 사용할 수 없습니다.");
                     joinForm.user_Pw.focus();
                   return false;
@@ -265,7 +295,7 @@
                   //-1은 아이디가 비밀번호에 없는 뜻. 
                   //따라서 -1이 아닐때(아이디를 비밀번호에서 찾았을 때) 들어옴
                   
-                  $("input[id='user_Name").css("margin-top", "5%");
+                  $("input[id='user_Name").css("margin-top", "8%");
                     $('#pwCheck_text').html("❌ 비밀번호에 아이디를 포함할 수 없습니다.");
                   joinForm.user_Pw.focus();
                   return false;
@@ -273,7 +303,7 @@
                //한글
                else if(hangleCheck.test(joinForm.user_Pw.value)){
                   //정규식 조건에 맞으면
-                  $("input[id='user_Name").css("margin-top", "5%");
+                  $("input[id='user_Name").css("margin-top", "8%");
                     $('#pwCheck_text').html("❌ 비밀번호에 한글을 사용할 수 없습니다.");
                   joinForm.user_Pw.focus();
                   return false;
@@ -281,15 +311,21 @@
                //비밀번호에 공백을 포함할 수 없다.
                else if(joinForm.user_Pw.value.search(/\s/) != -1){
                   //비밀번호에서 공백을 찾았다면
-                  $("input[id='user_Name").css("margin-top", "5%");
+                  $("input[id='user_Name").css("margin-top", "8%");
                   $('#pwCheck_text').html("❌ 비밀번호에 공백 없이 입력해주세요.");
                   joinForm.user_Pw.focus();
                   return false;
                }
-            
+				else if(check_kor.test(joinForm.user_Pw.value)){
+					$("input[id='user_Name").css("margin-top", "8%");
+					$("#idCheck_text").text("❌비밀번호를 한글로 하실 수 없습니다.");
+               	   $("#idCheck_text").attr('color', '#f82a2aa3');
+					pw_Check = false;
+					return false;
+				}
                else {
                   $("input[id='user_Pw").css("margin-top", "10%");
-                  $("input[id='user_Name").css("margin-top", "5%");
+                  $("input[id='user_Name").css("margin-top", "8%");
                   $('#pwCheck_text').html('✔확인');
                   $('#pwCheck_text').attr('color', '#00CC00');
                   pw_Check = true;

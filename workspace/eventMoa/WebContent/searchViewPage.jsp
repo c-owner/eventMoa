@@ -80,6 +80,9 @@ section#two {
 	<!-- Main -->
 	<div id="main">
 
+		<!-- sideBar -->
+		<jsp:include page="${pageContext.request.contextPath}/assets/public/sideBar.jsp"></jsp:include>
+			
 		<!-- Logo & SearchBar-->
 		<jsp:include page="${pageContext.request.contextPath}/searchBar.jsp"></jsp:include>
 		<!-- //검색 게시판 -->
@@ -356,7 +359,7 @@ section#two {
 		
 		</section>
 		<hr>
-
+	<section class="wrapper special">
 		<article class="column col6">
 			<h4 class="col_tit">이벤트 관련 검색 결과 입니다.</h4>
 			<table>
@@ -370,13 +373,12 @@ section#two {
 					 </tr>
 				 </tbody>
 			 </table>
-		</article>
 		<div id="EVT">
 		
 		</div>
-		<div align="center" id='btn_confirm'>
-		
-		</div>
+		<a href="#" id="btn_open" class="button" style="margin: 0 auto; margin-top: 5%;"> 이벤트 더보기</a>
+		</article>
+	</section>
 
 		<hr>
 		</div> <!-- div id="main" end -->
@@ -390,7 +392,6 @@ section#two {
 	var page=1;
 	var cnt = 0;
 	var ul = $("#EVT");
-	var li = $("#btn_confirm");
 	var keyword = "<c:out value='${keyword}'/>";
 	var category = "<c:out value='${category}'/>";
 	var category2 = "<c:out value='${category2}'/>";
@@ -399,7 +400,6 @@ section#two {
 	function getList(){
 		 var check=false;
 		 var content = "";
-		 var li_content = "";
 		 $.ajax({
 			 url:"${pageContext.request.contextPath}/search/searchEvent.us",
 			 dataType:"text",
@@ -409,12 +409,7 @@ section#two {
 			 success: function(list){
 				 var eventArray=JSON.parse(list);
 				 if(JSON.parse(list).length==0 || JSON.parse(list).length<1){
-					content += "<table><tbody><tr>";
-					content += "<td colspan='6' align='center'>등록된 게시물이 없습니다.</td>";
-					content += "</tr></tboydy></table>";
-					li_content += '';
-					$("#EVT").html(content);
-					$("#btn_confirm").html(li_content);
+					alert('검색에 일치하는 이벤트가 없습니다.');
 					/* alert('더 이상 등록된 게시물이 존재하지 않습니다.'); */
  					 check=true;
 				 } else { 
@@ -433,12 +428,10 @@ section#two {
 						 content+="<img src='${pageContext.request.contextPath}/uploadFolder/eventFilesUpload/"+eventArray[i].file_name+"'onerror='noimage(this)'>";
 						 content+="</div></section>";
 					 }
-				 	li_content += '<a href="#" id="btn_open" class="button" style="margin: 0 auto; margin-top: 5%;"> 이벤트 더보기</a>';
+				 	/* li_content += '<a href="#" id="btn_open" class="button" style="margin: 0 auto; margin-top: 5%;"> 이벤트 더보기</a>'; */
 				 }
 				 
 				 ul.append(content);
-				 li.append(li_content);
-				 
 			 }	
 		 });
 		 if(check){
