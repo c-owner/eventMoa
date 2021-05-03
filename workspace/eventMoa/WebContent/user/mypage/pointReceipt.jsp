@@ -77,7 +77,6 @@
 					<table class="alt"	>
 						<thead>
 							<tr>
-								<th></th>
 								<th>날짜</th>
 								<th>포인트</th>
 								<th style="text-align: center;">내역</th>
@@ -129,8 +128,7 @@
 						var day = receiptArray[i].point_Date.substr(8,2);
 						var hour = receiptArray[i].point_Date.substr(11,2);
 						var min = receiptArray[i].point_Date.substr(15,2);
-		 				content+="<tr><td>"+receiptArray[i].point_Num+"</td>"
-						content+="<td>"+year+"-"+months+"-"+day+"</td>"
+						content+="<tr><td>"+year+"-"+months+"-"+day+"</td>"
 						content+="<td>"+receiptArray[i].point_Amount+"</td>"
 						content+="<td>"+receiptArray[i].point_Content+"</td>";
 		 				/* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */

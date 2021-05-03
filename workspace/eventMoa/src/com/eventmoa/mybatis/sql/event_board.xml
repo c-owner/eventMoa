@@ -3,7 +3,7 @@
 <!-- alias  eventBoardVO -->
 <mapper namespace="EventBoard">
 <!-- 메인 페이지 -->
-  <select id="listAll" parameterType="map" resultType="eventBoardVO">
+ <select id="listAll" parameterType="map" resultType="eventBoardVO">
  	SELECT * FROM 
 			(SELECT ROWNUM R, D.* FROM 
 				(SELECT * FROM TABLE_BOARD_EVENT
@@ -21,6 +21,71 @@
 				ORDER BY BOARD_NUM DESC) D) B
 		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
+  <select id="searchList" parameterType="map" resultType="eventBoardVO">
+ 	SELECT * FROM 
+			(SELECT ROWNUM R, D.* FROM 
+				(SELECT * FROM TABLE_BOARD_EVENT
+				<trim prefix="WHERE" prefixOverrides="AND">
+					<if test="keyword != null and keyword != '' and category == ''">
+						AND (
+								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_ADDRESS LIKE '%'|| #{keyword} ||'%' 
+							)
+					</if>
+					<if test="keyword != '' and category != ''">
+						AND (
+								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
+								OR BOARD_ADDRESS LIKE '%'|| #{category} ||'%'
+							)
+					</if>
+					<if test="category != null and category != '' and keyword == ''">
+						AND (
+								BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
+								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
+								OR BOARD_ADDRESS LIKE '%'|| #{category} ||'%'
+							)
+	           		 </if>
+	           	</trim>
+				ORDER BY BOARD_NUM DESC) D) B
+		WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<!-- 총 검색한 rows 카운트 수 -->
+	<select id="searchListCnt" parameterType="map" resultType="_int">
+		SELECT COUNT(*) FROM TABLE_BOARD_freeTalk
+		<include refid="search"></include>
+	</select>
+	<sql id="search">
+		<choose>
+			<when test="keyword != null and keyword != ''">
+				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'
+				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
+				OR BOARD_ADDRESS LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="category != null and category != ''">
+				WHERE BOARD_ID LIKE '%'||#{category}||'%'
+				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
+				OR BOARD_TITLE LIKE '%'||#{category}||'%'
+				OR BOARD_ADDRESS LIKE '%'||#{category}||'%'
+			</when>
+			<otherwise>
+				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'
+				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
+				OR BOARD_ADDRESS LIKE '%'||#{keyword}||'%'
+				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
+				OR BOARD_TITLE LIKE '%'||#{category}||'%'
+				OR BOARD_ADDRESS LIKE '%'||#{category}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+	
 	
 	<!-- 게시글 등록 -->
 	<insert id="insertEventBoard" parameterType="eventBoardVO">

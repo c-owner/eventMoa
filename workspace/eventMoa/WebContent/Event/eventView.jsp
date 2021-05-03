@@ -47,8 +47,9 @@
 			font-size: 25px; color: black; padding-bottom: 5px; font-weight:600;
 		}
 		.intro span {
-			font-size: 20px; color: #2f7fa6; padding-bottom: 5px; font-weight:600;
-			color: deeppink;
+			font-size: 20px; color: #black; padding-bottom: 5px; font-weight:600;
+/* 			font-size: 20px; color: #black; padding-bottom: 5px; font-weight:600; */
+			color: red;
 		}
 		.col_desc{
 			margin-top: 3%;
@@ -58,6 +59,7 @@
 			cursor: pointer;
 			height: 30%;
 			margin: 0;
+		    margin-top: 1%;
 			/* width: 10%;
 			padding: 0; */
 		}
@@ -98,14 +100,14 @@
 							<h1>${e_vo.getBoard_Title()}</h1>
 							<br>
 							<p style="text-align: right;">
-								날짜 : <span style="color:#2f7fa6">
+								날짜 : <span style="color:black">
 							  <c:set var = "date1" value = "${e_vo.getBoard_Date()}"/>
 						      <c:set var = "date2" value = "${fn:substring(date1, 0, 10)}" />
 								      ${date2}
 										</span>
 								<br>
 								작성자 : 
-									<span style="color: #2f7fa6;">
+									<span style="color: navy;">
 										<c:set var = "user_id" value = "${e_vo.getBoard_Id()}"/>
 		               				   <c:set var = "id_length" value = "${fn:length(user_id)}"/>
 										<c:set var = "private_id" value = "${fn:substring(user_id, 0, id_length-2)}" />
@@ -141,8 +143,8 @@
 								</div>
 						</font>
 						<p style="text-align: center;">
-						<span style="color:#2f7fa6; font-size: 15px;">이벤트 시작 :</span><span style="color:red">${e_vo.getEVT_START_DT()}</span> ~ 
-						<span style="color:#2f7fa6; font-size: 15px;">이벤트 종료 :</span><span style="color: red;">${e_vo.getEVT_END_DT()}</span> 
+						<span style="color:black; font-size: 15px;">이벤트 시작 :</span><span style="color:red">${e_vo.getEVT_START_DT()}</span> ~ 
+						<span style="color:black; font-size: 15px;">이벤트 종료 :</span><span style="color: red;">${e_vo.getEVT_END_DT()}</span> 
 						</p>
 					</p>
 				<div style="border-bottom: 2px solid #dbdbdb; text-align:center; padding-bottom:5%">

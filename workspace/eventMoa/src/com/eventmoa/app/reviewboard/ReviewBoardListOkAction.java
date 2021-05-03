@@ -19,6 +19,7 @@ public class ReviewBoardListOkAction implements Action{
 		String temp = req.getParameter("page");
 		String category = req.getParameter("category");
 		if(temp == null ) {temp="1";};
+		if(category == null ) {category="recent";}; // dafault
 		
 		
 		int page = 1;

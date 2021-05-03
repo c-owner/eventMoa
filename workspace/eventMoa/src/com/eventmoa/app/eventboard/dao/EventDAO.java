@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.eventmoa.app.eventboard.vo.EventBoardVO;
 import com.eventmoa.app.eventboard.vo.EventReplyVO;
+import com.eventmoa.app.freeboard.vo.FreeBoardVO;
 import com.eventmoa.mybatis.config.SqlMapConfig;
 public class EventDAO {
 	public static int moreCnt= 1;
@@ -27,18 +28,6 @@ public class EventDAO {
 		
 		return session.selectList("EventBoard.listAll", pageMap);
 	}
-	// 이벤트 게시판 검색
-	public List<EventBoardVO> searchList(String category, String keyword,int startRow,int endRow){
-		
-		HashMap<String, Object> searchMap = new HashMap();
-		
-		searchMap.put("startRow", startRow);
-		searchMap.put("endRow", endRow);	
-		searchMap.put("category", category);
-		searchMap.put("keyword", keyword);
-		return session.selectList("EventBoard.listAll", searchMap);
-	}
-
 	// 페이지 작성
 	public boolean insertBoard(EventBoardVO ev, String user_Id) {
 		boolean check = false;
@@ -106,5 +95,20 @@ public class EventDAO {
 		return session.selectOne("EventBoard.getReplyStar", board_Num);
 	}
 	
+//	검색 
+	public List<EventBoardVO> searchList(String category,String keyword,int startRow,int endRow){
+		HashMap<String, Object> searchMap = new HashMap<>();
+			searchMap.put("startRow", startRow);
+			searchMap.put("endRow", endRow);	
+			searchMap.put("category", category);
+			searchMap.put("keyword", keyword);
+		return session.selectList("EventBoard.searchList", searchMap);
+	}	
+	public int getSearchBoardCnt(String category, String keyword){
+		HashMap<String, Object> searchMap = new HashMap<>();
+		searchMap.put("category", category);
+		searchMap.put("keyword", keyword);
+		return session.selectOne("EventBoard.searchListCnt", searchMap);
+	}
 }
 

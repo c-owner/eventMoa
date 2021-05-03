@@ -160,14 +160,12 @@
 		/* 페이지 */
          $("#category").on("change", function(){
             var category = $("#category option:selected").val();
-            console.log(category);
             location.href = "${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=" + category + "&page=1";            
          })
          
          $("a.paging").on("click", function(){
             var page = $(this).attr("href") || 1;
             var category = $("#category option:selected").val();
-            console.log(category);
             location.href = "${pageContext.request.contextPath}/freeboard/FreeBoardList.bo?category=" + category + "&page=" + page;            
          });
          

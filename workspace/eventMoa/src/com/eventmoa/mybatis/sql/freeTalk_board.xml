@@ -45,7 +45,7 @@
 								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
-s							)
+							)
 					</if>
 					<if test="category != null and category != '' and keyword == ''">
 						AND (
