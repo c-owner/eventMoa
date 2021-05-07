@@ -403,7 +403,7 @@ section#two {
 		 $.ajax({
 			 url:"${pageContext.request.contextPath}/search/searchEvent.us",
 			 dataType:"text",
- 			 data:{"page":page, "keyword":keyword,"category":category,"category2":category2,"r_page":r_page},
+ 			 data:{"page":page, "keyword":keyword,"category":category,"category2":category2,"category3":category3,"r_page":r_page},
 			 /* data:{"page":page}, */
 			 contentType: "application/json",
 			 success: function(list){
@@ -421,7 +421,7 @@ section#two {
 						 content+="<h2 style='color: #453f3f; font-size: 20px; font-family: jua;'>"+eventArray[i].board_Title+"</h2>";
 						 content+="<pre>"+content1+" •••. </pre>";
 						 content+="<br> <i class='fas fa-map-marked-alt'></i><font style='font-weight: bold;'>스팟</font> ";
-						 content+="<br>"+eventArray[i].board_Address+"/"+eventArray[i].board_Address_Detail+"";
+						 content+="<br>"+eventArray[i].board_Address+" / "+eventArray[i].board_Address_Detail+" ";
 						 content+="<ul class='actions'><li><a href='${pageContext.request.contextPath}/eventboard/EventView.ev?board_Num="+eventArray[i].board_Num+"&page="+page+"' class='button' style='background-color: black;'>";
 						 content+="자세히 보기</a></li></ul></div></div>";
 						 content+="<div class='image'>";

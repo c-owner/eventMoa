@@ -26,12 +26,14 @@
 			(SELECT ROWNUM R, D.* FROM 
 				(SELECT * FROM TABLE_BOARD_EVENT
 				<trim prefix="WHERE" prefixOverrides="AND">
-					<if test="keyword != null and keyword != '' and category == ''">
+					<if test="keyword != '' and category == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
-								OR BOARD_ADDRESS LIKE '%'|| #{keyword} ||'%' 
+								OR BOARD_ADDRESS LIKE '%'|| #{keyword} ||'%'
+								OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{keyword} ||'%'
+								OR BOARD_ADDRESS_ETC LIKE '%'|| #{keyword} ||'%'
 							)
 					</if>
 					<if test="keyword != '' and category != ''">
@@ -39,16 +41,25 @@
 								BOARD_CONTENT LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{keyword} ||'%' 
 								OR BOARD_ID LIKE '%'|| #{keyword} ||'%' 
-								OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
+								OR BOARD_ADDRESS LIKE '%'|| #{keyword} ||'%'
+								OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{keyword} ||'%'
+								OR BOARD_ADDRESS_ETC LIKE '%'|| #{keyword} ||'%'
+							OR BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
 								OR BOARD_ADDRESS LIKE '%'|| #{category} ||'%'
+								OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{category} ||'%'
+								OR BOARD_ADDRESS_ETC LIKE '%'|| #{category} ||'%' 
 							)
 					</if>
-					<if test="category != null and category != '' and keyword == ''">
+					<if test="category != '' and keyword == ''">
 						AND (
 								BOARD_CONTENT LIKE '%'|| #{category} ||'%' 
 								OR BOARD_TITLE LIKE '%'|| #{category} ||'%'
 								OR BOARD_ADDRESS LIKE '%'|| #{category} ||'%'
+								OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{category} ||'%'
+								OR BOARD_ADDRESS_ETC LIKE '%'|| #{category} ||'%'
+							OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{category} ||'%'
+							OR BOARD_ADDRESS_ETC LIKE '%'|| #{category} ||'%'
 							)
 	           		 </if>
 	           	</trim>
@@ -67,12 +78,16 @@
 				OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 				OR BOARD_TITLE LIKE '%'||#{keyword}||'%'
 				OR BOARD_ADDRESS LIKE '%'||#{keyword}||'%'
+				OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{keyword} ||'%'
+				OR BOARD_ADDRESS_ETC LIKE '%'|| #{keyword} ||'%'
 			</when>
 			<when test="category != null and category != ''">
 				WHERE BOARD_ID LIKE '%'||#{category}||'%'
 				OR BOARD_CONTENT LIKE '%'||#{category}||'%'
 				OR BOARD_TITLE LIKE '%'||#{category}||'%'
 				OR BOARD_ADDRESS LIKE '%'||#{category}||'%'
+				OR BOARD_ADDRESS_DETAIL LIKE '%'|| #{category} ||'%'
+				OR BOARD_ADDRESS_ETC LIKE '%'|| #{category} ||'%'
 			</when>
 			<otherwise>
 				WHERE BOARD_ID LIKE '%'||#{keyword}||'%'

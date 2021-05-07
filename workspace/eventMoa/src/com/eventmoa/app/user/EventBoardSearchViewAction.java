@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,7 +13,6 @@ import com.eventmoa.action.Action;
 import com.eventmoa.action.ActionForward;
 import com.eventmoa.app.eventboard.dao.EventDAO;
 import com.eventmoa.app.eventboard.vo.EventBoardVO;
-import com.eventmoa.app.user.dao.UserDAO;
 
 public class EventBoardSearchViewAction implements Action{
 
@@ -29,20 +27,29 @@ public class EventBoardSearchViewAction implements Action{
 		PrintWriter out = resp.getWriter();
 		
 		String category = req.getParameter("category");
+		String category2 = req.getParameter("category2"); // 순서 정렬 
+		String category3 = req.getParameter("category3"); // 순서 정렬 
 		String keyword = req.getParameter("keyword");
-	
-	      try {
-			if(category.equals("지역별") || category == "" || category == null) {
-			     category= null;
-			  }
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      
+		if (category == null) {category = "";}; // default 
+		if (keyword == null) {keyword = "";};
+		if (category2 == null) {category2 = "recent";};
+		if (category3 == null) {category3 = "recent";};
+		
+	      if(category.equals("지역별") || category == null || category.length() < 1) {
+				category = ""; // default 
+			}
+			if(keyword.equals("") || keyword == null || keyword.length() < 1 ) {
+				keyword = "";
+			}
+			if(category2.equals("") || category2 == null || category2.length() < 1) {
+				category2 = "recent";
+			}
+			if(category3.equals("") || category2 == null || category2.length() < 1) {
+				category3 = "recent";
+			}
 		String temp = req.getParameter("page");
 		int page = 0; 
-		
+
 		 try {
 			page = Integer.parseInt(temp);
 		} catch (NumberFormatException e) {

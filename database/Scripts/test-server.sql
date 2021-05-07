@@ -46,5 +46,17 @@ ON A.BOARD_NUM = B.E_BOARD_NUM;
 				(SELECT * FROM TABLE_BOARD_EVENT
 				ORDER BY BOARD_NUM DESC) D) B
 		WHERE B.R BETWEEN 1 AND 10;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	--------------------------관리자 테이블 
+	
+	CREATE TABLE
 
 

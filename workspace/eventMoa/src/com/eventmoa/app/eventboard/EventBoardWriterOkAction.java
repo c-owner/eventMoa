@@ -76,7 +76,13 @@ public class EventBoardWriterOkAction implements Action {
 		ev_vo.setBoard_Id(multi.getParameter("board_Id"));
 		ev_vo.setBoard_Zipcode(multi.getParameter("zipcode"));
 		ev_vo.setBoard_Address(multi.getParameter("address"));
-		ev_vo.setBoard_Address_Detail(multi.getParameter("address_detail"));
+		
+		String detail = "";
+		if(multi.getParameter("address_detail") == null) {
+			detail = "-";
+		}
+		
+		ev_vo.setBoard_Address_Detail(detail);
 		ev_vo.setBoard_Address_etc(multi.getParameter("address_etc"));
 		ev_vo.setEVT_START_DT(multi.getParameter("datepicker1"));
 		ev_vo.setEVT_END_DT(multi.getParameter("datepicker2"));
